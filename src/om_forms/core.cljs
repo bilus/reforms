@@ -7,7 +7,8 @@
 
 (def ^:dynamic *options* {:form-horizontal    false
                           :label-column-class "col-sm-3"
-                          :input-column-class "col-sm-7"})
+                          :input-column-class "col-sm-7"
+                          :group-title {:tag :h2}})
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Implementation
@@ -119,8 +120,8 @@
   (apply input label placeholder cursor korks "password" opts))
 
 (defn group-title
-  [title & {:keys [class]}]
-  [:h2 {:class (str "group-title" (when class (str " " class)))} title])
+  [title & {:keys [class tag]}]
+  [(or tag (get-in *options* [:group-title :tag]) :h2) {:class (str "group-title" (when class (str " " class)))} title])
 
 (defn button
   [label on-click & {:keys [in-progress disabled] :as opts}]
