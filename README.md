@@ -4,12 +4,15 @@ A Clojure library designed to ... well, that part is up to you.
 
 ## Usage
 
-### Hello, world
+### Getting started
 
-### Spicing it up
-#### group-title
-#### panel
-#### button-group
+### Hello, world
+#### Simple example
+#### Grouping controls
+#### Wrapping in panel
+#### Button groups
+
+For the list of available controls, see reference: ...
 
 ### Form options
 #### Orientation
@@ -20,19 +23,20 @@ A Clojure library designed to ... well, that part is up to you.
 #### Basics
 #### Custom error
 #### Custom validators
+#### Showing warnings
+
+### Tables
+#### Basic table
+#### Column names
+#### Row selection
 
 ### Background processing
 
 ### Further reading
-
 #### Examples
-
 #### Reference
 
-
-
-
-FIXME
+Report problems...
 
 ## License
 
