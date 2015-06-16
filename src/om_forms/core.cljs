@@ -102,6 +102,13 @@
                    (when help
                      [:p.help-block help]))]))
 
+(defn add-class
+  [opts class]
+  (as-> opts $
+      (apply hash-map $)
+      (update-in $ [:class] #(if % (str/join " " [% class]) class))
+        (mapcat identity $)))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Public
 
@@ -136,6 +143,20 @@
    (when in-progress
      (list " "
            (spinner)))])
+
+(defn button-primary
+  [label on-click & opts]
+  (apply button
+         label
+         on-click
+         (add-class opts "btn btn-primary")))
+
+(defn button-default
+  [label on-click & opts]
+  (apply button
+         label
+         on-click
+         (add-class opts "btn btn-primary")))
 
 (defn button-group
   [& buttons]

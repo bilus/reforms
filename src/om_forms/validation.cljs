@@ -159,6 +159,14 @@
   [& args]
   (apply validating-field f/button args))
 
+(defn button-primary
+  [& args]
+  (apply validating-field f/button-primary args))
+
+(defn button-default
+  [& args]
+  (apply validating-field f/button-default args))
+
 (defn error-alert
   [& korks]
   (render-errors (keep (fn [kork]
