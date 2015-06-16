@@ -8,7 +8,11 @@
 (def ^:dynamic *options* {:form-horizontal    false
                           :label-column-class "col-sm-3"
                           :input-column-class "col-sm-7"
-                          :group-title        {:tag :h2}})
+                          :spinner            {:icon-spinner "fa fa-clock-o fa-spin"}
+                          :input              {:icon-warning "fa fa-warning"}
+                          :panel              {:icon-close "fa fa-times"}
+                          :group-title        {:tag :h2}
+                          :button-group       {:align "text-left"}})
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Implementation
@@ -93,7 +97,7 @@
                             :placeholder placeholder}]
                    (cond
                      in-progress (spinner "form-control-feedback")
-                     warning (feedback-icon "fa fa-warning form-control-feedback")
+                     warning (feedback-icon (str (get-in *options* [:input :icon-warning]) " form-control-feedback"))
                      :else nil)
                    (when warning
                      (warning-label warning))
@@ -105,8 +109,8 @@
 (defn add-class
   [opts class]
   (as-> opts $
-      (apply hash-map $)
-      (update-in $ [:class] #(if % (str/join " " [% class]) class))
+        (apply hash-map $)
+        (update-in $ [:class] #(if % (str/join " " [% class]) class))
         (mapcat identity $)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -118,6 +122,10 @@
            (merge-with str opts {:class " form-horizontal"})
            opts) elems])
 
+(defn group-title
+  [title & {:keys [class tag]}]
+  [(or tag (get-in *options* [:group-title :tag])) {:class (str "group-title" (when class (str " " class)))} title])
+
 (defn text
   [label placeholder cursor korks & opts]
   (apply input label placeholder cursor korks "text" opts))
@@ -125,10 +133,6 @@
 (defn password
   [label placeholder cursor korks & opts]
   (apply input label placeholder cursor korks "password" opts))
-
-(defn group-title
-  [title & {:keys [class tag]}]
-  [(or tag (get-in *options* [:group-title :tag]) :h2) {:class (str "group-title" (when class (str " " class)))} title])
 
 (defn button
   [label on-click & {:keys [in-progress disabled] :as opts}]
@@ -160,7 +164,7 @@
 
 (defn button-group
   [& buttons]
-  [:div {:class "button-group text-right"} (seq buttons)])
+  [:div {:class (str "button-group " (get-in *options* [:button-group :align]))} (seq buttons)])
 
 (defn checkbox
   [label cursor korks & {:keys [valid? validation-error-fn inline]}]
@@ -217,7 +221,7 @@
 
 (defn spinner
   [& [class]]
-  (html [:i {:class (str "fa fa-clock-o fa-spin" (when class (str " " class)))}]))
+  (html [:i {:class (str (get-in *options* [:spinner :icon-spinner]) (when class (str " " class)))}]))
 
 (defn panel
   [title {:keys [close]} & contents]
@@ -226,24 +230,10 @@
           [:h3 {:class "panel-title"} title]
           (when close
             [:div {:class "actions pull-right"}
-             [:i {:class   "fa fa-times"
+             [:i {:class   (get-in *options* [:panel :icon-close])
                   :onClick close}]])]
          [:div {:class "panel-body"}
           (seq contents)]]))
-
-(defn navbar-link
-  [title click-fn & {:keys [icon-left icon-right]}]
-  [:a {:href    "#"
-       :onClick click-fn
-       :class   "navbar-link"
-       :style   {:white-space "nowrap"}}
-   (when icon-left
-     (list [:span {:class icon-left}]
-           " "))
-   title
-   (when icon-right
-     (list " "
-           [:span {:class icon-right}]))])
 
 (defn table
 

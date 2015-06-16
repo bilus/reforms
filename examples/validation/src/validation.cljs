@@ -33,10 +33,11 @@
           "Sign up"
           {}
           (f/with-options
-            {:form-horizontal true
+            {:form-horizontal    true
              :label-column-class "col-md-4"
              :input-column-class "col-md-8"
-             :group-title     {:tag :h3}}
+             :group-title        {:tag :h3}
+             :button-group       {:align "text-right"}}
             (v/form {:onSubmit #(.preventDefault %)}
                     ui-state
                     (v/text "First name" "Enter first name" customer [:first])
