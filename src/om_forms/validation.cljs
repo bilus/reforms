@@ -124,24 +124,20 @@
 
 (def ^:dynamic *validation-errors* nil)
 
-(defn- validating-fields-fn                                 ; See node.validation macro in validation.clj
+(defn validating-fields-fn                                 ; See node.validation macro in validation.clj
   [validation-errors & fields]
   (binding [*validation-errors* validation-errors]
     (doall
       (for [field fields]
         (field)))))
 
-(defn- validating-field
+(defn validating-field
   [field-fn & args]
   (assert (not-any? #{:validation-error-fn} args) "The validating version uses :validation-error-fn internally.")
   (apply field-fn (conj (vec args)
                         :valid? (fn [korks] (valid? korks *validation-errors*))
                         :validation-error-fn (fn [korks] (when-let [err (find-validation-error korks *validation-errors*)]
                                                            (:error-message err))))))
-
-(defn input
-  [& args]
-  (apply validating-field f/input args))
 
 (defn password
   [& args]

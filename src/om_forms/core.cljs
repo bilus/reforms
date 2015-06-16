@@ -8,7 +8,7 @@
 (def ^:dynamic *options* {:form-horizontal    false
                           :label-column-class "col-sm-3"
                           :input-column-class "col-sm-7"
-                          :group-title {:tag :h2}})
+                          :group-title        {:tag :h2}})
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Implementation
@@ -67,15 +67,6 @@
   [selected-values all-values]
   (set/subset? (into #{} all-values) selected-values))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Public
-
-(defn form
-  [opts & elems]
-  [:form (if (:form-horizontal *options*)
-           (merge-with str opts {:class " form-horizontal"})
-           opts) elems])
-
 (defn error-label
   [error]
   [:label {:class "error"} error])
@@ -111,6 +102,15 @@
                    (when help
                      [:p.help-block help]))]))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Public
+
+(defn form
+  [opts & elems]
+  [:form (if (:form-horizontal *options*)
+           (merge-with str opts {:class " form-horizontal"})
+           opts) elems])
+
 (defn text
   [label placeholder cursor korks & opts]
   (apply input label placeholder cursor korks "text" opts))
@@ -125,12 +125,17 @@
 
 (defn button
   [label on-click & {:keys [in-progress disabled] :as opts}]
-  [:button (merge opts {:type     "button"
-                        :disabled disabled
-                        :onClick  #(when-not disabled
-                                    (on-click))}) label (when in-progress
-                                                          (list " "
-                                                                (spinner)))])
+  [:button
+   (merge {:type     "button"
+           :class    "btn"
+           :disabled disabled
+           :onClick  #(when-not disabled
+                       (on-click))}
+          opts)
+   label
+   (when in-progress
+     (list " "
+           (spinner)))])
 
 (defn button-group
   [& buttons]

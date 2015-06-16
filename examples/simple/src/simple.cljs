@@ -1,7 +1,8 @@
 (ns examples.simple
   (:require [om-forms.core :as f :include-macros true]
             [om.core :as om]
-            [sablono.core :refer-macros [html]]))
+            [sablono.core :refer-macros [html]]
+            [examples.shared.utils :refer [inspector-view]]))
 
 (def app-state (atom {:customer {:type :private}}))
 
@@ -49,15 +50,6 @@
                   (f/password "Password" "Enter your password" customer [:password])
                   (f/button "Save" #(js/alert "clicked"))))))))
 
-(defn customer-view
-  [customer _owner]
-  (reify
-    om/IRender
-    (render [_]
-      (html
-        [:div.customer
-         (prn-str customer)]))))
-
 (defn main-view
   [app-state _owner]
   (reify
@@ -66,7 +58,7 @@
             (html
               [:div
                (om/build customer-form-view (:customer app-state))
-               (om/build customer-view (:customer app-state))]))))
+               (om/build inspector-view app-state)]))))
 
 (om/root
   main-view
