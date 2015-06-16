@@ -23,6 +23,7 @@ For the list of available controls, see reference: ...
 #### Basics
 #### Custom error
 #### Custom validators
+#### Nesting validators
 #### Showing warnings
 
 ### Tables
@@ -31,6 +32,9 @@ For the list of available controls, see reference: ...
 #### Row selection
 
 ### Background processing
+
+### Advanced
+#### Storing validation errors in local state
 
 ### Further reading
 #### Examples
