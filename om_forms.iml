@@ -6,16 +6,36 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/dev-resources" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/examples/simple/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/resources" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/examples/simple/src" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/examples/simple/out" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Leiningen: clojure-complete:0.2.3" level="project" />
-    <orderEntry type="library" name="Leiningen: org.clojure/clojure:1.6.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Leiningen: org.clojure/clojure:1.6.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Leiningen: org.clojure/clojurescript:0.0-3211" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/tools.nrepl:0.2.6" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Leiningen: org.omcljs/om:0.8.8" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Leiningen: sablono:0.3.4" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Leiningen: com.google.javascript/closure-compiler:v20150126" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Leiningen: org.clojure/data.json:0.2.6" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Leiningen: org.clojure/google-closure-library:0.0-20140718-946a7d39" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Leiningen: org.clojure/tools.reader:0.9.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Leiningen: org.mozilla/rhino:1.7R5" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Leiningen: args4j:2.0.26" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Leiningen: com.google.code.findbugs/jsr305:1.3.9" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Leiningen: com.google.code.gson/gson:2.2.4" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Leiningen: com.google.guava/guava:18.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Leiningen: com.google.javascript/closure-compiler-externs:v20150126" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Leiningen: com.google.protobuf/protobuf-java:2.5.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Leiningen: com.google.truth/truth:0.24" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Leiningen: junit:4.10" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Leiningen: org.hamcrest/hamcrest-core:1.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Leiningen: org.clojure/google-closure-library-third-party:0.0-20140718-946a7d39" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Leiningen: cljsjs/react:0.12.2-5" level="project" />
   </component>
 </module>
