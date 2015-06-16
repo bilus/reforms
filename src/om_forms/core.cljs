@@ -84,7 +84,7 @@
   [:label {:class "warning"} warning])
 
 (defn input
-  [label placeholder cursor korks type & {:keys [notify-ch valid? validation-error-fn in-progress warn-fn help]}]
+  [label placeholder cursor korks type & {:keys [valid? validation-error-fn in-progress warn-fn help]}]
   (let [dom-id (gen-dom-id cursor korks)
         valid (or (nil? valid?) (valid? korks))
         warning (and warn-fn (warn-fn (get-in cursor korks)))]
@@ -93,10 +93,7 @@
      [:label {:for   dom-id
               :class (str "control-label " (label-column-class))} label]
      (input-column [:input {:onChange    #(do
-                                           (om/update! cursor korks (.. % -target -value))
-                                           (when notify-ch
-                                             (async/go
-                                               (async/>! notify-ch {:event :change}))))
+                                           (om/update! cursor korks (.. % -target -value)))
                             :value       (get-in cursor korks)
                             :type        type
                             :class       "form-control"
@@ -126,13 +123,10 @@
   [:h2 {:class (str "group-title" (when class (str " " class)))} title])
 
 (defn button
-  [label on-click & {:keys [notify-ch in-progress disabled] :as opts}]
+  [label on-click & {:keys [in-progress disabled] :as opts}]
   [:button (merge opts {:type     "button"
                         :disabled disabled
                         :onClick  #(when-not disabled
-                                    (when notify-ch
-                                      (async/go
-                                        (async/>! notify-ch {:event :click})))
                                     (on-click))}) label (when in-progress
                                                           (list " "
                                                                 (spinner)))])
@@ -142,17 +136,14 @@
   [:div {:class "button-group text-right"} (seq buttons)])
 
 (defn checkbox
-  [label cursor korks & {:keys [notify-ch valid? validation-error-fn inline]}]
+  [label cursor korks & {:keys [valid? validation-error-fn inline]}]
   (let [dom-id (gen-dom-id cursor korks)
         valid (or (nil? valid?) (valid? korks))]
     (list
       [:div {:class (str "checkbox" (when-not valid " has-error") (when inline " checkbox-inline"))}
        [:label
         [:input {:onChange #(do
-                             (om/update! cursor korks (.. % -target -checked))
-                             (when notify-ch
-                               (async/go
-                                 (async/>! notify-ch {:event :change}))))
+                             (om/update! cursor korks (.. % -target -checked)))
                  :checked  (get-in cursor korks)
                  :type     "checkbox"
                  :id       dom-id}]
@@ -161,17 +152,14 @@
         (error-label validation-error)))))
 
 (defn radio
-  [label cursor korks value & {:keys [notify-ch valid? validation-error-fn inline]}]
+  [label cursor korks value & {:keys [valid? validation-error-fn inline]}]
   (let [dom-id (gen-dom-id cursor korks)
         valid (or (nil? valid?) (valid? korks))]
     (list
       [:div {:class (str "radio" (when-not valid " has-error") (when inline " radio-inline"))}
        [:label
         [:input {:onChange #(when (.. % -target -checked)
-                             (om/update! cursor korks value)
-                             (when notify-ch
-                               (async/go
-                                 (async/>! notify-ch {:event :change}))))
+                             (om/update! cursor korks value))
                  :checked  (= value (get-in cursor korks))
                  :type     "radio"
                  :id       dom-id
