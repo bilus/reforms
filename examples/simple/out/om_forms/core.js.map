@@ -1,0 +1,1 @@
+{"version":3,"file":"\/Users\/martinb\/dev\/clojure_apps\/proton\/om-forms\/examples\/simple\/out\/om_forms\/core.js","sources":["core.cljs"],"lineCount":11,"mappings":";AAAA;;AAEA;;;oBAAA,pBAAMA,gDAEHC;AAFH,AAGE,qCAAA,9BAACC,4BAAQD","names":["om-forms.core\/foo","x","cljs.core\/println"]}
