@@ -47,7 +47,7 @@ Here's how you create an Om component with a form with just one text field and a
         (f/button "Submit" #(js/alert (:name @customer)))))))
 ```
 
-![](https://github.com/bilus/om-forms/blob/master/images/hello-world.png)
+![](https://github.com/bilus/om-forms/blob/master/doc/images/hello-world.png)
 
 Note that `form` returns a data structure compatible with sablono which we then compile into a node.
 

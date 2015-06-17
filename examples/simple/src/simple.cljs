@@ -1,6 +1,6 @@
 (ns examples.simple
   (:require [om-forms.core :as f :include-macros true]
-            [om.core :as om]
+            [om.core :include-macros true :as om]
             [sablono.core :refer-macros [html]]
             [examples.shared.utils :refer [inspector-view]]))
 
@@ -38,7 +38,7 @@
       (html
         (f/with-options
           {:form-horizontal false
-           :group-title {:tag :h3}}
+           :group-title     {:tag :h3}}
           (f/form {:onSubmit #(.preventDefault %)}
                   (f/group-title "Customer")
                   (f/select "Customer type" customer [:type]
@@ -50,15 +50,27 @@
                   (f/password "Password" "Enter your password" customer [:password])
                   (f/button "Save" #(js/alert "clicked"))))))))
 
+(defn simple-view
+  [customer _owner]
+  (om/component
+    (html
+      (f/form
+        {}
+        (f/text "Your name" "Type your name here" customer [:name])
+        (f/button "Submit" #(js/alert (:name @customer)))))))
+
 (defn main-view
   [app-state _owner]
   (reify
     om/IRender
     (render [_]
-            (html
-              [:div
-               (om/build customer-form-view (:customer app-state))
-               (om/build inspector-view app-state)]))))
+      (html
+        [:div
+         [:br]
+         [:br]
+         (om/build simple-view (:customer app-state))
+         #_(om/build customer-form-view (:customer app-state))
+         #_(om/build inspector-view app-state)]))))
 
 (om/root
   main-view
