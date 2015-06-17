@@ -1,7 +1,8 @@
 # om-forms
 
-A Clojurescript library that lets you build beautiful forms with Om and Bootstrap 3. Its purpose is to make it possible to quickly build forms rather than make it possible to use every Bootstrap feature. 
-I have deliberately limited the library to the key essentials but you think something useful is missing, please let me know. 
+A Clojurescript library that lets you build beautiful forms with Om and Bootstrap 3 and (optionally) Font Awesome. The focus is on quickly building forms rather than making supporting every Bootstrap feature. 
+
+I deliberately limit the functionality to the essentials. If you think something useful is missing though, please let me know. The library does not use Bootstrap JavaScript.  
 
 You can safely use this library in your project. It has been used in a large production project and its interface isn't likely to change.
 
@@ -26,6 +27,12 @@ Remember to link to bootstrap css from your html page, e.g.:
 
 ```html
 <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet"/>
+```
+
+To use Font Awesome icons to use features such as progress spinner, warning icons etc., link to it as well:
+
+```html
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 ```
 
 
@@ -58,7 +65,7 @@ Here's how you create an Om component with a form with just one text field and a
 
 ![](https://github.com/bilus/om-forms/blob/master/doc/images/hello-world.png)
 
-Note that `form` returns a data structure compatible with sablono which we then compile into a node.
+Note that `form` returns a data structure compatible with [sablono](https://github.com/r0man/sablono) which we then compile into a node using `sablono/html` above.
 
 #### Data binding
 
@@ -141,6 +148,7 @@ For the list of available controls, see reference: ...
 #### How to store validation errors in local state?
 #### How to save changes to data when user clicks a button?
 #### How to show an operation is in progress?
+#### Can I use built-in Bootstrap icons instead of Font Awesome?
 
 ### Further reading
 #### Examples
