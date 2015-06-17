@@ -1,6 +1,8 @@
 # om-forms
 
-A Clojurescript library that lets you build beautiful forms based on Om and Bootstrap 3.
+A Clojurescript library that lets you build beautiful forms based on Om and Bootstrap 3. It is production-ready.
+
+![](https://github.com/bilus/om-forms/blob/master/doc/images/sample.png)
 
 ## Usage
 
