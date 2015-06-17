@@ -6,7 +6,7 @@ I deliberately limit the functionality to the essentials. If you think something
 
 You can safely use this library in your project. It has been used in a large production project and its interface isn't likely to change.
 
-<center><img src="https://github.com/bilus/om-forms/blob/master/doc/images/sample.png" width="60%"></center>
+<img src="https://github.com/bilus/om-forms/blob/master/doc/images/sample.png" width="70%">
 
 ## Usage
 
