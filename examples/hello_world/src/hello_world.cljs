@@ -3,24 +3,23 @@
             [om.core :include-macros true :as om]
             [sablono.core :refer-macros [html]]))
 
-(def app-state (atom {:data {:orientation-horizontal false}}))
+(def app-state (atom {:data {:orientation-horizontal true}}))
 
 (defn simple-view
   [data _owner]
   (om/component
     (html
       (f/with-options {:form {:horizontal (:orientation-horizontal data)}}
-                      (identity
-                        ;f/panel
-                        ;"Hello, world"
-                        ;{}
+                      (f/panel
+                        "Hello, world"
+                        {}
                         (f/form
                           {}
                           (f/text "Your name" "Type your name here" data [:name])
                           (f/form-buttons
                             (f/button-primary "Submit" #(js/alert (:name @data)))
-                            #_(f/button-default "Cancel" #(js/alert "Cancel!")))
-                          #_(f/checkbox "Horizontal form" data [:orientation-horizontal])))))))
+                            (f/button-default "Cancel" #(js/alert "Cancel!")))
+                          (f/checkbox "Horizontal form" data [:orientation-horizontal])))))))
 
 (defn main-view
   [app-state _owner]
