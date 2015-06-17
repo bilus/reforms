@@ -127,11 +127,6 @@ The complete example: [here](https://github.com/bilus/om-forms/blob/master/examp
 
 For the list of available controls, see reference: ...
 
-### Form options
-#### Orientation
-#### Columns
-#### Other
-
 ### Validation
 #### Basics
 #### Custom error
@@ -144,11 +139,14 @@ For the list of available controls, see reference: ...
 #### Column names
 #### Row selection
 
+### Configuration options
+
 ### FAQ
 #### How to store validation errors in local state?
 #### How to save changes to data when user clicks a button?
 #### How to show an operation is in progress?
 #### Can I use built-in Bootstrap icons instead of Font Awesome?
+#### How do I use different column widths for horizontal forms
 
 ### Further reading
 #### Examples
