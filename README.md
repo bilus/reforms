@@ -221,6 +221,16 @@ Here's what happens after you click "Sign up" while all fields are empty:
 
 <img src="https://github.com/bilus/om-forms/blob/master/doc/images/validation-1.png" width="50%">
 
+To satisfy your curiosity, here are the contents of `ui-state`:
+
+```clojure
+{:validation-errors [{:korks #{[:login]}, :error-message "Enter login name"} 
+                     {:korks #{[:password1]}, :error-message "Choose password"} 
+                     {:korks #{[:password2]}, :error-message "Re-enter password"}]}
+```
+
+A slightly richer example: [here](https://github.com/bilus/om-forms/blob/master/examples/validation/src/validation.cljs).
+
 For the list of available validators, see the reference. TODO
 
 #### Custom validators

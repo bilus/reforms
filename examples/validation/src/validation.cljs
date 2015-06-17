@@ -23,40 +23,14 @@
   (when (apply v/validate! customer ui-state customer-validators)
     (om/transact! customers (fn [xs] (conj xs @customer)))))
 
-(defn sign-up!
-  [data ui-state]
-  (when (v/validate!                                                      ;; 1
-          data                                                           ;; 2
-          ui-state                                                       ;; 3
-          (v/present [:login] "Enter login name")                        ;; 4
-          (v/equal [:password1] [:password2] "Passwords do not match")
-          (v/present [:password1] "Choose password")
-          (v/present [:password2] "Re-enter password"))
-    (js/alert "Signed up!")))
-
 (defn signup-form-view
-  [[data ui-state] _owner]                                                ;; 1
-  (reify
-    om/IRender
-    (render [_]
-      (html
-        (v/form                                                           ;; 2
-          {}
-          ui-state                                                        ;; 3
-          (v/text "Login" "Choose your login" data [:login])          ;; 4
-          (v/password "Password" "Enter your password" data [:password1])
-          (v/password "Confirm password" "Re-enter your password" data [:password2])
-          (f/form-buttons
-            (f/button-primary "Sign up" #(sign-up! data ui-state))))))))  ;; 5
-
-#_(defn signup-form-view
   [[customers customer ui-state] _owner]
   (reify
     om/IRender
     (render [_]
       (html
         (f/panel
-          "Sign up"
+          "Add customer"
           {}
           (f/with-options
             {:form-horizontal    true
@@ -67,13 +41,13 @@
                     ui-state
                     (v/text "First name" "Enter first name" customer [:first])
                     (v/text "Last name" "Enter last name" customer [:last])
-                    (v/text "Login" "Choose your login" customer [:login])
-                    (v/password "Password" "Enter your password" customer [:password1])
-                    (v/password "Confirm password" "Re-enter your password" customer [:password2])
+                    (v/text "Login" "Choose login" customer [:login])
+                    (v/password "Password" "Enter password" customer [:password1])
+                    (v/password "Confirm password" "Re-enter password" customer [:password2])
                     (f/form-buttons
                       (f/button-primary "Save" #(sign-up! customers customer ui-state))))))))))
 
-(defn customer-view
+(defn customer-list-view
   [customers _owner]
   (reify
     om/IRender
@@ -99,7 +73,7 @@
                                                                      (:customer app-state)
                                                                      (:ui-state app-state)])]
           [:div.col-md-4
-           (om/build customer-view (:customers app-state))]]
+           (om/build customer-list-view (:customers app-state))]]
          [:div.row
           [:div.col-md-8.col-md-offset-2
            (om/build inspector-view app-state)]]]))))
@@ -110,3 +84,6 @@
   {:target (. js/document (getElementById "app"))})
 
 
+{:validation-errors [{:korks #{[:login]}, :error-message "Enter login name"}
+                     {:korks #{[:password1]}, :error-message "Choose password"}
+                     {:korks #{[:password2]}, :error-message "Re-enter password"}]}
