@@ -3,10 +3,10 @@
             :url "http://github.com/bilus/om-forms"
             :license {:name "Eclipse Public License"
                       :url  "http://www.eclipse.org/legal/epl-v10.html"}
-            :dependencies [[org.clojure/clojure "1.7.0-RC1" :scope "provided"]
-                           [org.clojure/clojurescript "0.0-3308" :scope "provided"]
-                           [org.omcljs/om "0.8.8" :scope "provided"]
-                           [sablono "0.3.4" :scope "provided"]]
+            :dependencies [[org.clojure/clojure "1.7.0-RC1"]
+                           [org.clojure/clojurescript "0.0-3308"]
+                           [org.omcljs/om "0.8.8"]
+                           [sablono "0.3.4"]]
             :jar-exclusions [#"\.cljx|\.swp|\.swo|\.DS_Store"]
             :auto-clean false
             :source-paths ["src"]
