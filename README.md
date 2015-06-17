@@ -212,7 +212,7 @@ Here's the sign up function. It shows an alert if data validates:
     (js/alert "Signed up!"))
 ```
 
-1. `validate!` returns true if data is valid.
+1. `validate!` returns a truthy value if data is valid.
 2. This is data to validate.
 3. Cursor to store validation results.
 4. Validators.
