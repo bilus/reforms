@@ -155,6 +155,7 @@ For the list of available controls, see reference: ...
 #### Reference
 
 ### TBD
+- FIX form submission on enter.
 - FIX group-title alignment.
 - Add tabs.
 - Add wizard.
