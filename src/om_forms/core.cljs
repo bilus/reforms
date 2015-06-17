@@ -5,19 +5,26 @@
             [clojure.set :as set])
   (:import [goog.ui IdGenerator]))
 
-(def ^:dynamic *options* {:form-horizontal    false
-                          :label-column-class "col-sm-3"
-                          :input-column-class "col-sm-7"
-                          :spinner            {:icon-spinner "fa fa-clock-o fa-spin"}
-                          :input              {:icon-warning "fa fa-warning"}
-                          :panel              {:icon-close "fa fa-times"}
-                          :group-title        {:tag :h2}
-                          :button-group       {:align "text-left"}})
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Defaults
+
+(def ^:dynamic *options* {:form         {:horizontal         false
+                                         :label-column-class "col-sm-3"
+                                         :input-column-class "col-sm-7"}
+                          :spinner      {:icon-spinner "fa fa-clock-o fa-spin"}
+                          :input        {:icon-warning "fa fa-warning"}
+                          :panel        {:icon-close "fa fa-times"}
+                          :group-title  {:tag :h2}
+                          :button-group {:align "text-left"}})
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Implementation
 
 (declare spinner feedback-icon)
+
+(defn form-horizontal?
+  []
+  (get-in *options* [:form :horizontal]))
 
 (defn gen-dom-id
   ([path]
@@ -29,17 +36,17 @@
 
 (defn label-column-class
   []
-  (when (:form-horizontal *options*)
-    (:label-column-class *options*)))
+  (when (form-horizontal?)
+    (get-in *options* [:form :label-column-class])))
 
 (defn input-column-class
   []
-  (when (:form-horizontal *options*)
-    (:input-column-class *options*)))
+  (when (form-horizontal?)
+    (get-in *options* [:form :input-column-class])))
 
 (defn input-column
   [& elems]
-  (if (:form-horizontal *options*)
+  (if (form-horizontal?)
     [:div {:class (input-column-class)} elems]
     elems))
 
@@ -113,14 +120,36 @@
         (update-in $ [:class] #(if % (str/join " " [% class]) class))
         (mapcat identity $)))
 
+
+;(defn button?
+;  [x]
+;  (and (vector? x)
+;       (= :button (first x))))
+;
+;(defn align-top-button
+;  [button]
+;  (input-column button))
+;
+;(defn align-top-buttons
+;  [form]
+;  (js/console.log (clj->js form))
+;  (apply vector :form
+;         (->> (rest form)
+;              (map (fn [x]
+;                     (js/console.log (clj->js x) (button? x) (form-horizontal *options*) (prn-str (align-top-button x)))
+;                     (if (button? x)
+;                       (align-top-button x)
+;                       x))))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Public
 
 (defn form
   [opts & elems]
-  [:form (if (:form-horizontal *options*)
-           (merge-with str opts {:class " form-horizontal"})
-           opts) elems])
+  [:form
+   (if (form-horizontal?)
+     (merge-with str opts {:class " form-horizontal"})
+     opts)
+   elems])
 
 (defn group-title
   [title & {:keys [class tag]}]
@@ -133,6 +162,13 @@
 (defn password
   [label placeholder cursor korks & opts]
   (apply input label placeholder cursor korks "password" opts))
+
+(defn form-buttons
+  [& buttons]
+  [:div.form-group
+   (when (form-horizontal?)
+     [:div {:class (label-column-class)}])
+   (input-column buttons)])
 
 (defn button
   [label on-click & {:keys [in-progress disabled] :as opts}]

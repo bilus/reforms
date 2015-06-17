@@ -45,7 +45,7 @@
                     (v/text "Login" "Choose your login" customer [:login])
                     (v/password "Password" "Enter your password" customer [:password1])
                     (v/password "Confirm password" "Re-enter your password" customer [:password2])
-                    (f/button-group
+                    (f/form-buttons
                       (f/button-primary "Save" #(sign-up! customers customer ui-state) :class "btn btn-primary")))))))))
 
 (defn customer-view

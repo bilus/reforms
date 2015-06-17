@@ -37,8 +37,7 @@
     (render [_]
       (html
         (f/with-options
-          {:form-horizontal false
-           :group-title     {:tag :h3}}
+          {:group-title     {:tag :h3}}
           (f/form {:onSubmit #(.preventDefault %)}
                   (f/group-title "Customer")
                   (f/select "Customer type" customer [:type]
@@ -48,7 +47,8 @@
                   (f/group-title "Chosen login")
                   (f/text "Login" "Choose your login" customer [:login])
                   (f/password "Password" "Enter your password" customer [:password])
-                  (f/button "Save" #(js/alert "clicked"))))))))
+                  (f/form-buttons
+                    (f/button "Save" #(js/alert "clicked")))))))))
 
 (defn simple-view
   [customer _owner]

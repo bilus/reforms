@@ -16,6 +16,7 @@ Your dependencies in project.clj should roughly look like this:
                [org.omcljs/om "0.8.8"]
                [sablono "0.3.4"]
                [om-forms "0.1.0-SNAPSHOT"]
+               ...]
 ```
 
 Remember to link to bootstrap css from your html page, e.g.:
@@ -46,14 +47,29 @@ Here's how you create an Om component with a form with just one text field and a
       (f/form
         {}
         (f/text "Your name" "Type your name here" customer [:name])
-        (f/button "Submit" #(js/alert (:name @customer)))))))
+        (f/form-buttons
+           (f/button "Submit" #(js/alert (:name @customer))))))))
 ```
 
 ![](https://github.com/bilus/om-forms/blob/master/doc/images/hello-world.png)
 
 Note that `form` returns a data structure compatible with sablono which we then compile into a node.
 
-#### Simple example
+#### Changing orientation
+
+To change the orientation use `with-options`:
+
+```clojure
+(f/with-options {:form {:horizontal true}}
+        (f/form
+         {}
+         (f/text "Your name" "Type your name here" customer [:name])
+         (f/form-buttons
+           (f/button "Submit" #(js/alert (:name @customer))))))
+```
+
+![](https://github.com/bilus/om-forms/blob/master/doc/images/hello-world-horizontal.png)
+
 #### Grouping controls
 #### Wrapping in panel
 #### Button groups
