@@ -23,7 +23,33 @@
   (when (apply v/validate! customer ui-state customer-validators)
     (om/transact! customers (fn [xs] (conj xs @customer)))))
 
+(defn sign-up!
+  [data ui-state]
+  (when (v/validate!                                                      ;; 1
+          data                                                           ;; 2
+          ui-state                                                       ;; 3
+          (v/present [:login] "Enter login name")                        ;; 4
+          (v/equal [:password1] [:password2] "Passwords do not match")
+          (v/present [:password1] "Choose password")
+          (v/present [:password2] "Re-enter password"))
+    (js/alert "Signed up!")))
+
 (defn signup-form-view
+  [[data ui-state] _owner]                                                ;; 1
+  (reify
+    om/IRender
+    (render [_]
+      (html
+        (v/form                                                           ;; 2
+          {}
+          ui-state                                                        ;; 3
+          (v/text "Login" "Choose your login" data [:login])          ;; 4
+          (v/password "Password" "Enter your password" data [:password1])
+          (v/password "Confirm password" "Re-enter your password" data [:password2])
+          (f/form-buttons
+            (f/button-primary "Sign up" #(sign-up! data ui-state))))))))  ;; 5
+
+#_(defn signup-form-view
   [[customers customer ui-state] _owner]
   (reify
     om/IRender
@@ -36,8 +62,7 @@
             {:form-horizontal    true
              :label-column-class "col-md-4"
              :input-column-class "col-md-8"
-             :group-title        {:tag :h3}
-             :button-group       {:align "text-right"}}
+             :group-title        {:tag :h3}}
             (v/form {:onSubmit #(.preventDefault %)}
                     ui-state
                     (v/text "First name" "Enter first name" customer [:first])
@@ -46,7 +71,7 @@
                     (v/password "Password" "Enter your password" customer [:password1])
                     (v/password "Confirm password" "Re-enter your password" customer [:password2])
                     (f/form-buttons
-                      (f/button-primary "Save" #(sign-up! customers customer ui-state) :class "btn btn-primary")))))))))
+                      (f/button-primary "Save" #(sign-up! customers customer ui-state))))))))))
 
 (defn customer-view
   [customers _owner]
@@ -83,3 +108,5 @@
   main-view
   app-state
   {:target (. js/document (getElementById "app"))})
+
+

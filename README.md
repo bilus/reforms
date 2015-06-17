@@ -6,7 +6,7 @@ I deliberately limit the functionality to the essentials. If you think something
 
 You can safely use this library in your project. It has been used in a large production project and its interface isn't likely to change.
 
-![](https://github.com/bilus/om-forms/blob/master/doc/images/sample.png)
+![Sample](https://github.com/bilus/om-forms/blob/master/doc/images/sample.png)
 
 ## Usage
 
@@ -63,7 +63,7 @@ Here's how you create an Om component with a form with just one text field and a
            (f/button "Submit" #(js/alert (:name @data))))))))
 ```
 
-![](https://github.com/bilus/om-forms/blob/master/doc/images/hello-world.png)
+![Hello world](https://github.com/bilus/om-forms/blob/master/doc/images/hello-world.png)
 
 Note that `form` returns a data structure compatible with [sablono](https://github.com/r0man/sablono) which we then compile into a node using `sablono/html` above. The example below, though a bit simplified and scrubbed, should give you an idea:
 
@@ -92,7 +92,7 @@ The controls bind directly to Om cursors. For example, as the user types text in
 (f/text "Your name" "Type your name here" data [:name])
 ```
 
-![](https://github.com/bilus/om-forms/blob/master/doc/images/text.png)
+![Data binding](https://github.com/bilus/om-forms/blob/master/doc/images/text.png)
 
 ```clojure
 (prn @data) ;; => {:name "John Wayne}
@@ -114,7 +114,7 @@ To change the orientation use `with-options`:
        (f/button "Submit" #(js/alert (:name @data))))))
 ```
 
-![](https://github.com/bilus/om-forms/blob/master/doc/images/hello-world-horizontal.png)
+![Horizontal orientation](https://github.com/bilus/om-forms/blob/master/doc/images/hello-world-horizontal.png)
 
 #### Wrapping in panel
 
@@ -131,7 +131,7 @@ To wrap the form in a panel use `panel`:
         (f/button "Submit" #(js/alert (:name @data))))))
 ```
 
-![](https://github.com/bilus/om-forms/blob/master/doc/images/hello-world-panel.png)
+![Form wrapped in a panel](https://github.com/bilus/om-forms/blob/master/doc/images/hello-world-panel.png)
 
 #### Button types
 
@@ -147,11 +147,11 @@ Finally, let's take make the button clearly a primary one and add a cancel butto
   (f/checkbox "Horizontal form" data [:orientation-horizontal]))
 ```
 
-![](https://github.com/bilus/om-forms/blob/master/doc/images/hello-world-buttons-hor.png)
+![Horizontal orientation](https://github.com/bilus/om-forms/blob/master/doc/images/hello-world-buttons-hor.png)
 
 Click!
 
-![](https://github.com/bilus/om-forms/blob/master/doc/images/hello-world-buttons-ver.png)
+![Vertical orientation](https://github.com/bilus/om-forms/blob/master/doc/images/hello-world-buttons-ver.png)
 
 The complete example: [here](https://github.com/bilus/om-forms/blob/master/examples/hello_world/src/hello_world.cljs).
 
@@ -172,9 +172,7 @@ To use validators, `require` `om-forms.validation`, use form and form field help
             [sablono.core :include-macros true :as sablono]))
 ```
 
-Apart from `form`, these helpers have an identical interface to ones in `om-forms.core`.
-
-
+Apart from `form`, the helpers have an identical interface to ones in `om-forms.core`.
 
 ```clojure
 (defn signup-form-view
@@ -221,7 +219,7 @@ Here's the sign up function. It shows an alert if data validates:
 
 Here's what happens after you click "Sign up" while all fields are empty:
 
-![](https://github.com/bilus/om-forms/blob/master/doc/images/validation-1.png)
+![Validation example](https://github.com/bilus/om-forms/blob/master/doc/images/validation-1.png)
 
 For the list of available validators, see the reference. TODO
 
