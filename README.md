@@ -108,7 +108,11 @@ Finally, let's take make the button clearly a primary one and add a cancel butto
   (f/checkbox "Horizontal form" data [:orientation-horizontal]))
 ```
 
-![](https://github.com/bilus/om-forms/blob/master/doc/images/hello-world-buttons.png)
+![](https://github.com/bilus/om-forms/blob/master/doc/images/hello-world-buttons-hor.png)
+
+Click!
+
+![](https://github.com/bilus/om-forms/blob/master/doc/images/hello-world-buttons-ver.png)
 
 The complete example: [here](https://github.com/bilus/om-forms/blob/master/examples/hello_world/src/hello_world.cljs).
 
