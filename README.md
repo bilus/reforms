@@ -1,6 +1,6 @@
 # om-forms
 
-A Clojurescript library that lets you build beautiful forms with Om and Bootstrap 3 and (optionally) Font Awesome. The focus is on quickly building forms rather than making supporting every Bootstrap feature. 
+A Clojurescript library that lets you build beautiful forms with [Om](https://github.com/omcljs/om) and [Bootstrap 3](http://getbootstrap.com/) and (optionally) [Font Awesome](http://fortawesome.github.io/Font-Awesome/). It focuses on helping you quickly build forms rather than supporting every Bootstrap feature. 
 
 I deliberately limit the functionality to the essentials. If you think something useful is missing though, please let me know. The library does not use Bootstrap JavaScript.  
 
@@ -155,13 +155,78 @@ Click!
 
 The complete example: [here](https://github.com/bilus/om-forms/blob/master/examples/hello_world/src/hello_world.cljs).
 
-For the list of available controls, see reference: ...
+For the list of available controls, see reference: TODO
 
 ### Validation
+
+The library supports client-side data validation.
+
 #### Basics
-#### Custom error
+
+To use validators, `require` `om-forms.validation`, use form and form field helpers from this namespace instead of `om-forms.core` and use `validate!`:
+
+```clojure
+(ns my-validation
+  (:require [om-forms.validation :include-macros true :as v]
+            [om.core :as om]
+            [sablono.core :include-macros true :as sablono]))
+```
+
+Apart from `form`, these helpers have an identical interface to ones in `om-forms.core`.
+
+
+
+```clojure
+(defn signup-form-view
+  [[data ui-state] _owner]                                                ;; 1
+  (reify                                                    
+    om/IRender
+    (render [_]
+      (html
+        (v/form                                                           ;; 2
+          {}
+          ui-state                                                        ;; 3
+          (v/text "Login" "Choose your login" data [:login])              ;; 4
+          (v/password "Password" "Enter your password" data [:password1]) 
+          (v/password "Confirm password" "Re-enter your password" data [:password2])
+          (f/form-buttons
+            (f/button-primary "Sign up" #(sign-up! data ui-state))))))))  ;; 5
+```
+
+1. We're passing `data` to bind the form fields to and `ui-state` where validation results will be stored. There's no technical reason we cannot use `data` for this but separating this makes it cleaner. You can also store validation errors in local state (see the FAQ below).
+2. Note that we're using `form` from `om-forms.validation` and that it takes an extra argument (3).
+3. This is the cursor used to store validation errors.
+4. Again, we use the helpers from `om-forms.validation` not `om-forms.core`.
+5. Here we call our function which will perform validation
+
+Here's the sign up function. It shows an alert if data validates:
+
+```clojure
+(defn sign-up!
+  [data ui-state]
+  (when (v/validate!                                                      ;; 1
+           data                                                           ;; 2
+           ui-state                                                       ;; 3
+           (v/present [:login] "Enter login name")                        ;; 4
+           (v/equal [:password1] [:password2] "Passwords do not match")
+           (v/present [:password1] "Choose password")
+           (v/present [:password2] "Re-enter password"))
+    (js/alert "Signed up!"))
+```
+
+1. `validate!` returns true if data is valid.
+2. This is data to validate.
+3. Cursor to store validation results.
+4. Validators.
+
+Here's what happens after you click "Sign up" while all fields are empty:
+
+![](https://github.com/bilus/om-forms/blob/master/doc/images/validation-1.png)
+
+For the list of available validators, see the reference. TODO
+
 #### Custom validators
-#### Nesting validators
+#### Custom error
 #### Showing warnings
 
 ### Tables
