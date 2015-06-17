@@ -92,7 +92,7 @@ The controls bind directly to Om cursors. For example, as the user types text in
 (f/text "Your name" "Type your name here" data [:name])
 ```
 
-![Data binding](https://github.com/bilus/om-forms/blob/master/doc/images/text.png)
+<img src="https://github.com/bilus/om-forms/blob/master/doc/images/text.png" width="50%">
 
 ```clojure
 (prn @data) ;; => {:name "John Wayne}
