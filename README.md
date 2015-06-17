@@ -219,7 +219,7 @@ Here's the sign up function. It shows an alert if data validates:
 
 Here's what happens after you click "Sign up" while all fields are empty:
 
-<img src="https://github.com/bilus/om-forms/blob/master/doc/images/validation-1.png" width="70%">
+<img src="https://github.com/bilus/om-forms/blob/master/doc/images/validation-1.png" width="60%">
 
 For the list of available validators, see the reference. TODO
 
