@@ -1,5 +1,3 @@
-- FIX checkbox and radio alignment.
-
 # om-forms
 
 A Clojurescript library that lets you build beautiful forms with Om and Bootstrap 3. Its purpose is to make it possible to quickly build forms rather than make it possible to use every Bootstrap feature. 
@@ -40,7 +38,9 @@ Minimal requires:
             [sablono.core :include-macros true :as sablono]))
 ```
 
-### Hello, world
+### Quick tutorial
+
+#### Hello, world!
 
 Here's how you create an Om component with a form with just one text field and a button:
 
@@ -59,6 +59,8 @@ Here's how you create an Om component with a form with just one text field and a
 ![](https://github.com/bilus/om-forms/blob/master/doc/images/hello-world.png)
 
 Note that `form` returns a data structure compatible with sablono which we then compile into a node.
+
+#### Data binding
 
 ### Prettying it up
 
@@ -135,14 +137,19 @@ For the list of available controls, see reference: ...
 #### Column names
 #### Row selection
 
-### Background processing
-
-### Advanced
-#### Storing validation errors in local state
+### FAQ
+#### How to store validation errors in local state?
+#### How to save changes to data when user clicks a button?
+#### How to show an operation is in progress?
 
 ### Further reading
 #### Examples
 #### Reference
+
+### TBD
+- FIX group-title alignment.
+- Add tabs.
+- Add wizard.
 
 Report problems...
 
