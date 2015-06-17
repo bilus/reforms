@@ -1,6 +1,11 @@
+- FIX checkbox and radio alignment.
+
 # om-forms
 
-A Clojurescript library that lets you build beautiful forms based on Om and Bootstrap 3. It is production-ready.
+A Clojurescript library that lets you build beautiful forms with Om and Bootstrap 3. Its purpose is to make it possible to quickly build forms rather than make it possible to use every Bootstrap feature. 
+I have deliberately limited the library to the key essentials but you think something useful is missing, please let me know. 
+
+You can safely use this library in your project. It has been used in a large production project and its interface isn't likely to change.
 
 ![](https://github.com/bilus/om-forms/blob/master/doc/images/sample.png)
 
@@ -41,19 +46,21 @@ Here's how you create an Om component with a form with just one text field and a
 
 ```clojure
 (defn simple-view
-  [customer _owner]
+  [data _owner]
   (om/component
     (sablono/html
       (f/form
         {}
-        (f/text "Your name" "Type your name here" customer [:name])
+        (f/text "Your name" "Type your name here" data [:name])
         (f/form-buttons
-           (f/button "Submit" #(js/alert (:name @customer))))))))
+           (f/button "Submit" #(js/alert (:name @data))))))))
 ```
 
 ![](https://github.com/bilus/om-forms/blob/master/doc/images/hello-world.png)
 
 Note that `form` returns a data structure compatible with sablono which we then compile into a node.
+
+### Prettying it up
 
 #### Changing orientation
 
@@ -61,18 +68,49 @@ To change the orientation use `with-options`:
 
 ```clojure
 (f/with-options {:form {:horizontal true}}
-        (f/form
-         {}
-         (f/text "Your name" "Type your name here" customer [:name])
-         (f/form-buttons
-           (f/button "Submit" #(js/alert (:name @customer))))))
+    (f/form
+     {}
+     (f/text "Your name" "Type your name here" data [:name])
+     (f/form-buttons
+       (f/button "Submit" #(js/alert (:name @data))))))
 ```
 
 ![](https://github.com/bilus/om-forms/blob/master/doc/images/hello-world-horizontal.png)
 
-#### Grouping controls
 #### Wrapping in panel
-#### Button groups
+
+To wrap the form in a panel, use `panel`:
+
+```clojure
+(f/panel
+    "Hello, world"
+    {}
+    (f/form
+      {}
+      (f/text "Your name" "Type your name here" data [:name])
+      (f/form-buttons
+        (f/button "Submit" #(js/alert (:name @data))))))
+```
+
+![](https://github.com/bilus/om-forms/blob/master/doc/images/hello-world-panel.png)
+
+#### Button types
+
+Finally, let's take make the button clearly a primary one and add a cancel button and, just for the fun of it, a checkbox that toggles the orientation:
+
+```clojure
+(f/form
+  {}
+  (f/text "Your name" "Type your name here" data [:name])
+  (f/form-buttons
+    (f/button-primary "Submit" #(js/alert (:name @data)))
+    (f/button-default "Cancel" #(js/alert "Cancel!")))
+  (f/checkbox "Horizontal form" data [:orientation-horizontal]))
+```
+
+![](https://github.com/bilus/om-forms/blob/master/doc/images/hello-world-buttons.png)
+
+The complete example: [here](https://github.com/bilus/om-forms/blob/master/examples/hello_world/src/hello_world.cljs).
 
 For the list of available controls, see reference: ...
 

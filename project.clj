@@ -13,11 +13,18 @@
 
             :plugins [[lein-cljsbuild "1.0.6"]]
 
-            :clean-targets ["examples/simple/out"
+            :clean-targets ["examples/hello_world/out"
+                            "examples/simple/out"
                             "examples/validation/out"
                             "target/"]
 
-            :cljsbuild {:builds {:simple
+            :cljsbuild {:builds {:hello-world
+                                 {:source-paths ["examples/shared/" "examples/hello_world/src" "src"]
+                                  :compiler     {:output-to     "examples/hello_world/out/main.js"
+                                                 :output-dir    "examples/hello_world/out"
+                                                 :source-map    true
+                                                 :optimizations :none}}
+                                 :simple
                                  {:source-paths ["examples/shared/" "examples/simple/src" "src"]
                                   :compiler     {:output-to     "examples/simple/out/main.js"
                                                  :output-dir    "examples/simple/out"

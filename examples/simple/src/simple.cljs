@@ -50,15 +50,6 @@
                   (f/form-buttons
                     (f/button "Save" #(js/alert "clicked")))))))))
 
-(defn simple-view
-  [customer _owner]
-  (om/component
-    (html
-      (f/form
-        {}
-        (f/text "Your name" "Type your name here" customer [:name])
-        (f/button "Submit" #(js/alert (:name @customer)))))))
-
 (defn main-view
   [app-state _owner]
   (reify
@@ -68,9 +59,8 @@
         [:div
          [:br]
          [:br]
-         (om/build simple-view (:customer app-state))
-         #_(om/build customer-form-view (:customer app-state))
-         #_(om/build inspector-view app-state)]))))
+         (om/build customer-form-view (:customer app-state))
+         (om/build inspector-view app-state)]))))
 
 (om/root
   main-view
