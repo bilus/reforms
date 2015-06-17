@@ -68,24 +68,36 @@ Here's how you create an Om component with a form with just one text field and a
 Note that `form` returns a data structure compatible with [sablono](https://github.com/r0man/sablono) which we then compile into a node using `sablono/html` above. The example below, though a bit simplified and scrubbed, should give you an idea:
 
 ```clojure
-[:form {} [:div {:class "form-group", 
+[:form {} [:div {:class "form-group"
                  :key "data-name"}
-           [:label {:for "data-name", 
+           [:label {:for "data-name"
                     :class "control-label "} "Your name"]
-           [:input {:onChange ..., 
-                    :value "My name", 
-                    :type "text", 
-                    :class "form-control", 
-                    :id "data-name", 
+           [:input {:onChange ...
+                    :value "My name"
+                    :type "text"
+                    :class "form-control"
+                    :id "data-name"
                     :placeholder "Type your name here"}]]
  [:div.form-group.form-buttons
-  [:button {:type "button", 
-            :class "btn btn-primary", 
-            :disabled nil, 
+  [:button {:type "button"
+            :class "btn btn-primary"
             :onClick #(js/alert (:name @data))} "Submit"]]]
 ```
 
 #### Data binding
+
+The controls bind directly to Om cursors. For example, as the user types text into the text box below, `data` is automatically updated:
+
+```clojure
+(f/text "Your name" "Type your name here" data [:name])
+```
+
+![](https://github.com/bilus/om-forms/blob/master/doc/images/text.png)
+
+```clojure
+(prn @data) ;; => {:name "John Wayne}
+```
+
 
 ### Prettying it up
 
@@ -106,7 +118,7 @@ To change the orientation use `with-options`:
 
 #### Wrapping in panel
 
-To wrap the form in a panel, use `panel`:
+To wrap the form in a panel use `panel`:
 
 ```clojure
 (f/panel
