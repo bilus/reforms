@@ -3,7 +3,7 @@
             [om.core :include-macros true :as om]
             [sablono.core :refer-macros [html]]))
 
-(def app-state (atom {:data {:orientation-horizontal true}}))
+(def app-state (atom {:data {:orientation-horizontal false}}))
 
 (defn simple-view
   [data _owner]
@@ -36,3 +36,19 @@
   main-view
   app-state
   {:target (. js/document (getElementById "app"))})
+
+[:form {} [:div {:class "form-group",
+                 :key "data-name"}
+           [:label {:for "data-name",
+                    :class "control-label "} "Your name"]
+           [:input {:onChange ...,
+                    :value "My name",
+                    :type "text",
+                    :class "form-control",
+                    :id "data-name",
+                    :placeholder "Type your name here"}]]
+ [:div.form-group.form-buttons
+  [:button {:type "button",
+            :class "btn btn-primary",
+            :disabled nil,
+            :onClick #(js/alert (:name @data))} "Submit"]]]

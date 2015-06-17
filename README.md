@@ -65,7 +65,25 @@ Here's how you create an Om component with a form with just one text field and a
 
 ![](https://github.com/bilus/om-forms/blob/master/doc/images/hello-world.png)
 
-Note that `form` returns a data structure compatible with [sablono](https://github.com/r0man/sablono) which we then compile into a node using `sablono/html` above.
+Note that `form` returns a data structure compatible with [sablono](https://github.com/r0man/sablono) which we then compile into a node using `sablono/html` above. The example below, though a bit simplified and scrubbed, should give you an idea:
+
+```clojure
+[:form {} [:div {:class "form-group", 
+                 :key "data-name"}
+           [:label {:for "data-name", 
+                    :class "control-label "} "Your name"]
+           [:input {:onChange ..., 
+                    :value "My name", 
+                    :type "text", 
+                    :class "form-control", 
+                    :id "data-name", 
+                    :placeholder "Type your name here"}]]
+ [:div.form-group.form-buttons
+  [:button {:type "button", 
+            :class "btn btn-primary", 
+            :disabled nil, 
+            :onClick #(js/alert (:name @data))} "Submit"]]]
+```
 
 #### Data binding
 
