@@ -120,26 +120,12 @@
         (update-in $ [:class] #(if % (str/join " " [% class]) class))
         (mapcat identity $)))
 
+(defn align-controls
+  [& xs]
+  (list (when (form-horizontal?)
+          [:div {:class (label-column-class)}])
+        (input-column xs)))
 
-;(defn button?
-;  [x]
-;  (and (vector? x)
-;       (= :button (first x))))
-;
-;(defn align-top-button
-;  [button]
-;  (input-column button))
-;
-;(defn align-top-buttons
-;  [form]
-;  (js/console.log (clj->js form))
-;  (apply vector :form
-;         (->> (rest form)
-;              (map (fn [x]
-;                     (js/console.log (clj->js x) (button? x) (form-horizontal *options*) (prn-str (align-top-button x)))
-;                     (if (button? x)
-;                       (align-top-button x)
-;                       x))))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Public
 
@@ -165,10 +151,8 @@
 
 (defn form-buttons
   [& buttons]
-  [:div.form-group
-   (when (form-horizontal?)
-     [:div {:class (label-column-class)}])
-   (input-column buttons)])
+  [:div.form-group.form-buttons
+   (apply align-controls buttons)])
 
 (defn button
   [label on-click & {:keys [in-progress disabled] :as opts}]
@@ -196,7 +180,7 @@
   (apply button
          label
          on-click
-         (add-class opts "btn btn-primary")))
+         (add-class opts "btn btn-default")))
 
 (defn button-group
   [& buttons]
@@ -207,34 +191,38 @@
   (let [dom-id (gen-dom-id cursor korks)
         valid (or (nil? valid?) (valid? korks))]
     (list
-      [:div {:class (str "checkbox" (when-not valid " has-error") (when inline " checkbox-inline"))}
-       [:label
-        [:input {:onChange #(do
-                             (om/update! cursor korks (.. % -target -checked)))
-                 :checked  (get-in cursor korks)
-                 :type     "checkbox"
-                 :id       dom-id}]
-        label]]
-      (when-let [validation-error (and validation-error-fn (validation-error-fn korks))]
-        (error-label validation-error)))))
+      [:div.form-group
+       (align-controls
+         [:div {:class (str "checkbox" (when-not valid " has-error") (when inline " checkbox-inline"))}
+          [:label
+           [:input {:onChange #(do
+                                (om/update! cursor korks (.. % -target -checked)))
+                    :checked  (get-in cursor korks)
+                    :type     "checkbox"
+                    :id       dom-id}]
+           label]]
+         (when-let [validation-error (and validation-error-fn (validation-error-fn korks))]
+           (error-label validation-error)))])))
 
 (defn radio
   [label cursor korks value & {:keys [valid? validation-error-fn inline]}]
   (let [dom-id (gen-dom-id cursor korks)
         valid (or (nil? valid?) (valid? korks))]
     (list
-      [:div {:class (str "radio" (when-not valid " has-error") (when inline " radio-inline"))}
-       [:label
-        [:input {:onChange #(when (.. % -target -checked)
-                             (om/update! cursor korks value))
-                 :checked  (= value (get-in cursor korks))
-                 :type     "radio"
-                 :id       dom-id
-                 :name     dom-id
-                 :value    value}]
-        label]]
-      (when-let [validation-error (and validation-error-fn (validation-error-fn korks))]
-        (error-label validation-error)))))
+      [:div.form-group
+       (align-controls
+         [:div {:class (str "radio" (when-not valid " has-error") (when inline " radio-inline"))}
+          [:label
+           [:input {:onChange #(when (.. % -target -checked)
+                                (om/update! cursor korks value))
+                    :checked  (= value (get-in cursor korks))
+                    :type     "radio"
+                    :id       dom-id
+                    :name     dom-id
+                    :value    value}]
+           label]]
+         (when-let [validation-error (and validation-error-fn (validation-error-fn korks))]
+           (error-label validation-error)))])))
 
 (defn select
   [label cursor korks options & {:keys [large on-change]}]
