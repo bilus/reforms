@@ -257,12 +257,16 @@ For the list of available validators, see the reference. TODO
 ### TBD
 
 - Reference.
+- Add set-options! and put with-options in context explaining its limitations.
 - Link to demos.
 - Finish Readme.
-- Table. Example. Add to 'controls' example.
+- Table. Namespace. Attrs. Example. Add to 'controls' example.
 - Add tabs. Update 'controls' example.
 - Add wizard. Update 'controls' example.
 - Port tests.
+- Fix Each child in an array should have a unique "key" prop. Check the renderComponent call using <undefined>. See http://fb.me/react-warning-keys for more information.
+- Fix Warning: Use the `defaultValue` or `value` props instead of setting children on <textarea>.
+- Fix with-option is apparently not working around om/root and/or build/outside component.
 - (?) FIX group-title alignment for horizontal form.
 
 Report problems...
