@@ -257,7 +257,6 @@ For the list of available validators, see the reference. TODO
 #### Reference
 
 ### TBD
-- FIX form submission on enter.
 - FIX group-title alignment.
 - Reference.
 - Link to demos.
