@@ -31,7 +31,6 @@
       (html
         (f/panel
           "Add customer"
-          {}
           (f/with-options
             {:form-horizontal    true
              :label-column-class "col-md-4"
