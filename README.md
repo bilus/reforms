@@ -245,6 +245,7 @@ For the list of available validators, see the reference. TODO
 ### Configuration options
 
 ### FAQ
+#### How do I submit the form when the user presses ENTER?
 #### How to store validation errors in local state?
 #### How to save changes to data when user clicks a button?
 #### How to show an operation is in progress?

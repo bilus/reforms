@@ -14,7 +14,7 @@
                         "Hello, world"
                         {}
                         (f/form
-                          {}
+                          {:on-submit #(js/alert "Submitted")}
                           (f/text "Your name" "Type your name here" data [:name])
                           (f/form-buttons
                             (f/button-primary "Submit" #(js/alert (:name @data)))

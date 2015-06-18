@@ -38,7 +38,7 @@
       (html
         (f/with-options
           {:group-title     {:tag :h3}}
-          (f/form {:onSubmit #(.preventDefault %)}
+          (f/form {}
                   (f/group-title "Customer")
                   (f/select "Customer type" customer [:type]
                             [[:private "Private"] [:corporate "Corporate"]])

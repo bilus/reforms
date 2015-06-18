@@ -126,15 +126,28 @@
           [:div {:class (label-column-class)}])
         (input-column xs)))
 
+(defn extend-opt
+  [& vals]
+  (let [result (let [vals' (remove nil? vals)]
+                 (if (some #(satisfies? Fn %) vals')
+                   (fn [& args] (last (map (fn [f] (apply f args)) vals')))
+                   (str/join " " vals')))]
+    result))
+
+(defn merge-opts
+  [defaults overrides extensions]
+  (as-> overrides $
+        (merge defaults $)
+        (merge-with extend-opt $ extensions)))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Public
 
 (defn form
   [opts & elems]
   [:form
-   (if (form-horizontal?)
-     (merge-with str opts {:class " form-horizontal"})
-     opts)
+   (merge-opts {} opts {:on-submit #(.preventDefault %)
+                        :class    (when (form-horizontal?) "form-horizontal")})
    elems])
 
 (defn group-title
