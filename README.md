@@ -2,11 +2,13 @@
 
 A Clojurescript library that lets you build beautiful forms with [Om](https://github.com/omcljs/om) and [Bootstrap 3](http://getbootstrap.com/) and (optionally) [Font Awesome](http://fortawesome.github.io/Font-Awesome/). It focuses on helping you quickly build forms rather than supporting every Bootstrap feature. 
 
-I deliberately limit the functionality to the essentials. If you think something useful is missing though, please let me know. The library does not use Bootstrap JavaScript.  
+I deliberately limit the functionality to the essentials. If you think something useful is missing though, please let me know.   
 
-You can safely use this library in your project. It has been used in a large production project and its interface isn't likely to change.
+The code has been extracted from a 'real' project and though it should be completely safe to use it in production, I heavily refactored the code and added controls we hadn't needed so if anything is amiss, please let me know.  
 
 <img src="https://github.com/bilus/om-forms/blob/master/doc/images/sample.png" width="70%">
+
+A good place to see the available controls: TODO (link to demo).
 
 ## Usage
 
@@ -23,7 +25,7 @@ Your dependencies in project.clj should roughly look like this:
                ...]
 ```
 
-Remember to link to bootstrap css from your html page, e.g.:
+The library does not use Bootstrap JavaScript so just link to bootstrap css from your html page, e.g.:
 
 ```html
 <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet"/>
@@ -235,7 +237,6 @@ For the list of available validators, see the reference. TODO
 #### Column names
 #### Row selection
 
-
 ### Customization
 #### Inline controls
 #### Configuration via `with-options`
@@ -254,13 +255,14 @@ For the list of available validators, see the reference. TODO
 #### Reference
 
 ### TBD
-- FIX group-title alignment for horizontal form.
-- <textarea>
+
 - Reference.
 - Link to demos.
-- Add tabs.
-- Add wizard.
+- Finish Readme.
+- Add tabs. Update 'controls' example.
+- Add wizard. Update 'controls' example.
 - Port tests.
+- (?) FIX group-title alignment for horizontal form.
 
 Report problems...
 

@@ -16,12 +16,19 @@
             :clean-targets ["examples/hello_world/out"
                             "examples/simple/out"
                             "examples/validation/out"
+                            "examples/controls/out"
                             "target/"]
 
             :cljsbuild {:builds {:hello-world
                                  {:source-paths ["examples/shared/" "examples/hello_world/src" "src"]
                                   :compiler     {:output-to     "examples/hello_world/out/main.js"
                                                  :output-dir    "examples/hello_world/out"
+                                                 :source-map    true
+                                                 :optimizations :none}}
+                                 :controls
+                                 {:source-paths ["examples/shared/" "examples/controls/src" "src"]
+                                  :compiler     {:output-to     "examples/controls/out/main.js"
+                                                 :output-dir    "examples/controls/out"
                                                  :source-map    true
                                                  :optimizations :none}}
                                  :simple

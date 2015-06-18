@@ -1,7 +1,8 @@
 (ns om-forms.validation
   (:require [om-forms.core :as f]
             [om.core :as om :include-macros true]
-            [clojure.string :as str]))
+            [clojure.string :as str])
+  (:refer-clojure :exclude [time]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Implementation
@@ -139,6 +140,10 @@
                         :validation-error-fn (fn [korks] (when-let [err (find-validation-error korks *validation-errors*)]
                                                            (:error-message err))))))
 
+(defn input
+  [& args]
+  (apply validating-field f/html5-input args))
+
 (defn password
   [& args]
   (apply validating-field f/password args))
@@ -146,6 +151,10 @@
 (defn text
   [& args]
   (apply validating-field f/text args))
+
+(defn textarea
+  [& args]
+  (apply validating-field f/textarea args))
 
 (defn checkbox
   [& args]
@@ -166,6 +175,54 @@
 (defn button-default
   [& args]
   (apply validating-field f/button-default args))
+
+(defn datetime
+  [& args]
+  (apply validating-field f/datetime args))
+
+(defn datetime-local
+  [& args]
+  (apply validating-field f/datetime-local args))
+
+(defn date
+  [& args]
+  (apply validating-field f/date args))
+
+(defn month
+  [& args]
+  (apply validating-field f/month args))
+
+(defn time
+  [& args]
+  (apply validating-field f/time args))
+
+(defn week
+  [& args]
+  (apply validating-field f/week args))
+
+(defn number
+  [& args]
+  (apply validating-field f/number args))
+
+(defn email
+  [& args]
+  (apply validating-field f/email args))
+
+(defn url
+  [& args]
+  (apply validating-field f/url args))
+
+(defn search
+  [& args]
+  (apply validating-field f/search args))
+
+(defn tel
+  [& args]
+  (apply validating-field f/tel args))
+
+(defn color
+  [& args]
+  (apply validating-field f/color args))
 
 (defn error-alert
   [& korks]

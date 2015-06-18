@@ -2,6 +2,7 @@
   (:require [om.core :as om :include-macros true]
             [clojure.string :as str]
             [clojure.set :as set])
+  (:refer-clojure :exclude [time])
   (:import [goog.ui IdGenerator]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -163,19 +164,39 @@
       (when help
         [:p.help-block help]))))
 
-(defn input
+(defn html5-input*
   [attrs label placeholder cursor korks type & opts]
   (let [dom-id (gen-dom-id cursor korks)
-        input-attrs (merge-attrs {} attrs {:on-change   #(om/update! cursor korks (.. % -target -value))
-                                           :value       (get-in cursor korks)
-                                           :type        type
-                                           :class       "form-control"
-                                           :id          dom-id
-                                           :placeholder placeholder})]
+        input-attrs (merge-attrs {:type        type
+                                  :class       "form-control"
+                                  :id          dom-id
+                                  :placeholder placeholder}
+                                 attrs
+                                 {:on-input #(om/update! cursor korks (.. % -target -value))
+                                  :value    (get-in cursor korks)})]
     (input* :input input-attrs label cursor korks opts)))
+
+(defn html5-input
+  [type & args]
+  (let [[attrs [label placeholder cursor korks & opts]] (resolve-args type {} args)]
+    (apply html5-input* attrs label placeholder cursor korks (name type) opts)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Public
+
+(defn panel
+  [& args]
+  (let [[attrs [title & rest-args]] (resolve-args :panel {:class "panel panel-default"} args)
+        [{:keys [close]} [& contents]] (parse-options rest-args)]
+    [:div attrs
+     [:div {:class "panel-heading"}
+      [:h3 {:class "panel-title"} title]
+      (when close
+        [:div {:class "actions pull-right"}
+         [:i {:class   (get-in *options* [:panel :icon-close])
+              :onClick close}]])]
+     [:div {:class "panel-body"}
+      (seq contents)]]))
 
 (defn form
   [& args]
@@ -194,13 +215,12 @@
 
 (defn text
   [& args]
-  (let [[attrs [label placeholder cursor korks & opts]] (resolve-args :text {} args)]
-    (apply input attrs label placeholder cursor korks "text" opts)))
+  (apply html5-input :text args))
 
 (defn password
   [& args]
-  (let [[attrs [label placeholder cursor korks & opts]] (resolve-args :password {} args)]
-    (apply input attrs label placeholder cursor korks "password" opts)))
+  (apply html5-input :password args))
+
 
 (defn form-buttons
   [& buttons]
@@ -284,6 +304,20 @@
         (when-let [validation-error (and validation-error-fn (validation-error-fn korks))]
           (error-label validation-error))))))
 
+
+(defn textarea
+  [& args]
+  (js/console.log (prn-str args))
+  (let [[attrs [label placeholder cursor korks & opts]] (resolve-args :textarea {:class "form-control"} args)
+        dom-id (gen-dom-id cursor korks)
+        textarea-attrs (merge-attrs {:class       "form-control"
+                                     :id          dom-id
+                                     :placeholder placeholder}
+                                    attrs
+                                    {:on-input #(om/update! cursor korks (.. % -target -value))})]
+    (input* :textarea textarea-attrs label cursor korks opts (or (get-in cursor korks) ""))))
+
+
 (defn select
   [& args]
   (let [[attrs [label cursor korks options & {:keys [on-change] :as opts}]] (resolve-args :select {:class "form-control"} args)
@@ -300,24 +334,58 @@
     (apply input* :select input-attrs label cursor korks opts
            (map #(vector :option {:value (str (first %))} (second %)) options))))
 
+(defn datetime
+  [& args]
+  (apply html5-input :datetime args))
+
+(defn datetime-local
+  [& args]
+  (apply html5-input :datetime-local args))
+
+(defn date
+  [& args]
+  (apply html5-input :date args))
+
+(defn month
+  [& args]
+  (apply html5-input :month args))
+
+(defn time
+  [& args]
+  (apply html5-input :time args))
+
+(defn week
+  [& args]
+  (apply html5-input :week args))
+
+(defn number
+  [& args]
+  (apply html5-input :number args))
+
+(defn email
+  [& args]
+  (apply html5-input :email args))
+
+(defn url
+  [& args]
+  (apply html5-input :url args))
+
+(defn search
+  [& args]
+  (apply html5-input :search args))
+
+(defn tel
+  [& args]
+  (apply html5-input :tel args))
+
+(defn color
+  [& args]
+  (apply html5-input :color args))
+
 (defn spinner
   [& args]
   (let [[attrs] (resolve-args :spinner {} args)]
     [:i attrs]))
-
-(defn panel
-  [& args]
-  (let [[attrs [title & rest-args]] (resolve-args :panel {:class "panel panel-default"} args)
-        [{:keys [close]} [& contents]] (parse-options rest-args)]
-    [:div attrs
-     [:div {:class "panel-heading"}
-      [:h3 {:class "panel-title"} title]
-      (when close
-        [:div {:class "actions pull-right"}
-         [:i {:class   (get-in *options* [:panel :icon-close])
-              :onClick close}]])]
-     [:div {:class "panel-body"}
-      (seq contents)]]))
 
 (defn table
 
