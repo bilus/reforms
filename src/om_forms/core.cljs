@@ -85,20 +85,14 @@
   [warning]
   [:label {:class "warning"} warning])
 
-(defn add-class
-  [opts class]
-  (as-> opts $
-        (apply hash-map $)
-        (update-in $ [:class] #(if % (str/join " " [% class]) class))
-        (mapcat identity $)))
-
-(defn align-controls
+(defn unlabeled-control
   [inline & xs]
   (if inline
     xs
-    (list (when (form-horizontal?)
-            [:div {:class (label-column-class)}])
-          (input-column xs))))
+    [:div.form-group
+     (list (when (form-horizontal?)
+             [:div {:class (label-column-class)}])
+           (input-column xs))]))
 
 (defn labeled-control
   [inline form-group-class label dom-id & xs]
@@ -146,7 +140,6 @@
   [args]
   (let [[options [rest-args]] (split-with (comp keyword? first) (partition-all 2 args))]
     [(apply hash-map (mapcat identity options)) (or rest-args [])]))
-
 
 (defn input*
   [tag attrs label cursor korks {:keys [valid? validation-error-fn in-progress warn-fn help inline large]} & inner]
@@ -212,7 +205,7 @@
 (defn form-buttons
   [& buttons]
   [:div.form-group.form-buttons
-   (apply align-controls false buttons)])
+   (apply unlabeled-control false buttons)])
 
 (defn button
   [& args]
@@ -251,22 +244,21 @@
         dom-id (gen-dom-id cursor korks)
         valid (or (nil? valid?) (valid? korks))]
     (list
-      [:div.form-group
-       (align-controls
-         inline
-         [:div {:class (str "checkbox" (when-not valid " has-error") (when inline " checkbox-inline"))}
-          [:label
-           [:input
-            (merge-attrs {:on-change #(do
-                                       (om/update! cursor korks (.. % -target -checked)))
-                          :checked   (get-in cursor korks)
-                          :type      "checkbox"
-                          :id        dom-id}
-                         attrs
-                         {})]
-           label]]
-         (when-let [validation-error (and validation-error-fn (validation-error-fn korks))]
-           (error-label validation-error)))])))
+      (unlabeled-control
+        inline
+        [:div {:class (str "checkbox" (when-not valid " has-error") (when inline " checkbox-inline"))}
+         [:label
+          [:input
+           (merge-attrs {:on-change #(do
+                                      (om/update! cursor korks (.. % -target -checked)))
+                         :checked   (get-in cursor korks)
+                         :type      "checkbox"
+                         :id        dom-id}
+                        attrs
+                        {})]
+          label]]
+        (when-let [validation-error (and validation-error-fn (validation-error-fn korks))]
+          (error-label validation-error))))))
 
 (defn radio                                                 ;; TODO: Extract common method for `radio` and `checkbox`.
   [& args]
@@ -274,24 +266,23 @@
         dom-id (gen-dom-id cursor korks)
         valid (or (nil? valid?) (valid? korks))]
     (list
-      [:div.form-group
-       (align-controls
-         inline
-         [:div {:class (str "radio" (when-not valid " has-error") (when inline " radio-inline"))}
-          [:label
-           [:input
-            (merge-attrs {:on-change #(when (.. % -target -checked)
-                                       (om/update! cursor korks value))
-                          :checked   (= value (get-in cursor korks))
-                          :type      "radio"
-                          :id        dom-id
-                          :name      dom-id
-                          :value     value}
-                         attrs
-                         {})]
-           label]]
-         (when-let [validation-error (and validation-error-fn (validation-error-fn korks))]
-           (error-label validation-error)))])))
+      (unlabeled-control
+        inline
+        [:div {:class (str "radio" (when-not valid " has-error") (when inline " radio-inline"))}
+         [:label
+          [:input
+           (merge-attrs {:on-change #(when (.. % -target -checked)
+                                      (om/update! cursor korks value))
+                         :checked   (= value (get-in cursor korks))
+                         :type      "radio"
+                         :id        dom-id
+                         :name      dom-id
+                         :value     value}
+                        attrs
+                        {})]
+          label]]
+        (when-let [validation-error (and validation-error-fn (validation-error-fn korks))]
+          (error-label validation-error))))))
 
 (defn select
   [& args]
