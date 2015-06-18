@@ -176,15 +176,27 @@
                                   :value    (get-in cursor korks)})]
     (input* :input input-attrs label cursor korks opts)))
 
-(defn html5-input
-  [type & args]
-  (let [[attrs [label placeholder cursor korks & opts]] (resolve-args type {} args)]
-    (apply html5-input* attrs label placeholder cursor korks (name type) opts)))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Public
 
 (defn panel
+
+  "A panel. See http://getbootstrap.com/components/#panels
+
+  Arguments:
+
+  [attrs] title [:close <lambda>] element1 ... element2
+
+    attrs - (optional) attributes handed over to React (see https://github.com/r0man/sablono#html-attributes)
+    title - panel title; a string or Hiccup/Sablono style template
+    :close - (optional) lambda to call when panel is closed; when the option is set, the panel shows a close icon (FontAwesome by default)
+    contents - (optional) the contained elements
+
+  Examples:
+
+  (panel \"A simple panel\" [:div \"Contents go here\"])
+  (panel {:class \"my-special-panel\"} \"My special panel\" :close #(js/alert \"closed\") [:div \"Contents go here\"])"
+
   [& args]
   (let [[attrs [title & rest-args]] (resolve-args :panel {:class "panel panel-default"} args)
         [{:keys [close]} [& contents]] (parse-options rest-args)]
@@ -199,6 +211,21 @@
       (seq contents)]]))
 
 (defn form
+
+  "A form. See http://getbootstrap.com/css/#forms
+
+  Arguments:
+
+  [attrs] element1 ... element2
+
+  attrs - (optional) attributes handed over to React (see https://github.com/r0man/sablono#html-attributes)
+  contents - (optional) the contained elements
+
+  Examples:
+
+  (form [:div \"Contents go here\"])
+  (form {:style {:background-color \"red\"}} [:div \"Contents go here\"])"
+
   [& args]
   (let [[attrs & elems] (resolve-args :form
                                       {:on-submit #(.preventDefault %)
@@ -207,27 +234,86 @@
     [:form attrs elems]))
 
 (defn group-title
+
+  "A title for a logical group of controls.
+
+   Arguments:
+
+  [attrs] title [:tag <tag-name>]
+
+  attrs - (optional) attributes handed over to React (see https://github.com/r0man/sablono#html-attributes)
+  title - the title; a string or Hiccup/Sablono style template
+  tag   - (optional) name of the tag to use, e.g. :h4"
+
   [& args]
   (let [[attrs [title & {:keys [tag]}]] (resolve-args :group-title {:class "group-title"} args)]
     [(or tag (get-in *options* [:group-title :tag]))
      attrs
      title]))
 
+(defn html5-input
+
+  "TODO"
+
+  [type & args]
+  (let [[attrs [label placeholder cursor korks & opts]] (resolve-args type {} args)]
+    (apply html5-input* attrs label placeholder cursor korks (name type) opts)))
+
+
+
 (defn text
+
+  "Text input. See http://getbootstrap.com/css/#inputs
+
+   Arguments:
+
+   See `html5-input`
+
+   For compatilibity and available attributes see http://www.w3schools.com/html/html_form_input_types.asp"
+
   [& args]
   (apply html5-input :text args))
 
 (defn password
+
+  "Password input. See http://getbootstrap.com/css/#inputs
+
+   Arguments:
+
+   See `html5-input`
+
+   For compatilibity and available attributes see http://www.w3schools.com/html/html_form_input_types.asp"
+
   [& args]
   (apply html5-input :password args))
 
 
 (defn form-buttons
+
+  "Auto-aligning form buttons.
+
+   Arguments:
+
+   button-1 ... button-n"
+
   [& buttons]
   [:div.form-group.form-buttons
    (apply unlabeled-control false buttons)])
 
 (defn button
+
+  "Button. See http://getbootstrap.com/css/#buttons
+
+  Arguments:
+
+  [attrs] label on-click [:in-progress <bool> :disabled <bool]
+
+  attrs        - (optional) attributes handed over to React (see https://github.com/r0man/sablono#html-attributes)
+  label        - button label; a string or Hiccup/Sablono style template
+  on-click     - lambda to handle clicks
+  :in-progress - true to show an indicator that a background action is in progress and disable the button
+  :disabled    - true to disable the button"
+
   [& args]
   (let [[attrs [label on-click & {:keys [in-progress disabled]}]] (resolve-args :button
                                                                                 {:type  "button"
@@ -244,21 +330,59 @@
              (spinner)))]))
 
 (defn button-primary
+
+  "Primary button. See http://getbootstrap.com/css/#buttons
+
+  Arguments:
+
+  See `button`."
+
   [& args]
   (let [[attrs [& rest-args]] (resolve-args :button-primary {:class "btn-primary"} args)]
     (apply button attrs rest-args)))
 
 (defn button-default
+
+  "Default button. See http://getbootstrap.com/css/#buttons
+
+  Arguments:
+
+  See `button`."
+
+
   [& args]
   (let [[attrs [& rest-args]] (resolve-args :button-default {:class "btn-default"} args)]
     (apply button attrs rest-args)))
 
 (defn button-group
+
+  "Button group.
+
+  Arguments:
+
+  [attrs] button-1 ... button-n
+
+  attrs        - (optional) attributes handed over to React (see https://github.com/r0man/sablono#html-attributes)"
+
   [& args]
   (let [[attrs [& buttons]] (resolve-args :button-group {:class "button-group"} args)]
     [:div attrs (seq buttons)]))
 
 (defn checkbox
+
+  "Checkbox. See http://getbootstrap.com/css/#checkboxes-and-radios
+
+  Arguments:
+
+  [attrs] label cursor korks value [:valid? <bool> :validation-error-fn <lambda> :inline <bool>]
+
+  attrs                 - (optional) attributes handed over to React (see https://github.com/r0man/sablono#html-attributes)
+  label                 - the label; a string or Hiccup/Sablono style template
+  cursor, korks         - data to bind to
+  :inline               - (optional) if true renders the control inline
+  :valid?               - (optional) if false shows a validation error; internal
+  :validation-error-fn  - (optional) lambda <korks> -> <error message>; internal"
+
   [& args]
   (let [[attrs [label cursor korks & {:keys [valid? validation-error-fn inline]}]] (resolve-args :checkbox {} args)
         dom-id (gen-dom-id cursor korks)
@@ -281,6 +405,20 @@
           (error-label validation-error))))))
 
 (defn radio                                                 ;; TODO: Extract common method for `radio` and `checkbox`.
+
+  "Radio button. See http://getbootstrap.com/css/#checkboxes-and-radios
+
+  Arguments:
+
+  [attrs] label cursor korks value [:valid? <bool> :validation-error-fn <lambda> :inline <bool>]
+
+  attrs                 - (optional) attributes handed over to React (see https://github.com/r0man/sablono#html-attributes)
+  label                 - the label; a string or Hiccup/Sablono style template
+  cursor, korks         - data to bind to
+  :inline               - (optional) if true renders the control inline
+  :valid?               - (optional) if false shows a validation error; internal
+  :validation-error-fn  - (optional) lambda <korks> -> <error message>; internal"
+
   [& args]
   (let [[attrs [label cursor korks value & {:keys [valid? validation-error-fn inline]}]] (resolve-args :radio {} args)
         dom-id (gen-dom-id cursor korks)
@@ -306,6 +444,25 @@
 
 
 (defn textarea
+
+  "Textarea element. See http://getbootstrap.com/css/#textarea
+
+  Arguments:
+
+  [attrs] label placeholder cursor korks [opts]
+
+  attrs                 - (optional) attributes handed over to React (see https://github.com/r0man/sablono#html-attributes)
+  label                 - the label; a string or Hiccup/Sablono style template
+  placeholder           - placeholder text shown if there is no value
+  cursor, korks         - data to bind to
+  opts                  - see `html5-input`
+
+
+  Example:
+
+  (f/textarea \"Textarea\" \"A placeholder\" data [:some-text])
+  (f/textarea {:rows 8} \"Textarea\" \"A placeholder\" data [:some-text] :inline true)"
+
   [& args]
   (js/console.log (prn-str args))
   (let [[attrs [label placeholder cursor korks & opts]] (resolve-args :textarea {:class "form-control"} args)
