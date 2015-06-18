@@ -259,6 +259,7 @@ For the list of available validators, see the reference. TODO
 - Reference.
 - Link to demos.
 - Finish Readme.
+- Table. Example. Add to 'controls' example.
 - Add tabs. Update 'controls' example.
 - Add wizard. Update 'controls' example.
 - Port tests.
