@@ -30,6 +30,19 @@
     (f/select "Country" customer [:country]
               [[:us "USA"] [:gb "United Kingdom"] [:pl "Poland"] [:de "Germany"]])))
 
+(defn render-address
+  [customer]
+  (list
+    (f/text "Address 1"
+            "Enter address line 1"
+            customer [:address1])
+    (f/text "Address 2"
+            "Enter address line 2"
+            customer [:address2])
+    (f/text "City"
+            "Enter city name"
+            customer [:city])))
+
 (defn customer-form-view
   [customer _owner]
   (reify
@@ -37,13 +50,16 @@
     (render [_]
       (html
         (f/with-options
-          {:group-title {:tag :h3}}
+          {:group-title {:tag :h3}
+           :form {:horizontal true}}
           (f/form
-            (f/group-title {:class "group-title-main"} "Customer")
+            (f/group-title {:class "group-title-main"} "Customer info")
             (f/select "Customer type" customer [:type]
                       [[:private "Private"] [:corporate "Corporate"]])
-            (f/group-title "Details")
+            (f/group-title {:class "group-title-minor"} "Details")
             (render-details customer)
+            (f/group-title {:class "group-title-minor"} "Address")
+            (render-address customer)
             (f/group-title {:class "group-title-main"} "Chosen login")
             (f/text "Login" "Choose your login" customer [:login])
             (f/password "Password" "Enter your password" customer [:password])
