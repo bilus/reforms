@@ -12,7 +12,6 @@
   (reify
     om/IRender
     (render [_]
-      (js/console.log (inspect data))
       (html
         [:pre.inspector
          (inspect data)]))))

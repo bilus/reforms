@@ -1,7 +1,6 @@
 (ns om-forms.core
   (:require [om.core :as om :include-macros true]
             [clojure.string :as str]
-            [sablono.core :refer-macros [html]]
             [clojure.set :as set])
   (:import [goog.ui IdGenerator]))
 
@@ -11,7 +10,7 @@
 (def ^:dynamic *options* {:form         {:horizontal         false
                                          :label-column-class "col-sm-3"
                                          :input-column-class "col-sm-7"}
-                          :spinner      {:icon-spinner "fa fa-clock-o fa-spin"}
+                          :spinner      {:attrs {:class "fa fa-clock-o fa-spin"}}
                           :input        {:icon-warning "fa fa-warning"}
                           :panel        {:icon-close "fa fa-times"}
                           :group-title  {:tag :h2}
@@ -66,7 +65,7 @@
 
 (defn feedback-icon
   [class]
-  (html [:i {:class class}]))
+  [:i {:class class}])
 
 (defn simple-checkbox
   [checked & {:keys [on-click]}]
@@ -86,33 +85,6 @@
   [warning]
   [:label {:class "warning"} warning])
 
-(defn input
-  [label placeholder cursor korks type & {:keys [valid? validation-error-fn in-progress warn-fn help]}]
-  (let [dom-id (gen-dom-id cursor korks)
-        valid (or (nil? valid?) (valid? korks))
-        warning (and warn-fn (warn-fn (get-in cursor korks)))]
-    [:div {:class (str "form-group" (when (or warning in-progress) " has-feedback") (when-not valid " has-error"))
-           :key   dom-id}
-     [:label {:for   dom-id
-              :class (str "control-label " (label-column-class))} label]
-     (input-column [:input {:onChange    #(do
-                                           (om/update! cursor korks (.. % -target -value)))
-                            :value       (get-in cursor korks)
-                            :type        type
-                            :class       "form-control"
-                            :id          dom-id
-                            :placeholder placeholder}]
-                   (cond
-                     in-progress (spinner "form-control-feedback")
-                     warning (feedback-icon (str (get-in *options* [:input :icon-warning]) " form-control-feedback"))
-                     :else nil)
-                   (when warning
-                     (warning-label warning))
-                   (when-let [validation-error (and validation-error-fn (validation-error-fn korks))]
-                     (error-label validation-error))
-                   (when help
-                     [:p.help-block help]))]))
-
 (defn add-class
   [opts class]
   (as-> opts $
@@ -126,7 +98,7 @@
           [:div {:class (label-column-class)}])
         (input-column xs)))
 
-(defn extend-opt
+(defn extend-attr
   [& vals]
   (let [result (let [vals' (remove nil? vals)]
                  (if (some #(satisfies? Fn %) vals')
@@ -134,33 +106,85 @@
                    (str/join " " vals')))]
     result))
 
-(defn merge-opts
+(defn merge-attrs
   [defaults overrides extensions]
   (as-> overrides $
         (merge defaults $)
-        (merge-with extend-opt $ extensions)))
+        (merge-with extend-attr $ extensions)))
+
+(defn parse-args
+  [args]
+  (if (map? (first args))
+    [(first args) (rest args)]
+    [{} args]))
+
+(defn resolve-args
+  [name ext-attrs args]
+  (let [[attrs rest-args] (parse-args args)]
+    [(merge-attrs (get-in *options* [name :attrs])
+                  attrs
+                  ext-attrs)
+     rest-args]))
+
+(defn parse-options
+  [args]
+  (let [[options [rest-args]] (split-with (comp keyword? first) (partition-all 2 args))]
+    [(apply hash-map (mapcat identity options)) (or rest-args [])]))
+
+(defn input
+  [attrs label placeholder cursor korks type & {:keys [valid? validation-error-fn in-progress warn-fn help]}]
+  (let [dom-id (gen-dom-id cursor korks)
+        valid (or (nil? valid?) (valid? korks))
+        warning (and warn-fn (warn-fn (get-in cursor korks)))
+        input-attrs (merge-attrs {} attrs {:on-change   #(om/update! cursor korks (.. % -target -value))
+                                           :value       (get-in cursor korks)
+                                           :type        type
+                                           :class       "form-control"
+                                           :id          dom-id
+                                           :placeholder placeholder})]
+    [:div {:class (str "form-group" (when (or warning in-progress) " has-feedback") (when-not valid " has-error"))
+           :key   dom-id}
+     [:label {:for   dom-id
+              :class (str "control-label " (label-column-class))} label]
+     (input-column [:input input-attrs]
+                   (cond
+                     in-progress (spinner "form-control-feedback")
+                     warning (feedback-icon (str (get-in *options* [:input :icon-warning]) " form-control-feedback"))
+                     :else nil)
+                   (when warning
+                     (warning-label warning))
+                   (when-let [validation-error (and validation-error-fn (validation-error-fn korks))]
+                     (error-label validation-error))
+                   (when help
+                     [:p.help-block help]))]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Public
 
 (defn form
-  [opts & elems]
-  [:form
-   (merge-opts {} opts {:on-submit #(.preventDefault %)
-                        :class    (when (form-horizontal?) "form-horizontal")})
-   elems])
+  [& args]
+  (let [[attrs & elems] (resolve-args :form
+                                      {:on-submit #(.preventDefault %)
+                                       :class     (when (form-horizontal?) "form-horizontal")}
+                                      args)]
+    [:form attrs elems]))
 
 (defn group-title
-  [title & {:keys [class tag]}]
-  [(or tag (get-in *options* [:group-title :tag])) {:class (str "group-title" (when class (str " " class)))} title])
+  [& args]
+  (let [[attrs [title & {:keys [tag]}]] (resolve-args :group-title {:class "group-title"} args)]
+    [(or tag (get-in *options* [:group-title :tag]))
+     attrs
+     title]))
 
 (defn text
-  [label placeholder cursor korks & opts]
-  (apply input label placeholder cursor korks "text" opts))
+  [& args]
+  (let [[attrs [label placeholder cursor korks & opts]] (resolve-args :text {} args)]
+    (apply input attrs label placeholder cursor korks "text" opts)))
 
 (defn password
-  [label placeholder cursor korks & opts]
-  (apply input label placeholder cursor korks "password" opts))
+  [& args]
+  (let [[attrs [label placeholder cursor korks & opts]] (resolve-args :password {} args)]
+    (apply input attrs label placeholder cursor korks "password" opts)))
 
 (defn form-buttons
   [& buttons]
@@ -168,109 +192,121 @@
    (apply align-controls buttons)])
 
 (defn button
-  [label on-click & {:keys [in-progress disabled] :as opts}]
-  [:button
-   (merge {:type     "button"
-           :class    "btn"
-           :disabled disabled
-           :onClick  #(when-not disabled
-                       (on-click))}
-          opts)
-   label
-   (when in-progress
-     (list " "
-           (spinner)))])
+  [& args]
+  (let [[attrs [label on-click & {:keys [in-progress disabled]}]] (resolve-args :button
+                                                                                {:type  "button"
+                                                                                 :class "btn"}
+                                                                                args)]
+    [:button
+     (merge {:disabled disabled
+             :on-click #(when-not disabled
+                         (on-click))}
+            attrs)
+     label
+     (when in-progress
+       (list " "
+             (spinner)))]))
 
 (defn button-primary
-  [label on-click & opts]
-  (apply button
-         label
-         on-click
-         (add-class opts "btn btn-primary")))
+  [& args]
+  (let [[attrs [& rest-args]] (resolve-args :button-primary {:class "btn-primary"} args)]
+    (apply button attrs rest-args)))
 
 (defn button-default
-  [label on-click & opts]
-  (apply button
-         label
-         on-click
-         (add-class opts "btn btn-default")))
+  [& args]
+  (let [[attrs [& rest-args]] (resolve-args :button-default {:class "btn-default"} args)]
+    (apply button attrs rest-args)))
 
 (defn button-group
-  [& buttons]
-  [:div {:class (str "button-group " (get-in *options* [:button-group :align]))} (seq buttons)])
+  [& args]
+  (let [[attrs [& buttons]] (resolve-args :button-group {:class "button-group"} args)]
+    [:div attrs (seq buttons)]))
 
 (defn checkbox
-  [label cursor korks & {:keys [valid? validation-error-fn inline]}]
-  (let [dom-id (gen-dom-id cursor korks)
+  [& args]
+  (let [[attrs [label cursor korks & {:keys [valid? validation-error-fn inline]}]] (resolve-args :checkbox {} args)
+        dom-id (gen-dom-id cursor korks)
         valid (or (nil? valid?) (valid? korks))]
     (list
       [:div.form-group
        (align-controls
          [:div {:class (str "checkbox" (when-not valid " has-error") (when inline " checkbox-inline"))}
           [:label
-           [:input {:onChange #(do
-                                (om/update! cursor korks (.. % -target -checked)))
-                    :checked  (get-in cursor korks)
-                    :type     "checkbox"
-                    :id       dom-id}]
+           [:input
+            (merge-attrs {:on-change #(do
+                                       (om/update! cursor korks (.. % -target -checked)))
+                          :checked   (get-in cursor korks)
+                          :type      "checkbox"
+                          :id        dom-id}
+                         attrs
+                         {})]
            label]]
          (when-let [validation-error (and validation-error-fn (validation-error-fn korks))]
            (error-label validation-error)))])))
 
-(defn radio
-  [label cursor korks value & {:keys [valid? validation-error-fn inline]}]
-  (let [dom-id (gen-dom-id cursor korks)
+(defn radio                                                 ;; TODO: Extract common method for `radio` and `checkbox`.
+  [& args]
+  (let [[attrs [label cursor korks value & {:keys [valid? validation-error-fn inline]}]] (resolve-args :radio {} args)
+        dom-id (gen-dom-id cursor korks)
         valid (or (nil? valid?) (valid? korks))]
     (list
       [:div.form-group
        (align-controls
          [:div {:class (str "radio" (when-not valid " has-error") (when inline " radio-inline"))}
           [:label
-           [:input {:onChange #(when (.. % -target -checked)
-                                (om/update! cursor korks value))
-                    :checked  (= value (get-in cursor korks))
-                    :type     "radio"
-                    :id       dom-id
-                    :name     dom-id
-                    :value    value}]
+           [:input
+            (merge-attrs {:on-change #(when (.. % -target -checked)
+                                       (om/update! cursor korks value))
+                          :checked   (= value (get-in cursor korks))
+                          :type      "radio"
+                          :id        dom-id
+                          :name      dom-id
+                          :value     value}
+                         attrs
+                         {})]
            label]]
          (when-let [validation-error (and validation-error-fn (validation-error-fn korks))]
            (error-label validation-error)))])))
 
 (defn select
-  [label cursor korks options & {:keys [large on-change]}]
-  (let [selected-val (get-in cursor korks)
+  [& args]
+  (let [[attrs [label cursor korks options & {:keys [large on-change]}]] (resolve-args :select {:class "form-control"} args)
+        selected-val (get-in cursor korks)
         dom-id (gen-dom-id cursor korks)]
     [:div {:class (str "form-group" (when large " form-group-lg"))
            :key   dom-id}
      [:label {:for   dom-id
               :class (str "control-label " (label-column-class))} label]
-     (input-column [:select {:class    "form-control"
-                             :value    (str selected-val)
-                             :onChange (fn [dom-event]
-                                         (om/update! cursor
-                                                     korks
-                                                     (unstr-option (.. dom-event -target -value) options))
-                                         (when on-change
-                                           (on-change)))
-                             :id       dom-id}
+     (input-column [:select (merge-attrs {:value     (str selected-val)
+                                          :on-change (fn [dom-event]
+                                                       (om/update! cursor
+                                                                   korks
+                                                                   (unstr-option (.. dom-event -target -value) options))
+                                                       (when on-change
+                                                         (on-change)))
+                                          :id        dom-id}
+                                         attrs
+                                         {})
                     (map #(vector :option {:value (str (first %))} (second %)) options)])]))
 
 (defn spinner
-  [& [class]]
-  (html [:i {:class (str (get-in *options* [:spinner :icon-spinner]) (when class (str " " class)))}]))
+  [& args]
+  (let [[attrs] (resolve-args :spinner {} args)]
+    [:i attrs]))
 
 (defn panel
-  [title {:keys [close]} & contents]
-  (html [:div {:class "panel panel-default"}
-         [:div {:class "panel-heading"}
-          [:h3 {:class "panel-title"} title]
-          (when close
-            [:div {:class "actions pull-right"}
-             [:i {:class   (get-in *options* [:panel :icon-close])
-                  :onClick close}]])]
-         [:div {:class "panel-body"}
-          (seq contents)]]))
+  [& args]
+  (let [[attrs [title & rest-args]] (resolve-args :panel {:class "panel panel-default"} args)
+        [{:keys [close]} [& contents]] (parse-options rest-args)]
+    [:div attrs
+     [:div {:class "panel-heading"}
+      [:h3 {:class "panel-title"} title]
+      (when close
+        [:div {:class "actions pull-right"}
+         [:i {:class   (get-in *options* [:panel :icon-close])
+              :onClick close}]])]
+     [:div {:class "panel-body"}
+      (seq contents)]]))
 
 (defn table
 
@@ -312,8 +348,9 @@
    a) with all checkboxes on for `app-state` containing {:selected-heroes nil}, or
    b) with no selection with {:selected-heroes #{}}."
 
-  [rows & {:keys [columns class checkboxes] :or {columns {}}}]
-  (let [labels (into {} columns)
+  [& args]
+  (let [[attrs [rows & {:keys [columns checkboxes] :or {columns {}}}]] (resolve-args :table {:class "table"} args)
+        labels (into {} columns)
         col-keys (or (not-empty (map first columns))
                      (->> rows
                           (mapcat keys)
@@ -321,7 +358,7 @@
         {sel-cursor :cursor sel-korks :korks value-fn :value :or {value-fn (comp first vals)}} checkboxes
         selected (or (get-in sel-cursor sel-korks) #{})
         select-all (nil? (get-in sel-cursor sel-korks))]
-    [:table.table {:class class}
+    [:table attrs
      [:thead
       [:tr
        (concat

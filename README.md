@@ -57,7 +57,6 @@ Here's how you create an Om component with a form with just one text field and a
   (om/component
     (sablono/html
       (f/form
-        {}
         (f/text "Your name" "Type your name here" data [:name])
         (f/form-buttons
            (f/button "Submit" #(js/alert (:name @data))))))))
@@ -65,19 +64,18 @@ Here's how you create an Om component with a form with just one text field and a
 
 ![Hello world](https://github.com/bilus/om-forms/blob/master/doc/images/hello-world.png)
 
-Note that `form` returns a data structure compatible with [sablono](https://github.com/r0man/sablono) which we then compile into a node using `sablono/html` above. The example below, though a bit simplified and scrubbed, should give you an idea:
+Note that `form` returns a data structure compatible with [sablono](https://github.com/r0man/sablono) which we then compile into a node using `sablono/html` above. The example below, though a bit simplified and scrubbed for clarity, should give you an idea:
 
 ```clojure
-[:form {} [:div {:class "form-group"
-                 :key "data-name"}
-           [:label {:for "data-name"
-                    :class "control-label "} "Your name"]
-           [:input {:onChange ...
-                    :value "My name"
-                    :type "text"
-                    :class "form-control"
-                    :id "data-name"
-                    :placeholder "Type your name here"}]]
+[:form [:div {:class "form-group"
+              :key "data-name"}
+        [:label {:for "data-name"
+                 :class "control-label "} "Your name"]
+        [:input {:value "My name"
+                 :type "text"
+                 :class "form-control"
+                 :id "data-name"
+                 :placeholder "Type your name here"}]]
  [:div.form-group.form-buttons
   [:button {:type "button"
             :class "btn btn-primary"
@@ -108,7 +106,6 @@ To change the orientation use `with-options`:
 ```clojure
 (f/with-options {:form {:horizontal true}}
     (f/form
-     {}
      (f/text "Your name" "Type your name here" data [:name])
      (f/form-buttons
        (f/button "Submit" #(js/alert (:name @data))))))
@@ -123,9 +120,7 @@ To wrap the form in a panel use `panel`:
 ```clojure
 (f/panel
     "Hello, world"
-    {}
     (f/form
-      {}
       (f/text "Your name" "Type your name here" data [:name])
       (f/form-buttons
         (f/button "Submit" #(js/alert (:name @data))))))
@@ -139,7 +134,6 @@ Finally, let's take make the button clearly a primary one and add a cancel butto
 
 ```clojure
 (f/form
-  {}
   (f/text "Your name" "Type your name here" data [:name])
   (f/form-buttons
     (f/button-primary "Submit" #(js/alert (:name @data)))
@@ -182,7 +176,6 @@ Apart from `form`, the helpers have an identical interface to ones in `om-forms.
     (render [_]
       (html
         (v/form                                                           ;; 2
-          {}
           ui-state                                                        ;; 3
           (v/text "Login" "Choose your login" data [:login])              ;; 4
           (v/password "Password" "Enter your password" data [:password1]) 
@@ -242,7 +235,9 @@ For the list of available validators, see the reference. TODO
 #### Column names
 #### Row selection
 
-### Configuration options
+### Customization
+#### Configuration via `with-options`
+#### Element attributes
 
 ### FAQ
 #### How do I submit the form when the user presses ENTER?
@@ -257,11 +252,13 @@ For the list of available validators, see the reference. TODO
 #### Reference
 
 ### TBD
-- FIX group-title alignment.
+- FIX group-title alignment for horizontal form.
+- <textarea>
 - Reference.
 - Link to demos.
 - Add tabs.
 - Add wizard.
+- Port tests.
 
 Report problems...
 

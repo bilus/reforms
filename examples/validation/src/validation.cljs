@@ -35,10 +35,8 @@
           (f/with-options
             {:form-horizontal    true
              :label-column-class "col-md-4"
-             :input-column-class "col-md-8"
-             :group-title        {:tag :h3}}
-            (v/form {:onSubmit #(.preventDefault %)}
-                    ui-state
+             :input-column-class "col-md-8"}
+            (v/form ui-state
                     (v/text "First name" "Enter first name" customer [:first])
                     (v/text "Last name" "Enter last name" customer [:last])
                     (v/text "Login" "Choose login" customer [:login])
@@ -83,7 +81,3 @@
   app-state
   {:target (. js/document (getElementById "app"))})
 
-
-{:validation-errors [{:korks #{[:login]}, :error-message "Enter login name"}
-                     {:korks #{[:password1]}, :error-message "Choose password"}
-                     {:korks #{[:password2]}, :error-message "Re-enter password"}]}

@@ -12,7 +12,6 @@
       (f/with-options {:form {:horizontal (:orientation-horizontal data)}}
                       (f/panel
                         "Hello, world"
-                        {}
                         (f/form
                           {:on-submit #(js/alert "Submitted")}
                           (f/text "Your name" "Type your name here" data [:name])

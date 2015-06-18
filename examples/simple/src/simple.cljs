@@ -37,18 +37,18 @@
     (render [_]
       (html
         (f/with-options
-          {:group-title     {:tag :h3}}
-          (f/form {}
-                  (f/group-title "Customer")
-                  (f/select "Customer type" customer [:type]
-                            [[:private "Private"] [:corporate "Corporate"]])
-                  (f/group-title "Details")
-                  (render-details customer)
-                  (f/group-title "Chosen login")
-                  (f/text "Login" "Choose your login" customer [:login])
-                  (f/password "Password" "Enter your password" customer [:password])
-                  (f/form-buttons
-                    (f/button "Save" #(js/alert "clicked")))))))))
+          {:group-title {:tag :h3}}
+          (f/form
+            (f/group-title {:class "group-title-main"} "Customer")
+            (f/select "Customer type" customer [:type]
+                      [[:private "Private"] [:corporate "Corporate"]])
+            (f/group-title "Details")
+            (render-details customer)
+            (f/group-title {:class "group-title-main"} "Chosen login")
+            (f/text "Login" "Choose your login" customer [:login])
+            (f/password "Password" "Enter your password" customer [:password])
+            (f/form-buttons
+              (f/button "Save" #(js/alert "clicked")))))))))
 
 (defn main-view
   [app-state _owner]
