@@ -12,10 +12,10 @@
   [customer]
   (list
     (f/text "First name"
-            ""
+            "Enter first name"
             customer [:first])
     (f/text "Last name"
-            ""
+            "Enter last name"
             customer [:last])))
 
 (defmethod render-details :corporate
@@ -60,9 +60,9 @@
             (render-details customer)
             (f/group-title {:class "group-title-minor"} "Address")
             (render-address customer)
-            (f/group-title {:class "group-title-main"} "Chosen login")
-            (f/text "Login" "Choose your login" customer [:login])
-            (f/password "Password" "Enter your password" customer [:password])
+            (f/group-title {:class "group-title-main"} "Access credentials")
+            (f/text "Login" "Enter login" customer [:login])
+            (f/password "Password" "Enter password" customer [:password])
             (f/form-buttons
               (f/button "Save" #(js/alert "clicked")))))))))
 
