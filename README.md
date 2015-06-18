@@ -235,7 +235,9 @@ For the list of available validators, see the reference. TODO
 #### Column names
 #### Row selection
 
+
 ### Customization
+#### Inline controls
 #### Configuration via `with-options`
 #### Element attributes
 
