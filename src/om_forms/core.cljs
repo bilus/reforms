@@ -139,8 +139,8 @@
 
 (defn parse-options
   [args]
-  (let [[options [rest-args]] (split-with (comp keyword? first) (partition-all 2 args))]
-    [(apply hash-map (mapcat identity options)) (or rest-args [])]))
+  (let [[options rest-args] (split-with (comp keyword? first) (partition-all 2 args))]
+    [(apply hash-map (mapcat identity options)) (mapcat identity (or rest-args []))]))
 
 (defn input*
   [tag attrs label cursor korks {:keys [valid? validation-error-fn in-progress warn-fn help inline large]} & inner]
@@ -199,7 +199,7 @@
 
   [& args]
   (let [[attrs [title & rest-args]] (resolve-args :panel {:class "panel panel-default"} args)
-        [{:keys [close]} [& contents]] (parse-options rest-args)]
+        [{:keys [close]} & contents] (parse-options rest-args)]
     [:div attrs
      [:div {:class "panel-heading"}
       [:h3 {:class "panel-title"} title]
@@ -464,7 +464,6 @@
   (f/textarea {:rows 8} \"Textarea\" \"A placeholder\" data [:some-text] :inline true)"
 
   [& args]
-  (js/console.log (prn-str args))
   (let [[attrs [label placeholder cursor korks & opts]] (resolve-args :textarea {:class "form-control"} args)
         dom-id (gen-dom-id cursor korks)
         textarea-attrs (merge-attrs {:class       "form-control"
