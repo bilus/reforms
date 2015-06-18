@@ -297,8 +297,7 @@
    button-1 ... button-n"
 
   [& buttons]
-  [:div.form-group.form-buttons
-   (apply unlabeled-control false buttons)])
+  (apply unlabeled-control false buttons))
 
 (defn button
 
