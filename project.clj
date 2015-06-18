@@ -1,4 +1,4 @@
-(defproject om-forms "0.1.0-SNAPSHOT"
+(defproject om-forms "0.2.0-SNAPSHOT"
             :description "Form helpers for Om."
             :url "http://github.com/bilus/om-forms"
             :license {:name "Eclipse Public License"
