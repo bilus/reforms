@@ -6,7 +6,7 @@
 
 (ns reforms.core.impl
   (:require [om.core :as om :include-macros true]
-            [reforms.core.options :refer [get-option]]
+            [reforms.core.options :refer [get-options]]
             [clojure.string :as str]
             [clojure.set :as set])
   (:refer-clojure :exclude [time])
@@ -18,7 +18,7 @@
 
 (defn form-horizontal?
   []
-  (get-option [:form :horizontal]))
+  (get-options [:form :horizontal]))
 
 (defn gen-dom-id
   ([path]
@@ -31,12 +31,12 @@
 (defn label-column-class
   []
   (when (form-horizontal?)
-    (get-option [:form :label-column-class])))
+    (get-options [:form :label-column-class])))
 
 (defn input-column-class
   []
   (when (form-horizontal?)
-    (get-option [:form :input-column-class])))
+    (get-options [:form :input-column-class])))
 
 (defn input-column
   [& elems]
@@ -103,19 +103,32 @@
                 :class (str "control-label " (label-column-class))} label]
        (input-column xs))]))
 
-(defn extend-attr
-  [& vals]
-  (let [result (let [vals' (remove nil? vals)]
-                 (if (some #(satisfies? Fn %) vals')
-                   (fn [& args] (last (map (fn [f] (apply f args)) vals')))
-                   (str/join " " vals')))]
-    result))
+(defn extend-attrs
+  [attrs extensions]
+  (merge-with (fn [& vals]
+                (let [result (let [vals' (remove nil? vals)]
+                               (if (some #(satisfies? Fn %) vals')
+                                 (fn [& args] (last (map (fn [f] (apply f args)) vals')))
+                                 (str/join " " vals')))]
+                  result))
+              attrs
+              extensions))
+
+(defn override-attrs
+  [old new]
+  (merge-with (fn [old new]
+                (cond
+                  (map? old) (override-attrs old new)
+                  :else new))
+              old
+              new))
+
 
 (defn merge-attrs
   [defaults overrides extensions]
   (as-> overrides $
-        (merge defaults $)
-        (merge-with extend-attr $ extensions)))
+        (override-attrs defaults $)
+        (extend-attrs $ extensions)))
 
 (defn parse-args
   [args]
@@ -124,12 +137,16 @@
     [{} args]))
 
 (defn resolve-args
-  [name ext-attrs args]
-  (let [[attrs rest-args] (parse-args args)]
-    [(merge-attrs (get-option [name :attrs])
-                  attrs
-                  ext-attrs)
-     rest-args]))
+  ([ks ext-attrs args]
+   (let [[attrs rest-args] (parse-args args)]
+     [(merge-attrs
+        (->> ks
+             (map #(get-options [% :attrs]))
+             (reduce (fn [attrs crn-attrs]
+                       (merge-attrs attrs crn-attrs {}))))
+        attrs
+        ext-attrs)
+      rest-args])))
 
 (defn parse-options
   [args]
@@ -149,7 +166,7 @@
       [tag attrs inner]
       (cond
         in-progress (spinner "form-control-feedback")
-        warning (feedback-icon (str (get-option [:input :icon-warning]) " form-control-feedback"))
+        warning (feedback-icon (str (get-options [:input :icon-warning]) " form-control-feedback"))
         :else nil)
       (when warning
         (warning-label warning))

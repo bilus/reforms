@@ -59,7 +59,7 @@
        (panel {:class \"my-special-panel\"} \"My special panel\" :close #(js/alert \"closed\")
            [:div \"Contents go here\"])"
   [& args]
-  (let [[attrs [title & rest-args]] (impl/resolve-args :panel {:class "panel panel-default"} args)
+  (let [[attrs [title & rest-args]] (impl/resolve-args [:panel] {:class "panel panel-default"} args)
         [{:keys [close]} & contents] (impl/parse-options rest-args)]
     [:div attrs
      [:div {:class "panel-heading"}
@@ -86,7 +86,7 @@
        (form [:div \"Contents go here\"])
        (form {:style {:background-color \"red\"}} [:div \"Contents go here\"])"
   [& args]
-  (let [[attrs & elems] (impl/resolve-args :form
+  (let [[attrs & elems] (impl/resolve-args [:form]
                                       {:on-submit #(.preventDefault %)
                                        :class     (when (impl/form-horizontal?) "form-horizontal")}
                                       args)]
@@ -103,7 +103,7 @@
    - title - the title; a string or Hiccup/Sablono style template
    - tag   - (optional) name of the tag to use, e.g. :h4"
   [& args]
-  (let [[attrs [title & {:keys [tag]}]] (impl/resolve-args :group-title {:class "group-title"} args)]
+  (let [[attrs [title & {:keys [tag]}]] (impl/resolve-args [:group-title] {:class "group-title"} args)]
     [(or tag (get-options [:group-title :tag]))
      attrs
      title]))
@@ -124,9 +124,8 @@
    - :valid?               - (optional) if false shows a validation error; internal
    - :validation-error-fn  - (optional) lambda <korks> -> <error message>; internal"
   [type & args]
-  (let [[attrs [label placeholder cursor korks & opts]] (impl/resolve-args type {} args)
-        attrs' (impl/merge-attrs (get-options [:html5-input :attrs]) attrs {})]
-    (apply impl/html5-input* attrs' label placeholder cursor korks (name type) opts)))
+  (let [[attrs [label placeholder cursor korks & opts]] (impl/resolve-args [:html5-input type] {} args)]
+    (apply impl/html5-input* attrs label placeholder cursor korks (name type) opts)))
 
 (defn text
   "Text input. See http://getbootstrap.com/css/#inputs
@@ -173,7 +172,7 @@
    - :in-progress - true to show an indicator that a background action is in progress and disable the button
    - :disabled    - true to disable the button"
   [& args]
-  (let [[attrs [label on-click & {:keys [in-progress disabled]}]] (impl/resolve-args :button
+  (let [[attrs [label on-click & {:keys [in-progress disabled]}]] (impl/resolve-args [:button]
                                                                                 {:type  "button"
                                                                                  :class "btn"}
                                                                                 args)]
@@ -194,7 +193,7 @@
 
    See `button`."
   [& args]
-  (let [[attrs [& rest-args]] (impl/resolve-args :button-primary {:class "btn-primary"} args)]
+  (let [[attrs [& rest-args]] (impl/resolve-args [:button-primary] {:class "btn-primary"} args)]
     (apply button attrs rest-args)))
 
 (defn button-default
@@ -204,7 +203,7 @@
 
    See `button`."
   [& args]
-  (let [[attrs [& rest-args]] (impl/resolve-args :button-default {:class "btn-default"} args)]
+  (let [[attrs [& rest-args]] (impl/resolve-args [:button-default] {:class "btn-default"} args)]
     (apply button attrs rest-args)))
 
 (defn button-group
@@ -216,7 +215,7 @@
 
    - attrs        - (optional) attributes handed over to React (see https://github.com/r0man/sablono#html-attributes)"
   [& args]
-  (let [[attrs [& buttons]] (impl/resolve-args :button-group {:class "button-group"} args)]
+  (let [[attrs [& buttons]] (impl/resolve-args [:button-group] {:class "button-group"} args)]
     [:div attrs (seq buttons)]))
 
 (defn checkbox
@@ -233,7 +232,7 @@
    - :valid?               - (optional) if false shows a validation error; internal
    - :validation-error-fn  - (optional) lambda <korks> -> <error message>; internal"
   [& args]
-  (let [[attrs [label cursor korks & {:keys [valid? validation-error-fn inline]}]] (impl/resolve-args :checkbox {} args)
+  (let [[attrs [label cursor korks & {:keys [valid? validation-error-fn inline]}]] (impl/resolve-args [:checkbox] {} args)
         dom-id (impl/gen-dom-id cursor korks)
         valid (or (nil? valid?) (valid? korks))]
     (list
@@ -267,7 +266,7 @@
    - :valid?               - (optional) if false shows a validation error; internal
    - :validation-error-fn  - (optional) lambda <korks> -> <error message>; internal"
   [& args]
-  (let [[attrs [label cursor korks value & {:keys [valid? validation-error-fn inline]}]] (impl/resolve-args :radio {} args)
+  (let [[attrs [label cursor korks value & {:keys [valid? validation-error-fn inline]}]] (impl/resolve-args [:radio] {} args)
         dom-id (impl/gen-dom-id cursor korks)
         valid (or (nil? valid?) (valid? korks))]
     (list
@@ -309,7 +308,7 @@
        (f/textarea \"Textarea\" \"A placeholder\" data [:some-text])
        (f/textarea {:rows 8} \"Textarea\" \"A placeholder\" data [:some-text] :inline true)"
   [& args]
-  (let [[attrs [label placeholder cursor korks & opts]] (impl/resolve-args :textarea {:class "form-control"} args)
+  (let [[attrs [label placeholder cursor korks & opts]] (impl/resolve-args [:textarea] {:class "form-control"} args)
         dom-id (impl/gen-dom-id cursor korks)
         textarea-attrs (impl/merge-attrs {:class       "form-control"
                                      :id          dom-id
@@ -341,7 +340,7 @@
            :on-change #(js/alert @data)
            [[:option1 \"Option 1\"] [:option2 \"Option 2\"] [:option3 \"Option 3\"]])"
   [& args]
-  (let [[attrs [label cursor korks options & {:keys [on-change] :as opts}]] (impl/resolve-args :select {:class "form-control"} args)
+  (let [[attrs [label cursor korks options & {:keys [on-change] :as opts}]] (impl/resolve-args [:select] {:class "form-control"} args)
         dom-id (impl/gen-dom-id cursor korks)
         selected-val (get-in cursor korks)
         input-attrs (impl/merge-attrs {} attrs {:value     (str selected-val)
