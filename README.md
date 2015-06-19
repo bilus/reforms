@@ -422,7 +422,7 @@ Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail
 
 - Publish.
 
-- Add support for reagent.
+- Add support for reagent. Assert in reforms.validation/form!
 - Proof-of-concept reagent sample.
 - Validation errors in local state. Add How can I store validation errors in local state? to FAQ
 
