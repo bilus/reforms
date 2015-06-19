@@ -10,6 +10,8 @@ The code has been extracted from a 'real' project and though it should be comple
 
 A good place to see the available controls: [demo](http://bilus.github.io/reforms/examples/controls/index.html).
 
+<!-- To install doctoc: git npm install -g doctoc -->
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
