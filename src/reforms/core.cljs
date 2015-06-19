@@ -177,9 +177,9 @@
    - :disabled    - true to disable the button"
   [& args]
   (let [[attrs [label on-click & {:keys [in-progress disabled]}]] (impl/resolve-args [:button]
-                                                                                {:type  "button"
-                                                                                 :class "btn"}
-                                                                                args)]
+                                                                                     {:type  "button"
+                                                                                      :class "btn"}
+                                                                                     args)]
     [:button
      (merge {:disabled disabled
              :on-click #(when-not disabled
@@ -246,12 +246,12 @@
          [:label
           [:input
            (impl/merge-attrs {:on-change #(do
-                                      (om/update! cursor korks (.. % -target -checked)))
-                         :checked   (get-in cursor korks)
-                         :type      "checkbox"
-                         :id        dom-id}
-                        attrs
-                        {})]
+                                           (om/update! cursor korks (.. % -target -checked)))
+                              :checked   (get-in cursor korks)
+                              :type      "checkbox"
+                              :id        dom-id}
+                             attrs
+                             {})]
           label]]
         (when-let [validation-error (and validation-error-fn (validation-error-fn korks))]
           (impl/error-label validation-error))))))
@@ -280,14 +280,14 @@
          [:label
           [:input
            (impl/merge-attrs {:on-change #(when (.. % -target -checked)
-                                      (om/update! cursor korks value))
-                         :checked   (= value (get-in cursor korks))
-                         :type      "radio"
-                         :id        dom-id
-                         :name      dom-id
-                         :value     value}
-                        attrs
-                        {})]
+                                           (om/update! cursor korks value))
+                              :checked   (= value (get-in cursor korks))
+                              :type      "radio"
+                              :id        dom-id
+                              :name      dom-id
+                              :value     value}
+                             attrs
+                             {})]
           label]]
         (when-let [validation-error (and validation-error-fn (validation-error-fn korks))]
           (impl/error-label validation-error))))))
@@ -315,10 +315,10 @@
   (let [[attrs [label placeholder cursor korks & opts]] (impl/resolve-args [:textarea] {:class "form-control"} args)
         dom-id (impl/gen-dom-id cursor korks)
         textarea-attrs (impl/merge-attrs {:class       "form-control"
-                                     :id          dom-id
-                                     :placeholder placeholder}
-                                    attrs
-                                    {:on-input #(om/update! cursor korks (.. % -target -value))})]
+                                          :id          dom-id
+                                          :placeholder placeholder}
+                                         attrs
+                                         {:on-input #(om/update! cursor korks (.. % -target -value))})]
     (impl/input* :textarea textarea-attrs label cursor korks opts (or (get-in cursor korks) ""))))
 
 
@@ -348,13 +348,13 @@
         dom-id (impl/gen-dom-id cursor korks)
         selected-val (get-in cursor korks)
         input-attrs (impl/merge-attrs {} attrs {:value     (str selected-val)
-                                           :on-change (fn [dom-event]
-                                                        (om/update! cursor
-                                                                    korks
-                                                                    (impl/unstr-option (.. dom-event -target -value) options))
-                                                        (when on-change
-                                                          (on-change)))
-                                           :id        dom-id})]
+                                                :on-change (fn [dom-event]
+                                                             (om/update! cursor
+                                                                         korks
+                                                                         (impl/unstr-option (.. dom-event -target -value) options))
+                                                             (when on-change
+                                                               (on-change)))
+                                                :id        dom-id})]
     (apply impl/input* :select input-attrs label cursor korks opts
            (map #(vector :option {:value (str (first %))} (second %)) options))))
 
