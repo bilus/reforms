@@ -30,12 +30,16 @@
     [{} args]))
 
 (defmacro form
-  "Wrapper for [[reforms.core/form]]. **This is a macro.**"
+  "Wrapper for [[reforms.core/form]]. **This is a macro.**
+
+   It accepts the same args as [[reforms.core/form]] except there's an extra one in front: `cursor` to store validation results in."
   [cursor & args]
   (let [[attrs [& elems]] (parse-args args)]
-    `(reforms.core/form
-       ~attrs
-       (reforms.validation/validating-fields
-         (reforms.validation/validation-errors ~cursor)
-         ~@elems))))
+    `(do
+       (assert (om.core/cursor? ~cursor) "The first argument to reforms.validation/form before optional attributes must be a cursor.")
+       (reforms.core/form
+         ~attrs
+         (reforms.validation/validating-fields
+           (reforms.validation/validation-errors ~cursor)
+           ~@elems)))))
 
