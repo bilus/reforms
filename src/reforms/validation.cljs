@@ -107,9 +107,10 @@
 
    - errors - results of validation"
   [errors]
-  [:ul {:class (str "error validation" (when (seq errors) " validation-failed"))}
-   (for [failure errors]
-     [:li (:error-message failure)])])
+  (when (not-empty errors)
+    [:ul {:class (str "error validation" (when (seq errors) " validation-failed"))}
+     (for [failure errors]
+       [:li (:error-message failure)])]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Validators
