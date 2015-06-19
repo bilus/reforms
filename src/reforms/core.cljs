@@ -87,10 +87,14 @@
        (form {:style {:background-color \"red\"}} [:div \"Contents go here\"])"
   [& args]
   (let [[attrs & elems] (impl/resolve-args [:form]
-                                      {:on-submit #(.preventDefault %)
-                                       :class     (when (impl/form-horizontal?) "form-horizontal")}
-                                      args)]
-    [:form attrs elems]))
+                                           {:on-submit #(.preventDefault %)
+                                            :class     (when (impl/form-horizontal?) "form-horizontal")}
+                                           args)]
+    [:form attrs
+     elems
+     (when (:on-submit (first args))                        ;; TODO: Kinda hackish.
+       [:button {:type  "submit"
+                 :style {:display "none"}}])]))
 
 (defn group-title
   "A title for a logical group of controls.
