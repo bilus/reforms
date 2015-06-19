@@ -12,3 +12,7 @@ pom.xml.asc
 .idea
 out/
 .DS_Store
+/doc/css
+/doc/*.html
+/doc/*.md
+/doc/js
