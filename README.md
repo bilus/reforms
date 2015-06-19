@@ -10,8 +10,6 @@ The code has been extracted from a 'real' project and though it should be comple
 
 A good place to see the available controls: [demo](http://bilus.github.io/reforms/examples/controls/index.html).
 
-[API Reference](http://bilus.github.io/reforms/doc/)
-
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
