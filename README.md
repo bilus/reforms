@@ -402,7 +402,7 @@ In addition, in case of buttons it's usually a good idea to disable them:
 (button "Start" #(...) :in-progress true :disable true)
 ```
 
-<img src="https://github.com/bilus/reforms/blob/master/doc/images/progress.png" width="70%">
+<img src="https://github.com/bilus/reforms/blob/master/doc/images/progress.png" width="85">
 
 See this example: [source](https://github.com/bilus/reforms/tree/master/progress/validation) [demo](http://bilus.github.io/reforms/examples/progress/index.html)
 
