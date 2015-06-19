@@ -5,7 +5,7 @@
 ;  You must not remove this notice, or any other, from this software.
 
 (ns reforms.validation
-  "Validation functionality. TODO"
+  "Validation functionality."
   (:require [reforms.core :as f]
             [om.core :as om :include-macros true]
             [clojure.string :as str])
@@ -13,6 +13,8 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Implementation
+
+(declare valid?)
 
 (defn find-validation-error
   [kork errors]

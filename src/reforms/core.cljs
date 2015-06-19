@@ -5,11 +5,40 @@
 ;  You must not remove this notice, or any other, from this software.
 
 (ns reforms.core
-  "Core controls and helpers. TODO"
+  "Core controls and helpers."
   (:require [om.core :as om :include-macros true]
             [reforms.core.impl :as impl]
-            [reforms.core.options :refer [get-option]])
+            [reforms.core.options :as options])
   (:refer-clojure :exclude [time]))
+
+(def get-option
+  "Return a configuration option.
+
+   Arguments:
+
+   - ks - key seq"
+  options/get-option)
+
+(def set-options!
+  "Sets configuration options by intelligently merging them.
+
+   Arguments:
+
+   - options - a map specifying options.
+
+   Example:
+
+       ;; Example initial configuration:
+       {:form {:horizontal true
+               :attrs {:style {:background-color \"yellow\"}}}}
+
+       ;; Setting options
+       (set-options! {:form {:attrs {:style {:border \"1px solid black\"}}}{)
+
+       ;; Resulting configuration:
+       {:form {:horizontal true
+               :attrs {:style {:background-color \"yellow\"}}}"
+  options/set-options!)
 
 (defn panel
   "A panel. See http://getbootstrap.com/components/#panels
@@ -97,8 +126,6 @@
   [type & args]
   (let [[attrs [label placeholder cursor korks & opts]] (impl/resolve-args type {} args)]
     (apply impl/html5-input* attrs label placeholder cursor korks (name type) opts)))
-
-
 
 (defn text
   "Text input. See http://getbootstrap.com/css/#inputs

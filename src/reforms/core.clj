@@ -9,19 +9,16 @@
 (defmacro with-options
   "Specify options for a block.
 
+  ** Important:** Use only inside a component and never outside om.core/build or om.core/root because it uses
+  dynamic binding. To specify global options use [set-options!].
+
    Example:
 
        (with-options {:form {:horizontal true}}
            (form
               (text ...)
               (button ...))"
-  [options & body]
-  `(binding [reforms.core.options/*options*
-             (cljs.core/merge-with
-               (cljs.core/fn [old# new#]
-                 (cljs.core/cond
-                   (cljs.core/map? old#) (cljs.core/merge old# new#)
-                   :else new#))
-               reforms.core.options/*options*
-               ~options)]
-     ~@body))
+[options & body]
+`(binding [reforms.core.options/*options* (reforms.core.options/merge-options ~options)]
+   ~@body))
+
