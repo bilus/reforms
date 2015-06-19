@@ -420,8 +420,6 @@ Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail
 
 ### TBD
 
-- Publish.
-
 - Add support for reagent. Assert in reforms.validation/form!
 - Proof-of-concept reagent sample.
 - Validation errors in local state. Add How can I store validation errors in local state? to FAQ
@@ -430,7 +428,7 @@ Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail
 - Add tabs. Update 'controls' example.
 - Add wizard. Update 'controls' example.
 - Port tests.
-- Fix deploy_pages.sh failing to publish changes to index.html's for examples and doc/images/*.   
+- Fix deploy_pages.sh failing to publish changes to index.html's for examples.   
 - Fix Each child in an array should have a unique "key" prop. Check the renderComponent call using <undefined>. See http://fb.me/react-warning-keys for more information.
 - Fix Warning: Use the `defaultValue` or `value` props instead of setting children on <textarea>.
 - Fix with-option is apparently not working around om/root and/or build/outside component.
