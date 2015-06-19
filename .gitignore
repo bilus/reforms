@@ -5,7 +5,6 @@
 .nrepl-port
 deploy.sh
 deploy_doc.sh
-examples/
 pom.xml
 src/
 target/
