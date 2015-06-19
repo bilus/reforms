@@ -160,7 +160,7 @@
      (is-true [:user :email] #(nil? (find-by-email %)) \"Email already exists\"]"
   [korks f error-message]
   (fn [cursor]
-    (when-not (f cursor)
+    (when-not (f (get-in cursor korks))
       (validation-error [korks] error-message))))
 
 (defn force-error
