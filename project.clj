@@ -1,6 +1,6 @@
-(defproject reforms "0.2.0-SNAPSHOT"
+(defproject reforms "0.2.0"
             :description "Form helpers for Om."
-            :url "http://github.com/bilus/reforms"
+            :url "http://bilus.github.io/reforms/"
             :license {:name "Eclipse Public License"
                       :url  "http://www.eclipse.org/legal/epl-v10.html"}
             :dependencies [[org.clojure/clojure "1.7.0-RC1"]
