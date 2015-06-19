@@ -289,7 +289,7 @@ While we're at it, we could make it more readable with the built-in `is-true` va
   (v/is-true korks positive-number? error-message))
 ```
 
-Either way, you can use your brand new validators like a pro:
+Either way, you can use your brand new validator like a pro:
 
 ```clojure
 (validate! 
@@ -298,17 +298,70 @@ Either way, you can use your brand new validators like a pro:
     (positive-number [:age] "Age must be a positive number"))
 ```
 
-#### Custom error
+#### Forcing errors
 
-### Composing validators
+Validation errors may be forced which comes useful when using external APIs etc. Observe:
+
+```clojure
+(v/validate!
+    customer
+    ui-state
+    (v/force-error [:server-error] "An error has occurred"))
+```
+
+You'd normally call it from an asynchronous error handler, go block etc.
+
+You can either have a form field show the error if it makes sense by passing its korks to `force-error` or use the `error-alert` helper to render the error:
+
+```clojure
+(v/error-alert [:server-error])
+```
+
+Note that `error-alert` can render any number of custom errors like so:
+
+```clojure
+(v/error-alert [:auth-error] [:twitter-error])
+```
+
+
+### Assorted topics
+
+#### Element attributes
+
+Each form helper accepts React attributes as the first argument. These attributes will be handed over to React (see https://github.com/r0man/sablono#html-attributes)
+
+```clojure
+(text {:key "name-1"} "Name" "Your name" user [:name])
+```
+
+Attributes are optional, this form will work as well.
+
+```clojure
+(text "Name" "Your name" user [:name])
+```
 
 #### Showing warnings
 
-### Customization
-#### Inline controls
-#### Configuration via `with-options`
-#### Element attributes
+In addition to validation proper, `text`, `password` and other controls based on `html5-input` support warnings:
+  
+```clojure
+(text "City" "Where are you?" [:city] :warn-fn #(when-not (= "Kansas" %) "We're not in Kansas anymore")
+```
 
+<img src="https://github.com/bilus/reforms/blob/master/doc/images/warning.png" width="70%">
+
+Note that by default a Font Awesome icon is used to show the warning icon. You can override this using `(set-options! [:icon-warning] "...")`.
+  
+#### Configuration options
+
+You can configure global options using `set-options!`. See [this](http://bilus.github.io/reforms/doc/reforms.core.options.html) for details.
+
+Here's a quick example:
+
+```clojure
+;; Set background of every form to red color.
+(set-options! {:form {:attrs {:style {:background-color "red"}}}})
+```
 
 ### Demos
 
@@ -316,15 +369,49 @@ Either way, you can use your brand new validators like a pro:
 - Dynamic form with customizations [source](https://github.com/bilus/reforms/tree/master/examples/simple) [demo](http://bilus.github.io/reforms/examples/simple/index.html)
 - Available controls [source](https://github.com/bilus/reforms/tree/master/examples/controls) [demo](http://bilus.github.io/reforms/examples/controls/index.html)
 - Supported [source](https://github.com/bilus/reforms/tree/master/examples/validation) [demo](http://bilus.github.io/reforms/examples/validation/index.html)
+- Background operations [source](https://github.com/bilus/reforms/tree/master/progress/validation) [demo](http://bilus.github.io/reforms/examples/progress/index.html)
 
 ### FAQ
 #### How do I submit the form when the user presses ENTER?
-#### How to store validation errors in local state?
-#### How to save changes to data when user clicks a button?
-#### How to show an operation is in progress?
-#### Can I use built-in Bootstrap icons instead of Font Awesome?
-#### How do I use different column widths for horizontal forms
 
+Use the `:on-submit` attribute and pass the same function you use to handle clicks:
+
+```clojure
+(form
+    {:on-submit #(do-something customer)}
+    (text "First name" "Enter first name" customer [:first])
+    ...
+    (f/form-buttons
+      (f/button-primary "Save" #(do-something customer))))
+```
+
+**Note:** If `:on-submit` is set, the resulting form will include a hidden submit button. 
+
+#### How to affect changes when user clicks a button?
+
+Because form helpers bind to data, everything user types in is automatically synchronized. If this isn't what you need, create a copy of data before handing it over to the form and then copy it back on save.
+
+#### How to show an operation is in progress?
+
+Buttons and most form helpers accept an `:in-progress` option you can use like this:
+
+```clojure
+(button "Start" #(...) :in-progress true)
+```
+
+In addition, in case of buttons it's usually a good idea to disable them:
+
+```clojure
+(button "Start" #(...) :in-progress true :disable true)
+```
+
+<img src="https://github.com/bilus/reforms/blob/master/doc/images/progress.png" width="70%">
+
+See this example: [source](https://github.com/bilus/reforms/tree/master/progress/validation) [demo](http://bilus.github.io/reforms/examples/progress/index.html)
+
+
+<!-- #### Can I use built-in Bootstrap icons instead of Font Awesome?
+#### How do I use different column widths for horizontal forms -->
 
 ### [API Reference](http://bilus.github.io/reforms/doc/)
 
@@ -333,11 +420,11 @@ Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail
 
 ### TBD
 
-- Finish Readme without tables.
 - Publish.
 
 - Add support for reagent.
 - Proof-of-concept reagent sample.
+- Validation errors in local state. Add How can I store validation errors in local state? to FAQ
 
 - Add table. Namespace. Example. Add to 'controls' example.
 - Add tabs. Update 'controls' example.
