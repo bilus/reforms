@@ -14,16 +14,9 @@ A good place to see the available controls: TODO (link to demo).
 
 ### Getting started
 
-Your dependencies in project.clj should roughly look like this:
+Add `reforms` to `:dependencies` in project.clj:
 
-```clojure
-:dependencies [[org.clojure/clojure "1.7.0-RC1"]
-               [org.clojure/clojurescript "0.0-3308"]
-               [org.omcljs/om "0.8.8"]
-               [sablono "0.3.4"]
-               [reforms "0.1.0-SNAPSHOT"]
-               ...]
-```
+[![Clojars Project](http://clojars.org/reforms/latest-version.svg)](http://clojars.org/reforms)
 
 The library does not use Bootstrap JavaScript so just link to bootstrap css from your html page, e.g.:
 
@@ -31,7 +24,7 @@ The library does not use Bootstrap JavaScript so just link to bootstrap css from
 <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet"/>
 ```
 
-To use Font Awesome icons to use features such as progress spinner, warning icons etc., link to it as well:
+Optionally, to use Font Awesome icons to use features such as progress spinner, warning icons etc., link to it as well:
 
 ```html
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
