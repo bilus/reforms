@@ -4,11 +4,11 @@
 ;  By using this software in any fashion, you are agreeing to be bound by the terms of this license.
 ;  You must not remove this notice, or any other, from this software.
 
-(ns om-forms.core
+(ns reforms.core
   "Core controls and helpers. TODO"
   (:require [om.core :as om :include-macros true]
-            [om-forms.core.impl :as impl]
-            [om-forms.core.options :refer [get-option]])
+            [reforms.core.impl :as impl]
+            [reforms.core.options :refer [get-option]])
   (:refer-clojure :exclude [time]))
 
 (defn panel

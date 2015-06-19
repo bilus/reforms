@@ -4,9 +4,9 @@
 ;  By using this software in any fashion, you are agreeing to be bound by the terms of this license.
 ;  You must not remove this notice, or any other, from this software.
 
-(ns om-forms.validation
+(ns reforms.validation
   "Validation functionality. TODO"
-  (:require [om-forms.core :as f]
+  (:require [reforms.core :as f]
             [om.core :as om :include-macros true]
             [clojure.string :as str])
   (:refer-clojure :exclude [time]))
@@ -48,7 +48,7 @@
                                                            (:error-message err))))))
 
 (defn validating-fields-fn
-  "Used by [om-forms.validation/validating-fields] macro."
+  "Used by [reforms.validation/validating-fields] macro."
   [validation-errors & fields]
   (binding [*validation-errors* validation-errors]
     (doall
@@ -209,107 +209,107 @@
 ;;; Form helpers
 
 (defn html5-input
-  "Wrapper for [[om-forms.core/html5-input]] adding support for validation."
+  "Wrapper for [[reforms.core/html5-input]] adding support for validation."
   [& args]
   (apply validating-field f/html5-input args))
 
 (defn password
-  "Wrapper for [[om-forms.core/password]] adding support for validation."
+  "Wrapper for [[reforms.core/password]] adding support for validation."
   [& args]
   (apply validating-field f/password args))
 
 (defn text
-  "Wrapper for [[om-forms.core/text]] adding support for validation."
+  "Wrapper for [[reforms.core/text]] adding support for validation."
   [& args]
   (apply validating-field f/text args))
 
 (defn textarea
-  "Wrapper for [[om-forms.core/textarea]] adding support for validation."
+  "Wrapper for [[reforms.core/textarea]] adding support for validation."
   [& args]
   (apply validating-field f/textarea args))
 
 (defn checkbox
-  "Wrapper for [[om-forms.core/checkbox]] adding support for validation."
+  "Wrapper for [[reforms.core/checkbox]] adding support for validation."
   [& args]
   (apply validating-field f/checkbox args))
 
 (defn select
-  "Wrapper for [[om-forms.core/select]] adding support for validation."
+  "Wrapper for [[reforms.core/select]] adding support for validation."
   [& args]
   (apply validating-field f/select args))
 
 (defn button
-  "Wrapper for [[om-forms.core/button]] adding support for validation."
+  "Wrapper for [[reforms.core/button]] adding support for validation."
   [& args]
   (apply validating-field f/button args))
 
 (defn button-primary
-  "Wrapper for [[om-forms.core/button-primary]] adding support for validation."
+  "Wrapper for [[reforms.core/button-primary]] adding support for validation."
   [& args]
   (apply validating-field f/button-primary args))
 
 (defn button-default
-  "Wrapper for [[om-forms.core/button-default]] adding support for validation."
+  "Wrapper for [[reforms.core/button-default]] adding support for validation."
   [& args]
   (apply validating-field f/button-default args))
 
 (defn datetime
-  "Wrapper for [[om-forms.core/datetime]] adding support for validation."
+  "Wrapper for [[reforms.core/datetime]] adding support for validation."
   [& args]
   (apply validating-field f/datetime args))
 
 (defn datetime-local
-  "Wrapper for [[om-forms.core/datetime-local]] adding support for validation."
+  "Wrapper for [[reforms.core/datetime-local]] adding support for validation."
   [& args]
   (apply validating-field f/datetime-local args))
 
 (defn date
-  "Wrapper for [[om-forms.core/date]] adding support for validation."
+  "Wrapper for [[reforms.core/date]] adding support for validation."
   [& args]
   (apply validating-field f/date args))
 
 (defn month
-  "Wrapper for [[om-forms.core/month]] adding support for validation."
+  "Wrapper for [[reforms.core/month]] adding support for validation."
   [& args]
   (apply validating-field f/month args))
 
 (defn time
-  "Wrapper for [[om-forms.core/time]] adding support for validation."
+  "Wrapper for [[reforms.core/time]] adding support for validation."
   [& args]
   (apply validating-field f/time args))
 
 (defn week
-  "Wrapper for [[om-forms.core/week]] adding support for validation."
+  "Wrapper for [[reforms.core/week]] adding support for validation."
   [& args]
   (apply validating-field f/week args))
 
 (defn number
-  "Wrapper for [[om-forms.core/number]] adding support for validation."
+  "Wrapper for [[reforms.core/number]] adding support for validation."
   [& args]
   (apply validating-field f/number args))
 
 (defn email
-  "Wrapper for [[om-forms.core/email]] adding support for validation."
+  "Wrapper for [[reforms.core/email]] adding support for validation."
   [& args]
   (apply validating-field f/email args))
 
 (defn url
-  "Wrapper for [[om-forms.core/url]] adding support for validation."
+  "Wrapper for [[reforms.core/url]] adding support for validation."
   [& args]
   (apply validating-field f/url args))
 
 (defn search
-  "Wrapper for [[om-forms.core/search]] adding support for validation."
+  "Wrapper for [[reforms.core/search]] adding support for validation."
   [& args]
   (apply validating-field f/search args))
 
 (defn tel
-  "Wrapper for [[om-forms.core/tel]] adding support for validation."
+  "Wrapper for [[reforms.core/tel]] adding support for validation."
   [& args]
   (apply validating-field f/tel args))
 
 (defn color
-  "Wrapper for [[om-forms.core/color]] adding support for validation."
+  "Wrapper for [[reforms.core/color]] adding support for validation."
   [& args]
   (apply validating-field f/color args))
 

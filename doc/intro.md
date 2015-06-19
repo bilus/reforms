@@ -1,3 +1,3 @@
-# Introduction to om-forms
+# Introduction to reforms
 
-TODO: write [great documentation](http://jacobian.org/writing/what-to-write/)
+See [Readme](https://github.com/bilus/reforms/blob/master/README.md)

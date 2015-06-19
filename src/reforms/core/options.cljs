@@ -1,4 +1,4 @@
-(ns om-forms.core.options)
+(ns reforms.core.options)
 
 (def ^:dynamic *options* {:form         {:horizontal         false
                                          :label-column-class "col-sm-3"

@@ -1,5 +1,5 @@
 (ns examples.controls
-  (:require [om-forms.core :as f :include-macros true]
+  (:require [reforms.core :as f :include-macros true]
             [om.core :include-macros true :as om]
             [sablono.core :refer-macros [html]]
             [examples.shared.utils :refer [inspector-view]]))

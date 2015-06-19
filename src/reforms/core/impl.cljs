@@ -1,6 +1,6 @@
-(ns om-forms.core.impl
+(ns reforms.core.impl
   (:require [om.core :as om :include-macros true]
-            [om-forms.core.options :refer [get-option]]
+            [reforms.core.options :refer [get-option]]
             [clojure.string :as str]
             [clojure.set :as set])
   (:refer-clojure :exclude [time])

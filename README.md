@@ -1,4 +1,4 @@
-# om-forms
+# Reform
 
 A Clojurescript library that lets you build beautiful forms with [Om](https://github.com/omcljs/om) and [Bootstrap 3](http://getbootstrap.com/) and (optionally) [Font Awesome](http://fortawesome.github.io/Font-Awesome/). It focuses on helping you quickly build forms rather than supporting every Bootstrap feature. 
 
@@ -6,7 +6,7 @@ I deliberately limit the functionality to the essentials. If you think something
 
 The code has been extracted from a 'real' project and though it should be completely safe to use it in production, I heavily refactored the code and added controls we hadn't needed so if anything is amiss, please let me know.  
 
-<img src="https://github.com/bilus/om-forms/blob/master/doc/images/sample.png" width="70%">
+<img src="https://github.com/bilus/reforms/blob/master/doc/images/sample.png" width="70%">
 
 A good place to see the available controls: TODO (link to demo).
 
@@ -21,7 +21,7 @@ Your dependencies in project.clj should roughly look like this:
                [org.clojure/clojurescript "0.0-3308"]
                [org.omcljs/om "0.8.8"]
                [sablono "0.3.4"]
-               [om-forms "0.1.0-SNAPSHOT"]
+               [reforms "0.1.0-SNAPSHOT"]
                ...]
 ```
 
@@ -42,7 +42,7 @@ Minimal requires:
 
 ```clojure
 (ns hello-world.core
-  (:require [om-forms.core :include-macros true :as forms]
+  (:require [reforms.core :include-macros true :as forms]
             [om.core :as om]
             [sablono.core :include-macros true :as sablono]))
 ```
@@ -64,7 +64,7 @@ Here's how you create an Om component with a form with just one text field and a
            (f/button "Submit" #(js/alert (:name @data))))))))
 ```
 
-![Hello world](https://github.com/bilus/om-forms/blob/master/doc/images/hello-world.png)
+![Hello world](https://github.com/bilus/reforms/blob/master/doc/images/hello-world.png)
 
 Note that `form` returns a data structure compatible with [sablono](https://github.com/r0man/sablono) which we then compile into a node using `sablono/html` above. The example below, though a bit simplified and scrubbed for clarity, should give you an idea:
 
@@ -92,7 +92,7 @@ The controls bind directly to Om cursors. For example, as the user types text in
 (f/text "Your name" "Type your name here" data [:name])
 ```
 
-<img src="https://github.com/bilus/om-forms/blob/master/doc/images/text.png" width="60%">
+<img src="https://github.com/bilus/reforms/blob/master/doc/images/text.png" width="60%">
 
 ```clojure
 (prn @data) ;; => {:name "John Wayne}
@@ -113,7 +113,7 @@ To change the orientation use `with-options`:
        (f/button "Submit" #(js/alert (:name @data))))))
 ```
 
-![Horizontal orientation](https://github.com/bilus/om-forms/blob/master/doc/images/hello-world-horizontal.png)
+![Horizontal orientation](https://github.com/bilus/reforms/blob/master/doc/images/hello-world-horizontal.png)
 
 #### Wrapping in panel
 
@@ -128,7 +128,7 @@ To wrap the form in a panel use `panel`:
         (f/button "Submit" #(js/alert (:name @data))))))
 ```
 
-![Form wrapped in a panel](https://github.com/bilus/om-forms/blob/master/doc/images/hello-world-panel.png)
+![Form wrapped in a panel](https://github.com/bilus/reforms/blob/master/doc/images/hello-world-panel.png)
 
 #### Button types
 
@@ -143,13 +143,13 @@ Finally, let's take make the button clearly a primary one and add a cancel butto
   (f/checkbox "Horizontal form" data [:orientation-horizontal]))
 ```
 
-![Horizontal orientation](https://github.com/bilus/om-forms/blob/master/doc/images/hello-world-buttons-hor.png)
+![Horizontal orientation](https://github.com/bilus/reforms/blob/master/doc/images/hello-world-buttons-hor.png)
 
 Click!
 
-![Vertical orientation](https://github.com/bilus/om-forms/blob/master/doc/images/hello-world-buttons-ver.png)
+![Vertical orientation](https://github.com/bilus/reforms/blob/master/doc/images/hello-world-buttons-ver.png)
 
-The complete example: [here](https://github.com/bilus/om-forms/blob/master/examples/hello_world/src/hello_world.cljs).
+The complete example: [here](https://github.com/bilus/reforms/blob/master/examples/hello_world/src/hello_world.cljs).
 
 For the list of available controls, see reference: TODO
 
@@ -159,16 +159,16 @@ The library supports client-side data validation.
 
 #### Basics
 
-To use validators, `require` `om-forms.validation`, use form and form field helpers from this namespace instead of `om-forms.core` and use `validate!`:
+To use validators, `require` `reforms.validation`, use form and form field helpers from this namespace instead of `reforms.core` and use `validate!`:
 
 ```clojure
 (ns my-validation
-  (:require [om-forms.validation :include-macros true :as v]
+  (:require [reforms.validation :include-macros true :as v]
             [om.core :as om]
             [sablono.core :include-macros true :as sablono]))
 ```
 
-Apart from `form`, the helpers have an identical interface to ones in `om-forms.core`.
+Apart from `form`, the helpers have an identical interface to ones in `reforms.core`.
 
 ```clojure
 (defn signup-form-view
@@ -187,9 +187,9 @@ Apart from `form`, the helpers have an identical interface to ones in `om-forms.
 ```
 
 1. We're passing `data` to bind the form fields to and `ui-state` where validation results will be stored. There's no technical reason we cannot use `data` for this but separating this makes it cleaner. You can also store validation errors in local state (see the FAQ below).
-2. Note that we're using `form` from `om-forms.validation` and that it takes an extra argument (3).
+2. Note that we're using `form` from `reforms.validation` and that it takes an extra argument (3).
 3. This is the cursor used to store validation errors.
-4. Again, we use the helpers from `om-forms.validation` not `om-forms.core`.
+4. Again, we use the helpers from `reforms.validation` not `reforms.core`.
 5. Here we call our function which will perform validation
 
 Here's the sign up function. It shows an alert if data validates:
@@ -214,7 +214,7 @@ Here's the sign up function. It shows an alert if data validates:
 
 Here's what happens after you click "Sign up" while all fields are empty:
 
-<img src="https://github.com/bilus/om-forms/blob/master/doc/images/validation-1.png" width="40%">
+<img src="https://github.com/bilus/reforms/blob/master/doc/images/validation-1.png" width="40%">
 
 To satisfy your curiosity, here are the contents of `ui-state`:
 
@@ -224,7 +224,7 @@ To satisfy your curiosity, here are the contents of `ui-state`:
                      {:korks #{[:password2]}, :error-message "Re-enter password"}]}
 ```
 
-A slightly richer example: [here](https://github.com/bilus/om-forms/blob/master/examples/validation/src/validation.cljs).
+A slightly richer example: [here](https://github.com/bilus/reforms/blob/master/examples/validation/src/validation.cljs).
 
 For the list of available validators, see the reference. TODO
 
