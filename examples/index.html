@@ -6,40 +6,29 @@
     <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
-        .panel {
-            margin-top: 30px;
-        }
-        .customers {
-            margin-top: 30px;
-            font-weight: bold;
-            color: #666;
-        }
-        .inspector {
-            margin-top: 30px;
-            font-weight: bold;
-            color: #666;
-            border: 1px solid #666;
+        .form-group .btn {
+            margin-right: 10px;
         }
         .error {
             font-weight: normal;
             background: #A94442;
             color: #DDD;
             border-radius: 2px;
-            padding: 1px 4px;
+            padding: 1px 5px;
             margin-top: 1px;
-        }
-        .form-group .btn {
-            margin-right: 10px;
         }
     </style>
 </head>
 <body>
 
-<div id="app"></div>
-
+<div class="row">
+    <div class="col-md-offset-3 col-md-6">
+        <div id="app"></div>
+    </div>
+</div>
 <script src="http://fb.me/react-0.12.2.js"></script>
 <script src="out/goog/base.js" type="text/javascript"></script>
 <script src="out/main.js" type="text/javascript"></script>
-<script type="text/javascript">goog.require("examples.validation");</script>
+<script type="text/javascript">goog.require("examples.progress");</script>
 </body>
 </html>
