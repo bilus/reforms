@@ -417,8 +417,17 @@ Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail
 
 ### TBD
 
-- Add support for reagent. Assert in reforms.validation/form!
-- Proof-of-concept reagent sample.
+- Test in Proton.
+- Reagent/om detection.
+- More reagent testing. 
+- Update documentation and home - reagent.
+- Add reagent examples to Readme and Home.
+- Publish.
+- Contact reagent community asking for feedback.
+- Contact authors of other libraries.
+- Contact Om maintainers to update home page.
+
+- Binding to local state.
 - Validation errors in local state. Add How can I store validation errors in local state? to FAQ
 
 - Add table. Namespace. Example. Add to 'controls' example.
