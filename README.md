@@ -1,8 +1,8 @@
-# Reform
+# Reforms
 
-A Clojurescript library that lets you build beautiful forms with [Om](https://github.com/omcljs/om) and [Bootstrap 3](http://getbootstrap.com/) and (optionally) [Font Awesome](http://fortawesome.github.io/Font-Awesome/). It focuses on helping you quickly build forms rather than supporting every Bootstrap feature. 
+A Clojurescript library that lets you build beautiful forms with [Om](https://github.com/omcljs/om) and [Bootstrap 3](http://getbootstrap.com/) and (optionally) [Font Awesome](http://fortawesome.github.io/Font-Awesome/).  
 
-I deliberately limit the functionality to the essentials. If you think something useful is missing though, please let me know.   
+It focuses on helping you quickly build forms rather than supporting every Bootstrap feature. If you think something useful is missing though, please let me know.   
 
 The code has been extracted from a 'real' project and though it should be completely safe to use it in production, I heavily refactored the code and added controls we hadn't needed so if anything is amiss, please let me know.  
 
@@ -258,8 +258,7 @@ Report problems... TODO
 
 ### TBD
 
-- Rename to reform. 
-- Add set-options! and put with-options in context explaining its limitations.
+- Document options.
 - Host docs and examples on github pages.
 - Link to demos.
 - Finish Readme without tables.
@@ -269,7 +268,7 @@ Report problems... TODO
 - Add support for reagent.
 - Proof-of-concept reagent sample.
 
-- Add table. Namespace. Optional attrs. Example. Add to 'controls' example.
+- Add table. Namespace. Example. Add to 'controls' example.
 - Add tabs. Update 'controls' example.
 - Add wizard. Update 'controls' example.
 - Port tests.
