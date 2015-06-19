@@ -12,7 +12,7 @@
   (:refer-clojure :exclude [time]))
 
 (def get-options
-  "Return a configuration option(s).
+  "Get configuration option(s) by key. See [[reforms.core.options]].
 
    Arguments:
 
@@ -20,11 +20,13 @@
   options/get-options)
 
 (def set-options!
-  "Sets configuration options by intelligently merging them.
+  "Sets configuration options. See [[reforms.core.options]].
 
    Arguments:
 
-   - options - a map specifying options.
+   - options - a map specifying options to merge into current option map.
+
+   **Note:** It intelligently merges options; see the example below.
 
    Example:
 
