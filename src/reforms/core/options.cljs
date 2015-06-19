@@ -19,6 +19,7 @@
       ;; Set background of every form to red color.
       (set-options! {:form {:attrs {:style {:background-color \"red\"}}}})
 
+  - :icon-warning           - icon to represent a warning
   - :form                   - options for [[reforms.core/form]]
       - :horizontal         - set to true for horizontal orientation; see http://getbootstrap.com/css/#forms-horizontal
       - :label-column-class - class for the label column (horizontal orientation only), e.g. \"col-sm-3\"
@@ -26,7 +27,6 @@
   - :panel                  - options for [[reforms.core/panel]]
         - :icon-close       - close panel icon
   - :html5-input            - options for [[reforms.core/html5-input]], common for all helpers based on it, e.g. [[reforms.core/text]]
-      - :icon-warning       - icon to represent a warning
   - :text                   - options for [[reforms.core/text]]
       Same as for :html-5-input
   - group-title             - options for [[reforms.core/group-title]]

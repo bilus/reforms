@@ -166,7 +166,7 @@
       [tag attrs inner]
       (cond
         in-progress (spinner "form-control-feedback")
-        warning (feedback-icon (str (get-options [:input :icon-warning]) " form-control-feedback"))
+        warning (feedback-icon (str (get-options [:icon-warning]) " form-control-feedback"))
         :else nil)
       (when warning
         (warning-label warning))
@@ -196,5 +196,5 @@
 
    attrs                 - (optional) attributes handed over to React (see https://github.com/r0man/sablono#html-attributes)"
   [& args]
-  (let [[attrs] (resolve-args :spinner {} args)]
+  (let [[attrs] (resolve-args [:spinner] {} args)]
     [:i attrs]))
