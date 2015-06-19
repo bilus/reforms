@@ -8,7 +8,7 @@ The code has been extracted from a 'real' project and though it should be comple
 
 <img src="https://github.com/bilus/reforms/blob/master/doc/images/sample.png" width="70%">
 
-A good place to see the available controls: TODO (link to demo).
+A good place to see the available controls: [demo](http://bilus.github.io/reforms/examples/controls/index.html).
 
 ## Usage
 
@@ -108,7 +108,7 @@ To change the orientation use `with-options`:
 
 ![Horizontal orientation](https://github.com/bilus/reforms/blob/master/doc/images/hello-world-horizontal.png)
 
-#### Wrapping in panel
+#### Wrapping in a panel
 
 To wrap the form in a panel use `panel`:
 
@@ -142,9 +142,9 @@ Click!
 
 ![Vertical orientation](https://github.com/bilus/reforms/blob/master/doc/images/hello-world-buttons-ver.png)
 
-The complete example: [here](https://github.com/bilus/reforms/blob/master/examples/hello_world/src/hello_world.cljs).
+The complete example: [here](https://github.com/bilus/reforms/blob/master/examples/hello_world/src/hello_world.cljs) [demo](http://bilus.github.io/reforms/examples/hello_world/index.html).
 
-For the list of available controls, see reference: TODO
+For the list of available controls, see the [API Reference](http://bilus.github.com/reforms/doc/).
 
 ### Validation
 
@@ -217,9 +217,9 @@ To satisfy your curiosity, here are the contents of `ui-state`:
                      {:korks #{[:password2]}, :error-message "Re-enter password"}]}
 ```
 
-A slightly richer example: [here](https://github.com/bilus/reforms/blob/master/examples/validation/src/validation.cljs).
+A slightly richer example: [here](https://github.com/bilus/reforms/blob/master/examples/validation/src/validation.cljs) ([demo](http://bilus.github.io/reforms/examples/validation/index.html)).
 
-For the list of available validators, see the reference. TODO
+For the list of available validators, see the [API Reference](http://bilus.github.com/reforms/doc/).
 
 #### Custom validators
 #### Custom error
@@ -243,16 +243,27 @@ For the list of available validators, see the reference. TODO
 #### Can I use built-in Bootstrap icons instead of Font Awesome?
 #### How do I use different column widths for horizontal forms
 
-### Further reading
-#### Examples
-#### Reference
+### Demos
 
-Report problems... TODO
+
+- Hello world [source](https://github.com/bilus/reforms/tree/master/examples/hello_world) [demo](http://bilus.github.io/reforms/examples/hello_world/index.html)
+
+- Dynamic form with customizations [source](https://github.com/bilus/reforms/tree/master/examples/simple) [demo](http://bilus.github.io/reforms/examples/simple/index.html)
+
+- Available controls [source](https://github.com/bilus/reforms/tree/master/examples/controls) [demo](http://bilus.github.io/reforms/examples/controls/index.html)
+
+- Supported [source](https://github.com/bilus/reforms/tree/master/examples/validation) [demo](http://bilus.github.io/reforms/examples/validation/index.html)
+
+
+#### Documentation
+
+- [API Reference](http://bilus.github.io/reforms/doc/)
+
+
+Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail dot com.
 
 ### TBD
 
-- Host docs and examples on github pages.
-- Link to demos.
 - Finish Readme without tables.
 - Add TOC.
 - Publish.
@@ -264,6 +275,7 @@ Report problems... TODO
 - Add tabs. Update 'controls' example.
 - Add wizard. Update 'controls' example.
 - Port tests.
+- Fix deploy_pages.sh failing to publish changes to index.html's for examples and doc/images/*.   
 - Fix Each child in an array should have a unique "key" prop. Check the renderComponent call using <undefined>. See http://fb.me/react-warning-keys for more information.
 - Fix Warning: Use the `defaultValue` or `value` props instead of setting children on <textarea>.
 - Fix with-option is apparently not working around om/root and/or build/outside component.
