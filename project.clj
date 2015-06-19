@@ -19,6 +19,14 @@
                             "examples/controls/out"
                             "target/"]
 
+            :codox {:language :clojurescript
+                    :include [om-forms.core om-forms.validation]
+                    :src-dir-uri "http://github.com/bilus/om-forms/blob/master/"
+                    :src-linenum-anchor-prefix "L"
+                    :defaults {:doc/format :markdown}}
+            :profiles {:doc {:dependencies [[org.clojure/clojurescript "0.0-2985"]]}}
+            :aliases {"doc" ["with-profile" "doc" "doc"]}
+
             :cljsbuild {:builds {:hello-world
                                  {:source-paths ["examples/shared/" "examples/hello_world/src" "src"]
                                   :compiler     {:output-to     "examples/hello_world/out/main.js"

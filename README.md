@@ -259,8 +259,14 @@ For the list of available validators, see the reference. TODO
 - Reference.
 - Add set-options! and put with-options in context explaining its limitations.
 - Link to demos.
-- Finish Readme.
-- Table. Namespace. Attrs. Example. Add to 'controls' example.
+- Finish Readme without tables.
+- Remove table.
+- Rename to reform. Update :html5-docs-repository-url 
+- Publish.
+
+- Proof-of-concept reagent sample.
+
+- Add table. Namespace. Optional attrs. Example. Add to 'controls' example.
 - Add tabs. Update 'controls' example.
 - Add wizard. Update 'controls' example.
 - Port tests.
@@ -273,7 +279,9 @@ Report problems...
 
 ## License
 
-Copyright © 2015 Designed.ly
+Copyright © 2015 Designed.ly, Marcin Bilski
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+The use and distribution terms for this software are covered by the
+Eclipse Public License which can be found in the file LICENSE at the root of this distribution.
+By using this software in any fashion, you are agreeing to be bound by the terms of this license.
+You must not remove this notice, or any other, from this software.

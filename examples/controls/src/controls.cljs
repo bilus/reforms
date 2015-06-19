@@ -24,7 +24,7 @@
                          (f/password "Password" "A placeholder" data [:password])
                          (f/textarea {:rows 8} "Textarea" "A placeholder" data [:textarea])
                          (f/select "Select" data [:select]
-                                   [[:option1 "Option 1"] [:option2 "Option 2"] [:option3 "Option 3"] [:option2 "Option 3"]])
+                                   [[:option1 "Option 1"] [:option2 "Option 2"] [:option3 "Option 3"] [:option4 "Option 4"]])
                          (f/button "Button" #(js/alert "Click"))
                          (f/button-primary "Primary button" #(js/alert "Click"))
                          (f/button-default "Default button" #(js/alert "Click"))
