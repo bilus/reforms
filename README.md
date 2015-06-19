@@ -12,16 +12,6 @@ A good place to see the available controls: [demo](http://bilus.github.io/reform
 
 [API Reference](http://bilus.github.io/reforms/doc/)
 
-## [Usage](#usage)
-### [Getting started](#getting-started)
-### [Quick tutorial](#quick-tutorial)
-### [Prettying it up](#prettying-it-up)
-### [Validation](#validation)
-### Customization
-### Demos
-### FAQ
-
-
 ## Usage
 
 ### Getting started
