@@ -1,5 +1,6 @@
 (ns examples.controls
   (:require [reforms.core :as f :include-macros true]
+            [reforms.binding.om]
             [om.core :include-macros true :as om]
             [sablono.core :refer-macros [html]]
             [examples.shared.utils :refer [inspector-view]]))

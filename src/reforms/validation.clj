@@ -36,7 +36,7 @@
   [cursor & args]
   (let [[attrs [& elems]] (parse-args args)]
     `(do
-       (assert (om.core/cursor? ~cursor) "The first argument to reforms.validation/form before optional attributes must be a cursor.")
+       (assert (reforms.binding.core/valid? ~cursor) "The first argument to reforms.validation/form before optional attributes must be a valid binding target.")
        (reforms.core/form
          ~attrs
          (reforms.validation/validating-fields

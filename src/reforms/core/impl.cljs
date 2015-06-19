@@ -5,14 +5,12 @@
 ;  You must not remove this notice, or any other, from this software.
 
 (ns reforms.core.impl
-  (:require [om.core :as om :include-macros true]
+  (:require [reforms.binding.core :as binding]
             [reforms.core.options :refer [get-options]]
             [clojure.string :as str]
             [clojure.set :as set])
   (:refer-clojure :exclude [time])
   (:import [goog.ui IdGenerator]))
-
-
 
 (declare spinner feedback-icon)
 
@@ -24,7 +22,7 @@
   ([path]
    (str/join "-" (map name path)))
   ([cursor korks]
-   (gen-dom-id (concat (om/path cursor) korks)))
+   (gen-dom-id (concat (binding/path cursor) korks)))
   ([]
    (.getNextUniqueId (.getInstance IdGenerator))))
 
@@ -157,7 +155,7 @@
   [tag attrs label cursor korks {:keys [valid? validation-error-fn in-progress warn-fn help inline large]} & inner]
   (let [dom-id (gen-dom-id cursor korks)
         valid (or (nil? valid?) (valid? korks))
-        warning (and warn-fn (warn-fn (get-in cursor korks)))]
+        warning (and warn-fn (warn-fn (binding/get-in cursor korks)))]
     (labeled-control
       inline (str/join " " [(when (or warning in-progress) "has-feedback")
                             (when-not valid "has-error")
@@ -183,8 +181,8 @@
                                   :id          dom-id
                                   :placeholder placeholder}
                                  attrs
-                                 {:on-input #(om/update! cursor korks (.. % -target -value))
-                                  :value    (get-in cursor korks)})]
+                                 {:on-input #(binding/reset! cursor korks (.. % -target -value))
+                                  :value    (binding/get-in cursor korks)})]
     (input* :input input-attrs label cursor korks opts)))
 
 (defn spinner

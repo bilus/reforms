@@ -1,11 +1,12 @@
-(defproject reforms "0.2.0"
+(defproject reforms "0.3.0-SNAPSHOT"
             :description "Form helpers for Om."
             :url "http://bilus.github.io/reforms/"
             :license {:name "Eclipse Public License"
                       :url  "http://www.eclipse.org/legal/epl-v10.html"}
             :dependencies [[org.clojure/clojure "1.7.0-RC1"]
                            [org.clojure/clojurescript "0.0-3308"]
-                           [org.omcljs/om "0.8.8"]
+                           [org.omcljs/om "0.8.8" :scope "provided"]
+                           [reagent "0.5.0" :scope "provided"]
                            [sablono "0.3.4"]]
             :jar-exclusions [#"\.cljx|\.swp|\.swo|\.DS_Store"]
             :auto-clean false
@@ -18,6 +19,7 @@
                             "examples/simple/out"
                             "examples/progress/out"
                             "examples/validation/out"
+                            "examples/reagent/out"
                             "target/"]
 
             :codox {:language                  :clojurescript
@@ -59,6 +61,12 @@
                                  {:source-paths ["examples/shared/" "examples/validation/src" "src"]
                                   :compiler     {:output-to     "examples/validation/out/main.js"
                                                  :output-dir    "examples/validation/out"
+                                                 :source-map    true
+                                                 :optimizations :none}}
+                                 :reagent
+                                 {:source-paths ["examples/shared/" "examples/reagent/src" "src"]
+                                  :compiler     {:output-to     "examples/reagent/out/main.js"
+                                                 :output-dir    "examples/reagent/out"
                                                  :source-map    true
                                                  :optimizations :none}}}})
 

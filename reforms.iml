@@ -15,8 +15,11 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/examples/progress/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/examples/reagent/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/examples/controls/out" />
       <excludeFolder url="file://$MODULE_DIR$/examples/hello_world/out" />
+      <excludeFolder url="file://$MODULE_DIR$/examples/progress/out" />
+      <excludeFolder url="file://$MODULE_DIR$/examples/reagent/out" />
       <excludeFolder url="file://$MODULE_DIR$/examples/simple/out" />
       <excludeFolder url="file://$MODULE_DIR$/examples/validation/out" />
       <excludeFolder url="file://$MODULE_DIR$/target" />

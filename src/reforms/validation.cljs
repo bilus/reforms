@@ -7,7 +7,7 @@
 (ns reforms.validation
   "Validation functionality."
   (:require [reforms.core :as f]
-            [om.core :as om :include-macros true]
+            [reforms.binding.core :as binding]
             [clojure.string :as str])
   (:refer-clojure :exclude [time]))
 
@@ -123,8 +123,8 @@
        (equal [:user :password1] [:user :password2] \"Passwords do not match\"]"
   [korks1 korks2 error-message]
   (fn [cursor]
-    (let [lhs (or (get-in cursor korks1) "")
-          rhs (or (get-in cursor korks2) "")]
+    (let [lhs (or (binding/get-in cursor korks1) "")
+          rhs (or (binding/get-in cursor korks2) "")]
       (when-not (= lhs rhs)
         (validation-error [korks2]                          ; Show error only next to the second control.
                           error-message)))))
@@ -137,7 +137,7 @@
       (present [:user :login] \"Enter the login\"]"
   [korks error-message]
   (fn [cursor]
-    (let [x (get-in cursor korks)]
+    (let [x (binding/get-in cursor korks)]
       (when-not (present? x)
         (validation-error [korks] error-message)))))
 
@@ -149,7 +149,7 @@
       (matches [:user :email] #\"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$\" \"Invalid email address\"]"
   [korks re error-message]
   (fn [cursor]
-    (let [x (get-in cursor korks)]
+    (let [x (binding/get-in cursor korks)]
       (when-not (re-matches re x)
         (validation-error [korks] error-message)))))
 
@@ -161,7 +161,7 @@
      (is-true [:user :email] #(nil? (find-by-email %)) \"Email already exists\"]"
   [korks f error-message]
   (fn [cursor]
-    (when-not (f (get-in cursor korks))
+    (when-not (f (binding/get-in cursor korks))
       (validation-error [korks] error-message))))
 
 (defn force-error
@@ -198,14 +198,14 @@
    - ui-state-cursor - this is where validation result will be stored
    - validators      - a seq of validators"
   [cursor ui-state-cursor & validators]
-  (let [validation-errors (apply validate @cursor validators)]
-    (om/update! ui-state-cursor [:validation-errors] validation-errors)
+  (let [validation-errors (apply validate (binding/deref cursor) validators)]
+    (binding/reset! ui-state-cursor [:validation-errors] validation-errors)
     (valid? validation-errors)))
 
 (defn validation-errors
   "Returns validation errors saved by [[validate!]] into ui-state-cursor."
   [ui-state-cursor]
-  (get-in ui-state-cursor [:validation-errors]))
+  (binding/get-in ui-state-cursor [:validation-errors]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Form helpers

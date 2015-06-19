@@ -1,5 +1,6 @@
 (ns examples.progress
   (:require [reforms.core :as f :include-macros true]
+            [reforms.binding.om]
             [om.core :include-macros true :as om]
             [examples.shared.utils :as utils]
             [sablono.core :refer-macros [html]]

@@ -1,6 +1,7 @@
 (ns examples.validation
   (:require [reforms.core :as f :include-macros true]
             [reforms.validation :as v :include-macros true]
+            [reforms.binding.om]
             [om.core :as om]
             [sablono.core :refer-macros [html]]
             [clojure.string :as str]

@@ -6,7 +6,7 @@
 
 (ns reforms.core
   "Core controls and helpers."
-  (:require [om.core :as om :include-macros true]
+  (:require [reforms.binding.core :as binding]
             [reforms.core.impl :as impl]
             [reforms.core.options :as options])
   (:refer-clojure :exclude [time]))
@@ -246,8 +246,8 @@
          [:label
           [:input
            (impl/merge-attrs {:on-change #(do
-                                           (om/update! cursor korks (.. % -target -checked)))
-                              :checked   (get-in cursor korks)
+                                           (binding/reset! cursor korks (.. % -target -checked)))
+                              :checked   (binding/get-in cursor korks)
                               :type      "checkbox"
                               :id        dom-id}
                              attrs
@@ -280,8 +280,8 @@
          [:label
           [:input
            (impl/merge-attrs {:on-change #(when (.. % -target -checked)
-                                           (om/update! cursor korks value))
-                              :checked   (= value (get-in cursor korks))
+                                           (binding/reset! cursor korks value))
+                              :checked   (= value (binding/get-in cursor korks))
                               :type      "radio"
                               :id        dom-id
                               :name      dom-id
@@ -318,8 +318,8 @@
                                           :id          dom-id
                                           :placeholder placeholder}
                                          attrs
-                                         {:on-input #(om/update! cursor korks (.. % -target -value))})]
-    (impl/input* :textarea textarea-attrs label cursor korks opts (or (get-in cursor korks) ""))))
+                                         {:on-input #(binding/reset! cursor korks (.. % -target -value))})]
+    (impl/input* :textarea textarea-attrs label cursor korks opts (or (binding/get-in cursor korks) ""))))
 
 
 (defn select
@@ -346,12 +346,12 @@
   [& args]
   (let [[attrs [label cursor korks options & {:keys [on-change] :as opts}]] (impl/resolve-args [:select] {:class "form-control"} args)
         dom-id (impl/gen-dom-id cursor korks)
-        selected-val (get-in cursor korks)
+        selected-val (binding/get-in cursor korks)
         input-attrs (impl/merge-attrs {} attrs {:value     (str selected-val)
                                                 :on-change (fn [dom-event]
-                                                             (om/update! cursor
-                                                                         korks
-                                                                         (impl/unstr-option (.. dom-event -target -value) options))
+                                                             (binding/reset! cursor
+                                                                             korks
+                                                                             (impl/unstr-option (.. dom-event -target -value) options))
                                                              (when on-change
                                                                (on-change)))
                                                 :id        dom-id})]
