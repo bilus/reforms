@@ -1,6 +1,6 @@
 # Reforms
 
-A Clojurescript library that lets you build beautiful forms with [Om](https://github.com/omcljs/om) and [Bootstrap 3](http://getbootstrap.com/) and (optionally) [Font Awesome](http://fortawesome.github.io/Font-Awesome/).  
+A Clojurescript library that lets you build beautiful data-binding forms with [Om](https://github.com/omcljs/om) and [Bootstrap 3](http://getbootstrap.com/) and (optionally) [Font Awesome](http://fortawesome.github.io/Font-Awesome/).  
 
 It focuses on helping you quickly build forms rather than supporting every Bootstrap feature. If you think something useful is missing though, please let me know.   
 
