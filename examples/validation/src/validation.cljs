@@ -7,7 +7,7 @@
             [examples.shared.utils :refer [inspector-view]]))
 
 (def app-state (atom {:customers []
-                      :customer  {}
+                      :customer  {:city "New York"}
                       :ui-state  {}}))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -44,6 +44,13 @@
   (when (apply v/validate! customer ui-state customer-validators)
     (om/transact! customers (fn [xs] (conj xs @customer)))))
 
+(defn force-error!
+  [customer ui-state]
+  (v/validate!
+    customer
+    ui-state
+    (v/force-error [:server-error] "An error has occurred")))
+
 (defn signup-form-view
   [[customers customer ui-state] _owner]
   (reify
@@ -57,14 +64,18 @@
              :label-column-class "col-md-4"
              :input-column-class "col-md-8"}
             (v/form ui-state
+                    {:on-submit #(sign-up! customers customer ui-state)}
                     (v/text "First name" "Enter first name" customer [:first])
                     (v/text "Last name" "Enter last name" customer [:last])
+                    (v/text "City" "Where are you?" customer [:city] :warn-fn #(when-not (= "Kansas" %) "We're not in Kansas anymore"))
                     (v/number "Age" "Enter your age" customer [:age])
                     (v/text "Login" "Choose login" customer [:login])
                     (v/password "Password" "Enter password" customer [:password1])
                     (v/password "Confirm password" "Re-enter password" customer [:password2])
+                    (v/error-alert [:server-error])
                     (f/form-buttons
-                      (f/button-primary "Save" #(sign-up! customers customer ui-state))))))))))
+                      (f/button-primary "Save" #(sign-up! customers customer ui-state))
+                      (f/button-default "Simulate server error" #(force-error! customer ui-state))))))))))
 
 (defn customer-list-view
   [customers _owner]
