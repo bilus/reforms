@@ -12,13 +12,14 @@
       (f/with-options {:form {:horizontal (:orientation-horizontal data)}}
                       (f/panel
                         "Hello, world"
+
                         (f/form
-                          {:on-submit #(js/alert "Submitted")}
                           (f/text "Your name" "Type your name here" data [:name])
                           (f/form-buttons
                             (f/button-primary "Submit" #(js/alert (:name @data)))
-                            (f/button-default "Cancel" #(js/alert "Cancel!")))
-                          (f/checkbox "Horizontal form" data [:orientation-horizontal])))))))
+                            (f/button-default "Cancel" #(js/alert "Cancel!"))))
+
+                        )))))
 
 (defn main-view
   [app-state _owner]
