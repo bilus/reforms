@@ -14,18 +14,22 @@
             :plugins [[lein-cljsbuild "1.0.6"]]
 
             :clean-targets ["examples/hello_world/out"
-                            "examples/simple/out"
-                            "examples/validation/out"
                             "examples/controls/out"
+                            "examples/simple/out"
+                            "examples/progress/out"
+                            "examples/validation/out"
                             "target/"]
 
-            :codox {:language :clojurescript
-                    :include [reforms.core reforms.core.options reforms.validation]
-                    :src-dir-uri "http://github.com/bilus/reform/blob/master/"
+            :codox {:language                  :clojurescript
+                    :include                   [reforms.core reforms.core.options reforms.validation]
+                    :src-dir-uri               "http://github.com/bilus/reform/blob/master/"
                     :src-linenum-anchor-prefix "L"
-                    :defaults {:doc/format :markdown}}
-            :profiles {:doc {:dependencies [[org.clojure/clojurescript "0.0-2985"]]}}
-            :aliases {"doc" ["with-profile" "doc" "doc"]}
+                    :defaults                  {:doc/format :markdown}}
+            :profiles {:doc {:dependencies [[org.clojure/clojurescript "0.0-2985"]]}
+                       :dev {:dependencies [[org.clojure/core.async "0.1.346.0-17112a-alpha"]]}}
+
+            :aliases {"doc"       ["with-profile" "doc" "doc"]
+                      "cljsbuild" ["with-profile" "dev" "cljsbuild"]}
 
             :cljsbuild {:builds {:hello-world
                                  {:source-paths ["examples/shared/" "examples/hello_world/src" "src"]
@@ -43,6 +47,12 @@
                                  {:source-paths ["examples/shared/" "examples/simple/src" "src"]
                                   :compiler     {:output-to     "examples/simple/out/main.js"
                                                  :output-dir    "examples/simple/out"
+                                                 :source-map    true
+                                                 :optimizations :none}}
+                                 :progress
+                                 {:source-paths ["examples/shared/" "examples/progress/src" "src"]
+                                  :compiler     {:output-to     "examples/progress/out/main.js"
+                                                 :output-dir    "examples/progress/out"
                                                  :source-map    true
                                                  :optimizations :none}}
                                  :validation
