@@ -10,6 +10,18 @@ The code has been extracted from a 'real' project and though it should be comple
 
 A good place to see the available controls: [demo](http://bilus.github.io/reforms/examples/controls/index.html).
 
+[API Reference](http://bilus.github.io/reforms/doc/)
+
+## [Usage](#usage)
+### [Getting started](#getting-started)
+### [Quick tutorial](#quick-tutorial)
+### [Prettying it up](#prettying-it-up)
+### [Validation](#validation)
+### Customization
+### Demos
+### FAQ
+
+
 ## Usage
 
 ### Getting started
@@ -225,15 +237,18 @@ For the list of available validators, see the [API Reference](http://bilus.githu
 #### Custom error
 #### Showing warnings
 
-### Tables
-#### Basic table
-#### Column names
-#### Checkboxes
-
 ### Customization
 #### Inline controls
 #### Configuration via `with-options`
 #### Element attributes
+
+
+### Demos
+
+- Hello world [source](https://github.com/bilus/reforms/tree/master/examples/hello_world) [demo](http://bilus.github.io/reforms/examples/hello_world/index.html)
+- Dynamic form with customizations [source](https://github.com/bilus/reforms/tree/master/examples/simple) [demo](http://bilus.github.io/reforms/examples/simple/index.html)
+- Available controls [source](https://github.com/bilus/reforms/tree/master/examples/controls) [demo](http://bilus.github.io/reforms/examples/controls/index.html)
+- Supported [source](https://github.com/bilus/reforms/tree/master/examples/validation) [demo](http://bilus.github.io/reforms/examples/validation/index.html)
 
 ### FAQ
 #### How do I submit the form when the user presses ENTER?
@@ -243,21 +258,8 @@ For the list of available validators, see the [API Reference](http://bilus.githu
 #### Can I use built-in Bootstrap icons instead of Font Awesome?
 #### How do I use different column widths for horizontal forms
 
-### Demos
 
-
-- Hello world [source](https://github.com/bilus/reforms/tree/master/examples/hello_world) [demo](http://bilus.github.io/reforms/examples/hello_world/index.html)
-
-- Dynamic form with customizations [source](https://github.com/bilus/reforms/tree/master/examples/simple) [demo](http://bilus.github.io/reforms/examples/simple/index.html)
-
-- Available controls [source](https://github.com/bilus/reforms/tree/master/examples/controls) [demo](http://bilus.github.io/reforms/examples/controls/index.html)
-
-- Supported [source](https://github.com/bilus/reforms/tree/master/examples/validation) [demo](http://bilus.github.io/reforms/examples/validation/index.html)
-
-
-#### Documentation
-
-- [API Reference](http://bilus.github.io/reforms/doc/)
+### [API Reference](http://bilus.github.io/reforms/doc/)
 
 
 Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail dot com.
@@ -281,7 +283,7 @@ Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail
 - Fix with-option is apparently not working around om/root and/or build/outside component.
 - (?) FIX group-title alignment for horizontal form.
 
-## License
+### License
 
 Copyright © 2015 Designed.ly, Marcin Bilski
 
