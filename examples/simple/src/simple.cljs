@@ -78,11 +78,11 @@
 ;; Styling the form using global configuration options. Probably not such a good idea but good for the demo.
 (f/set-options!
   {:form        {:horizontal true
-                 :attrs      {:style {:border            "1px solid #BBB"
-                                      :border-radius     "5px"
+                 :attrs      {:style {:border           "1px solid #BBB"
+                                      :border-radius    "5px"
                                       :background-color "#EFEFEF"
-                                      :padding           "10px 20px"}}}
-   :group-title {:tag :h3
+                                      :padding          "10px 20px"}}}
+   :group-title {:tag   :h3
                  :attrs {:style {:color "#666"}}}})
 
 (om/root
