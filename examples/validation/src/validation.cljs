@@ -10,9 +10,30 @@
                       :customer  {}
                       :ui-state  {}}))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; 
+;;; Custom validator
+
+(defn positive-number?
+  [s]
+  (pos? (js/parseInt s)))
+
+;(defn positive-number
+;  [korks error-message]                                       ;; 1
+;  (fn [cursor]                                                ;; 2
+;    (when-not (positive-number? (get-in cursor korks))        ;; 3
+;      (v/validation-error [korks] error-message))))           ;; 4
+
+(defn positive-number
+  [korks error-message]
+  (v/is-true korks positive-number? error-message))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (def customer-validators
   [(v/present [:first] "Enter first name")
    (v/present [:last] "Enter last name")
+   (positive-number [:age] "Age must be a positive number")
    (v/present [:login] "Enter login name")
    (v/equal [:password1] [:password2] "Passwords do not match")
    (v/present [:password1] "Choose password")
@@ -38,6 +59,7 @@
             (v/form ui-state
                     (v/text "First name" "Enter first name" customer [:first])
                     (v/text "Last name" "Enter last name" customer [:last])
+                    (v/number "Age" "Enter your age" customer [:age])
                     (v/text "Login" "Choose login" customer [:login])
                     (v/password "Password" "Enter password" customer [:password1])
                     (v/password "Confirm password" "Re-enter password" customer [:password2])

@@ -260,7 +260,48 @@ A slightly richer example: [here](https://github.com/bilus/reforms/blob/master/e
 For the list of available validators, see the [API Reference](http://bilus.github.com/reforms/doc/).
 
 #### Custom validators
+
+A validator is a function that returns a lambda that takes some data and returns `nil` or a validation error. Let's create a custom validation that checks if data is a positive number:
+  
+```clojure
+(defn positive-number?
+  [s]
+  (pos? (js/parseInt s)))
+
+(defn positive-number
+  [korks error-message]                                       ;; 1
+  (fn [cursor]                                                ;; 2
+    (when-not (positive-number? (get-in cursor korks))        ;; 3
+      (v/validation-error [korks] error-message))))           ;; 4
+```
+
+1. The arguments here are up to you. In this example we pass `korks` pointing to data we want to validate and the error message. This is a typical pattern.
+2. The actual function our validator returns takes `cursor`.
+3. Check if it's a positive number.
+4. Build and return an error if it's not.
+
+While we're at it, we could make it more readable with the built-in `is-true` validator:
+
+```clojure
+
+(defn positive-number
+  [korks error-message]
+  (v/is-true korks positive-number? error-message))
+```
+
+Either way, you can use your brand new validators like a pro:
+
+```clojure
+(validate! 
+    data
+    ui-state
+    (positive-number [:age] "Age must be a positive number"))
+```
+
 #### Custom error
+
+### Composing validators
+
 #### Showing warnings
 
 ### Customization
@@ -293,7 +334,6 @@ Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail
 ### TBD
 
 - Finish Readme without tables.
-- Add TOC.
 - Publish.
 
 - Add support for reagent.
