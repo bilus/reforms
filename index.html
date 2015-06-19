@@ -53,14 +53,16 @@
 
 <div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">link</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css<span class="pl-pds">"</span></span> <span class="pl-e">rel</span>=<span class="pl-s"><span class="pl-pds">"</span>stylesheet<span class="pl-pds">"</span></span>&gt;</pre></div>
 
-<p>Create your first form:</p>
+<p>The interesting functions live in <code>reforms.core</code> and <code>reforms.validation</code>.</p>
 
-<div class="highlight highlight-clojure"><pre>(<span class="pl-en">f/form</span>
-  (<span class="pl-en">f/text</span> <span class="pl-s"><span class="pl-pds">"</span>Your name<span class="pl-pds">"</span></span> <span class="pl-s"><span class="pl-pds">"</span>Type your name here<span class="pl-pds">"</span></span> data [<span class="pl-c1">:name</span>])
-  (<span class="pl-en">f/form-buttons</span>
-    (<span class="pl-en">f/button</span> <span class="pl-s"><span class="pl-pds">"</span>Submit<span class="pl-pds">"</span></span> #(<span class="pl-en">js/alert</span> (<span class="pl-c1">:name</span> @data)))))</pre></div>
+<p>Creating a form is a snap:</p>
 
-<p>It's all pure data to be compiled with <a href="https://github.com/r0man/sablono">sablono</a>:</p>
+<div class="highlight highlight-clojure"><pre>(<span class="pl-en">form</span>
+  (<span class="pl-en">text</span> <span class="pl-s"><span class="pl-pds">"</span>Your name<span class="pl-pds">"</span></span> <span class="pl-s"><span class="pl-pds">"</span>Type your name here<span class="pl-pds">"</span></span> data [<span class="pl-c1">:name</span>])
+  (<span class="pl-en">form-buttons</span>
+    (<span class="pl-en">button</span> {<span class="pl-c1">:class</span> <span class="pl-s"><span class="pl-pds">"</span>foo<span class="pl-pds">"</span></span>} <span class="pl-s"><span class="pl-pds">"</span>Submit<span class="pl-pds">"</span></span> #(<span class="pl-en">js/alert</span> (<span class="pl-c1">:name</span> @data)))))</pre></div>
+
+<p>It's all pure data to be compiled with <a href="https://github.com/r0man/sablono">sablono</a>. Here's output from the function above (slightly simplified for clarity):</p>
 
 <div class="highlight highlight-clojure"><pre>[<span class="pl-c1">:form</span> [<span class="pl-c1">:div</span> {<span class="pl-c1">:class</span> <span class="pl-s"><span class="pl-pds">"</span>form-group<span class="pl-pds">"</span></span>
               <span class="pl-c1">:key</span> <span class="pl-s"><span class="pl-pds">"</span>data-name<span class="pl-pds">"</span></span>}
@@ -73,23 +75,33 @@
                  <span class="pl-c1">:placeholder</span> <span class="pl-s"><span class="pl-pds">"</span>Type your name here<span class="pl-pds">"</span></span>}]]
  [<span class="pl-c1">:div.form-group.form-buttons</span>
   [<span class="pl-c1">:button</span> {<span class="pl-c1">:type</span> <span class="pl-s"><span class="pl-pds">"</span>button<span class="pl-pds">"</span></span>
-            <span class="pl-c1">:class</span> <span class="pl-s"><span class="pl-pds">"</span>btn btn-primary<span class="pl-pds">"</span></span>
+            <span class="pl-c1">:class</span> <span class="pl-s"><span class="pl-pds">"</span>btn btn-primary foo<span class="pl-pds">"</span></span>
             <span class="pl-c1">:onClick</span> #(<span class="pl-en">js/alert</span> (<span class="pl-c1">:name</span> @data))} <span class="pl-s"><span class="pl-pds">"</span>Submit<span class="pl-pds">"</span></span>]]]</pre></div>
 
-<p>Good places to start: <a href="https://github.com/bilus/reforms/blob/master/README.md">Readme</a> <a href="http://bilus.github.io/reforms/doc/">API Reference</a></p>
+<p>Generate React node using sablono:</p>
 
-<p>Examples:</p>
+<div class="highlight highlight-clojure"><pre>(<span class="pl-en">sablono.core/html</span> (<span class="pl-en">form</span> ...))</pre></div>
 
-<ul>
-<li>Hello world <a href="https://github.com/bilus/reforms/tree/master/examples/hello_world">source</a> <a href="https://github.com/bilus/reforms/examples/hello_world/index.html">demo</a>
-</li>
-<li>Dynamic form with customizations <a href="https://github.com/bilus/reforms/tree/master/examples/simple">source</a> <a href="https://github.com/bilus/reforms/examples/simple/index.html">demo</a>
-</li>
-<li>Available controls <a href="https://github.com/bilus/reforms/tree/master/examples/controls">source</a> <a href="https://github.com/bilus/reforms/examples/controls/index.html">demo</a>
-</li>
-<li>Validation <a href="https://github.com/bilus/reforms/tree/master/examples/validation">source</a> <a href="https://github.com/bilus/reforms/examples/validation/index.html">demo</a>
-</li>
-</ul>
+<h4>
+<a id="documentation" class="anchor" href="#documentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Documentation</h4>
+
+<p><a href="https://github.com/bilus/reforms/blob/master/README.md">Tutorial</a> </p>
+
+<p><a href="http://bilus.github.io/reforms/doc/">API Reference</a></p>
+
+<h4>
+<a id="demos" class="anchor" href="#demos" aria-hidden="true"><span class="octicon octicon-link"></span></a>Demos</h4>
+
+<p>Hello world <a href="https://github.com/bilus/reforms/tree/master/examples/hello_world">source</a> <a href="https://github.com/bilus/reforms/examples/hello_world/index.html">demo</a></p>
+
+<p>Dynamic form with customizations <a href="https://github.com/bilus/reforms/tree/master/examples/simple">source</a> <a href="https://github.com/bilus/reforms/examples/simple/index.html">demo</a></p>
+
+<p>Available controls <a href="https://github.com/bilus/reforms/tree/master/examples/controls">source</a> <a href="https://github.com/bilus/reforms/examples/controls/index.html">demo</a></p>
+
+<p>Validation <a href="https://github.com/bilus/reforms/tree/master/examples/validation">source</a> <a href="https://github.com/bilus/reforms/examples/validation/index.html">demo</a></p>
+
+<h4>
+<a id="contact" class="anchor" href="#contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contact</h4>
 
 <p>Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail dot com.</p>
         </section>
