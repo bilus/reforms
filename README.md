@@ -12,6 +12,38 @@ A good place to see the available controls: [demo](http://bilus.github.io/reform
 
 [API Reference](http://bilus.github.io/reforms/doc/)
 
+**Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
+
+- [Reforms](#)
+	- [Usage](#)
+		- [Getting started](#)
+		- [Quick tutorial](#)
+			- [Hello, world!](#)
+			- [Data binding](#)
+		- [Prettying it up](#)
+			- [Changing orientation](#)
+			- [Wrapping in a panel](#)
+			- [Button types](#)
+		- [Validation](#)
+			- [Basics](#)
+			- [Custom validators](#)
+			- [Custom error](#)
+			- [Showing warnings](#)
+		- [Customization](#)
+			- [Inline controls](#)
+			- [Configuration via with-options](#)
+			- [Element attributes](#)
+		- [Demos](#)
+		- [FAQ](#)
+			- [How do I submit the form when the user presses ENTER?](#)
+			- [How to store validation errors in local state?](#)
+			- [How to save changes to data when user clicks a button?](#)
+			- [How to show an operation is in progress?](#)
+			- [Can I use built-in Bootstrap icons instead of Font Awesome?](#)
+			- [How do I use different column widths for horizontal forms](#)
+		- [API Reference](#)
+		- [TBD](#)
+
 ## Usage
 
 ### Getting started
