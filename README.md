@@ -235,7 +235,7 @@ For the list of available validators, see the reference. TODO
 ### Tables
 #### Basic table
 #### Column names
-#### Row selection
+#### Checkboxes
 
 ### Customization
 #### Inline controls
@@ -254,16 +254,19 @@ For the list of available validators, see the reference. TODO
 #### Examples
 #### Reference
 
+Report problems... TODO
+
 ### TBD
 
-- Reference.
+- Rename to reform. 
 - Add set-options! and put with-options in context explaining its limitations.
+- Host docs and examples on github pages.
 - Link to demos.
 - Finish Readme without tables.
-- Remove table.
-- Rename to reform. Update :html5-docs-repository-url 
+- Add TOC.
 - Publish.
 
+- Add support for reagent.
 - Proof-of-concept reagent sample.
 
 - Add table. Namespace. Optional attrs. Example. Add to 'controls' example.
@@ -274,8 +277,6 @@ For the list of available validators, see the reference. TODO
 - Fix Warning: Use the `defaultValue` or `value` props instead of setting children on <textarea>.
 - Fix with-option is apparently not working around om/root and/or build/outside component.
 - (?) FIX group-title alignment for horizontal form.
-
-Report problems...
 
 ## License
 
