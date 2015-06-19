@@ -11,13 +11,13 @@
             [reforms.core.options :as options])
   (:refer-clojure :exclude [time]))
 
-(def get-option
-  "Return a configuration option.
+(def get-options
+  "Return a configuration option(s).
 
    Arguments:
 
    - ks - key seq"
-  options/get-option)
+  options/get-options)
 
 (def set-options!
   "Sets configuration options by intelligently merging them.
@@ -66,7 +66,7 @@
       [:h3 {:class "panel-title"} title]
       (when close
         [:div {:class "actions pull-right"}
-         [:i {:class   (get-option [:panel :icon-close])
+         [:i {:class   (get-options [:panel :icon-close])
               :onClick close}]])]
      [:div {:class "panel-body"}
       (seq contents)]]))
@@ -104,7 +104,7 @@
    - tag   - (optional) name of the tag to use, e.g. :h4"
   [& args]
   (let [[attrs [title & {:keys [tag]}]] (impl/resolve-args :group-title {:class "group-title"} args)]
-    [(or tag (get-option [:group-title :tag]))
+    [(or tag (get-options [:group-title :tag]))
      attrs
      title]))
 
@@ -124,8 +124,9 @@
    - :valid?               - (optional) if false shows a validation error; internal
    - :validation-error-fn  - (optional) lambda <korks> -> <error message>; internal"
   [type & args]
-  (let [[attrs [label placeholder cursor korks & opts]] (impl/resolve-args type {} args)]
-    (apply impl/html5-input* attrs label placeholder cursor korks (name type) opts)))
+  (let [[attrs [label placeholder cursor korks & opts]] (impl/resolve-args type {} args)
+        attrs' (impl/merge-attrs (get-options [:html5-input :attrs]) attrs {})]
+    (apply impl/html5-input* attrs' label placeholder cursor korks (name type) opts)))
 
 (defn text
   "Text input. See http://getbootstrap.com/css/#inputs

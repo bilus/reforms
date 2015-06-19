@@ -258,7 +258,6 @@ Report problems... TODO
 
 ### TBD
 
-- Document options.
 - Host docs and examples on github pages.
 - Link to demos.
 - Finish Readme without tables.
