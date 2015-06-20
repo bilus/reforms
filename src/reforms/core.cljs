@@ -322,8 +322,9 @@
                                           :id          dom-id
                                           :placeholder placeholder}
                                          attrs
-                                         {:on-change #(binding/reset! cursor korks (.. % -target -value))})]
-    (impl/input* :textarea textarea-attrs label cursor korks opts (or (binding/get-in cursor korks) ""))))
+                                         {:on-change #(binding/reset! cursor korks (.. % -target -value))
+                                          :value     (binding/get-in cursor korks)})]
+    (impl/input* :textarea textarea-attrs label cursor korks opts)))
 
 
 (defn select

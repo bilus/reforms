@@ -418,7 +418,6 @@ Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail
 ### TBD
 
 - Fix Each child in an array should have a unique "key" prop. Check the renderComponent call using <undefined>. See http://fb.me/react-warning-keys for more information.
-- Fix Warning: Use the `defaultValue` or `value` props instead of setting children on <textarea>.
 
 - Create reagent-reforms and om-reforms.
 - Move/copy examples to these projects. Update links.
