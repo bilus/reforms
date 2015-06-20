@@ -181,7 +181,7 @@
                                   :id          dom-id
                                   :placeholder placeholder}
                                  attrs
-                                 {:on-input #(binding/reset! cursor korks (.. % -target -value))
+                                 {:on-change #(binding/reset! cursor korks (.. % -target -value))
                                   :value    (binding/get-in cursor korks)})]
     (input* :input input-attrs label cursor korks opts)))
 

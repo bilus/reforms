@@ -417,6 +417,9 @@ Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail
 
 ### TBD
 
+- Fix Each child in an array should have a unique "key" prop. Check the renderComponent call using <undefined>. See http://fb.me/react-warning-keys for more information.
+- Fix Warning: Use the `defaultValue` or `value` props instead of setting children on <textarea>.
+
 - Create reagent-reforms and om-reforms.
 - Move/copy examples to these projects. Update links.
 - More reagent testing. 
@@ -426,8 +429,6 @@ Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail
 - Create stub Readme describing integration specifics and linking to main readme.
 - Update documentation and home page.
 - Publish
-
-- Fix Each child in an array should have a unique "key" prop. Check the renderComponent call using <undefined>. See http://fb.me/react-warning-keys for more information.
 
 - Contact reagent community asking for feedback.
 - Contact authors of other libraries.
@@ -440,7 +441,6 @@ Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail
 - Add tabs. Update 'controls' example.
 - Add wizard. Update 'controls' example.
 - Port tests.
-- Fix Warning: Use the `defaultValue` or `value` props instead of setting children on <textarea>.
 - Fix with-option is apparently not working around om/root and/or build/outside component.
 - (?) FIX group-title alignment for horizontal form.
 
