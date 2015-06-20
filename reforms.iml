@@ -8,14 +8,14 @@
       <sourceFolder url="file://$MODULE_DIR$/dev-resources" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/examples/controls/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/examples/hello_world/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/examples/progress/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/examples/reagent/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/examples/shared" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/examples/simple/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/examples/validation/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/resources" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/examples/progress/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/examples/reagent/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/examples/controls/out" />
       <excludeFolder url="file://$MODULE_DIR$/examples/hello_world/out" />
       <excludeFolder url="file://$MODULE_DIR$/examples/progress/out" />
@@ -29,8 +29,10 @@
     <orderEntry type="library" name="Leiningen: clojure-complete:0.2.3" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/clojure:1.7.0-RC1" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/clojurescript:0.0-3308" level="project" />
+    <orderEntry type="library" name="Leiningen: org.clojure/core.async:0.1.346.0-17112a-alpha" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/tools.nrepl:0.2.6" level="project" />
-    <orderEntry type="library" name="Leiningen: org.omcljs/om:0.8.8" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Leiningen: org.omcljs/om:0.8.8" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Leiningen: reagent:0.5.0" level="project" />
     <orderEntry type="library" name="Leiningen: sablono:0.3.4" level="project" />
     <orderEntry type="library" name="Leiningen: com.google.javascript/closure-compiler:v20150505" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/data.json:0.2.6" level="project" />
@@ -44,6 +46,12 @@
     <orderEntry type="library" name="Leiningen: com.google.javascript/closure-compiler-externs:v20150505" level="project" />
     <orderEntry type="library" name="Leiningen: com.google.protobuf/protobuf-java:2.5.0" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/google-closure-library-third-party:0.0-20150505-021ed5b3" level="project" />
+    <orderEntry type="library" name="Leiningen: org.clojure/tools.analyzer.jvm:0.1.0-beta12" level="project" />
+    <orderEntry type="library" name="Leiningen: org.clojure/core.memoize:0.5.6" level="project" />
+    <orderEntry type="library" name="Leiningen: org.clojure/tools.analyzer:0.1.0-beta12" level="project" />
+    <orderEntry type="library" name="Leiningen: org.ow2.asm/asm-all:4.1" level="project" />
+    <orderEntry type="library" name="Leiningen: org.clojure/core.cache:0.6.3" level="project" />
+    <orderEntry type="library" name="Leiningen: org.clojure/data.priority-map:0.0.2" level="project" />
     <orderEntry type="library" name="Leiningen: cljsjs/react:0.12.2-5" level="project" />
   </component>
 </module>

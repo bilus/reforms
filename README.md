@@ -417,25 +417,29 @@ Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail
 
 ### TBD
 
-- Test in Proton.
-- Reagent/om detection.
+- Create reagent-reforms and om-reforms.
+- Move/copy examples to these projects. Update links.
 - More reagent testing. 
-- Update documentation and home - reagent.
-- Add reagent examples to Readme and Home.
-- Publish.
+- Create common deploy.sh 
+- Fix deploy_pages.sh failing to publish changes to index.html's for examples.   
+- Home page: show reagent vs om code.
+- Create stub Readme describing integration specifics and linking to main readme.
+- Update documentation and home page.
+- Publish
+
+- Fix Each child in an array should have a unique "key" prop. Check the renderComponent call using <undefined>. See http://fb.me/react-warning-keys for more information.
+
 - Contact reagent community asking for feedback.
 - Contact authors of other libraries.
 - Contact Om maintainers to update home page.
 
-- Binding to local state.
-- Validation errors in local state. Add How can I store validation errors in local state? to FAQ
+- Binding to local state in om-reforms.
+- Validation errors in local state in om-reforms. Add How can I store validation errors in local state? to FAQ
 
 - Add table. Namespace. Example. Add to 'controls' example.
 - Add tabs. Update 'controls' example.
 - Add wizard. Update 'controls' example.
 - Port tests.
-- Fix deploy_pages.sh failing to publish changes to index.html's for examples.   
-- Fix Each child in an array should have a unique "key" prop. Check the renderComponent call using <undefined>. See http://fb.me/react-warning-keys for more information.
 - Fix Warning: Use the `defaultValue` or `value` props instead of setting children on <textarea>.
 - Fix with-option is apparently not working around om/root and/or build/outside component.
 - (?) FIX group-title alignment for horizontal form.

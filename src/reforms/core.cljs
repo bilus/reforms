@@ -11,6 +11,8 @@
             [reforms.core.options :as options])
   (:refer-clojure :exclude [time]))
 
+;(binding/auto-load!)
+
 (def get-options
   "Get configuration option(s) by key. See [[reforms.core.options]].
 

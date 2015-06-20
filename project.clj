@@ -37,8 +37,7 @@
                                  {:source-paths ["examples/shared/" "examples/hello_world/src" "src"]
                                   :compiler     {:output-to     "examples/hello_world/out/main.js"
                                                  :output-dir    "examples/hello_world/out"
-                                                 :source-map    true
-                                                 :optimizations :none}}
+                                                 :optimizations :advanced}}
                                  :controls
                                  {:source-paths ["examples/shared/" "examples/controls/src" "src"]
                                   :compiler     {:output-to     "examples/controls/out/main.js"
