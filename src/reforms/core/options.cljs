@@ -45,7 +45,9 @@
    :html5-input  {:icon-warning "fa fa-warning"}
    :group-title  {:tag :h2}
    :button-group {:align "text-left"}
-   :spinner      {:attrs {:class "fa fa-clock-o fa-spin"}}})
+   :spinner      {:attrs {:class "fa fa-clock-o fa-spin"}}
+   :error-label  {:attrs {:class "error"}}
+   :warning-label  {:attrs {:class "warning"}}})
 
 (defn merge-options
   ([options]

@@ -15,7 +15,7 @@
       <sourceFolder url="file://$MODULE_DIR$/examples/validation/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/resources" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/test" type="java-test-resource" />
       <excludeFolder url="file://$MODULE_DIR$/examples/controls/out" />
       <excludeFolder url="file://$MODULE_DIR$/examples/hello_world/out" />
       <excludeFolder url="file://$MODULE_DIR$/examples/progress/out" />

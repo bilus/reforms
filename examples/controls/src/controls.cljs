@@ -13,7 +13,7 @@
     (html
       (f/with-options {:form {:horizontal false}}
                       [:div
-                       [:h1 "Supported controls"]
+                       [:h1 {:key "h1"} "Supported controls"]
                        (f/panel
                          "Panel"
                          [:div "Contents 1"]

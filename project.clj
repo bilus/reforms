@@ -12,7 +12,8 @@
             :auto-clean false
             :source-paths ["src"]
 
-            :plugins [[lein-cljsbuild "1.0.6"]]
+            :plugins [[lein-cljsbuild "1.0.6"]
+                      [lein-doo "0.1.1-SNAPSHOT"]]
 
             :clean-targets ["examples/hello_world/out"
                             "examples/controls/out"
@@ -68,5 +69,9 @@
                                   :compiler     {:output-to     "examples/reagent/out/main.js"
                                                  :output-dir    "examples/reagent/out"
                                                  :source-map    true
-                                                 :optimizations :none}}}})
+                                                 :optimizations :none}}
+                                 :test {:source-paths ["src" "test"]
+                                        :compiler {:output-to "resources/public/js/testable.js"
+                                                   :main 'reforms.runner
+                                                   :optimizations :whitespace}}}})
 

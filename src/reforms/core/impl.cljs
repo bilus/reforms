@@ -7,99 +7,15 @@
 (ns reforms.core.impl
   (:require [reforms.binding.core :as binding]
             [reforms.core.options :refer [get-options]]
-            [clojure.string :as str]
-            [clojure.set :as set])
+            [reforms.core.react-keys :refer [gen-key]]
+            [clojure.string :as str])
   (:refer-clojure :exclude [time])
   (:import [goog.ui IdGenerator]))
 
 (declare spinner feedback-icon)
 
-(defn form-horizontal?
-  []
-  (get-options [:form :horizontal]))
-
-(defn gen-dom-id
-  ([path]
-   (str/join "-" (map name path)))
-  ([cursor korks]
-   (gen-dom-id (concat (binding/path cursor) korks)))
-  ([]
-   (.getNextUniqueId (.getInstance IdGenerator))))
-
-(defn label-column-class
-  []
-  (when (form-horizontal?)
-    (get-options [:form :label-column-class])))
-
-(defn input-column-class
-  []
-  (when (form-horizontal?)
-    (get-options [:form :input-column-class])))
-
-(defn input-column
-  [& elems]
-  (if (form-horizontal?)
-    [:div {:class (input-column-class)} elems]
-    elems))
-
-(defn unstr-option
-  "Converts an option converted to string to be used in <select> tag back to its
-   representation as in options (it's often a keyword).
-
-   Example:
-
-   (unstr-option \":foo\"
-                [:foo \"foobar\" :foo2 \"zoobar\"]) ;; => :foo"
-  [s options]
-  (let [m (->> options
-               (map (fn str->orig [[k _v]] [(str k) k]))
-               (into {}))]
-    (or (m s) s)))
-
-(defn feedback-icon
-  [class]
-  [:i {:class class}])
-
-(defn simple-checkbox
-  [checked & {:keys [on-click]}]
-  [:input {:onChange #(on-click (.. % -target -checked))
-           :checked  checked
-           :type     "checkbox"}])
-
-(defn all-selected?
-  [selected-values all-values]
-  (set/subset? (into #{} all-values) selected-values))
-
-(defn error-label
-  [error]
-  [:label {:class "error"} error])
-
-(defn warning-label
-  [warning]
-  [:label {:class "warning"} warning])
-
-(defn unlabeled-control
-  [inline & xs]
-  (if inline
-    xs
-    [:div.form-group
-     (list (when (form-horizontal?)
-             [:div {:class (label-column-class)}])
-           (input-column xs))]))
-
-(defn labeled-control
-  [inline form-group-class label dom-id & xs]
-  (if inline
-    (list
-      [:label {:for   dom-id
-               :class "control-label"} label]
-      xs)
-    [:div.form-group {:class form-group-class
-                      :key   dom-id}
-     (list
-       [:label {:for   dom-id
-                :class (str "control-label " (label-column-class))} label]
-       (input-column xs))]))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Argument parsing
 
 (defn extend-attrs
   [attrs extensions]
@@ -151,27 +67,124 @@
   (let [[options rest-args] (split-with (comp keyword? first) (partition-all 2 args))]
     [(apply hash-map (mapcat identity options)) (mapcat identity (or rest-args []))]))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Generic helpers
+
+(defn unstr-option
+  "Converts an option converted to string to be used in <select> tag back to its
+   representation as in options (it's often a keyword).
+
+   Example:
+
+   (unstr-option \":foo\"
+                [:foo \"foobar\" :foo2 \"zoobar\"]) ;; => :foo"
+  [s options]
+  (let [m (->> options
+               (map (fn str->orig [[k _v]] [(str k) k]))
+               (into {}))]
+    (or (m s) s)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Markup helpers
+
+(defn gen-dom-id
+  ([path]
+   (str/join "-" (map name path)))
+  ([cursor korks]
+   (gen-dom-id (concat (binding/path cursor) korks)))
+  ([]
+   (.getNextUniqueId (.getInstance IdGenerator))))
+
+(defn form-horizontal?
+  []
+  (get-options [:form :horizontal]))
+
+(defn label-column-class
+  []
+  (when (form-horizontal?)
+    (get-options [:form :label-column-class])))
+
+(defn input-column-class
+  []
+  (when (form-horizontal?)
+    (get-options [:form :input-column-class])))
+
+(defn input-column
+  [key elems]
+  (if (form-horizontal?)
+    [:div {:class (input-column-class)
+           :key   key}
+     elems]
+    elems))
+
+(defn feedback-icon
+  [& args]
+  (let [[attrs] (resolve-args [:feedback-icon] {} args)]
+    [:i attrs]))
+
+(defn error-label
+  [& args]
+  (let [[attrs [error]] (resolve-args [:error-label] {} args)]
+    [:label attrs error]))
+
+(defn warning-label
+  [& args]
+  (let [[attrs [warning]] (resolve-args [:warning-label] {} args)]
+    [:label attrs warning]))
+
+(defn unlabeled-control
+  [key inline & xs]
+  (if inline
+    xs
+    [:div.form-group
+     {:key (gen-key :form-group key)}
+     (list (when (form-horizontal?)
+             [:div {:class (label-column-class)
+                    :key   (gen-key :label-column key)}])
+           (input-column (gen-key :input-column key) xs))]))
+
+(defn labeled-control
+  [key inline form-group-class label dom-id & xs]
+  (if inline
+    (list
+      [:label {:for   dom-id
+               :class "control-label"
+               :key   (gen-key :control-label key)} label]
+      xs)
+    [:div.form-group {:class form-group-class
+                      :key   (gen-key :form-group key)}
+     (list
+       [:label {:for   dom-id
+                :class (str "control-label " (label-column-class))
+                :key   (gen-key :control-label)} label]
+       (input-column (gen-key :input-column) xs))]))
+
 (defn input*
   [tag attrs label cursor korks {:keys [valid? validation-error-fn in-progress warn-fn help inline large]} & inner]
   (let [dom-id (gen-dom-id cursor korks)
         valid (or (nil? valid?) (valid? korks))
-        warning (and warn-fn (warn-fn (binding/get-in cursor korks)))]
+        warning (and warn-fn (warn-fn (binding/get-in cursor korks)))
+        base-key (gen-key cursor korks)]
     (labeled-control
+      base-key
       inline (str/join " " [(when (or warning in-progress) "has-feedback")
                             (when-not valid "has-error")
                             (when large "form-group-lg")])
       label dom-id
-      [tag attrs inner]
+      [tag (merge {:key (gen-key :input base-key)}
+                  attrs) inner]
       (cond
-        in-progress (spinner "form-control-feedback")
-        warning (feedback-icon (str (get-options [:icon-warning]) " form-control-feedback"))
+        in-progress (spinner {:class "form-control-feedback"
+                              :key (gen-key :spinner base-key)})
+        warning (feedback-icon {:class (str (get-options [:icon-warning]) " form-control-feedback")
+                                :key (gen-key :feedback-icon base-key)})
         :else nil)
       (when warning
-        (warning-label warning))
+        (warning-label {:key (gen-key :warning-label base-key)} warning))
       (when-let [validation-error (and validation-error-fn (validation-error-fn korks))]
-        (error-label validation-error))
+        (error-label {:key (gen-key :erorr-label base-key)} validation-error))
       (when help
-        [:p.help-block help]))))
+        [:p.help-block {:key (gen-key :help-block base-key)} help]))))
 
 (defn html5-input*
   [attrs label placeholder cursor korks type & opts]
@@ -182,7 +195,7 @@
                                   :placeholder placeholder}
                                  attrs
                                  {:on-change #(binding/reset! cursor korks (.. % -target -value))
-                                  :value    (binding/get-in cursor korks)})]
+                                  :value     (binding/get-in cursor korks)})]
     (input* :input input-attrs label cursor korks opts)))
 
 (defn spinner

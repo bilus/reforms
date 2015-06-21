@@ -13,5 +13,5 @@
     om/IRender
     (render [_]
       (html
-        [:pre.inspector
+        [:pre.inspector {:key "inspector-view"}
          (inspect data)]))))
