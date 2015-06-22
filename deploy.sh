@@ -36,8 +36,7 @@ then
   mkdir -p examples/reagent &&
   cp -r ../reagent-reforms/examples/ examples/reagent &&
   echo "Push to git" &&
-  git add doc/ &&
-  git add examples/ &&
+  git add doc/ examples/ &&
   git commit -m "Update Github Pages." &&
   git push origin gh-pages &&
   echo "Switch back to $BRANCH branch" &&
