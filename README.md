@@ -452,8 +452,8 @@ In addition, in case of buttons it's usually a good idea to disable them:
 
 <img src="https://github.com/bilus/reforms/blob/master/doc/images/progress.png" width="85">
 
-See this example: [Om](https://github.com/bilus/om-reforms/tree/master/progress/validation) ([demo](http://bilus.github.io/reforms/examples/om/progress/index.html))
-[Reagent](https://github.com/bilus/reagent-reforms/tree/master/progress/validation) ([demo](http://bilus.github.io/reforms/examples/reagent/progress/index.html))
+See this example: [Om](https://github.com/bilus/om-reforms/tree/master/examples/progress/) ([demo](http://bilus.github.io/reforms/examples/om/progress/index.html))
+[Reagent](https://github.com/bilus/reagent-reforms/tree/master/examples/progress/) ([demo](http://bilus.github.io/reforms/examples/reagent/progress/index.html))
 
 
 <!-- #### Can I use built-in Bootstrap icons instead of Font Awesome?
