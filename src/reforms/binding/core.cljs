@@ -19,18 +19,14 @@
   ([x v]
    (-reset! x v))
   ([x ks v]
-   (js/console.log "reset!" (prn-str x) (prn-str ks) (prn-str v))
    (if (not-empty ks)
      (-reset! x ks v)
      (-reset! x v))))
 
 (defn get-in [x ks]
-
-  (let [result (if (not-empty ks)
-                 (-get-in x ks)
-                 (-deref x))]
-    (js/console.log "get-in" (prn-str x) (prn-str ks) (prn-str result))
-    result))
+  (if (not-empty ks)
+    (-get-in x ks)
+    (-deref x)))
 
 (defn path [x]
   (-path x))
