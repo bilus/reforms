@@ -221,8 +221,8 @@ Click!
 
 ![Vertical orientation](https://github.com/bilus/reforms/blob/master/doc/images/hello-world-buttons-ver.png)
 
-The complete example: [Om](https://github.com/bilus/om-reforms/blob/master/examples/hello_world/src/hello_world.cljs) [demo](http://bilus.github.io/reforms/examples/om/hello_world/index.html)
-[Reagent](https://github.com/bilus/reagent-reforms/blob/master/examples/hello_world/src/hello_world.cljs) [demo](http://bilus.github.io/reforms/examples/reagent/hello_world/index.html).
+The complete example: [Om](https://github.com/bilus/om-reforms/blob/master/examples/hello_world/src/hello_world.cljs) ([demo](http://bilus.github.io/reforms/examples/om/hello_world/index.html))
+[Reagent](https://github.com/bilus/reagent-reforms/blob/master/examples/hello_world/src/hello_world.cljs) ([demo](http://bilus.github.io/reforms/examples/reagent/hello_world/index.html)).
 
 For the list of available controls, see the [API Reference](http://bilus.github.com/reforms/doc/).
 
