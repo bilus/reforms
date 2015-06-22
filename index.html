@@ -32,18 +32,36 @@
 
         <section id="main_content">
           <h1>
-<a id="time-for-reforms-has-come" class="anchor" href="#time-for-reforms-has-come" aria-hidden="true"><span class="octicon octicon-link"></span></a>Time for Reforms has come</h1>
+<a id="time-for-reforms-has-come" class="anchor" href="#time-for-reforms-has-come" aria-hidden="true"><span class="octicon octicon-link"></span></a>Time for Reforms has come!</h1>
 
-<p><strong><a href="http://github.com/bilus/reforms">Reforms</a></strong> is a Clojurescript library that lets you build beautiful forms with <a href="https://github.com/omcljs/om">Om</a> and <a href="http://getbootstrap.com/">Bootstrap 3</a> and (optionally) <a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a>.  </p>
+<p><strong><a href="http://github.com/bilus/reforms">Reforms</a></strong> lets you build beautiful forms with <a href="https://github.com/omcljs/om">Om</a> or <a href="https://github.com/reagent-project/reagent">Reagent</a>. </p>
+
+<p>The generated markup is compatible with [Bootstrap 3] CSS (<a href="http://getbootstrap.com/">http://getbootstrap.com/</a>) and (optionally) <a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a>.  </p>
 
 <p align="center"><img src="https://raw.githubusercontent.com/bilus/reforms/master/doc/images/sample.png" width="70%"></p>
 
 <h2>
 <a id="quick-start" class="anchor" href="#quick-start" aria-hidden="true"><span class="octicon octicon-link"></span></a>Quick start</h2>
 
-<p>Add <code>reforms</code> to <code>:dependencies</code> in project.clj:</p>
+<h3>
+<a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dependencies</h3>
 
-<p><a href="http://clojars.org/reforms"><img src="http://clojars.org/reforms/latest-version.svg" alt="Clojars Project"></a></p>
+<p>Add the correct library to <code>:dependencies</code> in project.clj: </p>
+
+<table>
+<thead>
+<tr>
+<th>Om</th>
+<th>Reagent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://clojars.org/om-reforms"><img src="http://clojars.org/om-reforms/latest-version.svg" alt="Clojars Project"></a></td>
+<td><a href="http://clojars.org/reagent-reforms"><img src="http://clojars.org/reagent-reforms/latest-version.svg" alt="Clojars Project"></a></td>
+</tr>
+</tbody>
+</table>
 
 <p>The library does not use Bootstrap JavaScript so just link to bootstrap css from your html page, e.g.:</p>
 
@@ -53,7 +71,35 @@
 
 <div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">link</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css<span class="pl-pds">"</span></span> <span class="pl-e">rel</span>=<span class="pl-s"><span class="pl-pds">"</span>stylesheet<span class="pl-pds">"</span></span>&gt;</pre></div>
 
-<p>The interesting functions live in <code>reforms.core</code> and <code>reforms.validation</code>.</p>
+<h3>
+<a id="requires" class="anchor" href="#requires" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requires</h3>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Om</th>
+<th>Reagent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Core helpers</td>
+<td><code>reforms.om</code></td>
+<td><code>reforms.reagent</code></td>
+</tr>
+<tr>
+<td>Validation</td>
+<td><code>reforms.validation</code></td>
+<td><code>reforms.validation</code></td>
+</tr>
+</tbody>
+</table>
+
+<p><br></p>
+
+<h3>
+<a id="a-simple-form" class="anchor" href="#a-simple-form" aria-hidden="true"><span class="octicon octicon-link"></span></a>A simple form</h3>
 
 <p>Creating a form is a snap:</p>
 
@@ -62,7 +108,7 @@
   (<span class="pl-en">form-buttons</span>
     (<span class="pl-en">button</span> {<span class="pl-c1">:class</span> <span class="pl-s"><span class="pl-pds">"</span>foo<span class="pl-pds">"</span></span>} <span class="pl-s"><span class="pl-pds">"</span>Submit<span class="pl-pds">"</span></span> #(<span class="pl-en">js/alert</span> (<span class="pl-c1">:name</span> @data)))))</pre></div>
 
-<p>It's all pure data to be compiled with <a href="https://github.com/r0man/sablono">sablono</a>. Here's output from the function above (slightly simplified for clarity):</p>
+<p>It returns pure hiccup-like data. Here's output from the function above (slightly simplified for clarity):</p>
 
 <div class="highlight highlight-clojure"><pre>[<span class="pl-c1">:form</span> [<span class="pl-c1">:div</span> {<span class="pl-c1">:class</span> <span class="pl-s"><span class="pl-pds">"</span>form-group<span class="pl-pds">"</span></span>
               <span class="pl-c1">:key</span> <span class="pl-s"><span class="pl-pds">"</span>data-name<span class="pl-pds">"</span></span>}
@@ -78,29 +124,96 @@
             <span class="pl-c1">:class</span> <span class="pl-s"><span class="pl-pds">"</span>btn btn-primary foo<span class="pl-pds">"</span></span>
             <span class="pl-c1">:onClick</span> #(<span class="pl-en">js/alert</span> (<span class="pl-c1">:name</span> @data))} <span class="pl-s"><span class="pl-pds">"</span>Submit<span class="pl-pds">"</span></span>]]]</pre></div>
 
-<p>Generate React node using sablono:</p>
+<h3>
+<a id="rendering-inside-a-component" class="anchor" href="#rendering-inside-a-component" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rendering inside a component</h3>
 
-<div class="highlight highlight-clojure"><pre>(<span class="pl-en">sablono.core/html</span> (<span class="pl-en">form</span> ...))</pre></div>
+<table>
+<thead>
+<tr>
+<th>Om</th>
+<th>Reagent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>(sablono.core/html (form ....))</code></td>
+<td><code>(form ...)</code></td>
+</tr>
+</tbody>
+</table>
+
+<p><br></p>
+
+<p>See "Examples" below.</p>
 
 <h2>
 <a id="documentation" class="anchor" href="#documentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Documentation</h2>
 
-<ul>
-<li>
-<a href="https://github.com/bilus/reforms/blob/master/README.md">Tutorial</a> </li>
-<li><a href="http://bilus.github.io/reforms/doc/">API Reference</a></li>
-</ul>
+<p><a href="https://github.com/bilus/reforms/blob/master/README.md">Tutorial</a> </p>
+
+<p><a href="http://bilus.github.io/reforms/doc/">API Reference</a></p>
 
 <h2>
-<a id="demos" class="anchor" href="#demos" aria-hidden="true"><span class="octicon octicon-link"></span></a>Demos</h2>
+<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples</h2>
 
-<ul>
-<li><p>Hello world <a href="https://github.com/bilus/reforms/tree/master/examples/hello_world">source</a> <a href="http://bilus.github.io/reforms/examples/hello_world/index.html">demo</a></p></li>
-<li><p>Dynamic form with customizations <a href="https://github.com/bilus/reforms/tree/master/examples/simple">source</a> <a href="http://bilus.github.io/reforms/examples/simple/index.html">demo</a></p></li>
-<li><p>Available controls <a href="https://github.com/bilus/reforms/tree/master/examples/controls">source</a> <a href="http://bilus.github.io/reforms/examples/controls/index.html">demo</a></p></li>
-<li><p>Supported <a href="https://github.com/bilus/reforms/tree/master/examples/validation">source</a> <a href="http://bilus.github.io/reforms/examples/validation/index.html">demo</a></p></li>
-<li><p>Background operations <a href="https://github.com/bilus/reforms/tree/master/progress/validation">source</a> <a href="http://bilus.github.io/reforms/examples/progress/index.html">demo</a></p></li>
-</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Om</th>
+<th>Reagent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hello world</td>
+<td>
+<a href="https://github.com/bilus/om-reforms/tree/master/examples/hello_world">source</a> - <a href="http://bilus.github.io/reforms/examples/om/hello_world/index.html">demo</a>
+</td>
+<td>
+<a href="https://github.com/bilus/reagent-reforms/tree/master/examples/hello_world">source</a> - <a href="http://bilus.github.io/reforms/examples/reagent/hello_world/index.html">demo</a>
+</td>
+</tr>
+<tr>
+<td>Dynamic form</td>
+<td>
+<a href="https://github.com/bilus/om-reforms/tree/master/examples/simple">source</a> - <a href="http://bilus.github.io/reforms/examples/om/simple/index.html">demo</a>
+</td>
+<td>
+<a href="https://github.com/bilus/reagent-reforms/tree/master/examples/simple">source</a> - <a href="http://bilus.github.io/reforms/examples/reagent/simple/index.html">demo</a>
+</td>
+</tr>
+<tr>
+<td>Controls</td>
+<td>
+<a href="https://github.com/bilus/om-reforms/tree/master/examples/controls">source</a> - <a href="http://bilus.github.io/reforms/examples/om/controls/index.html">demo</a>
+</td>
+<td>
+<a href="https://github.com/bilus/reagent-reforms/tree/master/examples/controls">source</a> - <a href="http://bilus.github.io/reforms/examples/reagent/controls/index.html">demo</a>
+</td>
+</tr>
+<tr>
+<td>Validation</td>
+<td>
+<a href="https://github.com/bilus/om-reforms/tree/master/examples/validation">source</a> - <a href="http://bilus.github.io/reforms/examples/om/validation/index.html">demo</a>
+</td>
+<td>
+<a href="https://github.com/bilus/reagent-reforms/tree/master/examples/validation">source</a> - <a href="http://bilus.github.io/reforms/examples/reagent/validation/index.html">demo</a>
+</td>
+</tr>
+<tr>
+<td>In-progress</td>
+<td>
+<a href="https://github.com/bilus/om-reforms/tree/master/examples/validation">source</a> - <a href="http://bilus.github.io/reforms/om/examples/progress/index.html">demo</a>
+</td>
+<td>
+<a href="https://github.com/bilus/reagent-reforms/tree/master/examples/validation">source</a> - <a href="http://bilus.github.io/reforms/examples/reagent/progress/index.html">demo</a>
+</td>
+</tr>
+</tbody>
+</table>
+
+<p><br></p>
 
 <h2>
 <a id="contact" class="anchor" href="#contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contact</h2>
