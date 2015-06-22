@@ -7,7 +7,7 @@ then
   doctoc README.md && # npm install -g doctoc
   git add README.md &&
   git commit -m "Regenerate TOC in Readme." &&
-  git push origin master &&
+  git push origin master
   lein deploy clojars &&
 
   # Build om-reforms examples.
