@@ -468,10 +468,7 @@ Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail
 
 ### TBD
 
-- Fix broken hello-world Reagent example.
 - Fix 0.2.0-SNAPSHOT documentation linked to from Home page.
-- Home page: show reagent vs om code.
-- Update documentation and home page.
 - Test in Proton.
 - Publish
 
