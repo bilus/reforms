@@ -468,11 +468,6 @@ Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail
 
 ### TBD
 
-- Fix 0.2.0-SNAPSHOT documentation linked to from Home page.
-- Test in Proton.
-- Publish
-
-- Contact reagent community asking for feedback.
 - Contact authors of other libraries.
 - Contact Om maintainers to update home page.
 
@@ -483,8 +478,6 @@ Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail
 - Add tabs. Update 'controls' example.
 - Add wizard. Update 'controls' example.
 - Port tests.
-- Fix with-option is apparently not working around om/root and/or build/outside component.
-- (?) FIX group-title alignment for horizontal form.
 
 ### License
 
