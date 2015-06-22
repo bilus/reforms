@@ -38,6 +38,8 @@ A good place to see the available controls: [demo](http://bilus.github.io/reform
     - [Showing warnings](#showing-warnings)
     - [Configuration options](#configuration-options)
   - [Demos](#demos)
+    - [Om](#om)
+    - [Reagent](#reagent)
   - [FAQ](#faq)
     - [How do I submit the form when the user presses ENTER?](#how-do-i-submit-the-form-when-the-user-presses-enter)
     - [How to affect changes when user clicks a button?](#how-to-affect-changes-when-user-clicks-a-button)
