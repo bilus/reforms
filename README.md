@@ -19,7 +19,9 @@ A good place to see the available controls: [demo](http://bilus.github.io/reform
 
 
 - [Usage](#usage)
-  - [Getting started](#getting-started)
+  - [Getting started with Om](#getting-started-with-om)
+  - [Getting started with Reagent](#getting-started-with-reagent)
+  - [External CSS](#external-css)
   - [Quick tutorial](#quick-tutorial)
     - [Hello, world!](#hello-world)
     - [Data binding](#data-binding)
