@@ -25,17 +25,22 @@ then
   # Build Home page and the reference + examples.
   cd ../reforms &&
   BRANCH="$(git rev-parse --abbrev-ref HEAD)" &&
+  echo "Generate docs" &&
   lein doc &&
+  echo "Checkout and pull gh-pages" &&
   git checkout gh-pages &&
   git pull origin gh-pages &&
+  echo "Copy examples" &&
   mkdir -p examples/om &&
   cp -r ../om-reforms/examples/ examples/om &&
   mkdir -p examples/reagent &&
   cp -r ../reagent-reforms/examples/ examples/reagent &&
+  echo "Push to git" &&
   git add doc/ &&
   git add examples/ &&
   git commit -m "Update Github Pages." &&
   git push origin gh-pages &&
+  echo "Switch back to $BRANCH branch" &&
   git checkout $BRANCH
 fi
 
