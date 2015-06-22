@@ -79,6 +79,8 @@ Here's how you create an Om component with a form with just one text field and a
            (f/button "Submit" #(js/alert (:name @data))))))))
 ```
 
+You render it with `om/build` just like any other component. See [https://github.com/omcljs/om](https://github.com/omcljs/om) for more details.
+
 ### Getting started with Reagent
 
 Add `reagent-reforms` to `:dependencies` in project.clj:
@@ -88,10 +90,21 @@ Add `reagent-reforms` to `:dependencies` in project.clj:
 ```clojure
 (ns hello-world.core
   (:require [reforms.reagent :include-macros true :as forms]
-            [reagent.core :as r]))
+            [reagent.core :refer [atom render-component]))
 ```
 
-TODO
+Here's how you create a Reagent component with a form with just one text field and a button:
+
+```clojure
+(defn simple-view
+  [data]
+  (f/form
+    (f/text "Your name" "Type your name here" data [:name])
+    (f/form-buttons
+       (f/button "Submit" #(js/alert (:name @data))))))
+```
+
+You render it just like any other component by either mounting it using `render-component` or inside another component using the `[simple-view some-data]` syntax. See [https://github.com/reagent-project/reagent](https://github.com/reagent-project/reagent) for more details.
 
 ### External CSS
 
@@ -208,7 +221,8 @@ Click!
 
 ![Vertical orientation](https://github.com/bilus/reforms/blob/master/doc/images/hello-world-buttons-ver.png)
 
-The complete example: [here](https://github.com/bilus/reforms/blob/master/examples/hello_world/src/hello_world.cljs) [demo](http://bilus.github.io/reforms/examples/hello_world/index.html).
+The complete example: [Om](https://github.com/bilus/om-reforms/blob/master/examples/hello_world/src/hello_world.cljs) [demo](http://bilus.github.io/reforms/examples/om/hello_world/index.html)
+[Reagent](https://github.com/bilus/reagent-reforms/blob/master/examples/hello_world/src/hello_world.cljs) [demo](http://bilus.github.io/reforms/examples/reagent/hello_world/index.html).
 
 For the list of available controls, see the [API Reference](http://bilus.github.com/reforms/doc/).
 
@@ -275,7 +289,8 @@ To satisfy your curiosity, here are the contents of `ui-state`:
                      {:korks #{[:password2]}, :error-message "Re-enter password"}]}
 ```
 
-A slightly richer example: [here](https://github.com/bilus/reforms/blob/master/examples/validation/src/validation.cljs) ([demo](http://bilus.github.io/reforms/examples/validation/index.html)).
+A slightly richer example: [Om](https://github.com/bilus/om-reforms/blob/master/examples/validation/src/validation.cljs) ([demo](http://bilus.github.io/reforms/examples/om/validation/index.html))
+[Reagent](https://github.com/bilus/reagent-reforms/blob/master/examples/validation/src/validation.cljs) ([demo](http://bilus.github.io/reforms/examples/reagent/validation/index.html)).
 
 For the list of available validators, see the [API Reference](http://bilus.github.com/reforms/doc/).
 
@@ -385,11 +400,21 @@ Here's a quick example:
 
 ### Demos
 
-- Hello world [source](https://github.com/bilus/reforms/tree/master/examples/hello_world) [demo](http://bilus.github.io/reforms/examples/hello_world/index.html)
-- Dynamic form with customizations [source](https://github.com/bilus/reforms/tree/master/examples/simple) [demo](http://bilus.github.io/reforms/examples/simple/index.html)
-- Available controls [source](https://github.com/bilus/reforms/tree/master/examples/controls) [demo](http://bilus.github.io/reforms/examples/controls/index.html)
-- Supported [source](https://github.com/bilus/reforms/tree/master/examples/validation) [demo](http://bilus.github.io/reforms/examples/validation/index.html)
-- Background operations [source](https://github.com/bilus/reforms/tree/master/progress/validation) [demo](http://bilus.github.io/reforms/examples/progress/index.html)
+#### Om
+
+- Hello world [source](https://github.com/bilus/om-reforms/tree/master/examples/hello_world) [demo](http://bilus.github.io/reforms/examples/om/hello_world/index.html)
+- Dynamic form with customizations [source](https://github.com/bilus/om-reforms/tree/master/examples/simple) [demo](http://bilus.github.io/reforms/examples/om/simple/index.html)
+- Available controls [source](https://github.com/bilus/om-reforms/tree/master/examples/controls) [demo](http://bilus.github.io/reforms/examples/om/controls/index.html)
+- Supported [source](https://github.com/bilus/om-reforms/tree/master/examples/validation) [demo](http://bilus.github.io/reforms/examples/om/validation/index.html)
+- Background operations [source](https://github.com/bilus/om-reforms/tree/master/progress/validation) [demo](http://bilus.github.io/reforms/om/examples/progress/index.html)
+
+#### Reagent
+
+- Hello world [source](https://github.com/bilus/reagent-reforms/tree/master/examples/hello_world) [demo](http://bilus.github.io/reforms/examples/reagent/hello_world/index.html)
+- Dynamic form with customizations [source](https://github.com/bilus/reagent-reforms/tree/master/examples/simple) [demo](http://bilus.github.io/reforms/examples/reagent/simple/index.html)
+- Available controls [source](https://github.com/bilus/reagent-reforms/tree/master/examples/controls) [demo](http://bilus.github.io/reforms/examples/reagent/controls/index.html)
+- Supported [source](https://github.com/bilus/reagent-reforms/tree/master/examples/validation) [demo](http://bilus.github.io/reforms/examples/reagent/validation/index.html)
+- Background operations [source](https://github.com/bilus/reagent-reforms/tree/master/progress/validation) [demo](http://bilus.github.io/reforms/examples/reagent/progress/index.html)
 
 ### FAQ
 #### How do I submit the form when the user presses ENTER?
@@ -427,7 +452,8 @@ In addition, in case of buttons it's usually a good idea to disable them:
 
 <img src="https://github.com/bilus/reforms/blob/master/doc/images/progress.png" width="85">
 
-See this example: [source](https://github.com/bilus/reforms/tree/master/progress/validation) [demo](http://bilus.github.io/reforms/examples/progress/index.html)
+See this example: [Om](https://github.com/bilus/om-reforms/tree/master/progress/validation) [demo](http://bilus.github.io/reforms/examples/om/progress/index.html)
+[Reagent](https://github.com/bilus/reagent-reforms/tree/master/progress/validation) [demo](http://bilus.github.io/reforms/examples/reagent/progress/index.html)
 
 
 <!-- #### Can I use built-in Bootstrap icons instead of Font Awesome?
@@ -440,13 +466,7 @@ Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail
 
 ### TBD
 
-- Create reagent-reforms and om-reforms.
-- Move/copy examples to these projects. Update links.
-- More reagent testing. 
-- Create common deploy.sh 
-- Fix deploy_pages.sh failing to publish changes to index.html's for examples.   
 - Home page: show reagent vs om code.
-- Create stub Readme describing integration specifics and linking to main readme.
 - Update documentation and home page.
 - Test in Proton.
 - Publish
