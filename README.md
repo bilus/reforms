@@ -425,6 +425,7 @@ Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail
 - Home page: show reagent vs om code.
 - Create stub Readme describing integration specifics and linking to main readme.
 - Update documentation and home page.
+- Test in Proton.
 - Publish
 
 - Contact reagent community asking for feedback.
