@@ -62,8 +62,7 @@
        (panel {:class \"my-special-panel\"} \"My special panel\" :close #(js/alert \"closed\")
            [:div \"Contents go here\"])"
   [& args]
-  (let [[attrs [title & rest-args]] (impl/resolve-args [:panel] {:class "panel panel-default"
-                                                                 :key   (gen-key)} args)
+  (let [[attrs [title & rest-args]] (impl/resolve-args [:panel] {:class "panel panel-default"} args)
         [{:keys [close]} & contents] (impl/parse-options rest-args)]
     [:div attrs
      [:div {:class "panel-heading"
@@ -96,8 +95,7 @@
   [& args]
   (let [[attrs & elems] (impl/resolve-args [:form]
                                            {:on-submit #(.preventDefault %)
-                                            :class     (when (impl/form-horizontal?) "form-horizontal")
-                                            :key       (gen-key)}
+                                            :class     (when (impl/form-horizontal?) "form-horizontal")}
                                            args)]
     [:form attrs
      elems
@@ -117,8 +115,7 @@
    - title - the title; a string or Hiccup/Sablono style template
    - tag   - (optional) name of the tag to use, e.g. :h4"
   [& args]
-  (let [[attrs [title & {:keys [tag]}]] (impl/resolve-args [:group-title] {:class "group-title"
-                                                                           :key   (gen-key)} args)]
+  (let [[attrs [title & {:keys [tag]}]] (impl/resolve-args [:group-title] {:class "group-title"} args)]
     [(or tag (get-options [:group-title :tag]))
      attrs
      title]))
@@ -139,7 +136,7 @@
    - :valid?               - (optional) if false shows a validation error; internal
    - :validation-error-fn  - (optional) lambda <korks> -> <error message>; internal"
   [type & args]
-  (let [[attrs [label placeholder cursor korks & opts]] (impl/resolve-args [:html5-input type] {:key (gen-key)} args)]
+  (let [[attrs [label placeholder cursor korks & opts]] (impl/resolve-args [:html5-input type] {} args)]
     (apply impl/html5-input* attrs label placeholder cursor korks (name type) opts)))
 
 (defn text
