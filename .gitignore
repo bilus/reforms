@@ -17,3 +17,4 @@ out/
 /doc/*.md
 /doc/js
 /resources/public/js/testable.js
+examples/
