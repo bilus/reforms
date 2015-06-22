@@ -32,7 +32,7 @@ then
   echo "Checkout and pull gh-pages" &&
   git checkout gh-pages &&
   git pull origin gh-pages &&
-  cp -r /tmp/reforms/doc doc/
+  cp -r /tmp/reforms/doc doc/ &&
   echo "Copy examples" &&
   mkdir -p examples/om &&
   cp -r ../om-reforms/examples/ examples/om &&
