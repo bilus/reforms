@@ -1,6 +1,6 @@
 # Reforms
 
-A Clojurescript library that lets you build beautiful data-binding forms with [Om](https://github.com/omcljs/om) and [Bootstrap 3](http://getbootstrap.com/) and (optionally) [Font Awesome](http://fortawesome.github.io/Font-Awesome/).  
+A Clojurescript library that lets you build beautiful data-binding forms with [Om](https://github.com/omcljs/om) or [Reagent](https://github.com/reagent-project/reagent) and [Bootstrap 3](http://getbootstrap.com/) and (optionally) [Font Awesome](http://fortawesome.github.io/Font-Awesome/).  
 
 It focuses on helping you quickly build forms rather than supporting every Bootstrap feature. If you think something useful is missing though, please let me know.   
 
@@ -9,6 +9,8 @@ The code has been extracted from a 'real' project and though it should be comple
 <img src="https://github.com/bilus/reforms/blob/master/doc/images/sample.png" width="70%">
 
 A good place to see the available controls: [demo](http://bilus.github.io/reforms/examples/controls/index.html).
+
+**IMPORTANT: Reagent support has not been used in a production project yet so if you notice any errors or encounter any problems, please do report them. Thank you.**
 
 <!-- To install doctoc: git npm install -g doctoc -->
 
@@ -47,37 +49,20 @@ A good place to see the available controls: [demo](http://bilus.github.io/reform
 
 ## Usage
 
-### Getting started
+### Getting started with Om
 
-Add `reforms` to `:dependencies` in project.clj:
+Add `om-reforms` to `:dependencies` in project.clj:
 
-[![Clojars Project](http://clojars.org/reforms/latest-version.svg)](http://clojars.org/reforms)
+[![Clojars Project](http://clojars.org/om-reforms/latest-version.svg)](http://clojars.org/om-reforms)
 
-The library does not use Bootstrap JavaScript so just link to bootstrap css from your html page, e.g.:
-
-```html
-<link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet"/>
-```
-
-Optionally, to use Font Awesome icons to use features such as progress spinner, warning icons etc., link to it as well:
-
-```html
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-```
-
-
-Minimal requires:
+Minimal requires (including sablono to render the forms):
 
 ```clojure
 (ns hello-world.core
-  (:require [reforms.core :include-macros true :as forms]
+  (:require [reforms.om :include-macros true :as forms]
             [om.core :as om]
             [sablono.core :include-macros true :as sablono]))
 ```
-
-### Quick tutorial
-
-#### Hello, world!
 
 Here's how you create an Om component with a form with just one text field and a button:
 
@@ -92,9 +77,53 @@ Here's how you create an Om component with a form with just one text field and a
            (f/button "Submit" #(js/alert (:name @data))))))))
 ```
 
+### Getting started with Reagent
+
+Add `reagent-reforms` to `:dependencies` in project.clj:
+
+[![Clojars Project](http://clojars.org/reagent-reforms/latest-version.svg)](http://clojars.org/reagent-reforms)
+
+```clojure
+(ns hello-world.core
+  (:require [reforms.reagent :include-macros true :as forms]
+            [reagent.core :as r]))
+```
+
+TODO
+
+### External CSS
+
+The library does not use Bootstrap JavaScript so just link to bootstrap css from your html page, e.g.:
+
+```html
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet"/>
+```
+
+Optionally, to use Font Awesome icons to use features such as progress spinner, warning icons etc., link to it as well:
+
+```html
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+```
+
+
+### Quick tutorial
+
+The tutorial shows library-agnostic code. For code specific to Om or React, see "Getting started with ..." above or the examples.
+
+#### Hello, world!
+
+Here's how you create a form with just one text field and a button:
+
+```clojure
+(f/form
+    (f/text "Your name" "Type your name here" data [:name])
+    (f/form-buttons
+        (f/button "Submit" #(js/alert (:name @data)))))
+```
+
 ![Hello world](https://github.com/bilus/reforms/blob/master/doc/images/hello-world.png)
 
-Note that `form` returns a data structure compatible with [sablono](https://github.com/r0man/sablono) which we then compile into a node using `sablono/html` above. The example below, though a bit simplified and scrubbed for clarity, should give you an idea:
+Note that `form` returns a Hiccup-like data structure. The example below, though a bit simplified and scrubbed for clarity, should give you an idea:
 
 ```clojure
 [:form [:div {:class "form-group"
@@ -114,7 +143,7 @@ Note that `form` returns a data structure compatible with [sablono](https://gith
 
 #### Data binding
 
-The controls bind directly to Om cursors. For example, as the user types text into the text box below, `data` is automatically updated:
+The controls bind directly to data (Om cursors or Reagent ratoms). For example, as the user types text into the text box below, `data` is automatically updated:
 
 ```clojure
 (f/text "Your name" "Type your name here" data [:name])
@@ -190,35 +219,27 @@ The library supports client-side data validation.
 To use validators, `require` `reforms.validation`, use form and form field helpers from this namespace instead of `reforms.core` and use `validate!`:
 
 ```clojure
-(ns my-validation
-  (:require [reforms.validation :include-macros true :as v]
-            [om.core :as om]
-            [sablono.core :include-macros true :as sablono]))
+(ns my-validation-example
+  (:require ... 
+            [reforms.validation :include-macros true :as v]))
 ```
 
 Apart from `form`, the helpers have an identical interface to ones in `reforms.core`.
 
 ```clojure
-(defn signup-form-view
-  [[data ui-state] _owner]                                                ;; 1
-  (reify                                                    
-    om/IRender
-    (render [_]
-      (html
-        (v/form                                                           ;; 2
-          ui-state                                                        ;; 3
-          (v/text "Login" "Choose your login" data [:login])              ;; 4
-          (v/password "Password" "Enter your password" data [:password1]) 
-          (v/password "Confirm password" "Re-enter your password" data [:password2])
-          (f/form-buttons
-            (f/button-primary "Sign up" #(sign-up! data ui-state))))))))  ;; 5
+(v/form                                                           ;; 1
+  ui-state                                                        ;; 2
+  (v/text "Login" "Choose your login" data [:login])              ;; 3
+  (v/password "Password" "Enter your password" data [:password1]) 
+  (v/password "Confirm password" "Re-enter your password" data [:password2])
+  (f/form-buttons
+    (f/button-primary "Sign up" #(sign-up! data ui-state))))      ;; 4
 ```
 
-1. We're passing `data` to bind the form fields to and `ui-state` where validation results will be stored. There's no technical reason we cannot use `data` for this but separating this makes it cleaner. You can also store validation errors in local state (see the FAQ below).
-2. Note that we're using `form` from `reforms.validation` and that it takes an extra argument (3).
-3. This is the cursor used to store validation errors.
-4. Again, we use the helpers from `reforms.validation` not `reforms.core`.
-5. Here we call our function which will perform validation
+1. We use `reforms.validation/form`. Note that it takes an extra argument (2).
+2. This is the cursor used to store validation errors. We're using `data` to bind the form fields to and `ui-state` to store validation results in. There's no technical reason we cannot use `data` for this but separating this makes it cleaner.
+3. Again, we use the helpers from `reforms.validation`.
+4. Here we call our function which will perform validation
 
 Here's the sign up function. It shows an alert if data validates:
 
