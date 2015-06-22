@@ -33,7 +33,7 @@ then
   git checkout gh-pages &&
   git pull origin gh-pages
 
-  cp -r /tmp/reforms/doc doc/ &&
+  cp -r /tmp/reforms/doc . &&
   echo "Copy examples" &&
   mkdir -p examples/om &&
   cp -r ../om-reforms/examples/ examples/om &&
@@ -44,7 +44,7 @@ then
   git commit -m "Update Github Pages." &&
   git push origin gh-pages &&
   echo "Switch back to $BRANCH branch"
-  
+
   git checkout $BRANCH
 fi
 
