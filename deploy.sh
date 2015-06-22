@@ -27,9 +27,12 @@ then
   BRANCH="$(git rev-parse --abbrev-ref HEAD)" &&
   echo "Generate docs" &&
   lein doc &&
+  mkdir -p /tmp/reforms/doc
+  cp -r doc/ /tmp/reforms/doc/
   echo "Checkout and pull gh-pages" &&
   git checkout gh-pages &&
   git pull origin gh-pages &&
+  cp -r /tmp/reforms/doc doc/
   echo "Copy examples" &&
   mkdir -p examples/om &&
   cp -r ../om-reforms/examples/ examples/om &&
