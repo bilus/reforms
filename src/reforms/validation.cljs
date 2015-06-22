@@ -72,14 +72,14 @@
 ;;; Stateless methods
 
 (defn validate
-  "Validates a cursor and returns a list of errors.
+  "Validates data and returns a list of errors.
 
    Arguments:
 
-   - cursor     - data
+   - data      - data to validate
    - validators - seq of validators to use"
-  [cursor & validators]
-  (-> (keep #(% cursor) validators)
+  [data & validators]
+  (-> (keep #(% data) validators)
       flatten
       distinct
       doall))
@@ -122,9 +122,9 @@
 
        (equal [:user :password1] [:user :password2] \"Passwords do not match\"]"
   [korks1 korks2 error-message]
-  (fn [cursor]
-    (let [lhs (or (binding/get-in cursor korks1) "")
-          rhs (or (binding/get-in cursor korks2) "")]
+  (fn [data]
+    (let [lhs (or (get-in data korks1) "")
+          rhs (or (get-in data korks2) "")]
       (when-not (= lhs rhs)
         (validation-error [korks2]                          ; Show error only next to the second control.
                           error-message)))))
@@ -136,8 +136,8 @@
 
       (present [:user :login] \"Enter the login\"]"
   [korks error-message]
-  (fn [cursor]
-    (let [x (binding/get-in cursor korks)]
+  (fn [data]
+    (let [x (get-in data korks)]
       (when-not (present? x)
         (validation-error [korks] error-message)))))
 
@@ -148,8 +148,8 @@
 
       (matches [:user :email] #\"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$\" \"Invalid email address\"]"
   [korks re error-message]
-  (fn [cursor]
-    (let [x (binding/get-in cursor korks)]
+  (fn [data]
+    (let [x (get-in data korks)]
       (when-not (re-matches re x)
         (validation-error [korks] error-message)))))
 
@@ -160,8 +160,8 @@
 
      (is-true [:user :email] #(nil? (find-by-email %)) \"Email already exists\"]"
   [korks f error-message]
-  (fn [cursor]
-    (when-not (f (binding/get-in cursor korks))
+  (fn [data]
+    (when-not (f (get-in data korks))
       (validation-error [korks] error-message))))
 
 (defn force-error
@@ -183,8 +183,8 @@
 (defn all
   "Groups validators using 'and' boolean logic."
   [& validators]
-  (fn [cursor]
-    (apply validate cursor validators)))
+  (fn [data]
+    (apply validate data validators)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Stateful methods

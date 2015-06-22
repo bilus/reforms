@@ -19,10 +19,14 @@
   ([x v]
    (-reset! x v))
   ([x ks v]
-   (-reset! x ks v)))
+   (if (not-empty ks)
+     (-reset! x ks v)
+     (-reset! x v))))
 
 (defn get-in [x ks]
-  (-get-in x ks))
+  (if (not-empty ks)
+    (-get-in x ks)
+    x))
 
 (defn path [x]
   (-path x))
