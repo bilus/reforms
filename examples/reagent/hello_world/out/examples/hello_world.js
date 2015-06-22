@@ -3,6 +3,7 @@ goog.provide('examples.hello_world');
 goog.require('cljs.core');
 goog.require('reforms.reagent');
 goog.require('reagent.core');
+goog.require('examples.shared.utils');
 examples.hello_world.simple_view = (function examples$hello_world$simple_view(data){
 var horizontal_orientation = reagent.core.atom.call(null,false);
 return ((function (horizontal_orientation){
@@ -27,12 +28,9 @@ return alert("Cancel!");
 }});
 ;})(horizontal_orientation))
 });
-examples.hello_world.inspector_view = (function examples$hello_world$inspector_view(app_state){
-return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.inspector","div.inspector",1273711117),cljs.core.prn_str.call(null,cljs.core.deref.call(null,app_state))], null);
-});
 examples.hello_world.app_state = reagent.core.atom.call(null,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"name","name",1843675177),"John"], null));
 examples.hello_world.main_view = (function examples$hello_world$main_view(){
-return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [examples.hello_world.simple_view,examples.hello_world.app_state], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [examples.hello_world.inspector_view,examples.hello_world.app_state], null)], null);
+return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [examples.hello_world.simple_view,examples.hello_world.app_state], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [examples.shared.utils.inspector_view,examples.hello_world.app_state], null)], null);
 });
 reagent.core.render_component.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [examples.hello_world.main_view], null),document.getElementById("app"));
 

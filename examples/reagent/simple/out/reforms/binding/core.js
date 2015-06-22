@@ -30,6 +30,8 @@ return reforms.binding.protocol._reset_BANG_.call(null,x,v);
 });
 
 reforms.binding.core.reset_BANG_.cljs$core$IFn$_invoke$arity$3 = (function (x,ks,v){
+console.log("reset!",cljs.core.prn_str.call(null,x),cljs.core.prn_str.call(null,ks),cljs.core.prn_str.call(null,v));
+
 if(cljs.core.truth_(cljs.core.not_empty.call(null,ks))){
 return reforms.binding.protocol._reset_BANG_.call(null,x,ks,v);
 } else {
@@ -39,11 +41,10 @@ return reforms.binding.protocol._reset_BANG_.call(null,x,v);
 
 reforms.binding.core.reset_BANG_.cljs$lang$maxFixedArity = 3;
 reforms.binding.core.get_in = (function reforms$binding$core$get_in(x,ks){
-if(cljs.core.truth_(cljs.core.not_empty.call(null,ks))){
-return reforms.binding.protocol._get_in.call(null,x,ks);
-} else {
-return x;
-}
+var result = (cljs.core.truth_(cljs.core.not_empty.call(null,ks))?reforms.binding.protocol._get_in.call(null,x,ks):reforms.binding.protocol._deref.call(null,x));
+console.log("get-in",cljs.core.prn_str.call(null,x),cljs.core.prn_str.call(null,ks),cljs.core.prn_str.call(null,result));
+
+return result;
 });
 reforms.binding.core.path = (function reforms$binding$core$path(x){
 return reforms.binding.protocol._path.call(null,x);

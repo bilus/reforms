@@ -1,6 +1,7 @@
 (ns examples.hello-world
   (:require [reforms.reagent :include-macros true :as f]
-            [reagent.core :refer [atom render-component]]))
+            [reagent.core :refer [atom render-component]]
+            [examples.shared.utils :refer [inspector-view]]))
 
 (defn simple-view
       [data]
@@ -9,6 +10,7 @@
                (f/with-options {:form {:horizontal @horizontal-orientation}}
                                (f/panel
                                  "Hello, world"
+                                 ;[inspector-view horizontal-orientation]
                                  (f/form
                                    {:on-submit #(js/alert "Submitted")}
                                    (f/text "Your name" "Type your name here" data [:name])
@@ -16,10 +18,6 @@
                                      (f/button-primary "Submit" #(js/alert (:name @data)))
                                      (f/button-default "Cancel" #(js/alert "Cancel!")))
                                    (f/checkbox "Horizontal form" horizontal-orientation [])))))))
-
-(defn inspector-view
-      [app-state]
-      [:div.inspector (prn-str @app-state)])
 
 (def app-state (atom {:name "John"}))
 
