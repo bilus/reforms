@@ -1,4 +1,4 @@
-(defproject reforms "0.3.0-SNAPSHOT"
+(defproject reforms "0.3.0"
             :description "Form helpers for React-based Clojurescript libraries."
             :url "http://bilus.github.io/reforms/"
             :license {:name "Eclipse Public License"
