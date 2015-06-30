@@ -468,15 +468,18 @@ Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail
 
 ### TBD
 
-- Add to FAQ. Can I bind to local Om component state? 
+- Fix TOC hierarchy.
+- Add to FAQ: Can I bind to local Om component state? 
 - Validation errors in local state in om-reforms. Add How can I store validation errors in local state? to FAQ
+- Release 0.3.0
+
+- Add wizard. Update 'controls' example. Blog post. ANN (mention local state).
+- Add table. Namespace. Example. Add to 'controls' example. Blog post.
+- Add tabs. Update 'controls' example. Blog post.
 
 - Contact authors of other libraries.
 - Contact Om maintainers to update home page.
 
-- Add table. Namespace. Example. Add to 'controls' example.
-- Add tabs. Update 'controls' example.
-- Add wizard. Update 'controls' example.
 - Port tests.
 
 ### License
