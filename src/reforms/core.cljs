@@ -125,18 +125,29 @@
 
    Arguments:
 
-   type [attrs] label placeholder cursor korks
-   [:valid? <bool> validation-error-fn <lambda> in-progress <bool> warn-fn <bool> help <string> inline <bool> large <bool>]}
+   type [attrs] [label] cursor korks [:in-progress BOOL] [:warn-fn LAMBDA]
+   [help RENDERABLE] [:inline BOOL] [:large BOOL] [:placeholder STRING] [:valid? BOOL] [:validation-error-fn LAMBDA]
 
    - type                  - input type
    - attrs                 - (optional) attributes handed over to React (see https://github.com/r0man/sablono#html-attributes)
-   - label                 - the label; a string or Hiccup/Sablono style template
+   - label                 - (optional) the label; a string or Hiccup/Sablono style template
    - cursor, korks         - data to bind to
+   - :in-progress          - (optional) if true shows progress spinner
+   - :warn-fn              - (optional) a predicate invoked on the input's value; if it returns a RENDERABLE,
+                             it will be shown as a warning label
+   - :help                 - (optional) help block
    - :inline               - (optional) if true renders the control inline
+   - :large                - (optional) if true the input will have a larger size
+   - :placeholder          - (optional) the input's placeholder text
    - :valid?               - (optional) if false shows a validation error; internal
-   - :validation-error-fn  - (optional) lambda <korks> -> <error message>; internal"
+   - :validation-error-fn  - (optional) lambda <korks> -> <error message>; internal
+
+   RENDERABLE - string, hiccup-style markup or a React component."
   [type & args]
-  (let [[attrs [label placeholder cursor korks & opts]] (impl/resolve-args [:html5-input type] {} args)]
+  (let [[attrs [label placeholder cursor korks & opts]] (impl/resolve-args [:html5-input type] {} args
+                                                                           [[map? {}]
+                                                                            [(complement binding/valid?) nil]
+                                                                            [(complement binding/valid?) nil]])]
     (apply impl/html5-input* attrs label placeholder cursor korks (name type) opts)))
 
 (defn text
@@ -315,11 +326,10 @@
 
    Arguments:
 
-   [attrs] label placeholder cursor korks [opts]
+   [attrs] [label] cursor korks [opts]
 
    - attrs                 - (optional) attributes handed over to React (see https://github.com/r0man/sablono#html-attributes)
-   - label                 - the label; a string or Hiccup/Sablono style template
-   - placeholder           - placeholder text shown if there is no value
+   - label                 - (optional) the label; a string or Hiccup/Sablono style template
    - cursor, korks         - data to bind to
    - opts                  - see [[html5-input]]
 
@@ -329,7 +339,10 @@
        (f/textarea \"Textarea\" \"A placeholder\" data [:some-text])
        (f/textarea {:rows 8} \"Textarea\" \"A placeholder\" data [:some-text] :inline true)"
   [& args]
-  (let [[attrs [label placeholder cursor korks & opts]] (impl/resolve-args [:textarea] {:class "form-control"} args)
+  (let [[attrs [label placeholder cursor korks & opts]] (impl/resolve-args [:textarea] {:class "form-control"} args
+                                                                           [[map? {}]
+                                                                            [(complement binding/valid?) nil]
+                                                                            [(complement binding/valid?) nil]])
         dom-id (impl/gen-dom-id cursor korks)
         textarea-attrs (impl/merge-attrs {:class       "form-control"
                                           :id          dom-id
@@ -337,6 +350,8 @@
                                          attrs
                                          {:on-change #(binding/reset! cursor korks (.. % -target -value))
                                           :value     (binding/get-in cursor korks)})]
+    (when placeholder
+      (impl/deprecated "Placeholders as positional arguments will be removed in the next major release; use :placeholder option instead."))
     (impl/input* :textarea textarea-attrs label cursor korks opts)))
 
 
@@ -348,7 +363,7 @@
    [attrs] label cursor korks options [:on-change <lambda>]
 
    - attrs                 - (optional) attributes handed over to React (see https://github.com/r0man/sablono#html-attributes)
-   - label                 - the label; a string or Hiccup/Sablono style template
+   - label                 - (optional) the label; a string or Hiccup/Sablono style template
    - cursor, korks         - data to bind to
    - options               - a vector containing options and their labels (see examples below)
    - :on-change            - (optional) lambda to call on selection
@@ -362,7 +377,11 @@
            :on-change #(js/alert @data)
            [[:option1 \"Option 1\"] [:option2 \"Option 2\"] [:option3 \"Option 3\"]])"
   [& args]
-  (let [[attrs [label cursor korks options & {:keys [on-change] :as opts}]] (impl/resolve-args [:select] {:class "form-control"} args)
+  (let [[attrs [label cursor korks options & {:keys [on-change] :as opts}]] (impl/resolve-args [:select]
+                                                                                               {:class "form-control"}
+                                                                                               args
+                                                                                               [[map? {}]
+                                                                                                [(complement binding/valid?) nil]])
         dom-id (impl/gen-dom-id cursor korks)
         selected-val (binding/get-in cursor korks)
         input-attrs (impl/merge-attrs {} attrs {:value     (str selected-val)

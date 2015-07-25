@@ -468,10 +468,19 @@ Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail
 
 ### TBD
 
++ Label-less controls.
++ Placeholder -> :placeholder. Deprecate placeholder as optional arg.
++ Label-less area.
++ Placeholder for area.
++ Same for select etc.
++ Update Reagent examples.
++ Update Om examples.
++ Test all examples.
+- Add info to docs.
 - Fix TOC hierarchy.
 - Add to FAQ: Can I bind to local Om component state? 
 - Validation errors in local state in om-reforms. Add How can I store validation errors in local state? to FAQ
-- Release 0.3.0
+- Release 0.4.0
 
 - Add wizard. Update 'controls' example. Blog post. ANN (mention local state).
 - Add table. Namespace. Example. Add to 'controls' example. Blog post.

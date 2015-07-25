@@ -45,14 +45,22 @@
         (extend-attrs $ extensions)))
 
 (defn parse-args
-  [args]
-  (if (map? (first args))
-    [(first args) (rest args)]
-    [{} args]))
+  ([args opt-args result]
+   (let [[opt-pred def] (first opt-args)
+         arg (first args)]
+     (cond
+       (nil? arg) result
+       (nil? opt-pred) (recur (rest args) opt-args (conj result arg))
+       (opt-pred arg) (recur (rest args) (rest opt-args) (conj result arg))
+       :else (recur args (rest opt-args) (conj result def)))))
+  ([args opt-args]
+   (parse-args args opt-args []))
+  ([args]
+   (parse-args args [] [])))
 
 (defn resolve-args
-  ([ks ext-attrs args]
-   (let [[attrs rest-args] (parse-args args)]
+  ([ks ext-attrs args & [opt-args]]
+   (let [[attrs & rest-args] (parse-args args (or opt-args [[map? {}]]))]
      [(merge-attrs
         (->> ks
              (map #(get-options [% :attrs]))
@@ -83,6 +91,11 @@
                (map (fn str->orig [[k _v]] [(str k) k]))
                (into {}))]
     (or (m s) s)))
+
+(defn deprecated
+  [msg]
+  (when js/console
+    (. js/console (warn "[reforms] Warning:" msg))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Markup helpers
@@ -154,13 +167,17 @@
     [:div.form-group {:class form-group-class
                       :key   (gen-key :form-group key)}
      (list
-       [:label {:for   dom-id
-                :class (str "control-label " (label-column-class))
-                :key   (gen-key :control-label)} label]
+       (cond
+         label [:label {:for   dom-id
+                        :class (str "control-label " (label-column-class))
+                        :key   (gen-key :control-label)} label]
+         (form-horizontal?) [:div {:class (str "control-label " (label-column-class))
+                                   :key (gen-key :control-label)}]
+         :else nil)
        (input-column (gen-key :input-column) xs))]))
 
 (defn input*
-  [tag attrs label cursor korks {:keys [valid? validation-error-fn in-progress warn-fn help inline large]} & inner]
+  [tag attrs label cursor korks {:keys [placeholder valid? validation-error-fn in-progress warn-fn help inline large]} & inner]
   (let [dom-id (gen-dom-id cursor korks)
         valid (or (nil? valid?) (valid? korks))
         warning (and warn-fn (warn-fn (binding/get-in cursor korks)))
@@ -172,12 +189,13 @@
                             (when large "form-group-lg")])
       label dom-id
       [tag (merge {:key (gen-key :input base-key)}
-                  attrs) inner]
+                  attrs
+                  (when placeholder {:placeholder placeholder})) inner]
       (cond
         in-progress (spinner {:class "form-control-feedback"
-                              :key (gen-key :spinner base-key)})
+                              :key   (gen-key :spinner base-key)})
         warning (feedback-icon {:class (str (get-options [:icon-warning]) " form-control-feedback")
-                                :key (gen-key :feedback-icon base-key)})
+                                :key   (gen-key :feedback-icon base-key)})
         :else nil)
       (when warning
         (warning-label {:key (gen-key :warning-label base-key)} warning))
@@ -188,6 +206,8 @@
 
 (defn html5-input*
   [attrs label placeholder cursor korks type & opts]
+  (when placeholder
+    (deprecated "Placeholders as positional arguments will be removed in the next major release; use :placeholder option instead."))
   (let [dom-id (gen-dom-id cursor korks)
         input-attrs (merge-attrs {:type        type
                                   :class       "form-control"
