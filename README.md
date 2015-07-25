@@ -476,14 +476,15 @@ Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail
 + Update Reagent examples.
 + Update Om examples.
 + Test all examples.
++ Tests for parse-args.
 - Add info to docs.
 - Fix TOC hierarchy.
 - Add to FAQ: Can I bind to local Om component state? 
 - Validation errors in local state in om-reforms. Add How can I store validation errors in local state? to FAQ
+- Add table. Namespace. Example. Add to 'controls' example. Blog post.
 - Release 0.4.0
 
 - Add wizard. Update 'controls' example. Blog post. ANN (mention local state).
-- Add table. Namespace. Example. Add to 'controls' example. Blog post.
 - Add tabs. Update 'controls' example. Blog post.
 
 - Contact authors of other libraries.
