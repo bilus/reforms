@@ -75,6 +75,12 @@
   (let [[options rest-args] (split-with (comp keyword? first) (partition-all 2 args))]
     [(apply hash-map (mapcat identity options)) (mapcat identity (or rest-args []))]))
 
+(defn attrs?
+  [arg]
+  (and
+    (not (binding/valid? arg))
+    (map? arg)))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Generic helpers
 

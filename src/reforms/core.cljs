@@ -145,7 +145,7 @@
    RENDERABLE - string, hiccup-style markup or a React component."
   [type & args]
   (let [[attrs [label placeholder cursor korks & opts]] (impl/resolve-args [:html5-input type] {} args
-                                                                           [[map? {}]
+                                                                           [[impl/attrs? {}]
                                                                             [(complement binding/valid?) nil]
                                                                             [(complement binding/valid?) nil]])]
     (apply impl/html5-input* attrs label placeholder cursor korks (name type) opts)))
@@ -340,7 +340,7 @@
        (f/textarea {:rows 8} \"Textarea\" \"A placeholder\" data [:some-text] :inline true)"
   [& args]
   (let [[attrs [label placeholder cursor korks & opts]] (impl/resolve-args [:textarea] {:class "form-control"} args
-                                                                           [[map? {}]
+                                                                           [[impl/attrs? {}]
                                                                             [(complement binding/valid?) nil]
                                                                             [(complement binding/valid?) nil]])
         dom-id (impl/gen-dom-id cursor korks)
@@ -380,7 +380,7 @@
   (let [[attrs [label cursor korks options & {:keys [on-change] :as opts}]] (impl/resolve-args [:select]
                                                                                                {:class "form-control"}
                                                                                                args
-                                                                                               [[map? {}]
+                                                                                               [[impl/attrs? {}]
                                                                                                 [(complement binding/valid?) nil]])
         dom-id (impl/gen-dom-id cursor korks)
         selected-val (binding/get-in cursor korks)
@@ -550,4 +550,3 @@
    - attrs                 - (optional) attributes handed over to React (see https://github.com/r0man/sablono#html-attributes)"
   [& args]
   (apply impl/spinner args))
-

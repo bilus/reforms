@@ -477,6 +477,7 @@ Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail
 + Update Om examples.
 + Test all examples.
 + Tests for parse-args.
++ Om compatibility.
 - Add info to docs.
 - Fix TOC hierarchy.
 - Add to FAQ: Can I bind to local Om component state? 
