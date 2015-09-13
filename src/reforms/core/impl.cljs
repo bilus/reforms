@@ -108,7 +108,11 @@
 
 (defn gen-dom-id
   ([path]
-   (str/join "-" (map name path)))
+   (str/join "-" (map (fn [x]
+                        (if (implements? INamed x)
+                          (name x)
+                          (str x)))
+                      path)))
   ([cursor korks]
    (gen-dom-id (concat (binding/path cursor) korks)))
   ([]
