@@ -26,6 +26,7 @@ A good place to see the available controls: [demo](http://bilus.github.io/reform
     - [Hello, world!](#hello-world)
     - [Data binding](#data-binding)
   - [Prettying it up](#prettying-it-up)
+    - [Adding a placeholder](#adding-a-placeholder)
     - [Changing orientation](#changing-orientation)
     - [Wrapping in a panel](#wrapping-in-a-panel)
     - [Button types](#button-types)
@@ -34,7 +35,9 @@ A good place to see the available controls: [demo](http://bilus.github.io/reform
     - [Custom validators](#custom-validators)
     - [Forcing errors](#forcing-errors)
   - [Assorted topics](#assorted-topics)
+    - [Hiding labels](#hiding-labels)
     - [Element attributes](#element-attributes)
+    - [Placeholders for empty text boxes](#placeholders-for-empty-text-boxes)
     - [Showing warnings](#showing-warnings)
     - [Configuration options](#configuration-options)
   - [Demos](#demos)
@@ -76,12 +79,19 @@ Here's how you create an Om component with a form with just one text field and a
   (om/component
     (sablono/html
       (f/form
-        (f/text "Your name" "Type your name here" data [:name])
+        (f/text "Your name" data [:name])
         (f/form-buttons
            (f/button "Submit" #(js/alert (:name @data))))))))
 ```
 
 You render it with `om/build` just like any other component. See [https://github.com/omcljs/om](https://github.com/omcljs/om) for more details.
+
+Note that labels are optional, you can render controls without labels, for instance:
+
+```clojure
+(f/text data [:name] :placeholder "Enter your name here")
+```
+
 
 ### Getting started with Reagent
 
@@ -101,12 +111,18 @@ Here's how you create a Reagent component with a form with just one text field a
 (defn simple-view
   [data]
   (f/form
-    (f/text "Your name" "Type your name here" data [:name])
+    (f/text "Your name" data [:name])
     (f/form-buttons
        (f/button "Submit" #(js/alert (:name @data))))))
 ```
 
 You render it just like any other component by either mounting it using `render-component` or inside another component using the `[simple-view some-data]` syntax. See [https://github.com/reagent-project/reagent](https://github.com/reagent-project/reagent) for more details.
+
+Note that labels are optional, you can render controls without labels, for instance:
+
+```clojure
+(f/text data [:name] :placeholder "Enter your name here")
+```
 
 ### External CSS
 
@@ -133,7 +149,7 @@ Here's how you create a form with just one text field and a button:
 
 ```clojure
 (f/form
-    (f/text "Your name" "Type your name here" data [:name])
+    (f/text "Your name" data [:name])
     (f/form-buttons
         (f/button "Submit" #(js/alert (:name @data)))))
 ```
@@ -163,7 +179,7 @@ Note that `form` returns a Hiccup-like data structure. The example below, though
 The controls bind directly to data (Om cursors or Reagent ratoms). For example, as the user types text into the text box below, `data` is automatically updated:
 
 ```clojure
-(f/text "Your name" "Type your name here" data [:name])
+(f/text "Your name" data [:name])
 ```
 
 <img src="https://github.com/bilus/reforms/blob/master/doc/images/text.png" width="60%">
@@ -175,6 +191,14 @@ The controls bind directly to data (Om cursors or Reagent ratoms). For example, 
 
 ### Prettying it up
 
+#### Adding a placeholder
+
+You can add a placeholder shown when the text box is empty using a `:placeholder` option:
+
+```clojure
+(f/text "Your name" data [:name] :placeholder "Enter your name here")
+```
+
 #### Changing orientation
 
 To change the orientation use `with-options`:
@@ -182,7 +206,7 @@ To change the orientation use `with-options`:
 ```clojure
 (f/with-options {:form {:horizontal true}}
     (f/form
-     (f/text "Your name" "Type your name here" data [:name])
+     (f/text "Your name" data [:name] :placeholder "Enter your name here")
      (f/form-buttons
        (f/button "Submit" #(js/alert (:name @data))))))
 ```
@@ -197,7 +221,7 @@ To wrap the form in a panel use `panel`:
 (f/panel
     "Hello, world"
     (f/form
-      (f/text "Your name" "Type your name here" data [:name])
+      (f/text "Your name" data [:name] :placeholder "Enter your name here")
       (f/form-buttons
         (f/button "Submit" #(js/alert (:name @data))))))
 ```
@@ -210,7 +234,7 @@ Finally, let's take make the button clearly a primary one and add a cancel butto
 
 ```clojure
 (f/form
-  (f/text "Your name" "Type your name here" data [:name])
+  (f/text "Your name" data [:name] :placeholder "Enter your name here")
   (f/form-buttons
     (f/button-primary "Submit" #(js/alert (:name @data)))
     (f/button-default "Cancel" #(js/alert "Cancel!")))
@@ -247,9 +271,9 @@ Apart from `form`, the helpers have an identical interface to ones in `reforms.c
 ```clojure
 (v/form                                                           ;; 1
   ui-state                                                        ;; 2
-  (v/text "Login" "Choose your login" data [:login])              ;; 3
-  (v/password "Password" "Enter your password" data [:password1]) 
-  (v/password "Confirm password" "Re-enter your password" data [:password2])
+  (v/text "Login" data [:login])                                  ;; 3
+  (v/password "Password" data [:password1]) 
+  (v/password "Confirm password" data [:password2])
   (f/form-buttons
     (f/button-primary "Sign up" #(sign-up! data ui-state))))      ;; 4
 ```
@@ -363,26 +387,45 @@ Note that `error-alert` can render any number of custom errors like so:
 
 ### Assorted topics
 
+#### Hiding labels
+
+Starting with version 0.4.0 labels are optional; for example the text box below will be displayed without a label:
+
+```clojure
+(f/text data [:name])
+```
+
 #### Element attributes
 
 Each form helper accepts React attributes as the first argument. These attributes will be handed over to React (see https://github.com/r0man/sablono#html-attributes)
 
 ```clojure
-(text {:key "name-1"} "Name" "Your name" user [:name])
+(text {:key "name-1"} "Name" user [:name])
 ```
 
 Attributes are optional, this form will work as well.
 
 ```clojure
-(text "Name" "Your name" user [:name])
+(text "Name" user [:name])
 ```
+
+#### Placeholders for empty text boxes
+
+You can add a placeholder shown when the text box is empty using a `:placeholder` option:
+
+```clojure
+(f/text "Your name" data [:name] :placeholder "Enter your name here")
+```
+
+It also works for `textarea` and other controls based on `html5-input` such as `password`, `datetime-local`, `email` and others. 
+
 
 #### Showing warnings
 
 In addition to validation proper, `text`, `password` and other controls based on `html5-input` support warnings:
   
 ```clojure
-(text "City" "Where are you?" [:city] :warn-fn #(when-not (= "Kansas" %) "We're not in Kansas anymore")
+(text "City" [:city] :warn-fn #(when-not (= "Kansas" %) "We're not in Kansas anymore")
 ```
 
 <img src="https://github.com/bilus/reforms/blob/master/doc/images/warning.png" width="70%">
@@ -478,12 +521,12 @@ Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail
 + Test all examples.
 + Tests for parse-args.
 + Om compatibility.
-- Add info to docs.
-- Fix TOC hierarchy.
++ Add info to docs.
++ Fix TOC hierarchy.
 - Add to FAQ: Can I bind to local Om component state? 
 - Validation errors in local state in om-reforms. Add How can I store validation errors in local state? to FAQ
-- Add table. Namespace. Example. Add to 'controls' example. Blog post.
 - Fix :key warning for all examples (esp. group-title).
+- Add table. Namespace. Example. Add to 'controls' example. Blog post.
 - Release 0.4.0
 
 - Add wizard. Update 'controls' example. Blog post. ANN (mention local state).
