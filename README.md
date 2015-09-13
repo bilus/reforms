@@ -483,6 +483,7 @@ Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail
 - Add to FAQ: Can I bind to local Om component state? 
 - Validation errors in local state in om-reforms. Add How can I store validation errors in local state? to FAQ
 - Add table. Namespace. Example. Add to 'controls' example. Blog post.
+- Fix :key warning for all examples (esp. group-title).
 - Release 0.4.0
 
 - Add wizard. Update 'controls' example. Blog post. ANN (mention local state).
