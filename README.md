@@ -500,6 +500,20 @@ In addition, in case of buttons it's usually a good idea to disable them:
 See this example: [Om](https://github.com/bilus/om-reforms/tree/master/examples/progress/) ([demo](http://bilus.github.io/reforms/examples/om/progress/index.html))
 [Reagent](https://github.com/bilus/reagent-reforms/tree/master/examples/progress/) ([demo](http://bilus.github.io/reforms/examples/reagent/progress/index.html))
 
+#### Can I bind to local component state (Om-specific)?
+
+Yes, there's experimental support for this, just remember to use `render-state` instead of `render`:
+
+```clojure
+(defn simple-view
+  [_ owner]
+  (reify
+    om/IRenderState
+    (render-state [_ _]
+      (f/text "Your name" owner [:name] :placeholder "Type your name here"))))
+```
+
+A slightly more complete example: [source](https://github.com/bilus/om-reforms/tree/master/examples/local_state/) [demo](http://bilus.github.io/reforms/examples/om/local_state/index.html)
 
 <!-- #### Can I use built-in Bootstrap icons instead of Font Awesome?
 #### How do I use different column widths for horizontal forms -->
@@ -523,10 +537,11 @@ Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail
 + Om compatibility.
 + Add info to docs.
 + Fix TOC hierarchy.
-- Add to FAQ: Can I bind to local Om component state? 
++ Add to FAQ: Can I bind to local Om component state? 
 - Validation errors in local state in om-reforms. Add How can I store validation errors in local state? to FAQ
 - Fix :key warning for all examples (esp. group-title).
 - Add table. Namespace. Example. Add to 'controls' example. Blog post.
+- Are all examples there (esp. om local state)?
 - Release 0.4.0
 
 - Add wizard. Update 'controls' example. Blog post. ANN (mention local state).
