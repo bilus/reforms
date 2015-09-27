@@ -502,6 +502,7 @@ See this example: [Om](https://github.com/bilus/om-reforms/tree/master/examples/
 
 #### Can I bind to local component state (Om-specific)?
 
+
 Yes, there's experimental support for this, just remember to use `render-state` instead of `render`:
 
 ```clojure
@@ -513,7 +514,11 @@ Yes, there's experimental support for this, just remember to use `render-state` 
       (f/text "Your name" owner [:name] :placeholder "Type your name here"))))
 ```
 
+You can also store validation data in local state which may be useful even if you store the actual data in an atom. 
+
 A slightly more complete example: [source](https://github.com/bilus/om-reforms/tree/master/examples/local_state/) [demo](http://bilus.github.io/reforms/examples/om/local_state/index.html)
+
+** This is an experimental feature. Please report any bugs. **
 
 <!-- #### Can I use built-in Bootstrap icons instead of Font Awesome?
 #### How do I use different column widths for horizontal forms -->
@@ -538,9 +543,16 @@ Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail
 + Add info to docs.
 + Fix TOC hierarchy.
 + Add to FAQ: Can I bind to local Om component state? 
-- Validation errors in local state in om-reforms. Add How can I store validation errors in local state? to FAQ
-- Fix :key warning for all examples (esp. group-title).
++ Validation errors in local state in om-reforms. How can I store validation errors in local state? to FAQ
 - Add table. Namespace. Example. Add to 'controls' example. Blog post.
+  + table works for Om.
+  - table works for Reagent.
+  - pretty up controls example.
+  - remove react.inc.js from index.html's for all examples.
+  - Update Readme and reference.
+- Fix :key warning for all examples (esp. group-title). Also for table.
+- Add info about :key bug to FAQ.
+- Check source paths in demos' project.clj files.
 - Are all examples there (esp. om local state)?
 - Release 0.4.0
 
