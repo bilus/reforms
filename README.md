@@ -547,9 +547,12 @@ Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail
 - Add table. Namespace. Example. Add to 'controls' example. Blog post.
   + table works for Om.
   - table works for Reagent.
+  - framework-agnostic interface for table (no :cursor etc.).
   - pretty up controls example.
   - remove react.inc.js from index.html's for all examples.
   - Update Readme and reference.
+- Change wording from Bootstrap-based to "...markup compatible with bootstrap. While bootstrap isn't required, all examples use it
+  because it gives you great look without extra effort...".
 - Fix :key warning for all examples (esp. group-title). Also for table.
 - Add info about :key bug to FAQ.
 - Check source paths in demos' project.clj files.
