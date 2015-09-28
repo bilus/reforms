@@ -24,7 +24,7 @@
             :profiles {:doc {:dependencies [[org.clojure/clojurescript "0.0-2985"]]}
                        :dev {:dependencies [[org.clojure/core.async "0.1.346.0-17112a-alpha"]
                                             [com.cemerick/piggieback "0.2.1"]
-                                            [cider/cider-nrepl "0.10.0-SNAPSHOT"]]
+                                           ]
                              :repl-options {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}}}
 
             :aliases {"doc"       ["with-profile" "doc" "doc"]
