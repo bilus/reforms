@@ -18,3 +18,4 @@ out/
 /doc/js
 /resources/public/js/testable.js
 examples/
+/.cljs_rhino_repl

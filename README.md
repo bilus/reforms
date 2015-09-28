@@ -546,8 +546,9 @@ Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail
 + Validation errors in local state in om-reforms. How can I store validation errors in local state? to FAQ
 - Add table. Namespace. Example. Add to 'controls' example. Blog post.
   + table works for Om.
-  - table works for Reagent.
+  + table works for Reagent.
   - framework-agnostic interface for table (no :cursor etc.).
+  - option to change behaviour of nil -> select nothing.
   - pretty up controls example.
   - remove react.inc.js from index.html's for all examples.
   - Update Readme and reference.
@@ -555,7 +556,7 @@ Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail
   because it gives you great look without extra effort...".
 - Fix :key warning for all examples (esp. group-title). Also for table.
 - Add info about :key bug to FAQ.
-- Check source paths in demos' project.clj files.
+- Check source paths in demos' project.clj files and add reforms to deps.
 - Are all examples there (esp. om local state)?
 - Release 0.4.0
 
