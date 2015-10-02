@@ -77,48 +77,48 @@ return cljs.core.deref.call(null,this$);
 }));
 
 (reforms.binding.protocol._reset_BANG_["_"] = (function() {
-var G__75995 = null;
-var G__75995__2 = (function (this$,v){
+var G__78520 = null;
+var G__78520__2 = (function (this$,v){
 return cljs.core.reset_BANG_.call(null,this$,v);
 });
-var G__75995__3 = (function (this$,ks,v){
+var G__78520__3 = (function (this$,ks,v){
 return reforms.binding.reagent.do_reset_BANG_.call(null,this$,ks,v);
 });
-G__75995 = function(this$,ks,v){
+G__78520 = function(this$,ks,v){
 switch(arguments.length){
 case 2:
-return G__75995__2.call(this,this$,ks);
+return G__78520__2.call(this,this$,ks);
 case 3:
-return G__75995__3.call(this,this$,ks,v);
+return G__78520__3.call(this,this$,ks,v);
 }
 throw(new Error('Invalid arity: ' + arguments.length));
 };
-G__75995.cljs$core$IFn$_invoke$arity$2 = G__75995__2;
-G__75995.cljs$core$IFn$_invoke$arity$3 = G__75995__3;
-return G__75995;
+G__78520.cljs$core$IFn$_invoke$arity$2 = G__78520__2;
+G__78520.cljs$core$IFn$_invoke$arity$3 = G__78520__3;
+return G__78520;
 })()
 );
 
 (reforms.binding.protocol._swap_BANG_["_"] = (function() {
-var G__75996 = null;
-var G__75996__2 = (function (this$,f){
+var G__78521 = null;
+var G__78521__2 = (function (this$,f){
 return cljs.core.swap_BANG_.call(null,this$,f);
 });
-var G__75996__3 = (function (this$,ks,f){
+var G__78521__3 = (function (this$,ks,f){
 return reforms.binding.reagent.do_swap_BANG_.call(null,this$,ks,f);
 });
-G__75996 = function(this$,ks,f){
+G__78521 = function(this$,ks,f){
 switch(arguments.length){
 case 2:
-return G__75996__2.call(this,this$,ks);
+return G__78521__2.call(this,this$,ks);
 case 3:
-return G__75996__3.call(this,this$,ks,f);
+return G__78521__3.call(this,this$,ks,f);
 }
 throw(new Error('Invalid arity: ' + arguments.length));
 };
-G__75996.cljs$core$IFn$_invoke$arity$2 = G__75996__2;
-G__75996.cljs$core$IFn$_invoke$arity$3 = G__75996__3;
-return G__75996;
+G__78521.cljs$core$IFn$_invoke$arity$2 = G__78521__2;
+G__78521.cljs$core$IFn$_invoke$arity$3 = G__78521__3;
+return G__78521;
 })()
 );
 
