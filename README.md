@@ -384,6 +384,59 @@ Note that `error-alert` can render any number of custom errors like so:
 (v/error-alert [:auth-error] [:twitter-error])
 ```
 
+### Tables
+
+Starting with version 0.4.0 Reforms support HTML tables with optional row selection fully stylable using CSS and compatible with Bootstrap table classes
+(if you use Bootstrap in the first place). 
+
+For live example see this [demo](http://bilus.github.io/reforms/examples/reagent/controls/index.html) ([source](https://github.com/bilus/reagent-reforms/tree/master/examples/controls)).
+
+#### Simple table
+
+This is how you create a simple table, just provide a vector with map per each row:
+
+```clojure
+(t/table [{:name "Tom"} {:name "Jerry"} {:name "Mickey"} {:name "Minnie"}])
+```
+
+Here we create just one column.
+
+#### Column names
+
+It's usually a good idea to give columns human-friendly titles:
+
+```clojure
+(t/table [{:name "Tom"} {:name "Jerry"} {:name "Mickey"} {:name "Minnie"}]
+         :columns {:name "Hero name"})
+```
+
+#### Attributes
+
+As with all controls, you can specify optional attributes; they will be applied to the <table> element (see https://github.com/r0man/sablono#html-attributes):
+
+```clojure
+(t/table {:key "hero-table"       ;; Unique React key to avoid warnings.
+          :class "table-striped"} ;; Bootstrap table style, see http://getbootstrap.com/css/#tables
+         [{:name "Tom"} {:name "Jerry"} {:name "Mickey"} {:name "Minnie"}]
+         :columns {:name "Hero name"})
+```
+
+
+#### Row selection
+
+As an option, you can enable row selection using checkboxes. Current selection is stored in an atom/cursor (as a set of unique row ids).
+These row ids are provided through a user-defined function, here we use a separate :id column (which isn't visible to the user):
+
+```clojure
+(t/table {:key "rs-table"}
+         [{:name "Tom" :id 1} {:name "Jerry" :id 2} {:name "Mickey" :id 3} {:name "Minnie" :id 4}]
+         :columns {:name "Hero name"}
+         :checkboxes {:selection data
+                      :path      [:selected]
+                      :row-id    :id})
+```
+
+See the [API Reference](http://bilus.github.io/reforms/doc/reforms.table.html#var-table).
 
 ### Assorted topics
 
@@ -544,27 +597,29 @@ Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail
 + Fix TOC hierarchy.
 + Add to FAQ: Can I bind to local Om component state? 
 + Validation errors in local state in om-reforms. How can I store validation errors in local state? to FAQ
-- Add table. Namespace. Example. Add to 'controls' example. Blog post.
++ Add table. Namespace. Example. Add to 'controls' example. Blog post.
   + table works for Om.
   + table works for Reagent.
   + framework-agnostic interface for table (no :cursor etc.).
   + option to change behaviour of nil -> select nothing.
-  - pretty up controls example.
-  - remove react.inc.js from index.html's for all examples.
-  - Update Readme and reference.
+  + pretty up controls example.
+  + Update Readme and reference.
 - Change wording from Bootstrap-based to "...markup compatible with bootstrap. While bootstrap isn't required, all examples use it
   because it gives you great look without extra effort...".
+- State forcefully that the code you write is fully portable between React and reagent.
+- remove react.inc.js from index.html's for all examples.
 - Fix :key warning for all examples (esp. group-title). Also for table.
 - Add info about :key bug to FAQ.
 - Check source paths in demos' project.clj files and add reforms to deps.
 - Are all examples there (esp. om local state)?
+- Build reference & examples and upload them. Check that everything's all right.
 - Release 0.4.0
-
-- Add wizard. Update 'controls' example. Blog post. ANN (mention local state).
-- Add tabs. Update 'controls' example. Blog post.
 
 - Contact authors of other libraries.
 - Contact Om maintainers to update home page.
+
+- Add wizard. Update 'controls' example. Blog post. ANN (mention local state).
+- Add tabs. Update 'controls' example. Blog post.
 
 - Port tests.
 

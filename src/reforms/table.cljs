@@ -28,7 +28,7 @@
        [attrs] rows [options]
 
        - attrs - (optional) attributes for <table> handed over to React (see https://github.com/r0man/sablono#html-attributes)
-       - rows - an array of col->val maps
+       - rows - a vector of col->val maps
        - options - (optional) options to customize the table
 
    Options:
