@@ -620,44 +620,8 @@ Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail
 
 ### TBD
 
-+ Label-less controls.
-+ Placeholder -> :placeholder. Deprecate placeholder as optional arg.
-+ Label-less area.
-+ Placeholder for area.
-+ Same for select etc.
-+ Update Reagent examples.
-+ Update Om examples.
-+ Test all examples.
-+ Tests for parse-args.
-+ Om compatibility.
-+ Add info to docs.
-+ Fix TOC hierarchy.
-+ Add to FAQ: Can I bind to local Om component state? 
-+ Validation errors in local state in om-reforms. How can I store validation errors in local state? to FAQ
-+ Add table. Namespace. Example. Add to 'controls' example. Blog post.
-  + table works for Om.
-  + table works for Reagent.
-  + framework-agnostic interface for table (no :cursor etc.).
-  + option to change behaviour of nil -> select nothing.
-  + pretty up controls example.
-  + Update Readme and reference.
-+ Change wording from Bootstrap-based to "...markup compatible with bootstrap. While bootstrap isn't required, all examples use it
-  because it gives you great look without extra effort...".
-+ State forcefully that the code you write is fully portable between React and reagent.
-+ Remove react.js from index.html's for all examples.
-+ Fix :key warning for all examples (esp. group-title). Also for table.
-+ Add info about :key bug to FAQ.
-+ Check source paths in demos' project.clj files and add reforms to deps.
-+ Are all examples there (esp. om local state)?
-+ Build reference & examples and upload them. Check that everything's all right.
-+ Release 0.4.0
-
-- Contact authors of other libraries.
-- Contact Om maintainers to update home page.
-
-? - Add wizard. Update 'controls' example. Blog post. ANN (mention local state).
+- Contact library authors.
 - Add tabs. Update 'controls' example. Blog post.
-
 - Port tests.
 
 ### License
