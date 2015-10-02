@@ -87,37 +87,42 @@
         {selection :selection selection-path :path row-id-fn :row-id nil-selects-all? :nil-selects-all? :or {row-id-fn (comp first vals)}} checkboxes
         selected (when selection (or (binding/get-in selection selection-path) #{})) ; selection-path may be nil
         select-all (when selection (and nil-selects-all? (nil? (binding/get-in selection selection-path))))]
-    [:table attrs
-     [:thead
-      [:tr
-       (concat
-        (when checkboxes
-          (let [all-values (map row-id-fn rows)]
-            (list
-             (let []
-               [:th (simple-checkbox (or select-all (all-selected? selected all-values))
-                                     :on-click (fn [checked]
-                                                 (binding/swap! selection selection-path
-                                                                (fn [prev-selected]
-                                                                  (if checked
-                                                                    (into prev-selected all-values)
-                                                                    #{})))))]))))
-        (for [col col-keys]
-          [:th (or (labels col) col)]))]]
-     [:tbody
-      (for [row rows]
-        [:tr
+    (into
+     [:table attrs]
+     [(into
+       [:thead]
+       [(into
+         [:tr]
          (concat
           (when checkboxes
-            (let [value (row-id-fn row)
-                  all-values (map row-id-fn rows)]
-              [[:td (simple-checkbox (or select-all (selected value))
-                                     :on-click (fn [checked]
-                                                 (binding/swap! selection selection-path
-                                                                (fn [prev-selected]
-                                                                  (cond
-                                                                    select-all (disj (into #{} all-values) value)
-                                                                    checked (conj (or prev-selected #{}) value)
-                                                                    :else (disj (or prev-selected #{}) value))))))]]))
+            (let [all-values (map row-id-fn rows)]
+              (list
+               (let []
+                 [:th (simple-checkbox (or select-all (all-selected? selected all-values))
+                                       :on-click (fn [checked]
+                                                   (binding/swap! selection selection-path
+                                                                  (fn [prev-selected]
+                                                                    (if checked
+                                                                      (into prev-selected all-values)
+                                                                      #{})))))]))))
           (for [col col-keys]
-            [:td (xf col (row col))]))])]]))
+            [:th (or (labels col) col)])))])
+      (into
+       [:tbody]
+       (for [row rows]
+         (into
+          [:tr]
+          (concat
+           (when checkboxes
+             (let [value (row-id-fn row)
+                   all-values (map row-id-fn rows)]
+               [[:td (simple-checkbox (or select-all (selected value))
+                                      :on-click (fn [checked]
+                                                  (binding/swap! selection selection-path
+                                                                 (fn [prev-selected]
+                                                                   (cond
+                                                                     select-all (disj (into #{} all-values) value)
+                                                                     checked (conj (or prev-selected #{}) value)
+                                                                     :else (disj (or prev-selected #{}) value))))))]]))
+           (for [col col-keys]
+             [:td (xf col (row col))])))))])))

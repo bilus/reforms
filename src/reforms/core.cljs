@@ -63,7 +63,7 @@
            [:div \"Contents go here\"])"
   [& args]
   (let [[attrs [title & rest-args]] (impl/resolve-args [:panel] {:class "panel panel-default"} args)
-        [{:keys [close]} & contents] (impl/parse-options rest-args)]
+        [{:keys [close]} contents] (impl/parse-options rest-args)]
     [:div attrs
      [:div {:class "panel-heading"
             :key   "ph"}
@@ -74,9 +74,10 @@
                :key   "c"}
          [:i {:class   (get-options [:panel :icon-close])
               :onClick close}]])]
-     [:div {:class "panel-body"
-            :key   "pb"}
-      contents]]))
+     (into
+      [:div {:class "panel-body"
+             :key   "pb"}]
+      contents)]))
 
 (defn form
   "A form. See http://getbootstrap.com/css/#forms
@@ -93,16 +94,18 @@
        (form [:div \"Contents go here\"])
        (form {:style {:background-color \"red\"}} [:div \"Contents go here\"])"
   [& args]
-  (let [[attrs & elems] (impl/resolve-args [:form]
-                                           {:on-submit #(.preventDefault %)
-                                            :class     (when (impl/form-horizontal?) "form-horizontal")}
-                                           args)]
-    [:form attrs
-     elems
-     (when (:on-submit (first args))                        ;; TODO: Kinda hackish.
-       [:button {:type  "submit"
-                 :style {:display "none"}
-                 :key   "fsb"}])]))
+  (let [[attrs elems] (impl/resolve-args [:form]
+                                         {:on-submit #(.preventDefault %)
+                                          :class     (when (impl/form-horizontal?) "form-horizontal")}
+                                         args)]
+    (into
+     [:form attrs]
+     (concat ;; Avoid React "key" prop warnings.
+      elems
+      (when (:on-submit (first args)) ;; TODO: Kinda hackish.
+        [[:button {:type  "submit"
+                   :style {:display "none"}
+                   :key   "fsb"}]])))))
 
 (defn group-title
   "A title for a logical group of controls.
@@ -199,16 +202,16 @@
                                                                                      {:type  "button"
                                                                                       :class "btn"}
                                                                                      args)]
-    [:button
-     (merge {:disabled disabled
-             :on-click #(when-not disabled
-                         (on-click))
-             :key      (gen-key label (:class attrs))}
-            attrs)
-     label
-     (when in-progress
-       (list " "
-             (impl/spinner)))]))
+    (into
+     [:button (merge {:disabled disabled
+                      :on-click #(when-not disabled
+                                   (on-click))
+                      :key      (gen-key label (:class attrs))}
+                     attrs)]
+     (concat ;; Avoid React "key" prop warnings.
+      [label]
+      (when in-progress
+        [" " (impl/spinner)])))))
 
 (defn button-primary
   "Primary button. See http://getbootstrap.com/css/#buttons
@@ -240,8 +243,9 @@
    - attrs        - (optional) attributes handed over to React (see https://github.com/r0man/sablono#html-attributes)"
   [& args]
   (let [[attrs [& buttons]] (impl/resolve-args [:button-group] {:class "button-group"} args)]
-    [:div attrs
-     buttons]))
+    (into
+     [:div attrs]
+     buttons)))
 
 (defn checkbox
   "Checkbox. See http://getbootstrap.com/css/#checkboxes-and-radios
@@ -260,28 +264,27 @@
   (let [[attrs [label cursor korks & {:keys [valid? validation-error-fn inline]}]] (impl/resolve-args [:checkbox] {} args)
         dom-id (impl/gen-dom-id cursor korks)
         valid (or (nil? valid?) (valid? korks))]
-    (list
-      (impl/unlabeled-control
-        (gen-key :wrap cursor korks)
-        inline
-        [:div {:class (str "checkbox" (when-not valid " has-error") (when inline " checkbox-inline"))
-               :key   (gen-key :checkbox cursor korks)}
-         [:label
-          {:key (gen-key :label cursor korks)}
-          [:input
-           (impl/merge-attrs {:on-change #(do
-                                           (binding/reset! cursor korks (.. % -target -checked)))
-                              :checked   (binding/get-in cursor korks)
-                              :type      "checkbox"
-                              :id        dom-id
-                              :key       (gen-key :input cursor korks)}
-                             attrs
-                             {})]
-          label]]
-        (when-let [validation-error (and validation-error-fn (validation-error-fn korks))]
-          (impl/error-label {:key (gen-key :error-label)} validation-error))))))
+    (apply impl/unlabeled-control
+           (gen-key :wrap cursor korks)
+           inline
+           (concat ;; Avoid React "key" prop warnings.
+            [[:div {:class (str "checkbox" (when-not valid " has-error") (when inline " checkbox-inline"))
+                    :key   (gen-key :checkbox cursor korks)}
+              [:label
+               {:key (gen-key :label cursor korks)}
+               [:input
+                (impl/merge-attrs {:on-change #(binding/reset! cursor korks (.. % -target -checked))
+                                   :checked   (binding/get-in cursor korks)
+                                   :type      "checkbox"
+                                   :id        dom-id
+                                   :key       (gen-key :input cursor korks)}
+                                  attrs
+                                  {})]
+               [:span label]]]]
+            (when-let [validation-error (and validation-error-fn (validation-error-fn korks))]
+              [(impl/error-label {:key (gen-key :error-label)} validation-error)])))))
 
-(defn radio                                                 ;; TODO: Extract common method for `radio` and `checkbox`.
+(defn radio ;; TODO: Extract common method for `radio` and `checkbox`.
   "Radio button. See http://getbootstrap.com/css/#checkboxes-and-radios
 
    Arguments:
@@ -298,27 +301,27 @@
   (let [[attrs [label cursor korks value & {:keys [valid? validation-error-fn inline]}]] (impl/resolve-args [:radio] {} args)
         dom-id (impl/gen-dom-id cursor korks)
         valid (or (nil? valid?) (valid? korks))]
-    (list
-      (impl/unlabeled-control
-        (gen-key :wrap cursor korks)
-        inline
-        [:div {:class (str "radio" (when-not valid " has-error") (when inline " radio-inline"))
-               :key   (gen-key :radio cursor korks)}
-         [:label
-          [:input
-           (impl/merge-attrs {:on-change #(when (.. % -target -checked)
-                                           (binding/reset! cursor korks value))
-                              :checked   (= value (binding/get-in cursor korks))
-                              :type      "radio"
-                              :id        dom-id
-                              :name      dom-id
-                              :value     value
-                              :key       (gen-key :input cursor korks)}
-                             attrs
-                             {})]
-          label]]
-        (when-let [validation-error (and validation-error-fn (validation-error-fn korks))]
-          (impl/error-label {:key (gen-key :el)} validation-error))))))
+    (apply impl/unlabeled-control
+           (gen-key :wrap cursor korks)
+           inline
+           (concat ;; Avoid React "key" prop warnings.
+            [[:div {:class (str "radio" (when-not valid " has-error") (when inline " radio-inline"))
+                    :key   (gen-key :radio cursor korks)}
+              [:label
+               [:input
+                (impl/merge-attrs {:on-change #(when (.. % -target -checked)
+                                                 (binding/reset! cursor korks value))
+                                   :checked   (= value (binding/get-in cursor korks))
+                                   :type      "radio"
+                                   :id        dom-id
+                                   :name      dom-id
+                                   :value     value
+                                   :key       (gen-key :input cursor korks)}
+                                  attrs
+                                  {})]
+               label]]]
+            (when-let [validation-error (and validation-error-fn (validation-error-fn korks))]
+              [(impl/error-label {:key (gen-key :el)} validation-error)])))))
 
 
 (defn textarea
@@ -550,3 +553,14 @@
    - attrs                 - (optional) attributes handed over to React (see https://github.com/r0man/sablono#html-attributes)"
   [& args]
   (apply impl/spinner args))
+
+
+(comment
+  [:table {:key "styled-table", :class "table-striped table-bordered table"}
+   [:thead
+    [:tr [:th "Hero name"]]]
+   [:tbody
+    [:tr [:td "Tom"]]
+    [:tr [:td "Jerry"]]
+    [:tr [:td "Mickey"]]
+    [:tr [:td "Minnie"]]]])

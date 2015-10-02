@@ -560,6 +560,38 @@ In addition, in case of buttons it's usually a good idea to disable them:
 See this example: [Om](https://github.com/bilus/om-reforms/tree/master/examples/progress/) ([demo](http://bilus.github.io/reforms/examples/om/progress/index.html))
 [Reagent](https://github.com/bilus/reagent-reforms/tree/master/examples/progress/) ([demo](http://bilus.github.io/reforms/examples/reagent/progress/index.html))
 
+#### I'm getting *Each child in an array should have a unique "key" prop*. Why?
+
+If you use Om, it's likely the warning is sabl0no-related (see [this](https://github.com/r0man/sablono/issues/57)).
+
+In your own code avoid passing child elements as a sequence whenever possible:
+
+```clojure
+[:ul
+  (for [item items]
+    [:li item])]
+```
+
+with:
+
+```clojure
+(into
+  [:ul]
+  (for [item items]
+    [:li item]))
+```
+
+If you need to pass a sequence, use attributes to set React key. For exmple, replace this:
+
+```clojure
+(let [items [{:title "foo" :id 1} {:title "bar" :id 2}]]
+  [:ul
+    (for [{:keys [title id]} items]
+      [:li {:key id} title])])
+```
+
+On the other hand, if you find a bug in Reforms, please do report it [here](https://github.com/bilus/reforms/issues).
+
 #### Can I bind to local component state (Om-specific)?
 
 
@@ -614,9 +646,9 @@ Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail
 + Change wording from Bootstrap-based to "...markup compatible with bootstrap. While bootstrap isn't required, all examples use it
   because it gives you great look without extra effort...".
 + State forcefully that the code you write is fully portable between React and reagent.
-- remove react.inc.js from index.html's for all examples.
-- Fix :key warning for all examples (esp. group-title). Also for table.
-- Add info about :key bug to FAQ.
++ Remove react.js from index.html's for all examples.
++ Fix :key warning for all examples (esp. group-title). Also for table.
++ Add info about :key bug to FAQ.
 - Check source paths in demos' project.clj files and add reforms to deps.
 - Are all examples there (esp. om local state)?
 - Build reference & examples and upload them. Check that everything's all right.
