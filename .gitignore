@@ -19,3 +19,5 @@ out/
 /resources/public/js/testable.js
 examples/
 /.cljs_rhino_repl
+/.cljs_rhino_repl.bak
+
