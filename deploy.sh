@@ -39,6 +39,7 @@ then
   cp -r ../om-reforms/examples/ examples/om &&
   mkdir -p examples/reagent &&
   cp -r ../reagent-reforms/examples/ examples/reagent &&
+  sleep 5 && # Locked git
   echo "Push to git" &&
   git add doc/ examples/ &&
   git commit -m "Update Github Pages." &&
