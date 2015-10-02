@@ -53,7 +53,6 @@ A good place to see the available controls: [demo](http://bilus.github.io/reform
     - [How do I submit the form when the user presses ENTER?](#how-do-i-submit-the-form-when-the-user-presses-enter)
     - [How to affect changes when user clicks a button?](#how-to-affect-changes-when-user-clicks-a-button)
     - [How to show an operation is in progress?](#how-to-show-an-operation-is-in-progress)
-    - [I'm getting *Each child in an array should have a unique "key" prop*. Why?](#im-getting-each-child-in-an-array-should-have-a-unique-key-prop-why)
     - [Can I bind to local component state (Om-specific)?](#can-i-bind-to-local-component-state-om-specific)
     - [How do I use different column widths for horizontal forms -->](#how-do-i-use-different-column-widths-for-horizontal-forms---)
   - [[API Reference](http://bilus.github.io/reforms/doc/)](#api-referencehttpbilusgithubioreformsdoc)
@@ -613,8 +612,6 @@ A slightly more complete example: [source](https://github.com/bilus/om-reforms/t
 
 ** This is an experimental feature. Please report any bugs. **
 
-<!-- #### Can I use built-in Bootstrap icons instead of Font Awesome?
-#### How do I use different column widths for horizontal forms -->
 
 ### [API Reference](http://bilus.github.io/reforms/doc/)
 
