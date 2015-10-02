@@ -85,8 +85,8 @@
                           (mapcat keys)
                           distinct))
         {selection :selection selection-path :path row-id-fn :row-id nil-selects-all? :nil-selects-all? :or {row-id-fn (comp first vals)}} checkboxes
-        selected (or (binding/get-in selection selection-path) #{}) ; selection-path may be nil
-        select-all (and nil-selects-all? (nil? (binding/get-in selection selection-path)))]
+        selected (when selection (or (binding/get-in selection selection-path) #{})) ; selection-path may be nil
+        select-all (when selection (and nil-selects-all? (nil? (binding/get-in selection selection-path))))]
     [:table attrs
      [:thead
       [:tr
