@@ -649,8 +649,8 @@ Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail
 + Remove react.js from index.html's for all examples.
 + Fix :key warning for all examples (esp. group-title). Also for table.
 + Add info about :key bug to FAQ.
-- Check source paths in demos' project.clj files and add reforms to deps.
-- Are all examples there (esp. om local state)?
++ Check source paths in demos' project.clj files and add reforms to deps.
++ Are all examples there (esp. om local state)?
 - Build reference & examples and upload them. Check that everything's all right.
 - Release 0.4.0
 
