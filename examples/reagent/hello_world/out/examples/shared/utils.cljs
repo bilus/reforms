@@ -6,6 +6,6 @@
       (with-out-str (pprint/pprint data)))
 
 (defn inspector-view
-      [data]
+      [data & [path]]
       [:pre.inspector {:key "inspector-view"}
-       (inspect @data)])
+       (inspect (get-in @data path))])

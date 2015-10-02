@@ -1,0 +1,2 @@
+;; Analyzed by ClojureScript 1.7.122
+{:name reforms.binding.om-state, :doc "EXPERIMENTAL: Binding to local state.", :excludes #{}, :use-macros nil, :require-macros {om om.core, om.core om.core}, :uses {IBinding reforms.binding.protocol}, :requires {reforms.binding.protocol reforms.binding.protocol, om om.core, om.core om.core}, :imports nil, :defs {IBinding {:impls (default)}}}

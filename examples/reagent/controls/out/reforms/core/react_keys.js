@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 0.0-3308 {}
+// Compiled by ClojureScript 1.7.122 {}
 goog.provide('reforms.core.react_keys');
 goog.require('cljs.core');
 goog.require('reforms.binding.core');
@@ -20,15 +20,30 @@ return [cljs.core.str(x)].join('');
 }
 }
 });
-reforms.core.react_keys.gen_key = (function reforms$core$react_keys$gen_key(){
-var argseq__5379__auto__ = ((((0) < arguments.length))?(new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments,(0)),(0))):null);
-return reforms.core.react_keys.gen_key.cljs$core$IFn$_invoke$arity$variadic(argseq__5379__auto__);
+reforms.core.react_keys.gen_key = (function reforms$core$react_keys$gen_key(var_args){
+var args__5658__auto__ = [];
+var len__5651__auto___75418 = arguments.length;
+var i__5652__auto___75419 = (0);
+while(true){
+if((i__5652__auto___75419 < len__5651__auto___75418)){
+args__5658__auto__.push((arguments[i__5652__auto___75419]));
+
+var G__75420 = (i__5652__auto___75419 + (1));
+i__5652__auto___75419 = G__75420;
+continue;
+} else {
+}
+break;
+}
+
+var argseq__5659__auto__ = ((((0) < args__5658__auto__.length))?(new cljs.core.IndexedSeq(args__5658__auto__.slice((0)),(0))):null);
+return reforms.core.react_keys.gen_key.cljs$core$IFn$_invoke$arity$variadic(argseq__5659__auto__);
 });
 
 reforms.core.react_keys.gen_key.cljs$core$IFn$_invoke$arity$variadic = (function (args){
-var or__4339__auto__ = cljs.core.not_empty.call(null,clojure.string.replace.call(null,clojure.string.lower_case.call(null,clojure.string.join.call(null,"-",cljs.core.remove.call(null,cljs.core.empty_QMARK_,cljs.core.map.call(null,reforms.core.react_keys.to_str,cljs.core.remove.call(null,cljs.core.nil_QMARK_,args))))),/[^a-zA-Z0-9_$]/,"-"));
-if(cljs.core.truth_(or__4339__auto__)){
-return or__4339__auto__;
+var or__4593__auto__ = cljs.core.not_empty.call(null,clojure.string.replace.call(null,clojure.string.lower_case.call(null,clojure.string.join.call(null,"-",cljs.core.remove.call(null,cljs.core.empty_QMARK_,cljs.core.map.call(null,reforms.core.react_keys.to_str,cljs.core.remove.call(null,cljs.core.nil_QMARK_,args))))),/[^a-zA-Z0-9_$]/,"-"));
+if(cljs.core.truth_(or__4593__auto__)){
+return or__4593__auto__;
 } else {
 return goog.ui.IdGenerator.getInstance().getNextUniqueId();
 }
@@ -36,8 +51,8 @@ return goog.ui.IdGenerator.getInstance().getNextUniqueId();
 
 reforms.core.react_keys.gen_key.cljs$lang$maxFixedArity = (0);
 
-reforms.core.react_keys.gen_key.cljs$lang$applyTo = (function (seq9069){
-return reforms.core.react_keys.gen_key.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq9069));
+reforms.core.react_keys.gen_key.cljs$lang$applyTo = (function (seq75417){
+return reforms.core.react_keys.gen_key.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq75417));
 });
 
 //# sourceMappingURL=react_keys.js.map

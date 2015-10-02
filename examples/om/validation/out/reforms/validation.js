@@ -1,13 +1,14 @@
-// Compiled by ClojureScript 0.0-3308 {}
+// Compiled by ClojureScript 1.7.122 {}
 goog.provide('reforms.validation');
 goog.require('cljs.core');
 goog.require('reforms.core');
 goog.require('reforms.binding.core');
 goog.require('clojure.string');
+reforms.validation.valid_QMARK_;
 reforms.validation.find_validation_error = (function reforms$validation$find_validation_error(kork,errors){
 if(cljs.core.truth_(cljs.core.not_empty.call(null,errors))){
-return cljs.core.first.call(null,cljs.core.filter.call(null,(function (p1__21100_SHARP_){
-return new cljs.core.Keyword(null,"korks","korks",-1343842342).cljs$core$IFn$_invoke$arity$1(p1__21100_SHARP_).call(null,kork);
+return cljs.core.first.call(null,cljs.core.filter.call(null,(function (p1__158311_SHARP_){
+return new cljs.core.Keyword(null,"korks","korks",-1343842342).cljs$core$IFn$_invoke$arity$1(p1__158311_SHARP_).call(null,kork);
 }),errors));
 } else {
 return null;
@@ -17,32 +18,32 @@ reforms.validation.sequable_QMARK_ = (function reforms$validation$sequable_QMARK
 try{cljs.core.seq.call(null,x);
 
 return true;
-}catch (e21102){if((e21102 instanceof Error)){
-var _ = e21102;
+}catch (e158313){if((e158313 instanceof Error)){
+var _ = e158313;
 return false;
 } else {
-throw e21102;
+throw e158313;
 
 }
 }});
 reforms.validation.present_QMARK_ = (function reforms$validation$present_QMARK_(x){
-if(cljs.core.truth_((function (){var and__4327__auto__ = x;
-if(cljs.core.truth_(and__4327__auto__)){
-return (cljs.core.not.call(null,(function (){var and__4327__auto____$1 = typeof x === 'string';
-if(and__4327__auto____$1){
+if(cljs.core.truth_((function (){var and__4697__auto__ = x;
+if(cljs.core.truth_(and__4697__auto__)){
+return (cljs.core.not.call(null,(function (){var and__4697__auto____$1 = typeof x === 'string';
+if(and__4697__auto____$1){
 return clojure.string.blank_QMARK_.call(null,x);
 } else {
-return and__4327__auto____$1;
+return and__4697__auto____$1;
 }
-})())) && (cljs.core.not.call(null,(function (){var and__4327__auto____$1 = reforms.validation.sequable_QMARK_.call(null,x);
-if(cljs.core.truth_(and__4327__auto____$1)){
+})())) && (cljs.core.not.call(null,(function (){var and__4697__auto____$1 = reforms.validation.sequable_QMARK_.call(null,x);
+if(cljs.core.truth_(and__4697__auto____$1)){
 return cljs.core.empty_QMARK_.call(null,x);
 } else {
-return and__4327__auto____$1;
+return and__4697__auto____$1;
 }
 })()));
 } else {
-return and__4327__auto__;
+return and__4697__auto__;
 }
 })())){
 return true;
@@ -51,9 +52,24 @@ return null;
 }
 });
 reforms.validation._STAR_validation_errors_STAR_ = null;
-reforms.validation.validating_field = (function reforms$validation$validating_field(){
-var argseq__5379__auto__ = ((((1) < arguments.length))?(new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments,(1)),(0))):null);
-return reforms.validation.validating_field.cljs$core$IFn$_invoke$arity$variadic((arguments[(0)]),argseq__5379__auto__);
+reforms.validation.validating_field = (function reforms$validation$validating_field(var_args){
+var args__5774__auto__ = [];
+var len__5767__auto___158316 = arguments.length;
+var i__5768__auto___158317 = (0);
+while(true){
+if((i__5768__auto___158317 < len__5767__auto___158316)){
+args__5774__auto__.push((arguments[i__5768__auto___158317]));
+
+var G__158318 = (i__5768__auto___158317 + (1));
+i__5768__auto___158317 = G__158318;
+continue;
+} else {
+}
+break;
+}
+
+var argseq__5775__auto__ = ((((1) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((1)),(0))):null);
+return reforms.validation.validating_field.cljs$core$IFn$_invoke$arity$variadic((arguments[(0)]),argseq__5775__auto__);
 });
 
 reforms.validation.validating_field.cljs$core$IFn$_invoke$arity$variadic = (function (field_fn,args){
@@ -65,9 +81,9 @@ throw (new Error([cljs.core.str("Assert failed: "),cljs.core.str("The validating
 return cljs.core.apply.call(null,field_fn,cljs.core.conj.call(null,cljs.core.vec.call(null,args),new cljs.core.Keyword(null,"valid?","valid?",-212412379),(function (korks){
 return reforms.validation.valid_QMARK_.call(null,korks,reforms.validation._STAR_validation_errors_STAR_);
 }),new cljs.core.Keyword(null,"validation-error-fn","validation-error-fn",-625000244),(function (korks){
-var temp__4423__auto__ = reforms.validation.find_validation_error.call(null,korks,reforms.validation._STAR_validation_errors_STAR_);
-if(cljs.core.truth_(temp__4423__auto__)){
-var err = temp__4423__auto__;
+var temp__4425__auto__ = reforms.validation.find_validation_error.call(null,korks,reforms.validation._STAR_validation_errors_STAR_);
+if(cljs.core.truth_(temp__4425__auto__)){
+var err = temp__4425__auto__;
 return new cljs.core.Keyword(null,"error-message","error-message",1756021561).cljs$core$IFn$_invoke$arity$1(err);
 } else {
 return null;
@@ -77,44 +93,59 @@ return null;
 
 reforms.validation.validating_field.cljs$lang$maxFixedArity = (1);
 
-reforms.validation.validating_field.cljs$lang$applyTo = (function (seq21103){
-var G__21104 = cljs.core.first.call(null,seq21103);
-var seq21103__$1 = cljs.core.next.call(null,seq21103);
-return reforms.validation.validating_field.cljs$core$IFn$_invoke$arity$variadic(G__21104,seq21103__$1);
+reforms.validation.validating_field.cljs$lang$applyTo = (function (seq158314){
+var G__158315 = cljs.core.first.call(null,seq158314);
+var seq158314__$1 = cljs.core.next.call(null,seq158314);
+return reforms.validation.validating_field.cljs$core$IFn$_invoke$arity$variadic(G__158315,seq158314__$1);
 });
 /**
  * Used by [reforms.validation/validating-fields] macro.
  */
-reforms.validation.validating_fields_fn = (function reforms$validation$validating_fields_fn(){
-var argseq__5379__auto__ = ((((1) < arguments.length))?(new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments,(1)),(0))):null);
-return reforms.validation.validating_fields_fn.cljs$core$IFn$_invoke$arity$variadic((arguments[(0)]),argseq__5379__auto__);
+reforms.validation.validating_fields_fn = (function reforms$validation$validating_fields_fn(var_args){
+var args__5774__auto__ = [];
+var len__5767__auto___158326 = arguments.length;
+var i__5768__auto___158327 = (0);
+while(true){
+if((i__5768__auto___158327 < len__5767__auto___158326)){
+args__5774__auto__.push((arguments[i__5768__auto___158327]));
+
+var G__158328 = (i__5768__auto___158327 + (1));
+i__5768__auto___158327 = G__158328;
+continue;
+} else {
+}
+break;
+}
+
+var argseq__5775__auto__ = ((((1) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((1)),(0))):null);
+return reforms.validation.validating_fields_fn.cljs$core$IFn$_invoke$arity$variadic((arguments[(0)]),argseq__5775__auto__);
 });
 
 reforms.validation.validating_fields_fn.cljs$core$IFn$_invoke$arity$variadic = (function (validation_errors,fields){
-var _STAR_validation_errors_STAR_21107 = reforms.validation._STAR_validation_errors_STAR_;
+var _STAR_validation_errors_STAR_158321 = reforms.validation._STAR_validation_errors_STAR_;
 reforms.validation._STAR_validation_errors_STAR_ = validation_errors;
 
-try{return cljs.core.doall.call(null,(function (){var iter__5093__auto__ = ((function (_STAR_validation_errors_STAR_21107){
-return (function reforms$validation$iter__21108(s__21109){
-return (new cljs.core.LazySeq(null,((function (_STAR_validation_errors_STAR_21107){
+try{return cljs.core.doall.call(null,(function (){var iter__5481__auto__ = ((function (_STAR_validation_errors_STAR_158321){
+return (function reforms$validation$iter__158322(s__158323){
+return (new cljs.core.LazySeq(null,((function (_STAR_validation_errors_STAR_158321){
 return (function (){
-var s__21109__$1 = s__21109;
+var s__158323__$1 = s__158323;
 while(true){
-var temp__4423__auto__ = cljs.core.seq.call(null,s__21109__$1);
-if(temp__4423__auto__){
-var s__21109__$2 = temp__4423__auto__;
-if(cljs.core.chunked_seq_QMARK_.call(null,s__21109__$2)){
-var c__5091__auto__ = cljs.core.chunk_first.call(null,s__21109__$2);
-var size__5092__auto__ = cljs.core.count.call(null,c__5091__auto__);
-var b__21111 = cljs.core.chunk_buffer.call(null,size__5092__auto__);
-if((function (){var i__21110 = (0);
+var temp__4425__auto__ = cljs.core.seq.call(null,s__158323__$1);
+if(temp__4425__auto__){
+var s__158323__$2 = temp__4425__auto__;
+if(cljs.core.chunked_seq_QMARK_.call(null,s__158323__$2)){
+var c__5479__auto__ = cljs.core.chunk_first.call(null,s__158323__$2);
+var size__5480__auto__ = cljs.core.count.call(null,c__5479__auto__);
+var b__158325 = cljs.core.chunk_buffer.call(null,size__5480__auto__);
+if((function (){var i__158324 = (0);
 while(true){
-if((i__21110 < size__5092__auto__)){
-var field = cljs.core._nth.call(null,c__5091__auto__,i__21110);
-cljs.core.chunk_append.call(null,b__21111,field.call(null));
+if((i__158324 < size__5480__auto__)){
+var field = cljs.core._nth.call(null,c__5479__auto__,i__158324);
+cljs.core.chunk_append.call(null,b__158325,field.call(null));
 
-var G__21112 = (i__21110 + (1));
-i__21110 = G__21112;
+var G__158329 = (i__158324 + (1));
+i__158324 = G__158329;
 continue;
 } else {
 return true;
@@ -122,34 +153,34 @@ return true;
 break;
 }
 })()){
-return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__21111),reforms$validation$iter__21108.call(null,cljs.core.chunk_rest.call(null,s__21109__$2)));
+return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__158325),reforms$validation$iter__158322.call(null,cljs.core.chunk_rest.call(null,s__158323__$2)));
 } else {
-return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__21111),null);
+return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__158325),null);
 }
 } else {
-var field = cljs.core.first.call(null,s__21109__$2);
-return cljs.core.cons.call(null,field.call(null),reforms$validation$iter__21108.call(null,cljs.core.rest.call(null,s__21109__$2)));
+var field = cljs.core.first.call(null,s__158323__$2);
+return cljs.core.cons.call(null,field.call(null),reforms$validation$iter__158322.call(null,cljs.core.rest.call(null,s__158323__$2)));
 }
 } else {
 return null;
 }
 break;
 }
-});})(_STAR_validation_errors_STAR_21107))
+});})(_STAR_validation_errors_STAR_158321))
 ,null,null));
-});})(_STAR_validation_errors_STAR_21107))
+});})(_STAR_validation_errors_STAR_158321))
 ;
-return iter__5093__auto__.call(null,fields);
+return iter__5481__auto__.call(null,fields);
 })());
-}finally {reforms.validation._STAR_validation_errors_STAR_ = _STAR_validation_errors_STAR_21107;
+}finally {reforms.validation._STAR_validation_errors_STAR_ = _STAR_validation_errors_STAR_158321;
 }});
 
 reforms.validation.validating_fields_fn.cljs$lang$maxFixedArity = (1);
 
-reforms.validation.validating_fields_fn.cljs$lang$applyTo = (function (seq21105){
-var G__21106 = cljs.core.first.call(null,seq21105);
-var seq21105__$1 = cljs.core.next.call(null,seq21105);
-return reforms.validation.validating_fields_fn.cljs$core$IFn$_invoke$arity$variadic(G__21106,seq21105__$1);
+reforms.validation.validating_fields_fn.cljs$lang$applyTo = (function (seq158319){
+var G__158320 = cljs.core.first.call(null,seq158319);
+var seq158319__$1 = cljs.core.next.call(null,seq158319);
+return reforms.validation.validating_fields_fn.cljs$core$IFn$_invoke$arity$variadic(G__158320,seq158319__$1);
 });
 /**
  * Returns a validation error for a key sequence.
@@ -170,23 +201,38 @@ return new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"ko
  * - data      - data to validate
  * - validators - seq of validators to use
  */
-reforms.validation.validate = (function reforms$validation$validate(){
-var argseq__5379__auto__ = ((((1) < arguments.length))?(new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments,(1)),(0))):null);
-return reforms.validation.validate.cljs$core$IFn$_invoke$arity$variadic((arguments[(0)]),argseq__5379__auto__);
+reforms.validation.validate = (function reforms$validation$validate(var_args){
+var args__5774__auto__ = [];
+var len__5767__auto___158333 = arguments.length;
+var i__5768__auto___158334 = (0);
+while(true){
+if((i__5768__auto___158334 < len__5767__auto___158333)){
+args__5774__auto__.push((arguments[i__5768__auto___158334]));
+
+var G__158335 = (i__5768__auto___158334 + (1));
+i__5768__auto___158334 = G__158335;
+continue;
+} else {
+}
+break;
+}
+
+var argseq__5775__auto__ = ((((1) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((1)),(0))):null);
+return reforms.validation.validate.cljs$core$IFn$_invoke$arity$variadic((arguments[(0)]),argseq__5775__auto__);
 });
 
 reforms.validation.validate.cljs$core$IFn$_invoke$arity$variadic = (function (data,validators){
-return cljs.core.doall.call(null,cljs.core.distinct.call(null,cljs.core.flatten.call(null,cljs.core.keep.call(null,(function (p1__21113_SHARP_){
-return p1__21113_SHARP_.call(null,data);
+return cljs.core.doall.call(null,cljs.core.distinct.call(null,cljs.core.flatten.call(null,cljs.core.keep.call(null,(function (p1__158330_SHARP_){
+return p1__158330_SHARP_.call(null,data);
 }),validators))));
 });
 
 reforms.validation.validate.cljs$lang$maxFixedArity = (1);
 
-reforms.validation.validate.cljs$lang$applyTo = (function (seq21114){
-var G__21115 = cljs.core.first.call(null,seq21114);
-var seq21114__$1 = cljs.core.next.call(null,seq21114);
-return reforms.validation.validate.cljs$core$IFn$_invoke$arity$variadic(G__21115,seq21114__$1);
+reforms.validation.validate.cljs$lang$applyTo = (function (seq158331){
+var G__158332 = cljs.core.first.call(null,seq158331);
+var seq158331__$1 = cljs.core.next.call(null,seq158331);
+return reforms.validation.validate.cljs$core$IFn$_invoke$arity$variadic(G__158332,seq158331__$1);
 });
 /**
  * Returns true if there are no errors.
@@ -196,9 +242,24 @@ return reforms.validation.validate.cljs$core$IFn$_invoke$arity$variadic(G__21115
  * - errors - result of validation
  * - kork   - (optional) match against this key seq
  */
-reforms.validation.valid_QMARK_ = (function reforms$validation$valid_QMARK_(){
-var G__21117 = arguments.length;
-switch (G__21117) {
+reforms.validation.valid_QMARK_ = (function reforms$validation$valid_QMARK_(var_args){
+var args158336 = [];
+var len__5767__auto___158339 = arguments.length;
+var i__5768__auto___158340 = (0);
+while(true){
+if((i__5768__auto___158340 < len__5767__auto___158339)){
+args158336.push((arguments[i__5768__auto___158340]));
+
+var G__158341 = (i__5768__auto___158340 + (1));
+i__5768__auto___158340 = G__158341;
+continue;
+} else {
+}
+break;
+}
+
+var G__158338 = args158336.length;
+switch (G__158338) {
 case 1:
 return reforms.validation.valid_QMARK_.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -208,7 +269,7 @@ return reforms.validation.valid_QMARK_.cljs$core$IFn$_invoke$arity$2((arguments[
 
 break;
 default:
-throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(arguments.length)].join('')));
+throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args158336.length)].join('')));
 
 }
 });
@@ -235,25 +296,25 @@ reforms.validation.invalid_QMARK_ = cljs.core.complement.call(null,reforms.valid
  */
 reforms.validation.render_errors = (function reforms$validation$render_errors(errors){
 if(cljs.core.truth_(cljs.core.not_empty.call(null,errors))){
-return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"ul","ul",-1349521403),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),[cljs.core.str("error validation"),cljs.core.str(((cljs.core.seq.call(null,errors))?" validation-failed":null))].join('')], null),(function (){var iter__5093__auto__ = (function reforms$validation$render_errors_$_iter__21123(s__21124){
+return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"ul","ul",-1349521403),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),[cljs.core.str("error validation"),cljs.core.str(((cljs.core.seq.call(null,errors))?" validation-failed":null))].join('')], null),(function (){var iter__5481__auto__ = (function reforms$validation$render_errors_$_iter__158347(s__158348){
 return (new cljs.core.LazySeq(null,(function (){
-var s__21124__$1 = s__21124;
+var s__158348__$1 = s__158348;
 while(true){
-var temp__4423__auto__ = cljs.core.seq.call(null,s__21124__$1);
-if(temp__4423__auto__){
-var s__21124__$2 = temp__4423__auto__;
-if(cljs.core.chunked_seq_QMARK_.call(null,s__21124__$2)){
-var c__5091__auto__ = cljs.core.chunk_first.call(null,s__21124__$2);
-var size__5092__auto__ = cljs.core.count.call(null,c__5091__auto__);
-var b__21126 = cljs.core.chunk_buffer.call(null,size__5092__auto__);
-if((function (){var i__21125 = (0);
+var temp__4425__auto__ = cljs.core.seq.call(null,s__158348__$1);
+if(temp__4425__auto__){
+var s__158348__$2 = temp__4425__auto__;
+if(cljs.core.chunked_seq_QMARK_.call(null,s__158348__$2)){
+var c__5479__auto__ = cljs.core.chunk_first.call(null,s__158348__$2);
+var size__5480__auto__ = cljs.core.count.call(null,c__5479__auto__);
+var b__158350 = cljs.core.chunk_buffer.call(null,size__5480__auto__);
+if((function (){var i__158349 = (0);
 while(true){
-if((i__21125 < size__5092__auto__)){
-var failure = cljs.core._nth.call(null,c__5091__auto__,i__21125);
-cljs.core.chunk_append.call(null,b__21126,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"li","li",723558921),new cljs.core.Keyword(null,"error-message","error-message",1756021561).cljs$core$IFn$_invoke$arity$1(failure)], null));
+if((i__158349 < size__5480__auto__)){
+var failure = cljs.core._nth.call(null,c__5479__auto__,i__158349);
+cljs.core.chunk_append.call(null,b__158350,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"li","li",723558921),new cljs.core.Keyword(null,"error-message","error-message",1756021561).cljs$core$IFn$_invoke$arity$1(failure)], null));
 
-var G__21127 = (i__21125 + (1));
-i__21125 = G__21127;
+var G__158351 = (i__158349 + (1));
+i__158349 = G__158351;
 continue;
 } else {
 return true;
@@ -261,13 +322,13 @@ return true;
 break;
 }
 })()){
-return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__21126),reforms$validation$render_errors_$_iter__21123.call(null,cljs.core.chunk_rest.call(null,s__21124__$2)));
+return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__158350),reforms$validation$render_errors_$_iter__158347.call(null,cljs.core.chunk_rest.call(null,s__158348__$2)));
 } else {
-return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__21126),null);
+return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__158350),null);
 }
 } else {
-var failure = cljs.core.first.call(null,s__21124__$2);
-return cljs.core.cons.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"li","li",723558921),new cljs.core.Keyword(null,"error-message","error-message",1756021561).cljs$core$IFn$_invoke$arity$1(failure)], null),reforms$validation$render_errors_$_iter__21123.call(null,cljs.core.rest.call(null,s__21124__$2)));
+var failure = cljs.core.first.call(null,s__158348__$2);
+return cljs.core.cons.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"li","li",723558921),new cljs.core.Keyword(null,"error-message","error-message",1756021561).cljs$core$IFn$_invoke$arity$1(failure)], null),reforms$validation$render_errors_$_iter__158347.call(null,cljs.core.rest.call(null,s__158348__$2)));
 }
 } else {
 return null;
@@ -276,7 +337,7 @@ break;
 }
 }),null,null));
 });
-return iter__5093__auto__.call(null,errors);
+return iter__5481__auto__.call(null,errors);
 })()], null);
 } else {
 return null;
@@ -287,20 +348,20 @@ return null;
  * 
  * Example:
  * 
- * (equal [:user :password1] [:user :password2] "Passwords do not match"]
+ *     (equal [:user :password1] [:user :password2] "Passwords do not match"]
  */
 reforms.validation.equal = (function reforms$validation$equal(korks1,korks2,error_message){
 return (function (data){
-var lhs = (function (){var or__4339__auto__ = cljs.core.get_in.call(null,data,korks1);
-if(cljs.core.truth_(or__4339__auto__)){
-return or__4339__auto__;
+var lhs = (function (){var or__4709__auto__ = cljs.core.get_in.call(null,data,korks1);
+if(cljs.core.truth_(or__4709__auto__)){
+return or__4709__auto__;
 } else {
 return "";
 }
 })();
-var rhs = (function (){var or__4339__auto__ = cljs.core.get_in.call(null,data,korks2);
-if(cljs.core.truth_(or__4339__auto__)){
-return or__4339__auto__;
+var rhs = (function (){var or__4709__auto__ = cljs.core.get_in.call(null,data,korks2);
+if(cljs.core.truth_(or__4709__auto__)){
+return or__4709__auto__;
 } else {
 return "";
 }
@@ -315,9 +376,9 @@ return reforms.validation.validation_error.call(null,new cljs.core.PersistentVec
 /**
  * Presence validator.
  * 
- * Example:
+ *   Example:
  * 
- * (present [:user :login] "Enter the login"]
+ *    (present [:user :login] "Enter the login"]
  */
 reforms.validation.present = (function reforms$validation$present(korks,error_message){
 return (function (data){
@@ -332,9 +393,9 @@ return reforms.validation.validation_error.call(null,new cljs.core.PersistentVec
 /**
  * Regex validator.
  * 
- * Example:
+ *   Example:
  * 
- * (matches [:user :email] #"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" "Invalid email address"]
+ *    (matches [:user :email] #"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" "Invalid email address"]
  */
 reforms.validation.matches = (function reforms$validation$matches(korks,re,error_message){
 return (function (data){
@@ -349,9 +410,9 @@ return reforms.validation.validation_error.call(null,new cljs.core.PersistentVec
 /**
  * Predicate-based validator.
  * 
- * Example:
+ *   Example:
  * 
- * (is-true [:user :email] #(nil? (find-by-email %)) "Email already exists"]
+ *   (is-true [:user :email] #(nil? (find-by-email %)) "Email already exists"]
  */
 reforms.validation.is_true = (function reforms$validation$is_true(korks,f,error_message){
 return (function (data){
@@ -367,7 +428,7 @@ return reforms.validation.validation_error.call(null,new cljs.core.PersistentVec
  * 
  * Example:
  * 
- * (force-error [:server-error] "Problem connecting to the REST API server")
+ *     (force-error [:server-error] "Problem connecting to the REST API server")
  */
 reforms.validation.force_error = (function reforms$validation$force_error(korks,error_message){
 return (function (_){
@@ -385,9 +446,24 @@ return null;
 /**
  * Groups validators using 'and' boolean logic.
  */
-reforms.validation.all = (function reforms$validation$all(){
-var argseq__5379__auto__ = ((((0) < arguments.length))?(new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments,(0)),(0))):null);
-return reforms.validation.all.cljs$core$IFn$_invoke$arity$variadic(argseq__5379__auto__);
+reforms.validation.all = (function reforms$validation$all(var_args){
+var args__5774__auto__ = [];
+var len__5767__auto___158353 = arguments.length;
+var i__5768__auto___158354 = (0);
+while(true){
+if((i__5768__auto___158354 < len__5767__auto___158353)){
+args__5774__auto__.push((arguments[i__5768__auto___158354]));
+
+var G__158355 = (i__5768__auto___158354 + (1));
+i__5768__auto___158354 = G__158355;
+continue;
+} else {
+}
+break;
+}
+
+var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
+return reforms.validation.all.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
 });
 
 reforms.validation.all.cljs$core$IFn$_invoke$arity$variadic = (function (validators){
@@ -398,8 +474,8 @@ return cljs.core.apply.call(null,reforms.validation.validate,data,validators);
 
 reforms.validation.all.cljs$lang$maxFixedArity = (0);
 
-reforms.validation.all.cljs$lang$applyTo = (function (seq21128){
-return reforms.validation.all.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq21128));
+reforms.validation.all.cljs$lang$applyTo = (function (seq158352){
+return reforms.validation.all.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq158352));
 });
 /**
  * Validates data and saves the result. **A stateful method.**
@@ -410,9 +486,24 @@ return reforms.validation.all.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq
  * - ui-state-cursor - this is where validation result will be stored
  * - validators      - a seq of validators
  */
-reforms.validation.validate_BANG_ = (function reforms$validation$validate_BANG_(){
-var argseq__5379__auto__ = ((((2) < arguments.length))?(new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments,(2)),(0))):null);
-return reforms.validation.validate_BANG_.cljs$core$IFn$_invoke$arity$variadic((arguments[(0)]),(arguments[(1)]),argseq__5379__auto__);
+reforms.validation.validate_BANG_ = (function reforms$validation$validate_BANG_(var_args){
+var args__5774__auto__ = [];
+var len__5767__auto___158359 = arguments.length;
+var i__5768__auto___158360 = (0);
+while(true){
+if((i__5768__auto___158360 < len__5767__auto___158359)){
+args__5774__auto__.push((arguments[i__5768__auto___158360]));
+
+var G__158361 = (i__5768__auto___158360 + (1));
+i__5768__auto___158360 = G__158361;
+continue;
+} else {
+}
+break;
+}
+
+var argseq__5775__auto__ = ((((2) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((2)),(0))):null);
+return reforms.validation.validate_BANG_.cljs$core$IFn$_invoke$arity$variadic((arguments[(0)]),(arguments[(1)]),argseq__5775__auto__);
 });
 
 reforms.validation.validate_BANG_.cljs$core$IFn$_invoke$arity$variadic = (function (cursor,ui_state_cursor,validators){
@@ -424,12 +515,12 @@ return reforms.validation.valid_QMARK_.call(null,validation_errors);
 
 reforms.validation.validate_BANG_.cljs$lang$maxFixedArity = (2);
 
-reforms.validation.validate_BANG_.cljs$lang$applyTo = (function (seq21129){
-var G__21130 = cljs.core.first.call(null,seq21129);
-var seq21129__$1 = cljs.core.next.call(null,seq21129);
-var G__21131 = cljs.core.first.call(null,seq21129__$1);
-var seq21129__$2 = cljs.core.next.call(null,seq21129__$1);
-return reforms.validation.validate_BANG_.cljs$core$IFn$_invoke$arity$variadic(G__21130,G__21131,seq21129__$2);
+reforms.validation.validate_BANG_.cljs$lang$applyTo = (function (seq158356){
+var G__158357 = cljs.core.first.call(null,seq158356);
+var seq158356__$1 = cljs.core.next.call(null,seq158356);
+var G__158358 = cljs.core.first.call(null,seq158356__$1);
+var seq158356__$2 = cljs.core.next.call(null,seq158356__$1);
+return reforms.validation.validate_BANG_.cljs$core$IFn$_invoke$arity$variadic(G__158357,G__158358,seq158356__$2);
 });
 /**
  * Returns validation errors saved by [[validate!]] into ui-state-cursor.
@@ -440,9 +531,24 @@ return reforms.binding.core.get_in.call(null,ui_state_cursor,new cljs.core.Persi
 /**
  * Wrapper for [[reforms.core/html5-input]] adding support for validation.
  */
-reforms.validation.html5_input = (function reforms$validation$html5_input(){
-var argseq__5379__auto__ = ((((0) < arguments.length))?(new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments,(0)),(0))):null);
-return reforms.validation.html5_input.cljs$core$IFn$_invoke$arity$variadic(argseq__5379__auto__);
+reforms.validation.html5_input = (function reforms$validation$html5_input(var_args){
+var args__5774__auto__ = [];
+var len__5767__auto___158363 = arguments.length;
+var i__5768__auto___158364 = (0);
+while(true){
+if((i__5768__auto___158364 < len__5767__auto___158363)){
+args__5774__auto__.push((arguments[i__5768__auto___158364]));
+
+var G__158365 = (i__5768__auto___158364 + (1));
+i__5768__auto___158364 = G__158365;
+continue;
+} else {
+}
+break;
+}
+
+var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
+return reforms.validation.html5_input.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
 });
 
 reforms.validation.html5_input.cljs$core$IFn$_invoke$arity$variadic = (function (args){
@@ -451,15 +557,30 @@ return cljs.core.apply.call(null,reforms.validation.validating_field,reforms.cor
 
 reforms.validation.html5_input.cljs$lang$maxFixedArity = (0);
 
-reforms.validation.html5_input.cljs$lang$applyTo = (function (seq21132){
-return reforms.validation.html5_input.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq21132));
+reforms.validation.html5_input.cljs$lang$applyTo = (function (seq158362){
+return reforms.validation.html5_input.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq158362));
 });
 /**
  * Wrapper for [[reforms.core/password]] adding support for validation.
  */
-reforms.validation.password = (function reforms$validation$password(){
-var argseq__5379__auto__ = ((((0) < arguments.length))?(new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments,(0)),(0))):null);
-return reforms.validation.password.cljs$core$IFn$_invoke$arity$variadic(argseq__5379__auto__);
+reforms.validation.password = (function reforms$validation$password(var_args){
+var args__5774__auto__ = [];
+var len__5767__auto___158367 = arguments.length;
+var i__5768__auto___158368 = (0);
+while(true){
+if((i__5768__auto___158368 < len__5767__auto___158367)){
+args__5774__auto__.push((arguments[i__5768__auto___158368]));
+
+var G__158369 = (i__5768__auto___158368 + (1));
+i__5768__auto___158368 = G__158369;
+continue;
+} else {
+}
+break;
+}
+
+var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
+return reforms.validation.password.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
 });
 
 reforms.validation.password.cljs$core$IFn$_invoke$arity$variadic = (function (args){
@@ -468,15 +589,30 @@ return cljs.core.apply.call(null,reforms.validation.validating_field,reforms.cor
 
 reforms.validation.password.cljs$lang$maxFixedArity = (0);
 
-reforms.validation.password.cljs$lang$applyTo = (function (seq21133){
-return reforms.validation.password.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq21133));
+reforms.validation.password.cljs$lang$applyTo = (function (seq158366){
+return reforms.validation.password.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq158366));
 });
 /**
  * Wrapper for [[reforms.core/text]] adding support for validation.
  */
-reforms.validation.text = (function reforms$validation$text(){
-var argseq__5379__auto__ = ((((0) < arguments.length))?(new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments,(0)),(0))):null);
-return reforms.validation.text.cljs$core$IFn$_invoke$arity$variadic(argseq__5379__auto__);
+reforms.validation.text = (function reforms$validation$text(var_args){
+var args__5774__auto__ = [];
+var len__5767__auto___158371 = arguments.length;
+var i__5768__auto___158372 = (0);
+while(true){
+if((i__5768__auto___158372 < len__5767__auto___158371)){
+args__5774__auto__.push((arguments[i__5768__auto___158372]));
+
+var G__158373 = (i__5768__auto___158372 + (1));
+i__5768__auto___158372 = G__158373;
+continue;
+} else {
+}
+break;
+}
+
+var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
+return reforms.validation.text.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
 });
 
 reforms.validation.text.cljs$core$IFn$_invoke$arity$variadic = (function (args){
@@ -485,15 +621,30 @@ return cljs.core.apply.call(null,reforms.validation.validating_field,reforms.cor
 
 reforms.validation.text.cljs$lang$maxFixedArity = (0);
 
-reforms.validation.text.cljs$lang$applyTo = (function (seq21134){
-return reforms.validation.text.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq21134));
+reforms.validation.text.cljs$lang$applyTo = (function (seq158370){
+return reforms.validation.text.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq158370));
 });
 /**
  * Wrapper for [[reforms.core/textarea]] adding support for validation.
  */
-reforms.validation.textarea = (function reforms$validation$textarea(){
-var argseq__5379__auto__ = ((((0) < arguments.length))?(new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments,(0)),(0))):null);
-return reforms.validation.textarea.cljs$core$IFn$_invoke$arity$variadic(argseq__5379__auto__);
+reforms.validation.textarea = (function reforms$validation$textarea(var_args){
+var args__5774__auto__ = [];
+var len__5767__auto___158375 = arguments.length;
+var i__5768__auto___158376 = (0);
+while(true){
+if((i__5768__auto___158376 < len__5767__auto___158375)){
+args__5774__auto__.push((arguments[i__5768__auto___158376]));
+
+var G__158377 = (i__5768__auto___158376 + (1));
+i__5768__auto___158376 = G__158377;
+continue;
+} else {
+}
+break;
+}
+
+var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
+return reforms.validation.textarea.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
 });
 
 reforms.validation.textarea.cljs$core$IFn$_invoke$arity$variadic = (function (args){
@@ -502,15 +653,30 @@ return cljs.core.apply.call(null,reforms.validation.validating_field,reforms.cor
 
 reforms.validation.textarea.cljs$lang$maxFixedArity = (0);
 
-reforms.validation.textarea.cljs$lang$applyTo = (function (seq21135){
-return reforms.validation.textarea.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq21135));
+reforms.validation.textarea.cljs$lang$applyTo = (function (seq158374){
+return reforms.validation.textarea.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq158374));
 });
 /**
  * Wrapper for [[reforms.core/checkbox]] adding support for validation.
  */
-reforms.validation.checkbox = (function reforms$validation$checkbox(){
-var argseq__5379__auto__ = ((((0) < arguments.length))?(new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments,(0)),(0))):null);
-return reforms.validation.checkbox.cljs$core$IFn$_invoke$arity$variadic(argseq__5379__auto__);
+reforms.validation.checkbox = (function reforms$validation$checkbox(var_args){
+var args__5774__auto__ = [];
+var len__5767__auto___158379 = arguments.length;
+var i__5768__auto___158380 = (0);
+while(true){
+if((i__5768__auto___158380 < len__5767__auto___158379)){
+args__5774__auto__.push((arguments[i__5768__auto___158380]));
+
+var G__158381 = (i__5768__auto___158380 + (1));
+i__5768__auto___158380 = G__158381;
+continue;
+} else {
+}
+break;
+}
+
+var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
+return reforms.validation.checkbox.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
 });
 
 reforms.validation.checkbox.cljs$core$IFn$_invoke$arity$variadic = (function (args){
@@ -519,15 +685,30 @@ return cljs.core.apply.call(null,reforms.validation.validating_field,reforms.cor
 
 reforms.validation.checkbox.cljs$lang$maxFixedArity = (0);
 
-reforms.validation.checkbox.cljs$lang$applyTo = (function (seq21136){
-return reforms.validation.checkbox.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq21136));
+reforms.validation.checkbox.cljs$lang$applyTo = (function (seq158378){
+return reforms.validation.checkbox.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq158378));
 });
 /**
  * Wrapper for [[reforms.core/select]] adding support for validation.
  */
-reforms.validation.select = (function reforms$validation$select(){
-var argseq__5379__auto__ = ((((0) < arguments.length))?(new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments,(0)),(0))):null);
-return reforms.validation.select.cljs$core$IFn$_invoke$arity$variadic(argseq__5379__auto__);
+reforms.validation.select = (function reforms$validation$select(var_args){
+var args__5774__auto__ = [];
+var len__5767__auto___158383 = arguments.length;
+var i__5768__auto___158384 = (0);
+while(true){
+if((i__5768__auto___158384 < len__5767__auto___158383)){
+args__5774__auto__.push((arguments[i__5768__auto___158384]));
+
+var G__158385 = (i__5768__auto___158384 + (1));
+i__5768__auto___158384 = G__158385;
+continue;
+} else {
+}
+break;
+}
+
+var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
+return reforms.validation.select.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
 });
 
 reforms.validation.select.cljs$core$IFn$_invoke$arity$variadic = (function (args){
@@ -536,15 +717,30 @@ return cljs.core.apply.call(null,reforms.validation.validating_field,reforms.cor
 
 reforms.validation.select.cljs$lang$maxFixedArity = (0);
 
-reforms.validation.select.cljs$lang$applyTo = (function (seq21137){
-return reforms.validation.select.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq21137));
+reforms.validation.select.cljs$lang$applyTo = (function (seq158382){
+return reforms.validation.select.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq158382));
 });
 /**
  * Wrapper for [[reforms.core/button]] adding support for validation.
  */
-reforms.validation.button = (function reforms$validation$button(){
-var argseq__5379__auto__ = ((((0) < arguments.length))?(new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments,(0)),(0))):null);
-return reforms.validation.button.cljs$core$IFn$_invoke$arity$variadic(argseq__5379__auto__);
+reforms.validation.button = (function reforms$validation$button(var_args){
+var args__5774__auto__ = [];
+var len__5767__auto___158387 = arguments.length;
+var i__5768__auto___158388 = (0);
+while(true){
+if((i__5768__auto___158388 < len__5767__auto___158387)){
+args__5774__auto__.push((arguments[i__5768__auto___158388]));
+
+var G__158389 = (i__5768__auto___158388 + (1));
+i__5768__auto___158388 = G__158389;
+continue;
+} else {
+}
+break;
+}
+
+var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
+return reforms.validation.button.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
 });
 
 reforms.validation.button.cljs$core$IFn$_invoke$arity$variadic = (function (args){
@@ -553,15 +749,30 @@ return cljs.core.apply.call(null,reforms.validation.validating_field,reforms.cor
 
 reforms.validation.button.cljs$lang$maxFixedArity = (0);
 
-reforms.validation.button.cljs$lang$applyTo = (function (seq21138){
-return reforms.validation.button.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq21138));
+reforms.validation.button.cljs$lang$applyTo = (function (seq158386){
+return reforms.validation.button.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq158386));
 });
 /**
  * Wrapper for [[reforms.core/button-primary]] adding support for validation.
  */
-reforms.validation.button_primary = (function reforms$validation$button_primary(){
-var argseq__5379__auto__ = ((((0) < arguments.length))?(new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments,(0)),(0))):null);
-return reforms.validation.button_primary.cljs$core$IFn$_invoke$arity$variadic(argseq__5379__auto__);
+reforms.validation.button_primary = (function reforms$validation$button_primary(var_args){
+var args__5774__auto__ = [];
+var len__5767__auto___158391 = arguments.length;
+var i__5768__auto___158392 = (0);
+while(true){
+if((i__5768__auto___158392 < len__5767__auto___158391)){
+args__5774__auto__.push((arguments[i__5768__auto___158392]));
+
+var G__158393 = (i__5768__auto___158392 + (1));
+i__5768__auto___158392 = G__158393;
+continue;
+} else {
+}
+break;
+}
+
+var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
+return reforms.validation.button_primary.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
 });
 
 reforms.validation.button_primary.cljs$core$IFn$_invoke$arity$variadic = (function (args){
@@ -570,15 +781,30 @@ return cljs.core.apply.call(null,reforms.validation.validating_field,reforms.cor
 
 reforms.validation.button_primary.cljs$lang$maxFixedArity = (0);
 
-reforms.validation.button_primary.cljs$lang$applyTo = (function (seq21139){
-return reforms.validation.button_primary.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq21139));
+reforms.validation.button_primary.cljs$lang$applyTo = (function (seq158390){
+return reforms.validation.button_primary.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq158390));
 });
 /**
  * Wrapper for [[reforms.core/button-default]] adding support for validation.
  */
-reforms.validation.button_default = (function reforms$validation$button_default(){
-var argseq__5379__auto__ = ((((0) < arguments.length))?(new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments,(0)),(0))):null);
-return reforms.validation.button_default.cljs$core$IFn$_invoke$arity$variadic(argseq__5379__auto__);
+reforms.validation.button_default = (function reforms$validation$button_default(var_args){
+var args__5774__auto__ = [];
+var len__5767__auto___158395 = arguments.length;
+var i__5768__auto___158396 = (0);
+while(true){
+if((i__5768__auto___158396 < len__5767__auto___158395)){
+args__5774__auto__.push((arguments[i__5768__auto___158396]));
+
+var G__158397 = (i__5768__auto___158396 + (1));
+i__5768__auto___158396 = G__158397;
+continue;
+} else {
+}
+break;
+}
+
+var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
+return reforms.validation.button_default.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
 });
 
 reforms.validation.button_default.cljs$core$IFn$_invoke$arity$variadic = (function (args){
@@ -587,15 +813,30 @@ return cljs.core.apply.call(null,reforms.validation.validating_field,reforms.cor
 
 reforms.validation.button_default.cljs$lang$maxFixedArity = (0);
 
-reforms.validation.button_default.cljs$lang$applyTo = (function (seq21140){
-return reforms.validation.button_default.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq21140));
+reforms.validation.button_default.cljs$lang$applyTo = (function (seq158394){
+return reforms.validation.button_default.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq158394));
 });
 /**
  * Wrapper for [[reforms.core/datetime]] adding support for validation.
  */
-reforms.validation.datetime = (function reforms$validation$datetime(){
-var argseq__5379__auto__ = ((((0) < arguments.length))?(new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments,(0)),(0))):null);
-return reforms.validation.datetime.cljs$core$IFn$_invoke$arity$variadic(argseq__5379__auto__);
+reforms.validation.datetime = (function reforms$validation$datetime(var_args){
+var args__5774__auto__ = [];
+var len__5767__auto___158399 = arguments.length;
+var i__5768__auto___158400 = (0);
+while(true){
+if((i__5768__auto___158400 < len__5767__auto___158399)){
+args__5774__auto__.push((arguments[i__5768__auto___158400]));
+
+var G__158401 = (i__5768__auto___158400 + (1));
+i__5768__auto___158400 = G__158401;
+continue;
+} else {
+}
+break;
+}
+
+var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
+return reforms.validation.datetime.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
 });
 
 reforms.validation.datetime.cljs$core$IFn$_invoke$arity$variadic = (function (args){
@@ -604,15 +845,30 @@ return cljs.core.apply.call(null,reforms.validation.validating_field,reforms.cor
 
 reforms.validation.datetime.cljs$lang$maxFixedArity = (0);
 
-reforms.validation.datetime.cljs$lang$applyTo = (function (seq21141){
-return reforms.validation.datetime.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq21141));
+reforms.validation.datetime.cljs$lang$applyTo = (function (seq158398){
+return reforms.validation.datetime.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq158398));
 });
 /**
  * Wrapper for [[reforms.core/datetime-local]] adding support for validation.
  */
-reforms.validation.datetime_local = (function reforms$validation$datetime_local(){
-var argseq__5379__auto__ = ((((0) < arguments.length))?(new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments,(0)),(0))):null);
-return reforms.validation.datetime_local.cljs$core$IFn$_invoke$arity$variadic(argseq__5379__auto__);
+reforms.validation.datetime_local = (function reforms$validation$datetime_local(var_args){
+var args__5774__auto__ = [];
+var len__5767__auto___158403 = arguments.length;
+var i__5768__auto___158404 = (0);
+while(true){
+if((i__5768__auto___158404 < len__5767__auto___158403)){
+args__5774__auto__.push((arguments[i__5768__auto___158404]));
+
+var G__158405 = (i__5768__auto___158404 + (1));
+i__5768__auto___158404 = G__158405;
+continue;
+} else {
+}
+break;
+}
+
+var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
+return reforms.validation.datetime_local.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
 });
 
 reforms.validation.datetime_local.cljs$core$IFn$_invoke$arity$variadic = (function (args){
@@ -621,15 +877,30 @@ return cljs.core.apply.call(null,reforms.validation.validating_field,reforms.cor
 
 reforms.validation.datetime_local.cljs$lang$maxFixedArity = (0);
 
-reforms.validation.datetime_local.cljs$lang$applyTo = (function (seq21142){
-return reforms.validation.datetime_local.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq21142));
+reforms.validation.datetime_local.cljs$lang$applyTo = (function (seq158402){
+return reforms.validation.datetime_local.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq158402));
 });
 /**
  * Wrapper for [[reforms.core/date]] adding support for validation.
  */
-reforms.validation.date = (function reforms$validation$date(){
-var argseq__5379__auto__ = ((((0) < arguments.length))?(new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments,(0)),(0))):null);
-return reforms.validation.date.cljs$core$IFn$_invoke$arity$variadic(argseq__5379__auto__);
+reforms.validation.date = (function reforms$validation$date(var_args){
+var args__5774__auto__ = [];
+var len__5767__auto___158407 = arguments.length;
+var i__5768__auto___158408 = (0);
+while(true){
+if((i__5768__auto___158408 < len__5767__auto___158407)){
+args__5774__auto__.push((arguments[i__5768__auto___158408]));
+
+var G__158409 = (i__5768__auto___158408 + (1));
+i__5768__auto___158408 = G__158409;
+continue;
+} else {
+}
+break;
+}
+
+var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
+return reforms.validation.date.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
 });
 
 reforms.validation.date.cljs$core$IFn$_invoke$arity$variadic = (function (args){
@@ -638,15 +909,30 @@ return cljs.core.apply.call(null,reforms.validation.validating_field,reforms.cor
 
 reforms.validation.date.cljs$lang$maxFixedArity = (0);
 
-reforms.validation.date.cljs$lang$applyTo = (function (seq21143){
-return reforms.validation.date.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq21143));
+reforms.validation.date.cljs$lang$applyTo = (function (seq158406){
+return reforms.validation.date.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq158406));
 });
 /**
  * Wrapper for [[reforms.core/month]] adding support for validation.
  */
-reforms.validation.month = (function reforms$validation$month(){
-var argseq__5379__auto__ = ((((0) < arguments.length))?(new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments,(0)),(0))):null);
-return reforms.validation.month.cljs$core$IFn$_invoke$arity$variadic(argseq__5379__auto__);
+reforms.validation.month = (function reforms$validation$month(var_args){
+var args__5774__auto__ = [];
+var len__5767__auto___158411 = arguments.length;
+var i__5768__auto___158412 = (0);
+while(true){
+if((i__5768__auto___158412 < len__5767__auto___158411)){
+args__5774__auto__.push((arguments[i__5768__auto___158412]));
+
+var G__158413 = (i__5768__auto___158412 + (1));
+i__5768__auto___158412 = G__158413;
+continue;
+} else {
+}
+break;
+}
+
+var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
+return reforms.validation.month.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
 });
 
 reforms.validation.month.cljs$core$IFn$_invoke$arity$variadic = (function (args){
@@ -655,15 +941,30 @@ return cljs.core.apply.call(null,reforms.validation.validating_field,reforms.cor
 
 reforms.validation.month.cljs$lang$maxFixedArity = (0);
 
-reforms.validation.month.cljs$lang$applyTo = (function (seq21144){
-return reforms.validation.month.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq21144));
+reforms.validation.month.cljs$lang$applyTo = (function (seq158410){
+return reforms.validation.month.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq158410));
 });
 /**
  * Wrapper for [[reforms.core/time]] adding support for validation.
  */
-reforms.validation.time = (function reforms$validation$time(){
-var argseq__5379__auto__ = ((((0) < arguments.length))?(new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments,(0)),(0))):null);
-return reforms.validation.time.cljs$core$IFn$_invoke$arity$variadic(argseq__5379__auto__);
+reforms.validation.time = (function reforms$validation$time(var_args){
+var args__5774__auto__ = [];
+var len__5767__auto___158415 = arguments.length;
+var i__5768__auto___158416 = (0);
+while(true){
+if((i__5768__auto___158416 < len__5767__auto___158415)){
+args__5774__auto__.push((arguments[i__5768__auto___158416]));
+
+var G__158417 = (i__5768__auto___158416 + (1));
+i__5768__auto___158416 = G__158417;
+continue;
+} else {
+}
+break;
+}
+
+var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
+return reforms.validation.time.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
 });
 
 reforms.validation.time.cljs$core$IFn$_invoke$arity$variadic = (function (args){
@@ -672,15 +973,30 @@ return cljs.core.apply.call(null,reforms.validation.validating_field,reforms.cor
 
 reforms.validation.time.cljs$lang$maxFixedArity = (0);
 
-reforms.validation.time.cljs$lang$applyTo = (function (seq21145){
-return reforms.validation.time.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq21145));
+reforms.validation.time.cljs$lang$applyTo = (function (seq158414){
+return reforms.validation.time.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq158414));
 });
 /**
  * Wrapper for [[reforms.core/week]] adding support for validation.
  */
-reforms.validation.week = (function reforms$validation$week(){
-var argseq__5379__auto__ = ((((0) < arguments.length))?(new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments,(0)),(0))):null);
-return reforms.validation.week.cljs$core$IFn$_invoke$arity$variadic(argseq__5379__auto__);
+reforms.validation.week = (function reforms$validation$week(var_args){
+var args__5774__auto__ = [];
+var len__5767__auto___158419 = arguments.length;
+var i__5768__auto___158420 = (0);
+while(true){
+if((i__5768__auto___158420 < len__5767__auto___158419)){
+args__5774__auto__.push((arguments[i__5768__auto___158420]));
+
+var G__158421 = (i__5768__auto___158420 + (1));
+i__5768__auto___158420 = G__158421;
+continue;
+} else {
+}
+break;
+}
+
+var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
+return reforms.validation.week.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
 });
 
 reforms.validation.week.cljs$core$IFn$_invoke$arity$variadic = (function (args){
@@ -689,15 +1005,30 @@ return cljs.core.apply.call(null,reforms.validation.validating_field,reforms.cor
 
 reforms.validation.week.cljs$lang$maxFixedArity = (0);
 
-reforms.validation.week.cljs$lang$applyTo = (function (seq21146){
-return reforms.validation.week.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq21146));
+reforms.validation.week.cljs$lang$applyTo = (function (seq158418){
+return reforms.validation.week.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq158418));
 });
 /**
  * Wrapper for [[reforms.core/number]] adding support for validation.
  */
-reforms.validation.number = (function reforms$validation$number(){
-var argseq__5379__auto__ = ((((0) < arguments.length))?(new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments,(0)),(0))):null);
-return reforms.validation.number.cljs$core$IFn$_invoke$arity$variadic(argseq__5379__auto__);
+reforms.validation.number = (function reforms$validation$number(var_args){
+var args__5774__auto__ = [];
+var len__5767__auto___158423 = arguments.length;
+var i__5768__auto___158424 = (0);
+while(true){
+if((i__5768__auto___158424 < len__5767__auto___158423)){
+args__5774__auto__.push((arguments[i__5768__auto___158424]));
+
+var G__158425 = (i__5768__auto___158424 + (1));
+i__5768__auto___158424 = G__158425;
+continue;
+} else {
+}
+break;
+}
+
+var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
+return reforms.validation.number.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
 });
 
 reforms.validation.number.cljs$core$IFn$_invoke$arity$variadic = (function (args){
@@ -706,15 +1037,30 @@ return cljs.core.apply.call(null,reforms.validation.validating_field,reforms.cor
 
 reforms.validation.number.cljs$lang$maxFixedArity = (0);
 
-reforms.validation.number.cljs$lang$applyTo = (function (seq21147){
-return reforms.validation.number.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq21147));
+reforms.validation.number.cljs$lang$applyTo = (function (seq158422){
+return reforms.validation.number.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq158422));
 });
 /**
  * Wrapper for [[reforms.core/email]] adding support for validation.
  */
-reforms.validation.email = (function reforms$validation$email(){
-var argseq__5379__auto__ = ((((0) < arguments.length))?(new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments,(0)),(0))):null);
-return reforms.validation.email.cljs$core$IFn$_invoke$arity$variadic(argseq__5379__auto__);
+reforms.validation.email = (function reforms$validation$email(var_args){
+var args__5774__auto__ = [];
+var len__5767__auto___158427 = arguments.length;
+var i__5768__auto___158428 = (0);
+while(true){
+if((i__5768__auto___158428 < len__5767__auto___158427)){
+args__5774__auto__.push((arguments[i__5768__auto___158428]));
+
+var G__158429 = (i__5768__auto___158428 + (1));
+i__5768__auto___158428 = G__158429;
+continue;
+} else {
+}
+break;
+}
+
+var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
+return reforms.validation.email.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
 });
 
 reforms.validation.email.cljs$core$IFn$_invoke$arity$variadic = (function (args){
@@ -723,15 +1069,30 @@ return cljs.core.apply.call(null,reforms.validation.validating_field,reforms.cor
 
 reforms.validation.email.cljs$lang$maxFixedArity = (0);
 
-reforms.validation.email.cljs$lang$applyTo = (function (seq21148){
-return reforms.validation.email.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq21148));
+reforms.validation.email.cljs$lang$applyTo = (function (seq158426){
+return reforms.validation.email.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq158426));
 });
 /**
  * Wrapper for [[reforms.core/url]] adding support for validation.
  */
-reforms.validation.url = (function reforms$validation$url(){
-var argseq__5379__auto__ = ((((0) < arguments.length))?(new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments,(0)),(0))):null);
-return reforms.validation.url.cljs$core$IFn$_invoke$arity$variadic(argseq__5379__auto__);
+reforms.validation.url = (function reforms$validation$url(var_args){
+var args__5774__auto__ = [];
+var len__5767__auto___158431 = arguments.length;
+var i__5768__auto___158432 = (0);
+while(true){
+if((i__5768__auto___158432 < len__5767__auto___158431)){
+args__5774__auto__.push((arguments[i__5768__auto___158432]));
+
+var G__158433 = (i__5768__auto___158432 + (1));
+i__5768__auto___158432 = G__158433;
+continue;
+} else {
+}
+break;
+}
+
+var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
+return reforms.validation.url.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
 });
 
 reforms.validation.url.cljs$core$IFn$_invoke$arity$variadic = (function (args){
@@ -740,15 +1101,30 @@ return cljs.core.apply.call(null,reforms.validation.validating_field,reforms.cor
 
 reforms.validation.url.cljs$lang$maxFixedArity = (0);
 
-reforms.validation.url.cljs$lang$applyTo = (function (seq21149){
-return reforms.validation.url.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq21149));
+reforms.validation.url.cljs$lang$applyTo = (function (seq158430){
+return reforms.validation.url.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq158430));
 });
 /**
  * Wrapper for [[reforms.core/search]] adding support for validation.
  */
-reforms.validation.search = (function reforms$validation$search(){
-var argseq__5379__auto__ = ((((0) < arguments.length))?(new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments,(0)),(0))):null);
-return reforms.validation.search.cljs$core$IFn$_invoke$arity$variadic(argseq__5379__auto__);
+reforms.validation.search = (function reforms$validation$search(var_args){
+var args__5774__auto__ = [];
+var len__5767__auto___158435 = arguments.length;
+var i__5768__auto___158436 = (0);
+while(true){
+if((i__5768__auto___158436 < len__5767__auto___158435)){
+args__5774__auto__.push((arguments[i__5768__auto___158436]));
+
+var G__158437 = (i__5768__auto___158436 + (1));
+i__5768__auto___158436 = G__158437;
+continue;
+} else {
+}
+break;
+}
+
+var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
+return reforms.validation.search.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
 });
 
 reforms.validation.search.cljs$core$IFn$_invoke$arity$variadic = (function (args){
@@ -757,15 +1133,30 @@ return cljs.core.apply.call(null,reforms.validation.validating_field,reforms.cor
 
 reforms.validation.search.cljs$lang$maxFixedArity = (0);
 
-reforms.validation.search.cljs$lang$applyTo = (function (seq21150){
-return reforms.validation.search.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq21150));
+reforms.validation.search.cljs$lang$applyTo = (function (seq158434){
+return reforms.validation.search.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq158434));
 });
 /**
  * Wrapper for [[reforms.core/tel]] adding support for validation.
  */
-reforms.validation.tel = (function reforms$validation$tel(){
-var argseq__5379__auto__ = ((((0) < arguments.length))?(new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments,(0)),(0))):null);
-return reforms.validation.tel.cljs$core$IFn$_invoke$arity$variadic(argseq__5379__auto__);
+reforms.validation.tel = (function reforms$validation$tel(var_args){
+var args__5774__auto__ = [];
+var len__5767__auto___158439 = arguments.length;
+var i__5768__auto___158440 = (0);
+while(true){
+if((i__5768__auto___158440 < len__5767__auto___158439)){
+args__5774__auto__.push((arguments[i__5768__auto___158440]));
+
+var G__158441 = (i__5768__auto___158440 + (1));
+i__5768__auto___158440 = G__158441;
+continue;
+} else {
+}
+break;
+}
+
+var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
+return reforms.validation.tel.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
 });
 
 reforms.validation.tel.cljs$core$IFn$_invoke$arity$variadic = (function (args){
@@ -774,15 +1165,30 @@ return cljs.core.apply.call(null,reforms.validation.validating_field,reforms.cor
 
 reforms.validation.tel.cljs$lang$maxFixedArity = (0);
 
-reforms.validation.tel.cljs$lang$applyTo = (function (seq21151){
-return reforms.validation.tel.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq21151));
+reforms.validation.tel.cljs$lang$applyTo = (function (seq158438){
+return reforms.validation.tel.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq158438));
 });
 /**
  * Wrapper for [[reforms.core/color]] adding support for validation.
  */
-reforms.validation.color = (function reforms$validation$color(){
-var argseq__5379__auto__ = ((((0) < arguments.length))?(new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments,(0)),(0))):null);
-return reforms.validation.color.cljs$core$IFn$_invoke$arity$variadic(argseq__5379__auto__);
+reforms.validation.color = (function reforms$validation$color(var_args){
+var args__5774__auto__ = [];
+var len__5767__auto___158443 = arguments.length;
+var i__5768__auto___158444 = (0);
+while(true){
+if((i__5768__auto___158444 < len__5767__auto___158443)){
+args__5774__auto__.push((arguments[i__5768__auto___158444]));
+
+var G__158445 = (i__5768__auto___158444 + (1));
+i__5768__auto___158444 = G__158445;
+continue;
+} else {
+}
+break;
+}
+
+var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
+return reforms.validation.color.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
 });
 
 reforms.validation.color.cljs$core$IFn$_invoke$arity$variadic = (function (args){
@@ -791,26 +1197,41 @@ return cljs.core.apply.call(null,reforms.validation.validating_field,reforms.cor
 
 reforms.validation.color.cljs$lang$maxFixedArity = (0);
 
-reforms.validation.color.cljs$lang$applyTo = (function (seq21152){
-return reforms.validation.color.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq21152));
+reforms.validation.color.cljs$lang$applyTo = (function (seq158442){
+return reforms.validation.color.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq158442));
 });
 /**
  * Renders errors for specified key seqs.
  * 
- * Example:
+ *   Example:
  * 
- * (render-errors [:user :name] [:my-custom-error])
+ *    (render-errors [:user :name] [:my-custom-error])
  */
-reforms.validation.error_alert = (function reforms$validation$error_alert(){
-var argseq__5379__auto__ = ((((0) < arguments.length))?(new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments,(0)),(0))):null);
-return reforms.validation.error_alert.cljs$core$IFn$_invoke$arity$variadic(argseq__5379__auto__);
+reforms.validation.error_alert = (function reforms$validation$error_alert(var_args){
+var args__5774__auto__ = [];
+var len__5767__auto___158447 = arguments.length;
+var i__5768__auto___158448 = (0);
+while(true){
+if((i__5768__auto___158448 < len__5767__auto___158447)){
+args__5774__auto__.push((arguments[i__5768__auto___158448]));
+
+var G__158449 = (i__5768__auto___158448 + (1));
+i__5768__auto___158448 = G__158449;
+continue;
+} else {
+}
+break;
+}
+
+var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
+return reforms.validation.error_alert.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
 });
 
 reforms.validation.error_alert.cljs$core$IFn$_invoke$arity$variadic = (function (korks){
 return reforms.validation.render_errors.call(null,cljs.core.keep.call(null,(function (kork){
-var temp__4423__auto__ = reforms.validation.find_validation_error.call(null,kork,reforms.validation._STAR_validation_errors_STAR_);
-if(cljs.core.truth_(temp__4423__auto__)){
-var err = temp__4423__auto__;
+var temp__4425__auto__ = reforms.validation.find_validation_error.call(null,kork,reforms.validation._STAR_validation_errors_STAR_);
+if(cljs.core.truth_(temp__4425__auto__)){
+var err = temp__4425__auto__;
 return err;
 } else {
 return null;
@@ -820,8 +1241,8 @@ return null;
 
 reforms.validation.error_alert.cljs$lang$maxFixedArity = (0);
 
-reforms.validation.error_alert.cljs$lang$applyTo = (function (seq21153){
-return reforms.validation.error_alert.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq21153));
+reforms.validation.error_alert.cljs$lang$applyTo = (function (seq158446){
+return reforms.validation.error_alert.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq158446));
 });
 
 //# sourceMappingURL=validation.js.map

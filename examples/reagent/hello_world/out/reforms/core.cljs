@@ -63,7 +63,7 @@
            [:div \"Contents go here\"])"
   [& args]
   (let [[attrs [title & rest-args]] (impl/resolve-args [:panel] {:class "panel panel-default"} args)
-        [{:keys [close]} & contents] (impl/parse-options rest-args)]
+        [{:keys [close]} contents] (impl/parse-options rest-args)]
     [:div attrs
      [:div {:class "panel-heading"
             :key   "ph"}
@@ -74,9 +74,10 @@
                :key   "c"}
          [:i {:class   (get-options [:panel :icon-close])
               :onClick close}]])]
-     [:div {:class "panel-body"
-            :key   "pb"}
-      contents]]))
+     (into
+      [:div {:class "panel-body"
+             :key   "pb"}]
+      contents)]))
 
 (defn form
   "A form. See http://getbootstrap.com/css/#forms
@@ -93,16 +94,18 @@
        (form [:div \"Contents go here\"])
        (form {:style {:background-color \"red\"}} [:div \"Contents go here\"])"
   [& args]
-  (let [[attrs & elems] (impl/resolve-args [:form]
-                                           {:on-submit #(.preventDefault %)
-                                            :class     (when (impl/form-horizontal?) "form-horizontal")}
-                                           args)]
-    [:form attrs
-     elems
-     (when (:on-submit (first args))                        ;; TODO: Kinda hackish.
-       [:button {:type  "submit"
-                 :style {:display "none"}
-                 :key   "fsb"}])]))
+  (let [[attrs elems] (impl/resolve-args [:form]
+                                         {:on-submit #(.preventDefault %)
+                                          :class     (when (impl/form-horizontal?) "form-horizontal")}
+                                         args)]
+    (into
+     [:form attrs]
+     (concat ;; Avoid React "key" prop warnings.
+      elems
+      (when (:on-submit (first args)) ;; TODO: Kinda hackish.
+        [[:button {:type  "submit"
+                   :style {:display "none"}
+                   :key   "fsb"}]])))))
 
 (defn group-title
   "A title for a logical group of controls.
@@ -125,18 +128,29 @@
 
    Arguments:
 
-   type [attrs] label placeholder cursor korks
-   [:valid? <bool> validation-error-fn <lambda> in-progress <bool> warn-fn <bool> help <string> inline <bool> large <bool>]}
+   type [attrs] [label] cursor korks [:in-progress BOOL] [:warn-fn LAMBDA]
+   [help RENDERABLE] [:inline BOOL] [:large BOOL] [:placeholder STRING] [:valid? BOOL] [:validation-error-fn LAMBDA]
 
    - type                  - input type
    - attrs                 - (optional) attributes handed over to React (see https://github.com/r0man/sablono#html-attributes)
-   - label                 - the label; a string or Hiccup/Sablono style template
+   - label                 - (optional) the label; a string or Hiccup/Sablono style template
    - cursor, korks         - data to bind to
+   - :in-progress          - (optional) if true shows progress spinner
+   - :warn-fn              - (optional) a predicate invoked on the input's value; if it returns a RENDERABLE,
+                             it will be shown as a warning label
+   - :help                 - (optional) help block
    - :inline               - (optional) if true renders the control inline
+   - :large                - (optional) if true the input will have a larger size
+   - :placeholder          - (optional) the input's placeholder text
    - :valid?               - (optional) if false shows a validation error; internal
-   - :validation-error-fn  - (optional) lambda <korks> -> <error message>; internal"
+   - :validation-error-fn  - (optional) lambda <korks> -> <error message>; internal
+
+   RENDERABLE - string, hiccup-style markup or a React component."
   [type & args]
-  (let [[attrs [label placeholder cursor korks & opts]] (impl/resolve-args [:html5-input type] {} args)]
+  (let [[attrs [label placeholder cursor korks & opts]] (impl/resolve-args [:html5-input type] {} args
+                                                                           [[impl/attrs? {}]
+                                                                            [(complement binding/valid?) nil]
+                                                                            [(complement binding/valid?) nil]])]
     (apply impl/html5-input* attrs label placeholder cursor korks (name type) opts)))
 
 (defn text
@@ -188,16 +202,16 @@
                                                                                      {:type  "button"
                                                                                       :class "btn"}
                                                                                      args)]
-    [:button
-     (merge {:disabled disabled
-             :on-click #(when-not disabled
-                         (on-click))
-             :key      (gen-key label (:class attrs))}
-            attrs)
-     label
-     (when in-progress
-       (list " "
-             (impl/spinner)))]))
+    (into
+     [:button (merge {:disabled disabled
+                      :on-click #(when-not disabled
+                                   (on-click))
+                      :key      (gen-key label (:class attrs))}
+                     attrs)]
+     (concat ;; Avoid React "key" prop warnings.
+      [label]
+      (when in-progress
+        [" " (impl/spinner)])))))
 
 (defn button-primary
   "Primary button. See http://getbootstrap.com/css/#buttons
@@ -229,8 +243,9 @@
    - attrs        - (optional) attributes handed over to React (see https://github.com/r0man/sablono#html-attributes)"
   [& args]
   (let [[attrs [& buttons]] (impl/resolve-args [:button-group] {:class "button-group"} args)]
-    [:div attrs
-     buttons]))
+    (into
+     [:div attrs]
+     buttons)))
 
 (defn checkbox
   "Checkbox. See http://getbootstrap.com/css/#checkboxes-and-radios
@@ -249,28 +264,27 @@
   (let [[attrs [label cursor korks & {:keys [valid? validation-error-fn inline]}]] (impl/resolve-args [:checkbox] {} args)
         dom-id (impl/gen-dom-id cursor korks)
         valid (or (nil? valid?) (valid? korks))]
-    (list
-      (impl/unlabeled-control
-        (gen-key :wrap cursor korks)
-        inline
-        [:div {:class (str "checkbox" (when-not valid " has-error") (when inline " checkbox-inline"))
-               :key   (gen-key :checkbox cursor korks)}
-         [:label
-          {:key (gen-key :label cursor korks)}
-          [:input
-           (impl/merge-attrs {:on-change #(do
-                                           (binding/reset! cursor korks (.. % -target -checked)))
-                              :checked   (binding/get-in cursor korks)
-                              :type      "checkbox"
-                              :id        dom-id
-                              :key       (gen-key :input cursor korks)}
-                             attrs
-                             {})]
-          label]]
-        (when-let [validation-error (and validation-error-fn (validation-error-fn korks))]
-          (impl/error-label {:key (gen-key :error-label)} validation-error))))))
+    (apply impl/unlabeled-control
+           (gen-key :wrap cursor korks)
+           inline
+           (concat ;; Avoid React "key" prop warnings.
+            [[:div {:class (str "checkbox" (when-not valid " has-error") (when inline " checkbox-inline"))
+                    :key   (gen-key :checkbox cursor korks)}
+              [:label
+               {:key (gen-key :label cursor korks)}
+               [:input
+                (impl/merge-attrs {:on-change #(binding/reset! cursor korks (.. % -target -checked))
+                                   :checked   (binding/get-in cursor korks)
+                                   :type      "checkbox"
+                                   :id        dom-id
+                                   :key       (gen-key :input cursor korks)}
+                                  attrs
+                                  {})]
+               [:span label]]]]
+            (when-let [validation-error (and validation-error-fn (validation-error-fn korks))]
+              [(impl/error-label {:key (gen-key :error-label)} validation-error)])))))
 
-(defn radio                                                 ;; TODO: Extract common method for `radio` and `checkbox`.
+(defn radio ;; TODO: Extract common method for `radio` and `checkbox`.
   "Radio button. See http://getbootstrap.com/css/#checkboxes-and-radios
 
    Arguments:
@@ -287,27 +301,27 @@
   (let [[attrs [label cursor korks value & {:keys [valid? validation-error-fn inline]}]] (impl/resolve-args [:radio] {} args)
         dom-id (impl/gen-dom-id cursor korks)
         valid (or (nil? valid?) (valid? korks))]
-    (list
-      (impl/unlabeled-control
-        (gen-key :wrap cursor korks)
-        inline
-        [:div {:class (str "radio" (when-not valid " has-error") (when inline " radio-inline"))
-               :key   (gen-key :radio cursor korks)}
-         [:label
-          [:input
-           (impl/merge-attrs {:on-change #(when (.. % -target -checked)
-                                           (binding/reset! cursor korks value))
-                              :checked   (= value (binding/get-in cursor korks))
-                              :type      "radio"
-                              :id        dom-id
-                              :name      dom-id
-                              :value     value
-                              :key       (gen-key :input cursor korks)}
-                             attrs
-                             {})]
-          label]]
-        (when-let [validation-error (and validation-error-fn (validation-error-fn korks))]
-          (impl/error-label {:key (gen-key :el)} validation-error))))))
+    (apply impl/unlabeled-control
+           (gen-key :wrap cursor korks)
+           inline
+           (concat ;; Avoid React "key" prop warnings.
+            [[:div {:class (str "radio" (when-not valid " has-error") (when inline " radio-inline"))
+                    :key   (gen-key :radio cursor korks)}
+              [:label
+               [:input
+                (impl/merge-attrs {:on-change #(when (.. % -target -checked)
+                                                 (binding/reset! cursor korks value))
+                                   :checked   (= value (binding/get-in cursor korks))
+                                   :type      "radio"
+                                   :id        dom-id
+                                   :name      dom-id
+                                   :value     value
+                                   :key       (gen-key :input cursor korks)}
+                                  attrs
+                                  {})]
+               label]]]
+            (when-let [validation-error (and validation-error-fn (validation-error-fn korks))]
+              [(impl/error-label {:key (gen-key :el)} validation-error)])))))
 
 
 (defn textarea
@@ -315,11 +329,10 @@
 
    Arguments:
 
-   [attrs] label placeholder cursor korks [opts]
+   [attrs] [label] cursor korks [opts]
 
    - attrs                 - (optional) attributes handed over to React (see https://github.com/r0man/sablono#html-attributes)
-   - label                 - the label; a string or Hiccup/Sablono style template
-   - placeholder           - placeholder text shown if there is no value
+   - label                 - (optional) the label; a string or Hiccup/Sablono style template
    - cursor, korks         - data to bind to
    - opts                  - see [[html5-input]]
 
@@ -329,7 +342,10 @@
        (f/textarea \"Textarea\" \"A placeholder\" data [:some-text])
        (f/textarea {:rows 8} \"Textarea\" \"A placeholder\" data [:some-text] :inline true)"
   [& args]
-  (let [[attrs [label placeholder cursor korks & opts]] (impl/resolve-args [:textarea] {:class "form-control"} args)
+  (let [[attrs [label placeholder cursor korks & opts]] (impl/resolve-args [:textarea] {:class "form-control"} args
+                                                                           [[impl/attrs? {}]
+                                                                            [(complement binding/valid?) nil]
+                                                                            [(complement binding/valid?) nil]])
         dom-id (impl/gen-dom-id cursor korks)
         textarea-attrs (impl/merge-attrs {:class       "form-control"
                                           :id          dom-id
@@ -337,6 +353,8 @@
                                          attrs
                                          {:on-change #(binding/reset! cursor korks (.. % -target -value))
                                           :value     (binding/get-in cursor korks)})]
+    (when placeholder
+      (impl/deprecated "Placeholders as positional arguments will be removed in the next major release; use :placeholder option instead."))
     (impl/input* :textarea textarea-attrs label cursor korks opts)))
 
 
@@ -348,7 +366,7 @@
    [attrs] label cursor korks options [:on-change <lambda>]
 
    - attrs                 - (optional) attributes handed over to React (see https://github.com/r0man/sablono#html-attributes)
-   - label                 - the label; a string or Hiccup/Sablono style template
+   - label                 - (optional) the label; a string or Hiccup/Sablono style template
    - cursor, korks         - data to bind to
    - options               - a vector containing options and their labels (see examples below)
    - :on-change            - (optional) lambda to call on selection
@@ -362,7 +380,11 @@
            :on-change #(js/alert @data)
            [[:option1 \"Option 1\"] [:option2 \"Option 2\"] [:option3 \"Option 3\"]])"
   [& args]
-  (let [[attrs [label cursor korks options & {:keys [on-change] :as opts}]] (impl/resolve-args [:select] {:class "form-control"} args)
+  (let [[attrs [label cursor korks options & {:keys [on-change] :as opts}]] (impl/resolve-args [:select]
+                                                                                               {:class "form-control"}
+                                                                                               args
+                                                                                               [[impl/attrs? {}]
+                                                                                                [(complement binding/valid?) nil]])
         dom-id (impl/gen-dom-id cursor korks)
         selected-val (binding/get-in cursor korks)
         input-attrs (impl/merge-attrs {} attrs {:value     (str selected-val)
@@ -532,3 +554,13 @@
   [& args]
   (apply impl/spinner args))
 
+
+(comment
+  [:table {:key "styled-table", :class "table-striped table-bordered table"}
+   [:thead
+    [:tr [:th "Hero name"]]]
+   [:tbody
+    [:tr [:td "Tom"]]
+    [:tr [:td "Jerry"]]
+    [:tr [:td "Mickey"]]
+    [:tr [:td "Minnie"]]]])

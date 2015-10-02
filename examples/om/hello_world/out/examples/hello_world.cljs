@@ -1,7 +1,15 @@
 (ns examples.hello-world
   (:require [reforms.om :include-macros true :as f]
             [om.core :include-macros true :as om]
-            [sablono.core :refer-macros [html]]))
+            [sablono.core :refer-macros [html]]
+            #_[clojure.browser.repl :as repl]))
+
+;(enable-console-print!)
+
+;(defonce conn
+;         (do
+;           (println "Connecting.")
+;           (repl/connect "http://localhost:9000/repl")))
 
 (def app-state (atom {:data {:orientation-horizontal false}}))
 
@@ -14,7 +22,7 @@
                         "Hello, world"
                         (f/form
                           {:on-submit #(js/alert "Submitted")}
-                          (f/text "Your name" "Type your name here" data [:name])
+                          (f/text "Your name" data [:name] :placeholder "Type your name here")
                           (f/form-buttons
                             (f/button-primary "Submit" #(js/alert (:name @data)))
                             (f/button-default "Cancel" #(js/alert "Cancel!")))

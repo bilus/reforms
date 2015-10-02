@@ -58,13 +58,14 @@
              :input-column-class "col-md-8"}
             (v/form ui-state
                     {:on-submit #(sign-up! customers customer ui-state)}
-                    (v/text "First name" "Enter first name" customer [:first])
-                    (v/text "Last name" "Enter last name" customer [:last])
-                    (v/text "City" "Where are you?" customer [:city] :warn-fn #(when-not (= "Kansas" %) "We're not in Kansas anymore"))
-                    (v/number "Age" "Enter your age" customer [:age])
-                    (v/text "Login" "Choose login" customer [:login])
-                    (v/password "Password" "Enter password" customer [:password1])
-                    (v/password "Confirm password" "Re-enter password" customer [:password2])
+                    (v/text "First name"  customer [:first] :placeholder "Enter first name")
+                    (v/text "Last name" customer [:last] :placeholder "Enter last name")
+                    (v/text "City" customer [:city]
+                            :warn-fn #(when-not (= "Kansas" %) "We're not in Kansas anymore") :placeholder "Where are you?")
+                    (v/number "Age" customer [:age] :placeholder "Enter your age")
+                    (v/text "Login" customer [:login] :placeholder "Choose login" )
+                    (v/password "Password" customer [:password1] :placeholder "Enter password")
+                    (v/password "Confirm password" customer [:password2] :placeholder "Re-enter password")
                     (v/error-alert [:server-error])
                     (f/form-buttons
                       (f/button-primary "Save" #(sign-up! customers customer ui-state))

@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 0.0-3308 {}
+// Compiled by ClojureScript 1.7.122 {}
 goog.provide('reforms.binding.om');
 goog.require('cljs.core');
 goog.require('reforms.binding.protocol');
@@ -14,25 +14,48 @@ return cljs.core.deref.call(null,this$);
 }));
 
 (reforms.binding.protocol._reset_BANG_["_"] = (function() {
-var G__27602 = null;
-var G__27602__2 = (function (this$,v){
+var G__158695 = null;
+var G__158695__2 = (function (this$,v){
 return om.core.update_BANG_.call(null,this$,v);
 });
-var G__27602__3 = (function (this$,ks,v){
+var G__158695__3 = (function (this$,ks,v){
 return om.core.update_BANG_.call(null,this$,ks,v);
 });
-G__27602 = function(this$,ks,v){
+G__158695 = function(this$,ks,v){
 switch(arguments.length){
 case 2:
-return G__27602__2.call(this,this$,ks);
+return G__158695__2.call(this,this$,ks);
 case 3:
-return G__27602__3.call(this,this$,ks,v);
+return G__158695__3.call(this,this$,ks,v);
 }
 throw(new Error('Invalid arity: ' + arguments.length));
 };
-G__27602.cljs$core$IFn$_invoke$arity$2 = G__27602__2;
-G__27602.cljs$core$IFn$_invoke$arity$3 = G__27602__3;
-return G__27602;
+G__158695.cljs$core$IFn$_invoke$arity$2 = G__158695__2;
+G__158695.cljs$core$IFn$_invoke$arity$3 = G__158695__3;
+return G__158695;
+})()
+);
+
+(reforms.binding.protocol._swap_BANG_["_"] = (function() {
+var G__158696 = null;
+var G__158696__2 = (function (this$,f){
+return om.core.transact_BANG_.call(null,this$,f);
+});
+var G__158696__3 = (function (this$,ks,f){
+return om.core.transact_BANG_.call(null,this$,ks,f);
+});
+G__158696 = function(this$,ks,f){
+switch(arguments.length){
+case 2:
+return G__158696__2.call(this,this$,ks);
+case 3:
+return G__158696__3.call(this,this$,ks,f);
+}
+throw(new Error('Invalid arity: ' + arguments.length));
+};
+G__158696.cljs$core$IFn$_invoke$arity$2 = G__158696__2;
+G__158696.cljs$core$IFn$_invoke$arity$3 = G__158696__3;
+return G__158696;
 })()
 );
 

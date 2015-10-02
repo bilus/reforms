@@ -7,7 +7,7 @@
 (ns reforms.binding.core
   (:refer-clojure :exclude [reset! swap! deref get-in -deref -reset!])
   (:require
-    [reforms.binding.protocol :refer [-valid? -deref -reset! -get-in -path]]))
+    [reforms.binding.protocol :refer [-valid? -deref -reset! -get-in -path -swap!]]))
 
 (defn valid? [x]
   (-valid? x))
@@ -19,18 +19,22 @@
   ([x v]
    (-reset! x v))
   ([x ks v]
-   (js/console.log "reset!" (prn-str x) (prn-str ks) (prn-str v))
    (if (not-empty ks)
      (-reset! x ks v)
      (-reset! x v))))
 
-(defn get-in [x ks]
+(defn swap!
+  ([x f]
+   (-swap! x 7))
+  ([x ks f]
+   (if (not-empty ks)
+     (-swap! x ks f)
+     (-swap! x f))))
 
-  (let [result (if (not-empty ks)
-                 (-get-in x ks)
-                 (-deref x))]
-    (js/console.log "get-in" (prn-str x) (prn-str ks) (prn-str result))
-    result))
+(defn get-in [x ks]
+  (if (not-empty ks)
+    (-get-in x ks)
+    (-deref x)))
 
 (defn path [x]
   (-path x))

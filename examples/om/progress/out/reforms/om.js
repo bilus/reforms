@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 0.0-3308 {}
+// Compiled by ClojureScript 1.7.122 {}
 goog.provide('reforms.om');
 goog.require('cljs.core');
 goog.require('reforms.core');
@@ -15,8 +15,8 @@ goog.require('reforms.binding.om');
  * 
  * Examples:
  * 
- * (form [:div "Contents go here"])
- * (form {:style {:background-color "red"}} [:div "Contents go here"])
+ *     (form [:div "Contents go here"])
+ *     (form {:style {:background-color "red"}} [:div "Contents go here"])
  */
 reforms.om.form = reforms.core.form;
 
@@ -50,7 +50,7 @@ reforms.om.text = reforms.core.text;
  * [attrs] label cursor korks options [:on-change <lambda>]
  * 
  * - attrs                 - (optional) attributes handed over to React (see https://github.com/r0man/sablono#html-attributes)
- * - label                 - the label; a string or Hiccup/Sablono style template
+ * - label                 - (optional) the label; a string or Hiccup/Sablono style template
  * - cursor, korks         - data to bind to
  * - options               - a vector containing options and their labels (see examples below)
  * - :on-change            - (optional) lambda to call on selection
@@ -58,11 +58,11 @@ reforms.om.text = reforms.core.text;
  * 
  * Examples:
  * 
- * (f/select "Select" data [:select]
- * [[:option1 "Option 1"] [:option2 "Option 2"] [:option3 "Option 3"]])
- * (f/select {:class "my-special-selector"} "Select" data [:select]
- * :on-change #(js/alert @data)
- * [[:option1 "Option 1"] [:option2 "Option 2"] [:option3 "Option 3"]])
+ *     (f/select "Select" data [:select]
+ *         [[:option1 "Option 1"] [:option2 "Option 2"] [:option3 "Option 3"]])
+ *     (f/select {:class "my-special-selector"} "Select" data [:select]
+ *         :on-change #(js/alert @data)
+ *         [[:option1 "Option 1"] [:option2 "Option 2"] [:option3 "Option 3"]])
  */
 reforms.om.select = reforms.core.select;
 
@@ -101,16 +101,24 @@ reforms.om.form_buttons = reforms.core.form_buttons;
  * 
  * Arguments:
  * 
- * type [attrs] label placeholder cursor korks
- * [:valid? <bool> validation-error-fn <lambda> in-progress <bool> warn-fn <bool> help <string> inline <bool> large <bool>]}
+ * type [attrs] [label] cursor korks [:in-progress BOOL] [:warn-fn LAMBDA]
+ * [help RENDERABLE] [:inline BOOL] [:large BOOL] [:placeholder STRING] [:valid? BOOL] [:validation-error-fn LAMBDA]
  * 
  * - type                  - input type
  * - attrs                 - (optional) attributes handed over to React (see https://github.com/r0man/sablono#html-attributes)
- * - label                 - the label; a string or Hiccup/Sablono style template
+ * - label                 - (optional) the label; a string or Hiccup/Sablono style template
  * - cursor, korks         - data to bind to
+ * - :in-progress          - (optional) if true shows progress spinner
+ * - :warn-fn              - (optional) a predicate invoked on the input's value; if it returns a RENDERABLE,
+ *                           it will be shown as a warning label
+ * - :help                 - (optional) help block
  * - :inline               - (optional) if true renders the control inline
+ * - :large                - (optional) if true the input will have a larger size
+ * - :placeholder          - (optional) the input's placeholder text
  * - :valid?               - (optional) if false shows a validation error; internal
  * - :validation-error-fn  - (optional) lambda <korks> -> <error message>; internal
+ * 
+ * RENDERABLE - string, hiccup-style markup or a React component.
  */
 reforms.om.html5_input = reforms.core.html5_input;
 
@@ -217,9 +225,9 @@ reforms.om.password = reforms.core.password;
 /**
  * Checkbox. See http://getbootstrap.com/css/#checkboxes-and-radios
  * 
- * Arguments:
+ *   Arguments:
  * 
- * [attrs] label cursor korks value [:valid? <bool> :validation-error-fn <lambda> :inline <bool>]
+ *   [attrs] label cursor korks value [:valid? <bool> :validation-error-fn <lambda> :inline <bool>]
  * 
  * - attrs                 - (optional) attributes handed over to React (see https://github.com/r0man/sablono#html-attributes)
  * - label                 - the label; a string or Hiccup/Sablono style template
@@ -313,17 +321,17 @@ reforms.om.spinner = reforms.core.spinner;
  * 
  * [attrs] title [:close <lambda>] element1 ... element2
  * 
- * - attrs - (optional) attributes handed over to React (see https://github.com/r0man/sablono#html-attributes)
- * - title - panel title; a string or Hiccup/Sablono style template
- * - :close - (optional) lambda to call when panel is closed; when the option is set, the panel shows a close icon (FontAwesome by default)
- * - contents - (optional) the contained elements
+ *  - attrs - (optional) attributes handed over to React (see https://github.com/r0man/sablono#html-attributes)
+ *  - title - panel title; a string or Hiccup/Sablono style template
+ *  - :close - (optional) lambda to call when panel is closed; when the option is set, the panel shows a close icon (FontAwesome by default)
+ *  - contents - (optional) the contained elements
  * 
  * Examples:
  * 
- * (panel "A simple panel"
- * [:div "Contents go here"])
- * (panel {:class "my-special-panel"} "My special panel" :close #(js/alert "closed")
- * [:div "Contents go here"])
+ *     (panel "A simple panel"
+ *         [:div "Contents go here"])
+ *     (panel {:class "my-special-panel"} "My special panel" :close #(js/alert "closed")
+ *         [:div "Contents go here"])
  */
 reforms.om.panel = reforms.core.panel;
 
@@ -332,19 +340,18 @@ reforms.om.panel = reforms.core.panel;
  * 
  * Arguments:
  * 
- * [attrs] label placeholder cursor korks [opts]
+ * [attrs] [label] cursor korks [opts]
  * 
  * - attrs                 - (optional) attributes handed over to React (see https://github.com/r0man/sablono#html-attributes)
- * - label                 - the label; a string or Hiccup/Sablono style template
- * - placeholder           - placeholder text shown if there is no value
+ * - label                 - (optional) the label; a string or Hiccup/Sablono style template
  * - cursor, korks         - data to bind to
  * - opts                  - see [[html5-input]]
  * 
  * 
  * Examples:
  * 
- * (f/textarea "Textarea" "A placeholder" data [:some-text])
- * (f/textarea {:rows 8} "Textarea" "A placeholder" data [:some-text] :inline true)
+ *     (f/textarea "Textarea" "A placeholder" data [:some-text])
+ *     (f/textarea {:rows 8} "Textarea" "A placeholder" data [:some-text] :inline true)
  */
 reforms.om.textarea = reforms.core.textarea;
 

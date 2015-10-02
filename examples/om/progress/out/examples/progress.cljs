@@ -35,7 +35,7 @@
         "Progress"
         (v/form
           data
-          (v/text "Your name" "Type your name here" data [:name])
+          (v/text "Your name" data [:name] :placeholder "Type your name here")
           (v/error-alert [:operation-failed])
           (f/form-buttons
             (v/button-primary "Successful operation" #(start-succeed! :op1 data)

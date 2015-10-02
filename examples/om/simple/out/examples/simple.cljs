@@ -12,20 +12,16 @@
   [customer]
   (list
     (f/text "First name"
-            "Enter first name"
-            customer [:first])
+            customer [:first] :placeholder "Enter first name")
     (f/text "Last name"
-            "Enter last name"
-            customer [:last])))
+            customer [:last] :placeholder "Enter last name")))
 
 (defmethod render-details :corporate
   [customer]
   (list
     (f/text "Company name"
-            ""
             customer [:company-name])
     (f/text "Reg number"
-            ""
             customer [:reg-no])
     (f/select "Country" customer [:country]
               [[:us "USA"] [:gb "United Kingdom"] [:pl "Poland"] [:de "Germany"]])))
@@ -33,15 +29,10 @@
 (defn render-address
   [customer]
   (list
-    (f/text "Address 1"
-            "Enter address line 1"
-            customer [:address1])
-    (f/text "Address 2"
-            "Enter address line 2"
-            customer [:address2])
-    (f/text "City"
-            "Enter city name"
-            customer [:city])))
+    (f/text "Address"
+            customer [:address1] :placeholder "Enter address line 1")
+    (f/text customer [:address2] :placeholder "Enter address line 2")
+    (f/text "City" customer [:city] :placeholder "Enter city name")))
 
 (defn customer-form-view
   [customer _owner]
@@ -58,8 +49,8 @@
           (f/group-title {:class "group-title-minor"} "Address")
           (render-address customer)
           (f/group-title {:class "group-title-main"} "Access credentials")
-          (f/text "Login" "Enter login" customer [:login])
-          (f/password "Password" "Enter password" customer [:password])
+          (f/text "Login" customer [:login] :placeholder "Enter login")
+          (f/password "Password" customer [:password] :placeholder "Enter password")
           (f/form-buttons
             (f/button "Save" #(js/alert "clicked"))))))))
 

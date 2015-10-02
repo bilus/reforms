@@ -28,3 +28,5 @@ goog.addDependency("../sablono/core.js", ['sablono.core'], ['goog.dom', 'sablono
 goog.addDependency("../cljs/pprint.js", ['cljs.pprint'], ['goog.string', 'cljs.core', 'goog.string.StringBuffer', 'clojure.string']);
 goog.addDependency("../examples/shared/utils.js", ['examples.shared.utils'], ['cljs.core', 'sablono.core', 'cljs.pprint', 'om.core']);
 goog.addDependency("../examples/progress.js", ['examples.progress'], ['reforms.validation', 'reforms.om', 'cljs.core', 'cljs.core.async', 'sablono.core', 'examples.shared.utils', 'om.core']);
+goog.addDependency("../reforms/table.js", ['reforms.table'], ['reforms.core.impl', 'cljs.core', 'clojure.set', 'reforms.binding.core']);
+goog.addDependency("../reforms/binding/om_state.js", ['reforms.binding.om_state'], ['reforms.binding.protocol', 'cljs.core', 'om.core']);

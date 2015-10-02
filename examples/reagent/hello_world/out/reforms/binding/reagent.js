@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 0.0-3308 {}
+// Compiled by ClojureScript 1.7.122 {}
 goog.provide('reforms.binding.reagent');
 goog.require('cljs.core');
 goog.require('reforms.binding.protocol');
@@ -6,6 +6,11 @@ goog.require('reagent.ratom');
 reforms.binding.reagent.do_reset_BANG_ = (function reforms$binding$reagent$do_reset_BANG_(x,ks,v){
 return cljs.core.swap_BANG_.call(null,x,(function (x__$1){
 return cljs.core.assoc_in.call(null,x__$1,ks,v);
+}));
+});
+reforms.binding.reagent.do_swap_BANG_ = (function reforms$binding$reagent$do_swap_BANG_(x,ks,f){
+return cljs.core.swap_BANG_.call(null,x,(function (x__$1){
+return cljs.core.update_in.call(null,x__$1,ks,f);
 }));
 });
 reagent.ratom.RCursor.prototype.reforms$binding$protocol$IBinding$ = true;
@@ -30,6 +35,16 @@ var this$__$1 = this;
 return reforms.binding.reagent.do_reset_BANG_.call(null,this$__$1,ks,v);
 });
 
+reagent.ratom.RCursor.prototype.reforms$binding$protocol$IBinding$_swap_BANG_$arity$2 = (function (this$,f){
+var this$__$1 = this;
+return cljs.core.swap_BANG_.call(null,this$__$1,f);
+});
+
+reagent.ratom.RCursor.prototype.reforms$binding$protocol$IBinding$_swap_BANG_$arity$3 = (function (this$,ks,f){
+var this$__$1 = this;
+return reforms.binding.reagent.do_swap_BANG_.call(null,this$__$1,ks,f);
+});
+
 reagent.ratom.RCursor.prototype.reforms$binding$protocol$IBinding$_get_in$arity$2 = (function (this$,ks){
 var this$__$1 = this;
 return cljs.core.get_in.call(null,cljs.core.deref.call(null,this$__$1),ks);
@@ -42,20 +57,18 @@ return this$__$1.path;
 (reforms.binding.protocol.IBinding["_"] = true);
 
 (reforms.binding.protocol._valid_QMARK_["_"] = (function (this$){
-var G__11412 = this$;
-if(G__11412){
-var bit__5013__auto__ = (G__11412.cljs$lang$protocol_mask$partition1$ & (16384));
-if((bit__5013__auto__) || (G__11412.cljs$core$IAtom$)){
+if(!((this$ == null))){
+if(((this$.cljs$lang$protocol_mask$partition1$ & (16384))) || (this$.cljs$core$IAtom$)){
 return true;
 } else {
-if((!G__11412.cljs$lang$protocol_mask$partition1$)){
-return cljs.core.native_satisfies_QMARK_.call(null,cljs.core.IAtom,G__11412);
+if((!this$.cljs$lang$protocol_mask$partition1$)){
+return cljs.core.native_satisfies_QMARK_.call(null,cljs.core.IAtom,this$);
 } else {
 return false;
 }
 }
 } else {
-return cljs.core.native_satisfies_QMARK_.call(null,cljs.core.IAtom,G__11412);
+return cljs.core.native_satisfies_QMARK_.call(null,cljs.core.IAtom,this$);
 }
 }));
 
@@ -64,25 +77,48 @@ return cljs.core.deref.call(null,this$);
 }));
 
 (reforms.binding.protocol._reset_BANG_["_"] = (function() {
-var G__11413 = null;
-var G__11413__2 = (function (this$,v){
+var G__75995 = null;
+var G__75995__2 = (function (this$,v){
 return cljs.core.reset_BANG_.call(null,this$,v);
 });
-var G__11413__3 = (function (this$,ks,v){
+var G__75995__3 = (function (this$,ks,v){
 return reforms.binding.reagent.do_reset_BANG_.call(null,this$,ks,v);
 });
-G__11413 = function(this$,ks,v){
+G__75995 = function(this$,ks,v){
 switch(arguments.length){
 case 2:
-return G__11413__2.call(this,this$,ks);
+return G__75995__2.call(this,this$,ks);
 case 3:
-return G__11413__3.call(this,this$,ks,v);
+return G__75995__3.call(this,this$,ks,v);
 }
 throw(new Error('Invalid arity: ' + arguments.length));
 };
-G__11413.cljs$core$IFn$_invoke$arity$2 = G__11413__2;
-G__11413.cljs$core$IFn$_invoke$arity$3 = G__11413__3;
-return G__11413;
+G__75995.cljs$core$IFn$_invoke$arity$2 = G__75995__2;
+G__75995.cljs$core$IFn$_invoke$arity$3 = G__75995__3;
+return G__75995;
+})()
+);
+
+(reforms.binding.protocol._swap_BANG_["_"] = (function() {
+var G__75996 = null;
+var G__75996__2 = (function (this$,f){
+return cljs.core.swap_BANG_.call(null,this$,f);
+});
+var G__75996__3 = (function (this$,ks,f){
+return reforms.binding.reagent.do_swap_BANG_.call(null,this$,ks,f);
+});
+G__75996 = function(this$,ks,f){
+switch(arguments.length){
+case 2:
+return G__75996__2.call(this,this$,ks);
+case 3:
+return G__75996__3.call(this,this$,ks,f);
+}
+throw(new Error('Invalid arity: ' + arguments.length));
+};
+G__75996.cljs$core$IFn$_invoke$arity$2 = G__75996__2;
+G__75996.cljs$core$IFn$_invoke$arity$3 = G__75996__3;
+return G__75996;
 })()
 );
 

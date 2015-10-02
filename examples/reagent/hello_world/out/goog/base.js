@@ -403,10 +403,7 @@ goog.module.getInternal_ = function(name) {
 
 
 /**
- * @private {?{
- *   moduleName: (string|undefined),
- *   declareTestMethods: boolean
- * }}
+ * @private {?{moduleName: (string|undefined)}}
  */
 goog.moduleLoaderState_ = null;
 
@@ -417,27 +414,6 @@ goog.moduleLoaderState_ = null;
  */
 goog.isInModuleLoader_ = function() {
   return goog.moduleLoaderState_ != null;
-};
-
-
-/**
- * Indicate that a module's exports that are known test methods should
- * be copied to the global object.  This makes the test methods visible to
- * test runners that inspect the global object.
- *
- * TODO(johnlenz): Make the test framework aware of goog.module so
- * that this isn't necessary. Alternately combine this with goog.setTestOnly
- * to minimize boiler plate.
- * @suppress {missingProvide}
- * @deprecated This approach does not translate to ES6 module syntax, instead
- *    use goog.testing.testSuite to declare the test methods.
- */
-goog.module.declareTestMethods = function() {
-  if (!goog.isInModuleLoader_()) {
-    throw new Error('goog.module.declareTestMethods must be called from ' +
-        'within a goog.module');
-  }
-  goog.moduleLoaderState_.declareTestMethods = true;
 };
 
 
@@ -729,7 +705,6 @@ goog.global.CLOSURE_IMPORT_SCRIPT;
 goog.nullFunction = function() {};
 
 
-
 /**
  * When defining a class Foo with an abstract method bar(), you can do:
  * Foo.prototype.bar = goog.abstractMethod
@@ -865,7 +840,7 @@ if (goog.DEPENDENCIES_ENABLED) {
    * @private
    */
   goog.findBasePath_ = function() {
-    if (goog.global.CLOSURE_BASE_PATH) {
+    if (goog.isDef(goog.global.CLOSURE_BASE_PATH)) {
       goog.basePath = goog.global.CLOSURE_BASE_PATH;
       return;
     } else if (!goog.inHtmlDocument_()) {
@@ -905,8 +880,8 @@ if (goog.DEPENDENCIES_ENABLED) {
 
 
   /** @const @private {boolean} */
-  goog.IS_OLD_IE_ = !goog.global.atob && goog.global.document &&
-      goog.global.document.all;
+  goog.IS_OLD_IE_ = !!(!goog.global.atob && goog.global.document &&
+      goog.global.document.all);
 
 
   /**
@@ -1069,8 +1044,7 @@ if (goog.DEPENDENCIES_ENABLED) {
     // of the module.
     var previousState = goog.moduleLoaderState_;
     try {
-      goog.moduleLoaderState_ = {
-        moduleName: undefined, declareTestMethods: false};
+      goog.moduleLoaderState_ = {moduleName: undefined};
       var exports;
       if (goog.isFunction(moduleDef)) {
         exports = moduleDef.call(goog.global, {});
@@ -1094,17 +1068,6 @@ if (goog.DEPENDENCIES_ENABLED) {
       }
 
       goog.loadedModules_[moduleName] = exports;
-      if (goog.moduleLoaderState_.declareTestMethods) {
-        for (var entry in exports) {
-          if (entry.indexOf('test', 0) === 0 ||
-              entry == 'tearDown' ||
-              entry == 'setUp' ||
-              entry == 'setUpPage' ||
-              entry == 'tearDownPage') {
-            goog.global[entry] = exports[entry];
-          }
-        }
-      }
     } finally {
       goog.moduleLoaderState_ = previousState;
     }
@@ -1941,9 +1904,13 @@ goog.globalEval = function(script) {
   } else if (goog.global.eval) {
     // Test to see if eval works
     if (goog.evalWorksForGlobals_ == null) {
-      goog.global.eval('var _et_ = 1;');
-      if (typeof goog.global['_et_'] != 'undefined') {
-        delete goog.global['_et_'];
+      goog.global.eval('var _evalTest_ = 1;');
+      if (typeof goog.global['_evalTest_'] != 'undefined') {
+        try {
+          delete goog.global['_evalTest_'];
+        } catch (ignore) {
+          // Microsoft edge fails the deletion above in strict mode.
+        }
         goog.evalWorksForGlobals_ = true;
       } else {
         goog.evalWorksForGlobals_ = false;
