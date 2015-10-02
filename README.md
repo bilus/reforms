@@ -649,13 +649,13 @@ Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail
 + Add info about :key bug to FAQ.
 + Check source paths in demos' project.clj files and add reforms to deps.
 + Are all examples there (esp. om local state)?
-- Build reference & examples and upload them. Check that everything's all right.
-- Release 0.4.0
++ Build reference & examples and upload them. Check that everything's all right.
++ Release 0.4.0
 
 - Contact authors of other libraries.
 - Contact Om maintainers to update home page.
 
-- Add wizard. Update 'controls' example. Blog post. ANN (mention local state).
+? - Add wizard. Update 'controls' example. Blog post. ANN (mention local state).
 - Add tabs. Update 'controls' example. Blog post.
 
 - Port tests.
