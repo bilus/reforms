@@ -1,16 +1,17 @@
 # Reforms
 
-A Clojurescript library that lets you build beautiful data-binding forms with [Om](https://github.com/omcljs/om) or [Reagent](https://github.com/reagent-project/reagent) and [Bootstrap 3](http://getbootstrap.com/) and (optionally) [Font Awesome](http://fortawesome.github.io/Font-Awesome/).  
+A Clojurescript library that lets you build beautiful data-binding forms with [Om](https://github.com/omcljs/om) or [Reagent](https://github.com/reagent-project/reagent).
 
-It focuses on helping you quickly build forms rather than supporting every Bootstrap feature. If you think something useful is missing though, please let me know.   
+You can write code that is fully portable between Reagent and Om making it easier to reuse code and giving you a clear migration path.
 
-The code has been extracted from a 'real' project and though it should be completely safe to use it in production, I heavily refactored the code and added controls we hadn't needed so if anything is amiss, please let me know.  
+To help you quickly create beautiful forms without messing with CSS, the generated markup is compatible with [Bootstrap 3](http://getbootstrap.com/) CSS
+and [Font Awesome](http://fortawesome.github.io/Font-Awesome/). For quick results simply include Bootstrap and Font Awesome CSS.
+
+If you think something useful is missing though, please let me know.   
 
 <img src="https://github.com/bilus/reforms/blob/master/doc/images/sample.png" width="70%">
 
 A good place to see the available controls: [demo](http://bilus.github.io/reforms/examples/controls/index.html).
-
-**IMPORTANT: Reagent support has not been used in a production project yet so if you notice any errors or encounter any problems, please do report them. Thank you.**
 
 <!-- To install doctoc: git npm install -g doctoc -->
 
@@ -34,6 +35,11 @@ A good place to see the available controls: [demo](http://bilus.github.io/reform
     - [Basics](#basics)
     - [Custom validators](#custom-validators)
     - [Forcing errors](#forcing-errors)
+  - [Tables](#tables)
+    - [Simple table](#simple-table)
+    - [Column names](#column-names)
+    - [Attributes](#attributes)
+    - [Row selection](#row-selection)
   - [Assorted topics](#assorted-topics)
     - [Hiding labels](#hiding-labels)
     - [Element attributes](#element-attributes)
@@ -47,6 +53,7 @@ A good place to see the available controls: [demo](http://bilus.github.io/reform
     - [How do I submit the form when the user presses ENTER?](#how-do-i-submit-the-form-when-the-user-presses-enter)
     - [How to affect changes when user clicks a button?](#how-to-affect-changes-when-user-clicks-a-button)
     - [How to show an operation is in progress?](#how-to-show-an-operation-is-in-progress)
+    - [Can I bind to local component state (Om-specific)?](#can-i-bind-to-local-component-state-om-specific)
     - [How do I use different column widths for horizontal forms -->](#how-do-i-use-different-column-widths-for-horizontal-forms---)
   - [[API Reference](http://bilus.github.io/reforms/doc/)](#api-referencehttpbilusgithubioreformsdoc)
   - [TBD](#tbd)
@@ -604,9 +611,9 @@ Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail
   + option to change behaviour of nil -> select nothing.
   + pretty up controls example.
   + Update Readme and reference.
-- Change wording from Bootstrap-based to "...markup compatible with bootstrap. While bootstrap isn't required, all examples use it
++ Change wording from Bootstrap-based to "...markup compatible with bootstrap. While bootstrap isn't required, all examples use it
   because it gives you great look without extra effort...".
-- State forcefully that the code you write is fully portable between React and reagent.
++ State forcefully that the code you write is fully portable between React and reagent.
 - remove react.inc.js from index.html's for all examples.
 - Fix :key warning for all examples (esp. group-title). Also for table.
 - Add info about :key bug to FAQ.
