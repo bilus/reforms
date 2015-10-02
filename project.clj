@@ -16,7 +16,7 @@
                                               "resources/public/js/testable.js"]
 
             :codox {:language                  :clojurescript
-                    :include                   [reforms.core reforms.core.options reforms.validation]
+                    :include                   [reforms.core reforms.core.options reforms.validation reforms.table]
                     :src-dir-uri               "http://github.com/bilus/reform/blob/master/"
                     :src-linenum-anchor-prefix "L"
                     :defaults                  {:doc/format :markdown}}
