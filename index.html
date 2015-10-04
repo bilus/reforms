@@ -1,46 +1,70 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <title>Reforms by bilus</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <title>Reforms by bilus</title>
   </head>
-
   <body>
-    <div id="container">
-      <div class="inner">
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Reforms</h1>
+        <p class="header">Beautiful forms for Om</p>
 
-        <header>
-          <h1>Reforms</h1>
-          <h2>Beautiful forms for Om</h2>
-        </header>
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/bilus/reforms/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/bilus/reforms/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/bilus/reforms">View On GitHub</a></li>
+        </ul>
 
-        <section id="downloads" class="clearfix">
-          <a href="https://github.com/bilus/reforms/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/bilus/reforms/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          <a href="https://github.com/bilus/reforms" id="view-on-github" class="button"><span>View on GitHub</span></a>
-        </section>
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/bilus">bilus</a></p>
 
-        <hr>
 
-        <section id="main_content">
-          <h1>
+      </header>
+      <section>
+        <h1>
 <a id="time-for-reforms-has-come" class="anchor" href="#time-for-reforms-has-come" aria-hidden="true"><span class="octicon octicon-link"></span></a>Time for Reforms has come!</h1>
 
-<p>I created this library because I grew tired using the same repetitive layout markup all over again for every new form I created. I needed something that would let me quickly create new validating forms. </p>
+<p>I created this library because I grew tired using the same repetitive layout markup all over again for every new form I created. I needed something that would let me quickly create new forms that look great and support validation.</p>
 
-<p><strong><a href="http://github.com/bilus/reforms">Reforms</a></strong> lets you build beautiful portable forms compatible with <a href="https://github.com/omcljs/om">Om</a> or <a href="https://github.com/reagent-project/reagent">Reagent</a> using concise syntax. </p>
+<p><strong><a href="http://github.com/bilus/reforms">Reforms</a></strong> lets you build beautiful forms compatible with <a href="https://github.com/omcljs/om">Om</a> and <a href="https://github.com/reagent-project/reagent">Reagent</a>. </p>
 
-<p>The generated markup is compatible with <a href="http://getbootstrap.com/">Bootstrap 3</a> and <a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a>.  </p>
+<p>Markup it generates is compatible with <a href="http://getbootstrap.com/">Bootstrap 3</a> and <a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a> to give you a quick start. But you can use it without Bootstrap/Font Awesome and write the CSS yourself.</p>
 
 <p align="center"><img src="https://raw.githubusercontent.com/bilus/reforms/master/doc/images/sample.png" width="70%"></p>
+
+<p>The code is very concise. Here's what takes to generate the form above (including validation and automatic alignment):</p>
+
+<div class="highlight highlight-source-clojure"><pre>(<span class="pl-k">def</span> <span class="pl-e">signup-validators</span> [(<span class="pl-en">present</span> [<span class="pl-c1">:first</span>] <span class="pl-s"><span class="pl-pds">"</span>Enter first name<span class="pl-pds">"</span></span>)
+                         (<span class="pl-en">present</span> [<span class="pl-c1">:last</span>] <span class="pl-s"><span class="pl-pds">"</span>Enter last name<span class="pl-pds">"</span></span>)
+                         (<span class="pl-en">present</span> [<span class="pl-c1">:login</span>] <span class="pl-s"><span class="pl-pds">"</span>Enter login name<span class="pl-pds">"</span></span>)
+                         (<span class="pl-en">equal</span> [<span class="pl-c1">:password1</span>] [<span class="pl-c1">:password2</span>] <span class="pl-s"><span class="pl-pds">"</span>Passwords do not match<span class="pl-pds">"</span></span>)
+                         (<span class="pl-en">present</span> [<span class="pl-c1">:password1</span>] <span class="pl-s"><span class="pl-pds">"</span>Choose password<span class="pl-pds">"</span></span>)
+                         (<span class="pl-en">present</span> [<span class="pl-c1">:password2</span>] <span class="pl-s"><span class="pl-pds">"</span>Re-enter password<span class="pl-pds">"</span></span>)])
+(<span class="pl-k">defn</span> <span class="pl-e">sign-up!</span>
+  [user ui-state]
+  (<span class="pl-k">when</span> (<span class="pl-en">apply</span> v/validate! user ui-state signup-validators)
+    (<span class="pl-en">...</span> actual sign up code ...)))
+
+(<span class="pl-k">defn</span> <span class="pl-e">signup-view</span>
+  [user ui-state]
+  (<span class="pl-en">panel</span> <span class="pl-s"><span class="pl-pds">"</span>Sign up<span class="pl-pds">"</span></span>
+   (<span class="pl-en">form</span> ui-state {<span class="pl-c1">:on-submit</span> #(<span class="pl-en">sign-up!</span> user ui-state)}
+    (<span class="pl-en">text</span> <span class="pl-s"><span class="pl-pds">"</span>First name<span class="pl-pds">"</span></span> user [<span class="pl-c1">:first</span>] <span class="pl-c1">:placeholder</span> <span class="pl-s"><span class="pl-pds">"</span>Enter first name<span class="pl-pds">"</span></span>)
+    (<span class="pl-en">text</span> <span class="pl-s"><span class="pl-pds">"</span>Last name<span class="pl-pds">"</span></span> user [<span class="pl-c1">:last</span>] <span class="pl-c1">:placeholder</span> <span class="pl-s"><span class="pl-pds">"</span>Enter last name<span class="pl-pds">"</span></span>)
+    (<span class="pl-en">text</span> <span class="pl-s"><span class="pl-pds">"</span>Login<span class="pl-pds">"</span></span> user [<span class="pl-c1">:login</span>] <span class="pl-c1">:placeholder</span> <span class="pl-s"><span class="pl-pds">"</span>Choose login<span class="pl-pds">"</span></span> )
+    (<span class="pl-en">password</span> <span class="pl-s"><span class="pl-pds">"</span>Password<span class="pl-pds">"</span></span> user [<span class="pl-c1">:password1</span>] <span class="pl-c1">:placeholder</span> <span class="pl-s"><span class="pl-pds">"</span>Enter password<span class="pl-pds">"</span></span>)
+    (<span class="pl-en">password</span> <span class="pl-s"><span class="pl-pds">"</span>Confirm password<span class="pl-pds">"</span></span> user [<span class="pl-c1">:password2</span>] <span class="pl-c1">:placeholder</span> <span class="pl-s"><span class="pl-pds">"</span>Re-enter password<span class="pl-pds">"</span></span>)
+    (<span class="pl-en">form-buttons</span>
+     (<span class="pl-en">button-primary</span> <span class="pl-s"><span class="pl-pds">"</span>Sign up<span class="pl-pds">"</span></span> #(<span class="pl-en">sign-up!</span> user ui-state))))))</pre></div>
 
 <h2>
 <a id="quick-start" class="anchor" href="#quick-start" aria-hidden="true"><span class="octicon octicon-link"></span></a>Quick start</h2>
@@ -67,11 +91,11 @@
 
 <p>The library does not use Bootstrap JavaScript so just link to bootstrap css from your html page, e.g.:</p>
 
-<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">link</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css<span class="pl-pds">"</span></span> <span class="pl-e">rel</span>=<span class="pl-s"><span class="pl-pds">"</span>stylesheet<span class="pl-pds">"</span></span>/&gt;</pre></div>
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">link</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css<span class="pl-pds">"</span></span> <span class="pl-e">rel</span>=<span class="pl-s"><span class="pl-pds">"</span>stylesheet<span class="pl-pds">"</span></span>/&gt;</pre></div>
 
 <p>Optionally, to use Font Awesome icons to use features such as progress spinner, warning icons etc., link to it as well:</p>
 
-<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">link</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css<span class="pl-pds">"</span></span> <span class="pl-e">rel</span>=<span class="pl-s"><span class="pl-pds">"</span>stylesheet<span class="pl-pds">"</span></span>&gt;</pre></div>
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">link</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css<span class="pl-pds">"</span></span> <span class="pl-e">rel</span>=<span class="pl-s"><span class="pl-pds">"</span>stylesheet<span class="pl-pds">"</span></span>&gt;</pre></div>
 
 <h3>
 <a id="requires" class="anchor" href="#requires" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requires</h3>
@@ -105,14 +129,14 @@
 
 <p>Creating a form is a snap:</p>
 
-<div class="highlight highlight-clojure"><pre>(<span class="pl-en">form</span>
+<div class="highlight highlight-source-clojure"><pre>(<span class="pl-en">form</span>
   (<span class="pl-en">text</span> <span class="pl-s"><span class="pl-pds">"</span>Your name<span class="pl-pds">"</span></span> <span class="pl-s"><span class="pl-pds">"</span>Type your name here<span class="pl-pds">"</span></span> data [<span class="pl-c1">:name</span>])
   (<span class="pl-en">form-buttons</span>
     (<span class="pl-en">button</span> {<span class="pl-c1">:class</span> <span class="pl-s"><span class="pl-pds">"</span>foo<span class="pl-pds">"</span></span>} <span class="pl-s"><span class="pl-pds">"</span>Submit<span class="pl-pds">"</span></span> #(<span class="pl-en">js/alert</span> (<span class="pl-c1">:name</span> @data)))))</pre></div>
 
 <p>It returns pure hiccup-like data. Here's output from the function above (slightly simplified for clarity):</p>
 
-<div class="highlight highlight-clojure"><pre>[<span class="pl-c1">:form</span> [<span class="pl-c1">:div</span> {<span class="pl-c1">:class</span> <span class="pl-s"><span class="pl-pds">"</span>form-group<span class="pl-pds">"</span></span>
+<div class="highlight highlight-source-clojure"><pre>[<span class="pl-c1">:form</span> [<span class="pl-c1">:div</span> {<span class="pl-c1">:class</span> <span class="pl-s"><span class="pl-pds">"</span>form-group<span class="pl-pds">"</span></span>
               <span class="pl-c1">:key</span> <span class="pl-s"><span class="pl-pds">"</span>data-name<span class="pl-pds">"</span></span>}
         [<span class="pl-c1">:label</span> {<span class="pl-c1">:for</span> <span class="pl-s"><span class="pl-pds">"</span>data-name<span class="pl-pds">"</span></span>
                  <span class="pl-c1">:class</span> <span class="pl-s"><span class="pl-pds">"</span>control-label <span class="pl-pds">"</span></span>} <span class="pl-s"><span class="pl-pds">"</span>Your name<span class="pl-pds">"</span></span>]
@@ -206,7 +230,7 @@
 <tr>
 <td>In-progress</td>
 <td>
-<a href="https://github.com/bilus/om-reforms/tree/master/examples/progress">source</a> - <a href="http://bilus.github.io/reforms/examples/om/progress/index.html">demo</a>
+<a href="https://github.com/bilus/om-reforms/tree/master/examples/progress">source</a> - <a href="http://bilus.github.io/reforms/om/examples/progress/index.html">demo</a>
 </td>
 <td>
 <a href="https://github.com/bilus/reagent-reforms/tree/master/examples/progress">source</a> - <a href="http://bilus.github.io/reforms/examples/reagent/progress/index.html">demo</a>
@@ -221,15 +245,12 @@
 <a id="contact" class="anchor" href="#contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contact</h2>
 
 <p>Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail dot com.</p>
-        </section>
-
-        <footer>
-          Reforms is maintained by <a href="https://github.com/bilus">bilus</a><br>
-          This page was generated by <a href="https://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
-        </footer>
-
-        
-      </div>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
     </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
   </body>
 </html>
