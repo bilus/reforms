@@ -22,6 +22,12 @@ then
   lein deps && lein clean && lein cljsbuild once &&
   lein deploy clojars &&
 
+  # Build rum-reforms examples.
+  cd ../rum-reforms &&
+  git checkout master &&
+  lein deps && lein clean && lein cljsbuild once &&
+  lein deploy clojars &&
+
   ./deploy-docs.sh
 fi
 

@@ -15,6 +15,8 @@ mkdir -p examples/om &&
 cp -r ../om-reforms/examples/ examples/om &&
 mkdir -p examples/reagent &&
 cp -r ../reagent-reforms/examples/ examples/reagent &&
+mkdir -p examples/rum &&
+cp -r ../rum-reforms/examples/ examples/rum &&
 sleep 5 && # Locked git
 echo "Push to git" &&
 git add doc/ examples/ &&
