@@ -668,6 +668,10 @@ Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail
 - Add tabs. Update 'controls' example. Blog post.
 - Port tests.
 
+## Credits ##
+
+[Aspasia Beneti](https://github.com/aspasia) is the author and maintainer of [Rum bindings](https://github.com/aspasia/rum-reforms) for Reforms.
+
 ### License
 
 Copyright © 2015 Designed.ly, Marcin Bilski
