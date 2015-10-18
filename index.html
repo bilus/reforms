@@ -35,13 +35,13 @@
 
 <p>I created this library because I grew tired using the same repetitive layout markup all over again for every new form I created. I needed something that would let me quickly create new forms that look great and support validation.</p>
 
-<p><strong><a href="http://github.com/bilus/reforms">Reforms</a></strong> lets you build beautiful forms compatible with <a href="https://github.com/omcljs/om">Om</a> and <a href="https://github.com/reagent-project/reagent">Reagent</a>. </p>
+<p><strong><a href="http://github.com/bilus/reforms">Reforms</a></strong> lets you build beautiful forms compatible with <a href="https://github.com/omcljs/om">Om</a>, <a href="https://github.com/reagent-project/reagent">Reagent</a> and <a href="https://github.com/tonsky/rum">Rum</a>. </p>
 
 <p>Markup it generates is compatible with <a href="http://getbootstrap.com/">Bootstrap 3</a> and <a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a> to give you a quick start. But you can use it without Bootstrap/Font Awesome and write the CSS yourself.</p>
 
 <p align="center"><img src="https://raw.githubusercontent.com/bilus/reforms/master/doc/images/sample.png" width="70%"></p>
 
-<p>The code is very concise. Here's what takes to generate the form above (including validation and automatic alignment):</p>
+<p>The code is very concise. Here's what takes to generate the form above (including validation and automatic alignment) using Reagent:</p>
 
 <div class="highlight highlight-source-clojure"><pre>(<span class="pl-k">def</span> <span class="pl-e">signup-validators</span> [(<span class="pl-en">present</span> [<span class="pl-c1">:first</span>] <span class="pl-s"><span class="pl-pds">"</span>Enter first name<span class="pl-pds">"</span></span>)
                          (<span class="pl-en">present</span> [<span class="pl-c1">:last</span>] <span class="pl-s"><span class="pl-pds">"</span>Enter last name<span class="pl-pds">"</span></span>)
@@ -79,12 +79,14 @@
 <tr>
 <th>Om</th>
 <th>Reagent</th>
+<th>Rum</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><a href="http://clojars.org/om-reforms"><img src="http://clojars.org/om-reforms/latest-version.svg" alt="Clojars Project"></a></td>
 <td><a href="http://clojars.org/reagent-reforms"><img src="http://clojars.org/reagent-reforms/latest-version.svg" alt="Clojars Project"></a></td>
+<td><a href="http://clojars.org/rum-reforms"><img src="http://clojars.org/rum-reforms/latest-version.svg" alt="Clojars Project"></a></td>
 </tr>
 </tbody>
 </table>
@@ -106,6 +108,7 @@
 <th></th>
 <th>Om</th>
 <th>Reagent</th>
+<th>Rum</th>
 </tr>
 </thead>
 <tbody>
@@ -113,9 +116,11 @@
 <td>Core helpers</td>
 <td><code>reforms.om</code></td>
 <td><code>reforms.reagent</code></td>
+<td><code>reforms.rum</code></td>
 </tr>
 <tr>
 <td>Validation</td>
+<td><code>reforms.validation</code></td>
 <td><code>reforms.validation</code></td>
 <td><code>reforms.validation</code></td>
 </tr>
@@ -158,11 +163,13 @@
 <tr>
 <th>Om</th>
 <th>Reagent</th>
+<th>Rum</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>(sablono.core/html (form ....))</code></td>
+<td><code>(form ...)</code></td>
 <td><code>(form ...)</code></td>
 </tr>
 </tbody>
@@ -188,6 +195,7 @@
 <th></th>
 <th>Om</th>
 <th>Reagent</th>
+<th>Rum</th>
 </tr>
 </thead>
 <tbody>
@@ -199,6 +207,9 @@
 <td>
 <a href="https://github.com/bilus/reagent-reforms/tree/master/examples/hello_world">source</a> - <a href="http://bilus.github.io/reforms/examples/reagent/hello_world/index.html">demo</a>
 </td>
+<td>
+<a href="https://github.com/bilus/rum-reforms/tree/master/examples/hello_world">source</a> - <a href="http://bilus.github.io/reforms/examples/rum/hello_world/index.html">demo</a>
+</td>
 </tr>
 <tr>
 <td>Dynamic form</td>
@@ -207,6 +218,9 @@
 </td>
 <td>
 <a href="https://github.com/bilus/reagent-reforms/tree/master/examples/simple">source</a> - <a href="http://bilus.github.io/reforms/examples/reagent/simple/index.html">demo</a>
+</td>
+<td>
+<a href="https://github.com/bilus/rum-reforms/tree/master/examples/simple">source</a> - <a href="http://bilus.github.io/reforms/examples/rum/simple/index.html">demo</a>
 </td>
 </tr>
 <tr>
@@ -217,6 +231,9 @@
 <td>
 <a href="https://github.com/bilus/reagent-reforms/tree/master/examples/controls">source</a> - <a href="http://bilus.github.io/reforms/examples/reagent/controls/index.html">demo</a>
 </td>
+<td>
+<a href="https://github.com/bilus/rum-reforms/tree/master/examples/controls">source</a> - <a href="http://bilus.github.io/reforms/examples/rum/controls/index.html">demo</a>
+</td>
 </tr>
 <tr>
 <td>Validation</td>
@@ -225,6 +242,9 @@
 </td>
 <td>
 <a href="https://github.com/bilus/reagent-reforms/tree/master/examples/validation">source</a> - <a href="http://bilus.github.io/reforms/examples/reagent/validation/index.html">demo</a>
+</td>
+<td>
+<a href="https://github.com/bilus/rum-reforms/tree/master/examples/validation">source</a> - <a href="http://bilus.github.io/reforms/examples/rum/validation/index.html">demo</a>
 </td>
 </tr>
 <tr>
@@ -235,11 +255,19 @@
 <td>
 <a href="https://github.com/bilus/reagent-reforms/tree/master/examples/progress">source</a> - <a href="http://bilus.github.io/reforms/examples/reagent/progress/index.html">demo</a>
 </td>
+<td>
+<a href="https://github.com/bilus/rum-reforms/tree/master/examples/progress">source</a> - <a href="http://bilus.github.io/reforms/examples/rum/progress/index.html">demo</a>
+</td>
 </tr>
 </tbody>
 </table>
 
 <p><br></p>
+
+<h2>
+<a id="credits" class="anchor" href="#credits" aria-hidden="true"><span class="octicon octicon-link"></span></a>Credits</h2>
+
+<p><a href="https://github.com/aspasia">Aspasia Beneti</a> is the author and maintainer of the <a href="https://github.com/aspasia/rum-reforms">Rum bindings</a> for Reforms.</p>
 
 <h2>
 <a id="contact" class="anchor" href="#contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contact</h2>
