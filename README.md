@@ -1,8 +1,8 @@
 # Reforms
 
-A Clojurescript library that lets you build beautiful data-binding forms with [Om](https://github.com/omcljs/om) or [Reagent](https://github.com/reagent-project/reagent).
+A Clojurescript library that lets you build beautiful data-binding forms with [Om](https://github.com/omcljs/om), [Reagent](https://github.com/reagent-project/reagent) and [Rum](https://github.com/tonsky/rum).
 
-You can write code that is fully portable between Reagent and Om making it easier to reuse code and giving you a clear migration path.
+You can write code that is fully portable between Reagent, Om and Rum making it easier to reuse code and giving you a clear migration path.
 
 To help you quickly create beautiful forms without messing with CSS, the generated markup is compatible with [Bootstrap 3](http://getbootstrap.com/) CSS
 and [Font Awesome](http://fortawesome.github.io/Font-Awesome/). For quick results simply include Bootstrap and Font Awesome CSS.
@@ -22,6 +22,7 @@ A good place to see the available controls: [demo](http://bilus.github.io/reform
 - [Usage](#usage)
   - [Getting started with Om](#getting-started-with-om)
   - [Getting started with Reagent](#getting-started-with-reagent)
+  - [Getting started with Rum](#getting-started-with-rum)
   - [External CSS](#external-css)
   - [Quick tutorial](#quick-tutorial)
     - [Hello, world!](#hello-world)
@@ -49,6 +50,7 @@ A good place to see the available controls: [demo](http://bilus.github.io/reform
   - [Demos](#demos)
     - [Om](#om)
     - [Reagent](#reagent)
+    - [Rum](#rum)
   - [FAQ](#faq)
     - [How do I submit the form when the user presses ENTER?](#how-do-i-submit-the-form-when-the-user-presses-enter)
     - [How to affect changes when user clicks a button?](#how-to-affect-changes-when-user-clicks-a-button)
@@ -130,6 +132,38 @@ Note that labels are optional, you can render controls without labels, for insta
 ```clojure
 (f/text data [:name] :placeholder "Enter your name here")
 ```
+
+### Getting started with Rum
+
+Add `rum-reforms` to `:dependencies` in project.clj:
+
+[![Clojars Project](http://clojars.org/rum-reforms/latest-version.svg)](http://clojars.org/rum-reforms)
+
+```clojure
+(ns hello-world.core
+  (:require [reforms.rum :include-macros true :as forms]
+            [rum.core :include-macros true :as rum])
+```
+
+Here's how you create a Rum component with a form with just one text field and a button:
+
+```clojure
+(rum/defc simple-view < rum/cursored rum/cursored-watch [data horizontal-orientation]
+  [data]
+  (f/form
+    (f/text "Your name" data [:name])
+    (f/form-buttons
+       (f/button "Submit" #(js/alert (:name @data))))))
+```
+
+You render it just like any other component by either mounting it using `rum-mount` or inside another component. See [https://github.com/tonsky/rum](https://github.com/tonsky/rum) for more details.
+
+Note that labels are optional, you can render controls without labels, for instance:
+
+```clojure
+(f/text data [:name] :placeholder "Enter your name here")
+```
+
 
 ### External CSS
 
@@ -521,6 +555,14 @@ Here's a quick example:
 - Validation [source](https://github.com/bilus/reagent-reforms/tree/master/examples/validation) [demo](http://bilus.github.io/reforms/examples/reagent/validation/index.html)
 - Background operations [source](https://github.com/bilus/reagent-reforms/tree/master/examples/validation) [demo](http://bilus.github.io/reforms/examples/reagent/progress/index.html)
 
+#### Rum
+
+- Hello world [source](https://github.com/bilus/rum-reforms/tree/master/examples/hello_world) [demo](http://bilus.github.io/reforms/examples/rum/hello_world/index.html)
+- Dynamic form with customizations [source](https://github.com/bilus/rum-reforms/tree/master/examples/simple) [demo](http://bilus.github.io/reforms/examples/rum/simple/index.html)
+- Available controls [source](https://github.com/bilus/rum-reforms/tree/master/examples/controls) [demo](http://bilus.github.io/reforms/examples/rum/controls/index.html)
+- Validation [source](https://github.com/bilus/rum-reforms/tree/master/examples/validation) [demo](http://bilus.github.io/reforms/examples/rum/validation/index.html)
+- Background operations [source](https://github.com/bilus/rum-reforms/tree/master/examples/validation) [demo](http://bilus.github.io/reforms/examples/rum/progress/index.html)
+
 ### FAQ
 #### How do I submit the form when the user presses ENTER?
 
@@ -559,6 +601,7 @@ In addition, in case of buttons it's usually a good idea to disable them:
 
 See this example: [Om](https://github.com/bilus/om-reforms/tree/master/examples/progress/) ([demo](http://bilus.github.io/reforms/examples/om/progress/index.html))
 [Reagent](https://github.com/bilus/reagent-reforms/tree/master/examples/progress/) ([demo](http://bilus.github.io/reforms/examples/reagent/progress/index.html))
+[Rum](https://github.com/bilus/rum-reforms/tree/master/examples/progress/) ([demo](http://bilus.github.io/reforms/examples/rum/progress/index.html))
 
 #### I'm getting *Each child in an array should have a unique "key" prop*. Why?
 
@@ -620,6 +663,7 @@ Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail
 
 ### TBD
 
+- Keep Readme short, move most of it to wiki.
 - Contact library authors.
 - Add tabs. Update 'controls' example. Blog post.
 - Port tests.
