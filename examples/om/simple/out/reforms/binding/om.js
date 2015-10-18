@@ -14,48 +14,48 @@ return cljs.core.deref.call(null,this$);
 }));
 
 (reforms.binding.protocol._reset_BANG_["_"] = (function() {
-var G__163960 = null;
-var G__163960__2 = (function (this$,v){
+var G__171942 = null;
+var G__171942__2 = (function (this$,v){
 return om.core.update_BANG_.call(null,this$,v);
 });
-var G__163960__3 = (function (this$,ks,v){
+var G__171942__3 = (function (this$,ks,v){
 return om.core.update_BANG_.call(null,this$,ks,v);
 });
-G__163960 = function(this$,ks,v){
+G__171942 = function(this$,ks,v){
 switch(arguments.length){
 case 2:
-return G__163960__2.call(this,this$,ks);
+return G__171942__2.call(this,this$,ks);
 case 3:
-return G__163960__3.call(this,this$,ks,v);
+return G__171942__3.call(this,this$,ks,v);
 }
 throw(new Error('Invalid arity: ' + arguments.length));
 };
-G__163960.cljs$core$IFn$_invoke$arity$2 = G__163960__2;
-G__163960.cljs$core$IFn$_invoke$arity$3 = G__163960__3;
-return G__163960;
+G__171942.cljs$core$IFn$_invoke$arity$2 = G__171942__2;
+G__171942.cljs$core$IFn$_invoke$arity$3 = G__171942__3;
+return G__171942;
 })()
 );
 
 (reforms.binding.protocol._swap_BANG_["_"] = (function() {
-var G__163961 = null;
-var G__163961__2 = (function (this$,f){
+var G__171943 = null;
+var G__171943__2 = (function (this$,f){
 return om.core.transact_BANG_.call(null,this$,f);
 });
-var G__163961__3 = (function (this$,ks,f){
+var G__171943__3 = (function (this$,ks,f){
 return om.core.transact_BANG_.call(null,this$,ks,f);
 });
-G__163961 = function(this$,ks,f){
+G__171943 = function(this$,ks,f){
 switch(arguments.length){
 case 2:
-return G__163961__2.call(this,this$,ks);
+return G__171943__2.call(this,this$,ks);
 case 3:
-return G__163961__3.call(this,this$,ks,f);
+return G__171943__3.call(this,this$,ks,f);
 }
 throw(new Error('Invalid arity: ' + arguments.length));
 };
-G__163961.cljs$core$IFn$_invoke$arity$2 = G__163961__2;
-G__163961.cljs$core$IFn$_invoke$arity$3 = G__163961__3;
-return G__163961;
+G__171943.cljs$core$IFn$_invoke$arity$2 = G__171943__2;
+G__171943.cljs$core$IFn$_invoke$arity$3 = G__171943__3;
+return G__171943;
 })()
 );
 
