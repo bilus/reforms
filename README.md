@@ -59,7 +59,7 @@ A good place to see the available controls: [demo](http://bilus.github.io/reform
     - [Can I bind to local component state (Om-specific)?](#can-i-bind-to-local-component-state-om-specific)
   - [[API Reference](http://bilus.github.io/reforms/doc/)](#api-referencehttpbilusgithubioreformsdoc)
   - [TBD](#tbd)
-- [Credits](#credits)
+  - [Credits](#credits)
   - [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -669,7 +669,7 @@ Please feel free to tweet me @martinbilski or drop me an email: gyamtso at gmail
 - Add tabs. Update 'controls' example. Blog post.
 - Port tests.
 
-## Credits ##
+### Credits
 
 [Aspasia Beneti](https://github.com/aspasia) is the author and maintainer of [Rum bindings](https://github.com/aspasia/rum-reforms) for Reforms.
 
