@@ -59,6 +59,7 @@ A good place to see the available controls: [demo](http://bilus.github.io/reform
     - [Can I bind to local component state (Om-specific)?](#can-i-bind-to-local-component-state-om-specific)
   - [[API Reference](http://bilus.github.io/reforms/doc/)](#api-referencehttpbilusgithubioreformsdoc)
   - [TBD](#tbd)
+- [Credits](#credits)
   - [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
