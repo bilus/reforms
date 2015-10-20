@@ -625,7 +625,7 @@ with:
     [:li item]))
 ```
 
-If you need to pass a sequence, use attributes to set React key. For exmple, replace this:
+If you need to pass a sequence, use attributes to set React key. For example, use code similar to this:
 
 ```clojure
 (let [items [{:title "foo" :id 1} {:title "bar" :id 2}]]
@@ -634,7 +634,7 @@ If you need to pass a sequence, use attributes to set React key. For exmple, rep
       [:li {:key id} title])])
 ```
 
-On the other hand, if you find a bug in Reforms, please do report it [here](https://github.com/bilus/reforms/issues).
+On the other hand, if you do find a bug in Reforms, please do report it [here](https://github.com/bilus/reforms/issues).
 
 #### Can I bind to local component state (Om-specific)?
 
