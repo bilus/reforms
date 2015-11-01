@@ -45,6 +45,7 @@ A good place to see the available controls: [demo](http://bilus.github.io/reform
     - [Hiding labels](#hiding-labels)
     - [Element attributes](#element-attributes)
     - [Placeholders for empty text boxes](#placeholders-for-empty-text-boxes)
+    - [Using radio buttons](#using-radio-buttons)
     - [Showing warnings](#showing-warnings)
     - [Configuration options](#configuration-options)
   - [Demos](#demos)
