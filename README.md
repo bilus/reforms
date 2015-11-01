@@ -514,6 +514,15 @@ You can add a placeholder shown when the text box is empty using a `:placeholder
 
 It also works for `textarea` and other controls based on `html5-input` such as `password`, `datetime-local`, `email` and others. 
 
+#### Using radio buttons
+
+When using radio buttons remember to provide a value, for instance:
+
+```clojure
+(f/form
+  (f/radio "Data" app-state [:current-view] :data)
+  (f/radio "Groups" app-state [:current-view] :groups))
+```
 
 #### Showing warnings
 
