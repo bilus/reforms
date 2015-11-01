@@ -21,29 +21,29 @@ return [cljs.core.str(x)].join('');
 }
 });
 reforms.core.react_keys.gen_key = (function reforms$core$react_keys$gen_key(var_args){
-var args__5774__auto__ = [];
-var len__5767__auto___174702 = arguments.length;
-var i__5768__auto___174703 = (0);
+var args__5658__auto__ = [];
+var len__5651__auto___31736 = arguments.length;
+var i__5652__auto___31737 = (0);
 while(true){
-if((i__5768__auto___174703 < len__5767__auto___174702)){
-args__5774__auto__.push((arguments[i__5768__auto___174703]));
+if((i__5652__auto___31737 < len__5651__auto___31736)){
+args__5658__auto__.push((arguments[i__5652__auto___31737]));
 
-var G__174704 = (i__5768__auto___174703 + (1));
-i__5768__auto___174703 = G__174704;
+var G__31738 = (i__5652__auto___31737 + (1));
+i__5652__auto___31737 = G__31738;
 continue;
 } else {
 }
 break;
 }
 
-var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
-return reforms.core.react_keys.gen_key.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
+var argseq__5659__auto__ = ((((0) < args__5658__auto__.length))?(new cljs.core.IndexedSeq(args__5658__auto__.slice((0)),(0))):null);
+return reforms.core.react_keys.gen_key.cljs$core$IFn$_invoke$arity$variadic(argseq__5659__auto__);
 });
 
 reforms.core.react_keys.gen_key.cljs$core$IFn$_invoke$arity$variadic = (function (args){
-var or__4709__auto__ = cljs.core.not_empty.call(null,clojure.string.replace.call(null,clojure.string.lower_case.call(null,clojure.string.join.call(null,"-",cljs.core.remove.call(null,cljs.core.empty_QMARK_,cljs.core.map.call(null,reforms.core.react_keys.to_str,cljs.core.remove.call(null,cljs.core.nil_QMARK_,args))))),/[^a-zA-Z0-9_$]/,"-"));
-if(cljs.core.truth_(or__4709__auto__)){
-return or__4709__auto__;
+var or__4593__auto__ = cljs.core.not_empty.call(null,clojure.string.replace.call(null,clojure.string.lower_case.call(null,clojure.string.join.call(null,"-",cljs.core.remove.call(null,cljs.core.empty_QMARK_,cljs.core.map.call(null,reforms.core.react_keys.to_str,cljs.core.remove.call(null,cljs.core.nil_QMARK_,args))))),/[^a-zA-Z0-9_$]/,"-"));
+if(cljs.core.truth_(or__4593__auto__)){
+return or__4593__auto__;
 } else {
 return goog.ui.IdGenerator.getInstance().getNextUniqueId();
 }
@@ -51,8 +51,8 @@ return goog.ui.IdGenerator.getInstance().getNextUniqueId();
 
 reforms.core.react_keys.gen_key.cljs$lang$maxFixedArity = (0);
 
-reforms.core.react_keys.gen_key.cljs$lang$applyTo = (function (seq174701){
-return reforms.core.react_keys.gen_key.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq174701));
+reforms.core.react_keys.gen_key.cljs$lang$applyTo = (function (seq31735){
+return reforms.core.react_keys.gen_key.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq31735));
 });
 
 //# sourceMappingURL=react_keys.js.map

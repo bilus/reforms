@@ -302,11 +302,11 @@
         dom-id (impl/gen-dom-id cursor korks)
         valid (or (nil? valid?) (valid? korks))]
     (apply impl/unlabeled-control
-           (gen-key :wrap cursor korks)
+           (gen-key :wrap cursor korks value)
            inline
            (concat ;; Avoid React "key" prop warnings.
             [[:div {:class (str "radio" (when-not valid " has-error") (when inline " radio-inline"))
-                    :key   (gen-key :radio cursor korks)}
+                    :key   (gen-key :radio cursor korks value)}
               [:label
                [:input
                 (impl/merge-attrs {:on-change #(when (.. % -target -checked)
@@ -316,7 +316,7 @@
                                    :id        dom-id
                                    :name      dom-id
                                    :value     value
-                                   :key       (gen-key :input cursor korks)}
+                                   :key       (gen-key :input cursor korks value)}
                                   attrs
                                   {})]
                label]]]

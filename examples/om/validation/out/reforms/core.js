@@ -56,43 +56,43 @@ reforms.core.set_options_BANG_ = reforms.core.options.set_options_BANG_;
  *         [:div "Contents go here"])
  */
 reforms.core.panel = (function reforms$core$panel(var_args){
-var args__5774__auto__ = [];
-var len__5767__auto___174125 = arguments.length;
-var i__5768__auto___174126 = (0);
+var args__5658__auto__ = [];
+var len__5651__auto___23126 = arguments.length;
+var i__5652__auto___23127 = (0);
 while(true){
-if((i__5768__auto___174126 < len__5767__auto___174125)){
-args__5774__auto__.push((arguments[i__5768__auto___174126]));
+if((i__5652__auto___23127 < len__5651__auto___23126)){
+args__5658__auto__.push((arguments[i__5652__auto___23127]));
 
-var G__174127 = (i__5768__auto___174126 + (1));
-i__5768__auto___174126 = G__174127;
+var G__23128 = (i__5652__auto___23127 + (1));
+i__5652__auto___23127 = G__23128;
 continue;
 } else {
 }
 break;
 }
 
-var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
-return reforms.core.panel.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
+var argseq__5659__auto__ = ((((0) < args__5658__auto__.length))?(new cljs.core.IndexedSeq(args__5658__auto__.slice((0)),(0))):null);
+return reforms.core.panel.cljs$core$IFn$_invoke$arity$variadic(argseq__5659__auto__);
 });
 
 reforms.core.panel.cljs$core$IFn$_invoke$arity$variadic = (function (args){
-var vec__174120 = reforms.core.impl.resolve_args.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"panel","panel",-558637456)], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"panel panel-default"], null),args);
-var attrs = cljs.core.nth.call(null,vec__174120,(0),null);
-var vec__174121 = cljs.core.nth.call(null,vec__174120,(1),null);
-var title = cljs.core.nth.call(null,vec__174121,(0),null);
-var rest_args = cljs.core.nthnext.call(null,vec__174121,(1));
-var vec__174122 = reforms.core.impl.parse_options.call(null,rest_args);
-var map__174123 = cljs.core.nth.call(null,vec__174122,(0),null);
-var map__174123__$1 = ((((!((map__174123 == null)))?((((map__174123.cljs$lang$protocol_mask$partition0$ & (64))) || (map__174123.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__174123):map__174123);
-var close = cljs.core.get.call(null,map__174123__$1,new cljs.core.Keyword(null,"close","close",1835149582));
-var contents = cljs.core.nth.call(null,vec__174122,(1),null);
+var vec__23121 = reforms.core.impl.resolve_args.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"panel","panel",-558637456)], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"panel panel-default"], null),args);
+var attrs = cljs.core.nth.call(null,vec__23121,(0),null);
+var vec__23122 = cljs.core.nth.call(null,vec__23121,(1),null);
+var title = cljs.core.nth.call(null,vec__23122,(0),null);
+var rest_args = cljs.core.nthnext.call(null,vec__23122,(1));
+var vec__23123 = reforms.core.impl.parse_options.call(null,rest_args);
+var map__23124 = cljs.core.nth.call(null,vec__23123,(0),null);
+var map__23124__$1 = ((((!((map__23124 == null)))?((((map__23124.cljs$lang$protocol_mask$partition0$ & (64))) || (map__23124.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__23124):map__23124);
+var close = cljs.core.get.call(null,map__23124__$1,new cljs.core.Keyword(null,"close","close",1835149582));
+var contents = cljs.core.nth.call(null,vec__23123,(1),null);
 return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),attrs,new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"class","class",-2030961996),"panel-heading",new cljs.core.Keyword(null,"key","key",-1516042587),"ph"], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"h3","h3",2067611163),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"class","class",-2030961996),"panel-title",new cljs.core.Keyword(null,"key","key",-1516042587),"pt"], null),title], null),(cljs.core.truth_(close)?new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"class","class",-2030961996),"actions pull-right",new cljs.core.Keyword(null,"key","key",-1516042587),"c"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"i","i",-1386841315),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"class","class",-2030961996),reforms.core.get_options.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"panel","panel",-558637456),new cljs.core.Keyword(null,"icon-close","icon-close",-1103973553)], null)),new cljs.core.Keyword(null,"onClick","onClick",-1991238530),close], null)], null)], null):null)], null),cljs.core.into.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"class","class",-2030961996),"panel-body",new cljs.core.Keyword(null,"key","key",-1516042587),"pb"], null)], null),contents)], null);
 });
 
 reforms.core.panel.cljs$lang$maxFixedArity = (0);
 
-reforms.core.panel.cljs$lang$applyTo = (function (seq174119){
-return reforms.core.panel.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq174119));
+reforms.core.panel.cljs$lang$applyTo = (function (seq23120){
+return reforms.core.panel.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq23120));
 });
 /**
  * A form. See http://getbootstrap.com/css/#forms
@@ -110,38 +110,38 @@ return reforms.core.panel.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.cal
  *     (form {:style {:background-color "red"}} [:div "Contents go here"])
  */
 reforms.core.form = (function reforms$core$form(var_args){
-var args__5774__auto__ = [];
-var len__5767__auto___174131 = arguments.length;
-var i__5768__auto___174132 = (0);
+var args__5658__auto__ = [];
+var len__5651__auto___23132 = arguments.length;
+var i__5652__auto___23133 = (0);
 while(true){
-if((i__5768__auto___174132 < len__5767__auto___174131)){
-args__5774__auto__.push((arguments[i__5768__auto___174132]));
+if((i__5652__auto___23133 < len__5651__auto___23132)){
+args__5658__auto__.push((arguments[i__5652__auto___23133]));
 
-var G__174133 = (i__5768__auto___174132 + (1));
-i__5768__auto___174132 = G__174133;
+var G__23134 = (i__5652__auto___23133 + (1));
+i__5652__auto___23133 = G__23134;
 continue;
 } else {
 }
 break;
 }
 
-var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
-return reforms.core.form.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
+var argseq__5659__auto__ = ((((0) < args__5658__auto__.length))?(new cljs.core.IndexedSeq(args__5658__auto__.slice((0)),(0))):null);
+return reforms.core.form.cljs$core$IFn$_invoke$arity$variadic(argseq__5659__auto__);
 });
 
 reforms.core.form.cljs$core$IFn$_invoke$arity$variadic = (function (args){
-var vec__174130 = reforms.core.impl.resolve_args.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"form","form",-1624062471)], null),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"on-submit","on-submit",1227871159),(function (p1__174128_SHARP_){
-return p1__174128_SHARP_.preventDefault();
+var vec__23131 = reforms.core.impl.resolve_args.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"form","form",-1624062471)], null),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"on-submit","on-submit",1227871159),(function (p1__23129_SHARP_){
+return p1__23129_SHARP_.preventDefault();
 }),new cljs.core.Keyword(null,"class","class",-2030961996),(cljs.core.truth_(reforms.core.impl.form_horizontal_QMARK_.call(null))?"form-horizontal":null)], null),args);
-var attrs = cljs.core.nth.call(null,vec__174130,(0),null);
-var elems = cljs.core.nth.call(null,vec__174130,(1),null);
+var attrs = cljs.core.nth.call(null,vec__23131,(0),null);
+var elems = cljs.core.nth.call(null,vec__23131,(1),null);
 return cljs.core.into.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"form","form",-1624062471),attrs], null),cljs.core.concat.call(null,elems,(cljs.core.truth_(new cljs.core.Keyword(null,"on-submit","on-submit",1227871159).cljs$core$IFn$_invoke$arity$1(cljs.core.first.call(null,args)))?new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"button","button",1456579943),new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"type","type",1174270348),"submit",new cljs.core.Keyword(null,"style","style",-496642736),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"display","display",242065432),"none"], null),new cljs.core.Keyword(null,"key","key",-1516042587),"fsb"], null)], null)], null):null)));
 });
 
 reforms.core.form.cljs$lang$maxFixedArity = (0);
 
-reforms.core.form.cljs$lang$applyTo = (function (seq174129){
-return reforms.core.form.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq174129));
+reforms.core.form.cljs$lang$applyTo = (function (seq23130){
+return reforms.core.form.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq23130));
 });
 /**
  * A title for a logical group of controls.
@@ -155,36 +155,36 @@ return reforms.core.form.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call
  * - tag   - (optional) name of the tag to use, e.g. :h4
  */
 reforms.core.group_title = (function reforms$core$group_title(var_args){
-var args__5774__auto__ = [];
-var len__5767__auto___174139 = arguments.length;
-var i__5768__auto___174140 = (0);
+var args__5658__auto__ = [];
+var len__5651__auto___23140 = arguments.length;
+var i__5652__auto___23141 = (0);
 while(true){
-if((i__5768__auto___174140 < len__5767__auto___174139)){
-args__5774__auto__.push((arguments[i__5768__auto___174140]));
+if((i__5652__auto___23141 < len__5651__auto___23140)){
+args__5658__auto__.push((arguments[i__5652__auto___23141]));
 
-var G__174141 = (i__5768__auto___174140 + (1));
-i__5768__auto___174140 = G__174141;
+var G__23142 = (i__5652__auto___23141 + (1));
+i__5652__auto___23141 = G__23142;
 continue;
 } else {
 }
 break;
 }
 
-var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
-return reforms.core.group_title.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
+var argseq__5659__auto__ = ((((0) < args__5658__auto__.length))?(new cljs.core.IndexedSeq(args__5658__auto__.slice((0)),(0))):null);
+return reforms.core.group_title.cljs$core$IFn$_invoke$arity$variadic(argseq__5659__auto__);
 });
 
 reforms.core.group_title.cljs$core$IFn$_invoke$arity$variadic = (function (args){
-var vec__174135 = reforms.core.impl.resolve_args.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"group-title","group-title",392188964)], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"group-title"], null),args);
-var attrs = cljs.core.nth.call(null,vec__174135,(0),null);
-var vec__174136 = cljs.core.nth.call(null,vec__174135,(1),null);
-var title = cljs.core.nth.call(null,vec__174136,(0),null);
-var map__174137 = cljs.core.nthnext.call(null,vec__174136,(1));
-var map__174137__$1 = ((((!((map__174137 == null)))?((((map__174137.cljs$lang$protocol_mask$partition0$ & (64))) || (map__174137.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__174137):map__174137);
-var tag = cljs.core.get.call(null,map__174137__$1,new cljs.core.Keyword(null,"tag","tag",-1290361223));
-return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(function (){var or__4709__auto__ = tag;
-if(cljs.core.truth_(or__4709__auto__)){
-return or__4709__auto__;
+var vec__23136 = reforms.core.impl.resolve_args.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"group-title","group-title",392188964)], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"group-title"], null),args);
+var attrs = cljs.core.nth.call(null,vec__23136,(0),null);
+var vec__23137 = cljs.core.nth.call(null,vec__23136,(1),null);
+var title = cljs.core.nth.call(null,vec__23137,(0),null);
+var map__23138 = cljs.core.nthnext.call(null,vec__23137,(1));
+var map__23138__$1 = ((((!((map__23138 == null)))?((((map__23138.cljs$lang$protocol_mask$partition0$ & (64))) || (map__23138.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__23138):map__23138);
+var tag = cljs.core.get.call(null,map__23138__$1,new cljs.core.Keyword(null,"tag","tag",-1290361223));
+return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(function (){var or__4593__auto__ = tag;
+if(cljs.core.truth_(or__4593__auto__)){
+return or__4593__auto__;
 } else {
 return reforms.core.get_options.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"group-title","group-title",392188964),new cljs.core.Keyword(null,"tag","tag",-1290361223)], null));
 }
@@ -193,8 +193,8 @@ return reforms.core.get_options.call(null,new cljs.core.PersistentVector(null, 2
 
 reforms.core.group_title.cljs$lang$maxFixedArity = (0);
 
-reforms.core.group_title.cljs$lang$applyTo = (function (seq174134){
-return reforms.core.group_title.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq174134));
+reforms.core.group_title.cljs$lang$applyTo = (function (seq23135){
+return reforms.core.group_title.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq23135));
 });
 /**
  * An HTML5-compatible input. Used internally to implement most input types.
@@ -221,43 +221,43 @@ return reforms.core.group_title.cljs$core$IFn$_invoke$arity$variadic(cljs.core.s
  * RENDERABLE - string, hiccup-style markup or a React component.
  */
 reforms.core.html5_input = (function reforms$core$html5_input(var_args){
-var args__5774__auto__ = [];
-var len__5767__auto___174146 = arguments.length;
-var i__5768__auto___174147 = (0);
+var args__5658__auto__ = [];
+var len__5651__auto___23147 = arguments.length;
+var i__5652__auto___23148 = (0);
 while(true){
-if((i__5768__auto___174147 < len__5767__auto___174146)){
-args__5774__auto__.push((arguments[i__5768__auto___174147]));
+if((i__5652__auto___23148 < len__5651__auto___23147)){
+args__5658__auto__.push((arguments[i__5652__auto___23148]));
 
-var G__174148 = (i__5768__auto___174147 + (1));
-i__5768__auto___174147 = G__174148;
+var G__23149 = (i__5652__auto___23148 + (1));
+i__5652__auto___23148 = G__23149;
 continue;
 } else {
 }
 break;
 }
 
-var argseq__5775__auto__ = ((((1) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((1)),(0))):null);
-return reforms.core.html5_input.cljs$core$IFn$_invoke$arity$variadic((arguments[(0)]),argseq__5775__auto__);
+var argseq__5659__auto__ = ((((1) < args__5658__auto__.length))?(new cljs.core.IndexedSeq(args__5658__auto__.slice((1)),(0))):null);
+return reforms.core.html5_input.cljs$core$IFn$_invoke$arity$variadic((arguments[(0)]),argseq__5659__auto__);
 });
 
 reforms.core.html5_input.cljs$core$IFn$_invoke$arity$variadic = (function (type,args){
-var vec__174144 = reforms.core.impl.resolve_args.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"html5-input","html5-input",-1019311487),type], null),cljs.core.PersistentArrayMap.EMPTY,args,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [reforms.core.impl.attrs_QMARK_,cljs.core.PersistentArrayMap.EMPTY], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.complement.call(null,reforms.binding.core.valid_QMARK_),null], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.complement.call(null,reforms.binding.core.valid_QMARK_),null], null)], null));
-var attrs = cljs.core.nth.call(null,vec__174144,(0),null);
-var vec__174145 = cljs.core.nth.call(null,vec__174144,(1),null);
-var label = cljs.core.nth.call(null,vec__174145,(0),null);
-var placeholder = cljs.core.nth.call(null,vec__174145,(1),null);
-var cursor = cljs.core.nth.call(null,vec__174145,(2),null);
-var korks = cljs.core.nth.call(null,vec__174145,(3),null);
-var opts = cljs.core.nthnext.call(null,vec__174145,(4));
+var vec__23145 = reforms.core.impl.resolve_args.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"html5-input","html5-input",-1019311487),type], null),cljs.core.PersistentArrayMap.EMPTY,args,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [reforms.core.impl.attrs_QMARK_,cljs.core.PersistentArrayMap.EMPTY], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.complement.call(null,reforms.binding.core.valid_QMARK_),null], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.complement.call(null,reforms.binding.core.valid_QMARK_),null], null)], null));
+var attrs = cljs.core.nth.call(null,vec__23145,(0),null);
+var vec__23146 = cljs.core.nth.call(null,vec__23145,(1),null);
+var label = cljs.core.nth.call(null,vec__23146,(0),null);
+var placeholder = cljs.core.nth.call(null,vec__23146,(1),null);
+var cursor = cljs.core.nth.call(null,vec__23146,(2),null);
+var korks = cljs.core.nth.call(null,vec__23146,(3),null);
+var opts = cljs.core.nthnext.call(null,vec__23146,(4));
 return cljs.core.apply.call(null,reforms.core.impl.html5_input_STAR_,attrs,label,placeholder,cursor,korks,cljs.core.name.call(null,type),opts);
 });
 
 reforms.core.html5_input.cljs$lang$maxFixedArity = (1);
 
-reforms.core.html5_input.cljs$lang$applyTo = (function (seq174142){
-var G__174143 = cljs.core.first.call(null,seq174142);
-var seq174142__$1 = cljs.core.next.call(null,seq174142);
-return reforms.core.html5_input.cljs$core$IFn$_invoke$arity$variadic(G__174143,seq174142__$1);
+reforms.core.html5_input.cljs$lang$applyTo = (function (seq23143){
+var G__23144 = cljs.core.first.call(null,seq23143);
+var seq23143__$1 = cljs.core.next.call(null,seq23143);
+return reforms.core.html5_input.cljs$core$IFn$_invoke$arity$variadic(G__23144,seq23143__$1);
 });
 /**
  * Text input. See http://getbootstrap.com/css/#inputs
@@ -269,23 +269,23 @@ return reforms.core.html5_input.cljs$core$IFn$_invoke$arity$variadic(G__174143,s
  * For compatilibity and available attributes see http://www.w3schools.com/html/html_form_input_types.asp
  */
 reforms.core.text = (function reforms$core$text(var_args){
-var args__5774__auto__ = [];
-var len__5767__auto___174150 = arguments.length;
-var i__5768__auto___174151 = (0);
+var args__5658__auto__ = [];
+var len__5651__auto___23151 = arguments.length;
+var i__5652__auto___23152 = (0);
 while(true){
-if((i__5768__auto___174151 < len__5767__auto___174150)){
-args__5774__auto__.push((arguments[i__5768__auto___174151]));
+if((i__5652__auto___23152 < len__5651__auto___23151)){
+args__5658__auto__.push((arguments[i__5652__auto___23152]));
 
-var G__174152 = (i__5768__auto___174151 + (1));
-i__5768__auto___174151 = G__174152;
+var G__23153 = (i__5652__auto___23152 + (1));
+i__5652__auto___23152 = G__23153;
 continue;
 } else {
 }
 break;
 }
 
-var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
-return reforms.core.text.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
+var argseq__5659__auto__ = ((((0) < args__5658__auto__.length))?(new cljs.core.IndexedSeq(args__5658__auto__.slice((0)),(0))):null);
+return reforms.core.text.cljs$core$IFn$_invoke$arity$variadic(argseq__5659__auto__);
 });
 
 reforms.core.text.cljs$core$IFn$_invoke$arity$variadic = (function (args){
@@ -294,8 +294,8 @@ return cljs.core.apply.call(null,reforms.core.html5_input,new cljs.core.Keyword(
 
 reforms.core.text.cljs$lang$maxFixedArity = (0);
 
-reforms.core.text.cljs$lang$applyTo = (function (seq174149){
-return reforms.core.text.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq174149));
+reforms.core.text.cljs$lang$applyTo = (function (seq23150){
+return reforms.core.text.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq23150));
 });
 /**
  * Password input. See http://getbootstrap.com/css/#inputs
@@ -307,23 +307,23 @@ return reforms.core.text.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call
  * For compatilibity and available attributes see http://www.w3schools.com/html/html_form_input_types.asp
  */
 reforms.core.password = (function reforms$core$password(var_args){
-var args__5774__auto__ = [];
-var len__5767__auto___174154 = arguments.length;
-var i__5768__auto___174155 = (0);
+var args__5658__auto__ = [];
+var len__5651__auto___23155 = arguments.length;
+var i__5652__auto___23156 = (0);
 while(true){
-if((i__5768__auto___174155 < len__5767__auto___174154)){
-args__5774__auto__.push((arguments[i__5768__auto___174155]));
+if((i__5652__auto___23156 < len__5651__auto___23155)){
+args__5658__auto__.push((arguments[i__5652__auto___23156]));
 
-var G__174156 = (i__5768__auto___174155 + (1));
-i__5768__auto___174155 = G__174156;
+var G__23157 = (i__5652__auto___23156 + (1));
+i__5652__auto___23156 = G__23157;
 continue;
 } else {
 }
 break;
 }
 
-var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
-return reforms.core.password.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
+var argseq__5659__auto__ = ((((0) < args__5658__auto__.length))?(new cljs.core.IndexedSeq(args__5658__auto__.slice((0)),(0))):null);
+return reforms.core.password.cljs$core$IFn$_invoke$arity$variadic(argseq__5659__auto__);
 });
 
 reforms.core.password.cljs$core$IFn$_invoke$arity$variadic = (function (args){
@@ -332,8 +332,8 @@ return cljs.core.apply.call(null,reforms.core.html5_input,new cljs.core.Keyword(
 
 reforms.core.password.cljs$lang$maxFixedArity = (0);
 
-reforms.core.password.cljs$lang$applyTo = (function (seq174153){
-return reforms.core.password.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq174153));
+reforms.core.password.cljs$lang$applyTo = (function (seq23154){
+return reforms.core.password.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq23154));
 });
 /**
  * Auto-aligning form buttons.
@@ -343,23 +343,23 @@ return reforms.core.password.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.
  * button-1 ... button-n
  */
 reforms.core.form_buttons = (function reforms$core$form_buttons(var_args){
-var args__5774__auto__ = [];
-var len__5767__auto___174158 = arguments.length;
-var i__5768__auto___174159 = (0);
+var args__5658__auto__ = [];
+var len__5651__auto___23159 = arguments.length;
+var i__5652__auto___23160 = (0);
 while(true){
-if((i__5768__auto___174159 < len__5767__auto___174158)){
-args__5774__auto__.push((arguments[i__5768__auto___174159]));
+if((i__5652__auto___23160 < len__5651__auto___23159)){
+args__5658__auto__.push((arguments[i__5652__auto___23160]));
 
-var G__174160 = (i__5768__auto___174159 + (1));
-i__5768__auto___174159 = G__174160;
+var G__23161 = (i__5652__auto___23160 + (1));
+i__5652__auto___23160 = G__23161;
 continue;
 } else {
 }
 break;
 }
 
-var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
-return reforms.core.form_buttons.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
+var argseq__5659__auto__ = ((((0) < args__5658__auto__.length))?(new cljs.core.IndexedSeq(args__5658__auto__.slice((0)),(0))):null);
+return reforms.core.form_buttons.cljs$core$IFn$_invoke$arity$variadic(argseq__5659__auto__);
 });
 
 reforms.core.form_buttons.cljs$core$IFn$_invoke$arity$variadic = (function (buttons){
@@ -368,8 +368,8 @@ return cljs.core.apply.call(null,reforms.core.impl.unlabeled_control,"form-butto
 
 reforms.core.form_buttons.cljs$lang$maxFixedArity = (0);
 
-reforms.core.form_buttons.cljs$lang$applyTo = (function (seq174157){
-return reforms.core.form_buttons.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq174157));
+reforms.core.form_buttons.cljs$lang$applyTo = (function (seq23158){
+return reforms.core.form_buttons.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq23158));
 });
 /**
  * Button. See http://getbootstrap.com/css/#buttons
@@ -385,50 +385,50 @@ return reforms.core.form_buttons.cljs$core$IFn$_invoke$arity$variadic(cljs.core.
  * - :disabled    - true to disable the button
  */
 reforms.core.button = (function reforms$core$button(var_args){
-var args__5774__auto__ = [];
-var len__5767__auto___174166 = arguments.length;
-var i__5768__auto___174167 = (0);
+var args__5658__auto__ = [];
+var len__5651__auto___23167 = arguments.length;
+var i__5652__auto___23168 = (0);
 while(true){
-if((i__5768__auto___174167 < len__5767__auto___174166)){
-args__5774__auto__.push((arguments[i__5768__auto___174167]));
+if((i__5652__auto___23168 < len__5651__auto___23167)){
+args__5658__auto__.push((arguments[i__5652__auto___23168]));
 
-var G__174168 = (i__5768__auto___174167 + (1));
-i__5768__auto___174167 = G__174168;
+var G__23169 = (i__5652__auto___23168 + (1));
+i__5652__auto___23168 = G__23169;
 continue;
 } else {
 }
 break;
 }
 
-var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
-return reforms.core.button.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
+var argseq__5659__auto__ = ((((0) < args__5658__auto__.length))?(new cljs.core.IndexedSeq(args__5658__auto__.slice((0)),(0))):null);
+return reforms.core.button.cljs$core$IFn$_invoke$arity$variadic(argseq__5659__auto__);
 });
 
 reforms.core.button.cljs$core$IFn$_invoke$arity$variadic = (function (args){
-var vec__174162 = reforms.core.impl.resolve_args.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"button","button",1456579943)], null),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"type","type",1174270348),"button",new cljs.core.Keyword(null,"class","class",-2030961996),"btn"], null),args);
-var attrs = cljs.core.nth.call(null,vec__174162,(0),null);
-var vec__174163 = cljs.core.nth.call(null,vec__174162,(1),null);
-var label = cljs.core.nth.call(null,vec__174163,(0),null);
-var on_click = cljs.core.nth.call(null,vec__174163,(1),null);
-var map__174164 = cljs.core.nthnext.call(null,vec__174163,(2));
-var map__174164__$1 = ((((!((map__174164 == null)))?((((map__174164.cljs$lang$protocol_mask$partition0$ & (64))) || (map__174164.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__174164):map__174164);
-var in_progress = cljs.core.get.call(null,map__174164__$1,new cljs.core.Keyword(null,"in-progress","in-progress",2126442630));
-var disabled = cljs.core.get.call(null,map__174164__$1,new cljs.core.Keyword(null,"disabled","disabled",-1529784218));
-return cljs.core.into.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"button","button",1456579943),cljs.core.merge.call(null,new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"disabled","disabled",-1529784218),disabled,new cljs.core.Keyword(null,"on-click","on-click",1632826543),((function (vec__174162,attrs,vec__174163,label,on_click,map__174164,map__174164__$1,in_progress,disabled){
+var vec__23163 = reforms.core.impl.resolve_args.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"button","button",1456579943)], null),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"type","type",1174270348),"button",new cljs.core.Keyword(null,"class","class",-2030961996),"btn"], null),args);
+var attrs = cljs.core.nth.call(null,vec__23163,(0),null);
+var vec__23164 = cljs.core.nth.call(null,vec__23163,(1),null);
+var label = cljs.core.nth.call(null,vec__23164,(0),null);
+var on_click = cljs.core.nth.call(null,vec__23164,(1),null);
+var map__23165 = cljs.core.nthnext.call(null,vec__23164,(2));
+var map__23165__$1 = ((((!((map__23165 == null)))?((((map__23165.cljs$lang$protocol_mask$partition0$ & (64))) || (map__23165.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__23165):map__23165);
+var in_progress = cljs.core.get.call(null,map__23165__$1,new cljs.core.Keyword(null,"in-progress","in-progress",2126442630));
+var disabled = cljs.core.get.call(null,map__23165__$1,new cljs.core.Keyword(null,"disabled","disabled",-1529784218));
+return cljs.core.into.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"button","button",1456579943),cljs.core.merge.call(null,new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"disabled","disabled",-1529784218),disabled,new cljs.core.Keyword(null,"on-click","on-click",1632826543),((function (vec__23163,attrs,vec__23164,label,on_click,map__23165,map__23165__$1,in_progress,disabled){
 return (function (){
 if(cljs.core.truth_(disabled)){
 return null;
 } else {
 return on_click.call(null);
 }
-});})(vec__174162,attrs,vec__174163,label,on_click,map__174164,map__174164__$1,in_progress,disabled))
+});})(vec__23163,attrs,vec__23164,label,on_click,map__23165,map__23165__$1,in_progress,disabled))
 ,new cljs.core.Keyword(null,"key","key",-1516042587),reforms.core.react_keys.gen_key.call(null,label,new cljs.core.Keyword(null,"class","class",-2030961996).cljs$core$IFn$_invoke$arity$1(attrs))], null),attrs)], null),cljs.core.concat.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [label], null),(cljs.core.truth_(in_progress)?new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [" ",reforms.core.impl.spinner.call(null)], null):null)));
 });
 
 reforms.core.button.cljs$lang$maxFixedArity = (0);
 
-reforms.core.button.cljs$lang$applyTo = (function (seq174161){
-return reforms.core.button.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq174161));
+reforms.core.button.cljs$lang$applyTo = (function (seq23162){
+return reforms.core.button.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq23162));
 });
 /**
  * Primary button. See http://getbootstrap.com/css/#buttons
@@ -438,37 +438,37 @@ return reforms.core.button.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.ca
  * See `button`.
  */
 reforms.core.button_primary = (function reforms$core$button_primary(var_args){
-var args__5774__auto__ = [];
-var len__5767__auto___174172 = arguments.length;
-var i__5768__auto___174173 = (0);
+var args__5658__auto__ = [];
+var len__5651__auto___23173 = arguments.length;
+var i__5652__auto___23174 = (0);
 while(true){
-if((i__5768__auto___174173 < len__5767__auto___174172)){
-args__5774__auto__.push((arguments[i__5768__auto___174173]));
+if((i__5652__auto___23174 < len__5651__auto___23173)){
+args__5658__auto__.push((arguments[i__5652__auto___23174]));
 
-var G__174174 = (i__5768__auto___174173 + (1));
-i__5768__auto___174173 = G__174174;
+var G__23175 = (i__5652__auto___23174 + (1));
+i__5652__auto___23174 = G__23175;
 continue;
 } else {
 }
 break;
 }
 
-var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
-return reforms.core.button_primary.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
+var argseq__5659__auto__ = ((((0) < args__5658__auto__.length))?(new cljs.core.IndexedSeq(args__5658__auto__.slice((0)),(0))):null);
+return reforms.core.button_primary.cljs$core$IFn$_invoke$arity$variadic(argseq__5659__auto__);
 });
 
 reforms.core.button_primary.cljs$core$IFn$_invoke$arity$variadic = (function (args){
-var vec__174170 = reforms.core.impl.resolve_args.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"button-primary","button-primary",1872052094)], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"btn-primary"], null),args);
-var attrs = cljs.core.nth.call(null,vec__174170,(0),null);
-var vec__174171 = cljs.core.nth.call(null,vec__174170,(1),null);
-var rest_args = cljs.core.nthnext.call(null,vec__174171,(0));
+var vec__23171 = reforms.core.impl.resolve_args.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"button-primary","button-primary",1872052094)], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"btn-primary"], null),args);
+var attrs = cljs.core.nth.call(null,vec__23171,(0),null);
+var vec__23172 = cljs.core.nth.call(null,vec__23171,(1),null);
+var rest_args = cljs.core.nthnext.call(null,vec__23172,(0));
 return cljs.core.apply.call(null,reforms.core.button,attrs,rest_args);
 });
 
 reforms.core.button_primary.cljs$lang$maxFixedArity = (0);
 
-reforms.core.button_primary.cljs$lang$applyTo = (function (seq174169){
-return reforms.core.button_primary.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq174169));
+reforms.core.button_primary.cljs$lang$applyTo = (function (seq23170){
+return reforms.core.button_primary.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq23170));
 });
 /**
  * Default button. See http://getbootstrap.com/css/#buttons
@@ -478,37 +478,37 @@ return reforms.core.button_primary.cljs$core$IFn$_invoke$arity$variadic(cljs.cor
  * See `button`.
  */
 reforms.core.button_default = (function reforms$core$button_default(var_args){
-var args__5774__auto__ = [];
-var len__5767__auto___174178 = arguments.length;
-var i__5768__auto___174179 = (0);
+var args__5658__auto__ = [];
+var len__5651__auto___23179 = arguments.length;
+var i__5652__auto___23180 = (0);
 while(true){
-if((i__5768__auto___174179 < len__5767__auto___174178)){
-args__5774__auto__.push((arguments[i__5768__auto___174179]));
+if((i__5652__auto___23180 < len__5651__auto___23179)){
+args__5658__auto__.push((arguments[i__5652__auto___23180]));
 
-var G__174180 = (i__5768__auto___174179 + (1));
-i__5768__auto___174179 = G__174180;
+var G__23181 = (i__5652__auto___23180 + (1));
+i__5652__auto___23180 = G__23181;
 continue;
 } else {
 }
 break;
 }
 
-var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
-return reforms.core.button_default.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
+var argseq__5659__auto__ = ((((0) < args__5658__auto__.length))?(new cljs.core.IndexedSeq(args__5658__auto__.slice((0)),(0))):null);
+return reforms.core.button_default.cljs$core$IFn$_invoke$arity$variadic(argseq__5659__auto__);
 });
 
 reforms.core.button_default.cljs$core$IFn$_invoke$arity$variadic = (function (args){
-var vec__174176 = reforms.core.impl.resolve_args.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"button-default","button-default",584285184)], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"btn-default"], null),args);
-var attrs = cljs.core.nth.call(null,vec__174176,(0),null);
-var vec__174177 = cljs.core.nth.call(null,vec__174176,(1),null);
-var rest_args = cljs.core.nthnext.call(null,vec__174177,(0));
+var vec__23177 = reforms.core.impl.resolve_args.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"button-default","button-default",584285184)], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"btn-default"], null),args);
+var attrs = cljs.core.nth.call(null,vec__23177,(0),null);
+var vec__23178 = cljs.core.nth.call(null,vec__23177,(1),null);
+var rest_args = cljs.core.nthnext.call(null,vec__23178,(0));
 return cljs.core.apply.call(null,reforms.core.button,attrs,rest_args);
 });
 
 reforms.core.button_default.cljs$lang$maxFixedArity = (0);
 
-reforms.core.button_default.cljs$lang$applyTo = (function (seq174175){
-return reforms.core.button_default.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq174175));
+reforms.core.button_default.cljs$lang$applyTo = (function (seq23176){
+return reforms.core.button_default.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq23176));
 });
 /**
  * Button group.
@@ -520,37 +520,37 @@ return reforms.core.button_default.cljs$core$IFn$_invoke$arity$variadic(cljs.cor
  * - attrs        - (optional) attributes handed over to React (see https://github.com/r0man/sablono#html-attributes)
  */
 reforms.core.button_group = (function reforms$core$button_group(var_args){
-var args__5774__auto__ = [];
-var len__5767__auto___174184 = arguments.length;
-var i__5768__auto___174185 = (0);
+var args__5658__auto__ = [];
+var len__5651__auto___23185 = arguments.length;
+var i__5652__auto___23186 = (0);
 while(true){
-if((i__5768__auto___174185 < len__5767__auto___174184)){
-args__5774__auto__.push((arguments[i__5768__auto___174185]));
+if((i__5652__auto___23186 < len__5651__auto___23185)){
+args__5658__auto__.push((arguments[i__5652__auto___23186]));
 
-var G__174186 = (i__5768__auto___174185 + (1));
-i__5768__auto___174185 = G__174186;
+var G__23187 = (i__5652__auto___23186 + (1));
+i__5652__auto___23186 = G__23187;
 continue;
 } else {
 }
 break;
 }
 
-var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
-return reforms.core.button_group.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
+var argseq__5659__auto__ = ((((0) < args__5658__auto__.length))?(new cljs.core.IndexedSeq(args__5658__auto__.slice((0)),(0))):null);
+return reforms.core.button_group.cljs$core$IFn$_invoke$arity$variadic(argseq__5659__auto__);
 });
 
 reforms.core.button_group.cljs$core$IFn$_invoke$arity$variadic = (function (args){
-var vec__174182 = reforms.core.impl.resolve_args.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"button-group","button-group",-1532145548)], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"button-group"], null),args);
-var attrs = cljs.core.nth.call(null,vec__174182,(0),null);
-var vec__174183 = cljs.core.nth.call(null,vec__174182,(1),null);
-var buttons = cljs.core.nthnext.call(null,vec__174183,(0));
+var vec__23183 = reforms.core.impl.resolve_args.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"button-group","button-group",-1532145548)], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"button-group"], null),args);
+var attrs = cljs.core.nth.call(null,vec__23183,(0),null);
+var vec__23184 = cljs.core.nth.call(null,vec__23183,(1),null);
+var buttons = cljs.core.nthnext.call(null,vec__23184,(0));
 return cljs.core.into.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),attrs], null),buttons);
 });
 
 reforms.core.button_group.cljs$lang$maxFixedArity = (0);
 
-reforms.core.button_group.cljs$lang$applyTo = (function (seq174181){
-return reforms.core.button_group.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq174181));
+reforms.core.button_group.cljs$lang$applyTo = (function (seq23182){
+return reforms.core.button_group.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq23182));
 });
 /**
  * Checkbox. See http://getbootstrap.com/css/#checkboxes-and-radios
@@ -567,54 +567,54 @@ return reforms.core.button_group.cljs$core$IFn$_invoke$arity$variadic(cljs.core.
  * - :validation-error-fn  - (optional) lambda <korks> -> <error message>; internal
  */
 reforms.core.checkbox = (function reforms$core$checkbox(var_args){
-var args__5774__auto__ = [];
-var len__5767__auto___174193 = arguments.length;
-var i__5768__auto___174194 = (0);
+var args__5658__auto__ = [];
+var len__5651__auto___23194 = arguments.length;
+var i__5652__auto___23195 = (0);
 while(true){
-if((i__5768__auto___174194 < len__5767__auto___174193)){
-args__5774__auto__.push((arguments[i__5768__auto___174194]));
+if((i__5652__auto___23195 < len__5651__auto___23194)){
+args__5658__auto__.push((arguments[i__5652__auto___23195]));
 
-var G__174195 = (i__5768__auto___174194 + (1));
-i__5768__auto___174194 = G__174195;
+var G__23196 = (i__5652__auto___23195 + (1));
+i__5652__auto___23195 = G__23196;
 continue;
 } else {
 }
 break;
 }
 
-var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
-return reforms.core.checkbox.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
+var argseq__5659__auto__ = ((((0) < args__5658__auto__.length))?(new cljs.core.IndexedSeq(args__5658__auto__.slice((0)),(0))):null);
+return reforms.core.checkbox.cljs$core$IFn$_invoke$arity$variadic(argseq__5659__auto__);
 });
 
 reforms.core.checkbox.cljs$core$IFn$_invoke$arity$variadic = (function (args){
-var vec__174189 = reforms.core.impl.resolve_args.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"checkbox","checkbox",1612615655)], null),cljs.core.PersistentArrayMap.EMPTY,args);
-var attrs = cljs.core.nth.call(null,vec__174189,(0),null);
-var vec__174190 = cljs.core.nth.call(null,vec__174189,(1),null);
-var label = cljs.core.nth.call(null,vec__174190,(0),null);
-var cursor = cljs.core.nth.call(null,vec__174190,(1),null);
-var korks = cljs.core.nth.call(null,vec__174190,(2),null);
-var map__174191 = cljs.core.nthnext.call(null,vec__174190,(3));
-var map__174191__$1 = ((((!((map__174191 == null)))?((((map__174191.cljs$lang$protocol_mask$partition0$ & (64))) || (map__174191.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__174191):map__174191);
-var valid_QMARK_ = cljs.core.get.call(null,map__174191__$1,new cljs.core.Keyword(null,"valid?","valid?",-212412379));
-var validation_error_fn = cljs.core.get.call(null,map__174191__$1,new cljs.core.Keyword(null,"validation-error-fn","validation-error-fn",-625000244));
-var inline = cljs.core.get.call(null,map__174191__$1,new cljs.core.Keyword(null,"inline","inline",1399884222));
+var vec__23190 = reforms.core.impl.resolve_args.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"checkbox","checkbox",1612615655)], null),cljs.core.PersistentArrayMap.EMPTY,args);
+var attrs = cljs.core.nth.call(null,vec__23190,(0),null);
+var vec__23191 = cljs.core.nth.call(null,vec__23190,(1),null);
+var label = cljs.core.nth.call(null,vec__23191,(0),null);
+var cursor = cljs.core.nth.call(null,vec__23191,(1),null);
+var korks = cljs.core.nth.call(null,vec__23191,(2),null);
+var map__23192 = cljs.core.nthnext.call(null,vec__23191,(3));
+var map__23192__$1 = ((((!((map__23192 == null)))?((((map__23192.cljs$lang$protocol_mask$partition0$ & (64))) || (map__23192.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__23192):map__23192);
+var valid_QMARK_ = cljs.core.get.call(null,map__23192__$1,new cljs.core.Keyword(null,"valid?","valid?",-212412379));
+var validation_error_fn = cljs.core.get.call(null,map__23192__$1,new cljs.core.Keyword(null,"validation-error-fn","validation-error-fn",-625000244));
+var inline = cljs.core.get.call(null,map__23192__$1,new cljs.core.Keyword(null,"inline","inline",1399884222));
 var dom_id = reforms.core.impl.gen_dom_id.call(null,cursor,korks);
-var valid = (function (){var or__4709__auto__ = (valid_QMARK_ == null);
-if(or__4709__auto__){
-return or__4709__auto__;
+var valid = (function (){var or__4593__auto__ = (valid_QMARK_ == null);
+if(or__4593__auto__){
+return or__4593__auto__;
 } else {
 return valid_QMARK_.call(null,korks);
 }
 })();
-return cljs.core.apply.call(null,reforms.core.impl.unlabeled_control,reforms.core.react_keys.gen_key.call(null,new cljs.core.Keyword(null,"wrap","wrap",851669987),cursor,korks),inline,cljs.core.concat.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"class","class",-2030961996),[cljs.core.str("checkbox"),cljs.core.str((cljs.core.truth_(valid)?null:" has-error")),cljs.core.str((cljs.core.truth_(inline)?" checkbox-inline":null))].join(''),new cljs.core.Keyword(null,"key","key",-1516042587),reforms.core.react_keys.gen_key.call(null,new cljs.core.Keyword(null,"checkbox","checkbox",1612615655),cursor,korks)], null),new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"label","label",1718410804),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"key","key",-1516042587),reforms.core.react_keys.gen_key.call(null,new cljs.core.Keyword(null,"label","label",1718410804),cursor,korks)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"input","input",556931961),reforms.core.impl.merge_attrs.call(null,new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null,"on-change","on-change",-732046149),((function (vec__174189,attrs,vec__174190,label,cursor,korks,map__174191,map__174191__$1,valid_QMARK_,validation_error_fn,inline,dom_id,valid){
-return (function (p1__174187_SHARP_){
-return reforms.binding.core.reset_BANG_.call(null,cursor,korks,p1__174187_SHARP_.target.checked);
-});})(vec__174189,attrs,vec__174190,label,cursor,korks,map__174191,map__174191__$1,valid_QMARK_,validation_error_fn,inline,dom_id,valid))
-,new cljs.core.Keyword(null,"checked","checked",-50955819),reforms.binding.core.get_in.call(null,cursor,korks),new cljs.core.Keyword(null,"type","type",1174270348),"checkbox",new cljs.core.Keyword(null,"id","id",-1388402092),dom_id,new cljs.core.Keyword(null,"key","key",-1516042587),reforms.core.react_keys.gen_key.call(null,new cljs.core.Keyword(null,"input","input",556931961),cursor,korks)], null),attrs,cljs.core.PersistentArrayMap.EMPTY)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"span","span",1394872991),label], null)], null)], null)], null),(function (){var temp__4425__auto__ = (function (){var and__4697__auto__ = validation_error_fn;
-if(cljs.core.truth_(and__4697__auto__)){
+return cljs.core.apply.call(null,reforms.core.impl.unlabeled_control,reforms.core.react_keys.gen_key.call(null,new cljs.core.Keyword(null,"wrap","wrap",851669987),cursor,korks),inline,cljs.core.concat.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"class","class",-2030961996),[cljs.core.str("checkbox"),cljs.core.str((cljs.core.truth_(valid)?null:" has-error")),cljs.core.str((cljs.core.truth_(inline)?" checkbox-inline":null))].join(''),new cljs.core.Keyword(null,"key","key",-1516042587),reforms.core.react_keys.gen_key.call(null,new cljs.core.Keyword(null,"checkbox","checkbox",1612615655),cursor,korks)], null),new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"label","label",1718410804),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"key","key",-1516042587),reforms.core.react_keys.gen_key.call(null,new cljs.core.Keyword(null,"label","label",1718410804),cursor,korks)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"input","input",556931961),reforms.core.impl.merge_attrs.call(null,new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null,"on-change","on-change",-732046149),((function (vec__23190,attrs,vec__23191,label,cursor,korks,map__23192,map__23192__$1,valid_QMARK_,validation_error_fn,inline,dom_id,valid){
+return (function (p1__23188_SHARP_){
+return reforms.binding.core.reset_BANG_.call(null,cursor,korks,p1__23188_SHARP_.target.checked);
+});})(vec__23190,attrs,vec__23191,label,cursor,korks,map__23192,map__23192__$1,valid_QMARK_,validation_error_fn,inline,dom_id,valid))
+,new cljs.core.Keyword(null,"checked","checked",-50955819),reforms.binding.core.get_in.call(null,cursor,korks),new cljs.core.Keyword(null,"type","type",1174270348),"checkbox",new cljs.core.Keyword(null,"id","id",-1388402092),dom_id,new cljs.core.Keyword(null,"key","key",-1516042587),reforms.core.react_keys.gen_key.call(null,new cljs.core.Keyword(null,"input","input",556931961),cursor,korks)], null),attrs,cljs.core.PersistentArrayMap.EMPTY)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"span","span",1394872991),label], null)], null)], null)], null),(function (){var temp__4425__auto__ = (function (){var and__4581__auto__ = validation_error_fn;
+if(cljs.core.truth_(and__4581__auto__)){
 return validation_error_fn.call(null,korks);
 } else {
-return and__4697__auto__;
+return and__4581__auto__;
 }
 })();
 if(cljs.core.truth_(temp__4425__auto__)){
@@ -628,8 +628,8 @@ return null;
 
 reforms.core.checkbox.cljs$lang$maxFixedArity = (0);
 
-reforms.core.checkbox.cljs$lang$applyTo = (function (seq174188){
-return reforms.core.checkbox.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq174188));
+reforms.core.checkbox.cljs$lang$applyTo = (function (seq23189){
+return reforms.core.checkbox.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq23189));
 });
 /**
  * Radio button. See http://getbootstrap.com/css/#checkboxes-and-radios
@@ -646,59 +646,59 @@ return reforms.core.checkbox.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.
  * - :validation-error-fn  - (optional) lambda <korks> -> <error message>; internal
  */
 reforms.core.radio = (function reforms$core$radio(var_args){
-var args__5774__auto__ = [];
-var len__5767__auto___174202 = arguments.length;
-var i__5768__auto___174203 = (0);
+var args__5658__auto__ = [];
+var len__5651__auto___23203 = arguments.length;
+var i__5652__auto___23204 = (0);
 while(true){
-if((i__5768__auto___174203 < len__5767__auto___174202)){
-args__5774__auto__.push((arguments[i__5768__auto___174203]));
+if((i__5652__auto___23204 < len__5651__auto___23203)){
+args__5658__auto__.push((arguments[i__5652__auto___23204]));
 
-var G__174204 = (i__5768__auto___174203 + (1));
-i__5768__auto___174203 = G__174204;
+var G__23205 = (i__5652__auto___23204 + (1));
+i__5652__auto___23204 = G__23205;
 continue;
 } else {
 }
 break;
 }
 
-var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
-return reforms.core.radio.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
+var argseq__5659__auto__ = ((((0) < args__5658__auto__.length))?(new cljs.core.IndexedSeq(args__5658__auto__.slice((0)),(0))):null);
+return reforms.core.radio.cljs$core$IFn$_invoke$arity$variadic(argseq__5659__auto__);
 });
 
 reforms.core.radio.cljs$core$IFn$_invoke$arity$variadic = (function (args){
-var vec__174198 = reforms.core.impl.resolve_args.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"radio","radio",1323726374)], null),cljs.core.PersistentArrayMap.EMPTY,args);
-var attrs = cljs.core.nth.call(null,vec__174198,(0),null);
-var vec__174199 = cljs.core.nth.call(null,vec__174198,(1),null);
-var label = cljs.core.nth.call(null,vec__174199,(0),null);
-var cursor = cljs.core.nth.call(null,vec__174199,(1),null);
-var korks = cljs.core.nth.call(null,vec__174199,(2),null);
-var value = cljs.core.nth.call(null,vec__174199,(3),null);
-var map__174200 = cljs.core.nthnext.call(null,vec__174199,(4));
-var map__174200__$1 = ((((!((map__174200 == null)))?((((map__174200.cljs$lang$protocol_mask$partition0$ & (64))) || (map__174200.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__174200):map__174200);
-var valid_QMARK_ = cljs.core.get.call(null,map__174200__$1,new cljs.core.Keyword(null,"valid?","valid?",-212412379));
-var validation_error_fn = cljs.core.get.call(null,map__174200__$1,new cljs.core.Keyword(null,"validation-error-fn","validation-error-fn",-625000244));
-var inline = cljs.core.get.call(null,map__174200__$1,new cljs.core.Keyword(null,"inline","inline",1399884222));
+var vec__23199 = reforms.core.impl.resolve_args.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"radio","radio",1323726374)], null),cljs.core.PersistentArrayMap.EMPTY,args);
+var attrs = cljs.core.nth.call(null,vec__23199,(0),null);
+var vec__23200 = cljs.core.nth.call(null,vec__23199,(1),null);
+var label = cljs.core.nth.call(null,vec__23200,(0),null);
+var cursor = cljs.core.nth.call(null,vec__23200,(1),null);
+var korks = cljs.core.nth.call(null,vec__23200,(2),null);
+var value = cljs.core.nth.call(null,vec__23200,(3),null);
+var map__23201 = cljs.core.nthnext.call(null,vec__23200,(4));
+var map__23201__$1 = ((((!((map__23201 == null)))?((((map__23201.cljs$lang$protocol_mask$partition0$ & (64))) || (map__23201.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__23201):map__23201);
+var valid_QMARK_ = cljs.core.get.call(null,map__23201__$1,new cljs.core.Keyword(null,"valid?","valid?",-212412379));
+var validation_error_fn = cljs.core.get.call(null,map__23201__$1,new cljs.core.Keyword(null,"validation-error-fn","validation-error-fn",-625000244));
+var inline = cljs.core.get.call(null,map__23201__$1,new cljs.core.Keyword(null,"inline","inline",1399884222));
 var dom_id = reforms.core.impl.gen_dom_id.call(null,cursor,korks);
-var valid = (function (){var or__4709__auto__ = (valid_QMARK_ == null);
-if(or__4709__auto__){
-return or__4709__auto__;
+var valid = (function (){var or__4593__auto__ = (valid_QMARK_ == null);
+if(or__4593__auto__){
+return or__4593__auto__;
 } else {
 return valid_QMARK_.call(null,korks);
 }
 })();
-return cljs.core.apply.call(null,reforms.core.impl.unlabeled_control,reforms.core.react_keys.gen_key.call(null,new cljs.core.Keyword(null,"wrap","wrap",851669987),cursor,korks),inline,cljs.core.concat.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"class","class",-2030961996),[cljs.core.str("radio"),cljs.core.str((cljs.core.truth_(valid)?null:" has-error")),cljs.core.str((cljs.core.truth_(inline)?" radio-inline":null))].join(''),new cljs.core.Keyword(null,"key","key",-1516042587),reforms.core.react_keys.gen_key.call(null,new cljs.core.Keyword(null,"radio","radio",1323726374),cursor,korks)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"label","label",1718410804),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"input","input",556931961),reforms.core.impl.merge_attrs.call(null,new cljs.core.PersistentArrayMap(null, 7, [new cljs.core.Keyword(null,"on-change","on-change",-732046149),((function (vec__174198,attrs,vec__174199,label,cursor,korks,value,map__174200,map__174200__$1,valid_QMARK_,validation_error_fn,inline,dom_id,valid){
-return (function (p1__174196_SHARP_){
-if(cljs.core.truth_(p1__174196_SHARP_.target.checked)){
+return cljs.core.apply.call(null,reforms.core.impl.unlabeled_control,reforms.core.react_keys.gen_key.call(null,new cljs.core.Keyword(null,"wrap","wrap",851669987),cursor,korks,value),inline,cljs.core.concat.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"class","class",-2030961996),[cljs.core.str("radio"),cljs.core.str((cljs.core.truth_(valid)?null:" has-error")),cljs.core.str((cljs.core.truth_(inline)?" radio-inline":null))].join(''),new cljs.core.Keyword(null,"key","key",-1516042587),reforms.core.react_keys.gen_key.call(null,new cljs.core.Keyword(null,"radio","radio",1323726374),cursor,korks,value)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"label","label",1718410804),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"input","input",556931961),reforms.core.impl.merge_attrs.call(null,new cljs.core.PersistentArrayMap(null, 7, [new cljs.core.Keyword(null,"on-change","on-change",-732046149),((function (vec__23199,attrs,vec__23200,label,cursor,korks,value,map__23201,map__23201__$1,valid_QMARK_,validation_error_fn,inline,dom_id,valid){
+return (function (p1__23197_SHARP_){
+if(cljs.core.truth_(p1__23197_SHARP_.target.checked)){
 return reforms.binding.core.reset_BANG_.call(null,cursor,korks,value);
 } else {
 return null;
 }
-});})(vec__174198,attrs,vec__174199,label,cursor,korks,value,map__174200,map__174200__$1,valid_QMARK_,validation_error_fn,inline,dom_id,valid))
-,new cljs.core.Keyword(null,"checked","checked",-50955819),cljs.core._EQ_.call(null,value,reforms.binding.core.get_in.call(null,cursor,korks)),new cljs.core.Keyword(null,"type","type",1174270348),"radio",new cljs.core.Keyword(null,"id","id",-1388402092),dom_id,new cljs.core.Keyword(null,"name","name",1843675177),dom_id,new cljs.core.Keyword(null,"value","value",305978217),value,new cljs.core.Keyword(null,"key","key",-1516042587),reforms.core.react_keys.gen_key.call(null,new cljs.core.Keyword(null,"input","input",556931961),cursor,korks)], null),attrs,cljs.core.PersistentArrayMap.EMPTY)], null),label], null)], null)], null),(function (){var temp__4425__auto__ = (function (){var and__4697__auto__ = validation_error_fn;
-if(cljs.core.truth_(and__4697__auto__)){
+});})(vec__23199,attrs,vec__23200,label,cursor,korks,value,map__23201,map__23201__$1,valid_QMARK_,validation_error_fn,inline,dom_id,valid))
+,new cljs.core.Keyword(null,"checked","checked",-50955819),cljs.core._EQ_.call(null,value,reforms.binding.core.get_in.call(null,cursor,korks)),new cljs.core.Keyword(null,"type","type",1174270348),"radio",new cljs.core.Keyword(null,"id","id",-1388402092),dom_id,new cljs.core.Keyword(null,"name","name",1843675177),dom_id,new cljs.core.Keyword(null,"value","value",305978217),value,new cljs.core.Keyword(null,"key","key",-1516042587),reforms.core.react_keys.gen_key.call(null,new cljs.core.Keyword(null,"input","input",556931961),cursor,korks,value)], null),attrs,cljs.core.PersistentArrayMap.EMPTY)], null),label], null)], null)], null),(function (){var temp__4425__auto__ = (function (){var and__4581__auto__ = validation_error_fn;
+if(cljs.core.truth_(and__4581__auto__)){
 return validation_error_fn.call(null,korks);
 } else {
-return and__4697__auto__;
+return and__4581__auto__;
 }
 })();
 if(cljs.core.truth_(temp__4425__auto__)){
@@ -712,8 +712,8 @@ return null;
 
 reforms.core.radio.cljs$lang$maxFixedArity = (0);
 
-reforms.core.radio.cljs$lang$applyTo = (function (seq174197){
-return reforms.core.radio.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq174197));
+reforms.core.radio.cljs$lang$applyTo = (function (seq23198){
+return reforms.core.radio.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq23198));
 });
 /**
  * Textarea element. See http://getbootstrap.com/css/#textarea
@@ -734,39 +734,39 @@ return reforms.core.radio.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.cal
  *     (f/textarea {:rows 8} "Textarea" "A placeholder" data [:some-text] :inline true)
  */
 reforms.core.textarea = (function reforms$core$textarea(var_args){
-var args__5774__auto__ = [];
-var len__5767__auto___174209 = arguments.length;
-var i__5768__auto___174210 = (0);
+var args__5658__auto__ = [];
+var len__5651__auto___23210 = arguments.length;
+var i__5652__auto___23211 = (0);
 while(true){
-if((i__5768__auto___174210 < len__5767__auto___174209)){
-args__5774__auto__.push((arguments[i__5768__auto___174210]));
+if((i__5652__auto___23211 < len__5651__auto___23210)){
+args__5658__auto__.push((arguments[i__5652__auto___23211]));
 
-var G__174211 = (i__5768__auto___174210 + (1));
-i__5768__auto___174210 = G__174211;
+var G__23212 = (i__5652__auto___23211 + (1));
+i__5652__auto___23211 = G__23212;
 continue;
 } else {
 }
 break;
 }
 
-var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
-return reforms.core.textarea.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
+var argseq__5659__auto__ = ((((0) < args__5658__auto__.length))?(new cljs.core.IndexedSeq(args__5658__auto__.slice((0)),(0))):null);
+return reforms.core.textarea.cljs$core$IFn$_invoke$arity$variadic(argseq__5659__auto__);
 });
 
 reforms.core.textarea.cljs$core$IFn$_invoke$arity$variadic = (function (args){
-var vec__174207 = reforms.core.impl.resolve_args.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"textarea","textarea",-650375824)], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"form-control"], null),args,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [reforms.core.impl.attrs_QMARK_,cljs.core.PersistentArrayMap.EMPTY], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.complement.call(null,reforms.binding.core.valid_QMARK_),null], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.complement.call(null,reforms.binding.core.valid_QMARK_),null], null)], null));
-var attrs = cljs.core.nth.call(null,vec__174207,(0),null);
-var vec__174208 = cljs.core.nth.call(null,vec__174207,(1),null);
-var label = cljs.core.nth.call(null,vec__174208,(0),null);
-var placeholder = cljs.core.nth.call(null,vec__174208,(1),null);
-var cursor = cljs.core.nth.call(null,vec__174208,(2),null);
-var korks = cljs.core.nth.call(null,vec__174208,(3),null);
-var opts = cljs.core.nthnext.call(null,vec__174208,(4));
+var vec__23208 = reforms.core.impl.resolve_args.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"textarea","textarea",-650375824)], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"form-control"], null),args,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [reforms.core.impl.attrs_QMARK_,cljs.core.PersistentArrayMap.EMPTY], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.complement.call(null,reforms.binding.core.valid_QMARK_),null], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.complement.call(null,reforms.binding.core.valid_QMARK_),null], null)], null));
+var attrs = cljs.core.nth.call(null,vec__23208,(0),null);
+var vec__23209 = cljs.core.nth.call(null,vec__23208,(1),null);
+var label = cljs.core.nth.call(null,vec__23209,(0),null);
+var placeholder = cljs.core.nth.call(null,vec__23209,(1),null);
+var cursor = cljs.core.nth.call(null,vec__23209,(2),null);
+var korks = cljs.core.nth.call(null,vec__23209,(3),null);
+var opts = cljs.core.nthnext.call(null,vec__23209,(4));
 var dom_id = reforms.core.impl.gen_dom_id.call(null,cursor,korks);
-var textarea_attrs = reforms.core.impl.merge_attrs.call(null,new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"class","class",-2030961996),"form-control",new cljs.core.Keyword(null,"id","id",-1388402092),dom_id,new cljs.core.Keyword(null,"placeholder","placeholder",-104873083),placeholder], null),attrs,new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"on-change","on-change",-732046149),((function (vec__174207,attrs,vec__174208,label,placeholder,cursor,korks,opts,dom_id){
-return (function (p1__174205_SHARP_){
-return reforms.binding.core.reset_BANG_.call(null,cursor,korks,p1__174205_SHARP_.target.value);
-});})(vec__174207,attrs,vec__174208,label,placeholder,cursor,korks,opts,dom_id))
+var textarea_attrs = reforms.core.impl.merge_attrs.call(null,new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"class","class",-2030961996),"form-control",new cljs.core.Keyword(null,"id","id",-1388402092),dom_id,new cljs.core.Keyword(null,"placeholder","placeholder",-104873083),placeholder], null),attrs,new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"on-change","on-change",-732046149),((function (vec__23208,attrs,vec__23209,label,placeholder,cursor,korks,opts,dom_id){
+return (function (p1__23206_SHARP_){
+return reforms.binding.core.reset_BANG_.call(null,cursor,korks,p1__23206_SHARP_.target.value);
+});})(vec__23208,attrs,vec__23209,label,placeholder,cursor,korks,opts,dom_id))
 ,new cljs.core.Keyword(null,"value","value",305978217),reforms.binding.core.get_in.call(null,cursor,korks)], null));
 if(cljs.core.truth_(placeholder)){
 reforms.core.impl.deprecated.call(null,"Placeholders as positional arguments will be removed in the next major release; use :placeholder option instead.");
@@ -778,8 +778,8 @@ return reforms.core.impl.input_STAR_.call(null,new cljs.core.Keyword(null,"texta
 
 reforms.core.textarea.cljs$lang$maxFixedArity = (0);
 
-reforms.core.textarea.cljs$lang$applyTo = (function (seq174206){
-return reforms.core.textarea.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq174206));
+reforms.core.textarea.cljs$lang$applyTo = (function (seq23207){
+return reforms.core.textarea.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq23207));
 });
 /**
  * Select element. See http://getbootstrap.com/css/#selects
@@ -804,40 +804,40 @@ return reforms.core.textarea.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.
  *         [[:option1 "Option 1"] [:option2 "Option 2"] [:option3 "Option 3"]])
  */
 reforms.core.select = (function reforms$core$select(var_args){
-var args__5774__auto__ = [];
-var len__5767__auto___174218 = arguments.length;
-var i__5768__auto___174219 = (0);
+var args__5658__auto__ = [];
+var len__5651__auto___23219 = arguments.length;
+var i__5652__auto___23220 = (0);
 while(true){
-if((i__5768__auto___174219 < len__5767__auto___174218)){
-args__5774__auto__.push((arguments[i__5768__auto___174219]));
+if((i__5652__auto___23220 < len__5651__auto___23219)){
+args__5658__auto__.push((arguments[i__5652__auto___23220]));
 
-var G__174220 = (i__5768__auto___174219 + (1));
-i__5768__auto___174219 = G__174220;
+var G__23221 = (i__5652__auto___23220 + (1));
+i__5652__auto___23220 = G__23221;
 continue;
 } else {
 }
 break;
 }
 
-var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
-return reforms.core.select.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
+var argseq__5659__auto__ = ((((0) < args__5658__auto__.length))?(new cljs.core.IndexedSeq(args__5658__auto__.slice((0)),(0))):null);
+return reforms.core.select.cljs$core$IFn$_invoke$arity$variadic(argseq__5659__auto__);
 });
 
 reforms.core.select.cljs$core$IFn$_invoke$arity$variadic = (function (args){
-var vec__174214 = reforms.core.impl.resolve_args.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"select","select",1147833503)], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"form-control"], null),args,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [reforms.core.impl.attrs_QMARK_,cljs.core.PersistentArrayMap.EMPTY], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.complement.call(null,reforms.binding.core.valid_QMARK_),null], null)], null));
-var attrs = cljs.core.nth.call(null,vec__174214,(0),null);
-var vec__174215 = cljs.core.nth.call(null,vec__174214,(1),null);
-var label = cljs.core.nth.call(null,vec__174215,(0),null);
-var cursor = cljs.core.nth.call(null,vec__174215,(1),null);
-var korks = cljs.core.nth.call(null,vec__174215,(2),null);
-var options = cljs.core.nth.call(null,vec__174215,(3),null);
-var map__174216 = cljs.core.nthnext.call(null,vec__174215,(4));
-var map__174216__$1 = ((((!((map__174216 == null)))?((((map__174216.cljs$lang$protocol_mask$partition0$ & (64))) || (map__174216.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__174216):map__174216);
-var opts = map__174216__$1;
-var on_change = cljs.core.get.call(null,map__174216__$1,new cljs.core.Keyword(null,"on-change","on-change",-732046149));
+var vec__23215 = reforms.core.impl.resolve_args.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"select","select",1147833503)], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"form-control"], null),args,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [reforms.core.impl.attrs_QMARK_,cljs.core.PersistentArrayMap.EMPTY], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.complement.call(null,reforms.binding.core.valid_QMARK_),null], null)], null));
+var attrs = cljs.core.nth.call(null,vec__23215,(0),null);
+var vec__23216 = cljs.core.nth.call(null,vec__23215,(1),null);
+var label = cljs.core.nth.call(null,vec__23216,(0),null);
+var cursor = cljs.core.nth.call(null,vec__23216,(1),null);
+var korks = cljs.core.nth.call(null,vec__23216,(2),null);
+var options = cljs.core.nth.call(null,vec__23216,(3),null);
+var map__23217 = cljs.core.nthnext.call(null,vec__23216,(4));
+var map__23217__$1 = ((((!((map__23217 == null)))?((((map__23217.cljs$lang$protocol_mask$partition0$ & (64))) || (map__23217.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__23217):map__23217);
+var opts = map__23217__$1;
+var on_change = cljs.core.get.call(null,map__23217__$1,new cljs.core.Keyword(null,"on-change","on-change",-732046149));
 var dom_id = reforms.core.impl.gen_dom_id.call(null,cursor,korks);
 var selected_val = reforms.binding.core.get_in.call(null,cursor,korks);
-var input_attrs = reforms.core.impl.merge_attrs.call(null,cljs.core.PersistentArrayMap.EMPTY,attrs,new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"value","value",305978217),[cljs.core.str(selected_val)].join(''),new cljs.core.Keyword(null,"on-change","on-change",-732046149),((function (vec__174214,attrs,vec__174215,label,cursor,korks,options,map__174216,map__174216__$1,opts,on_change,dom_id,selected_val){
+var input_attrs = reforms.core.impl.merge_attrs.call(null,cljs.core.PersistentArrayMap.EMPTY,attrs,new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"value","value",305978217),[cljs.core.str(selected_val)].join(''),new cljs.core.Keyword(null,"on-change","on-change",-732046149),((function (vec__23215,attrs,vec__23216,label,cursor,korks,options,map__23217,map__23217__$1,opts,on_change,dom_id,selected_val){
 return (function (dom_event){
 reforms.binding.core.reset_BANG_.call(null,cursor,korks,reforms.core.impl.unstr_option.call(null,dom_event.target.value,options));
 
@@ -846,19 +846,19 @@ return on_change.call(null);
 } else {
 return null;
 }
-});})(vec__174214,attrs,vec__174215,label,cursor,korks,options,map__174216,map__174216__$1,opts,on_change,dom_id,selected_val))
+});})(vec__23215,attrs,vec__23216,label,cursor,korks,options,map__23217,map__23217__$1,opts,on_change,dom_id,selected_val))
 ,new cljs.core.Keyword(null,"id","id",-1388402092),dom_id], null));
-return cljs.core.apply.call(null,reforms.core.impl.input_STAR_,new cljs.core.Keyword(null,"select","select",1147833503),input_attrs,label,cursor,korks,opts,cljs.core.map.call(null,((function (vec__174214,attrs,vec__174215,label,cursor,korks,options,map__174216,map__174216__$1,opts,on_change,dom_id,selected_val,input_attrs){
-return (function (p1__174212_SHARP_){
-return (new cljs.core.PersistentVector(null,3,(5),cljs.core.PersistentVector.EMPTY_NODE,[new cljs.core.Keyword(null,"option","option",65132272),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"value","value",305978217),[cljs.core.str(cljs.core.first.call(null,p1__174212_SHARP_))].join(''),new cljs.core.Keyword(null,"key","key",-1516042587),reforms.core.react_keys.gen_key.call(null,cljs.core.first.call(null,p1__174212_SHARP_))], null),cljs.core.second.call(null,p1__174212_SHARP_)],null));
-});})(vec__174214,attrs,vec__174215,label,cursor,korks,options,map__174216,map__174216__$1,opts,on_change,dom_id,selected_val,input_attrs))
+return cljs.core.apply.call(null,reforms.core.impl.input_STAR_,new cljs.core.Keyword(null,"select","select",1147833503),input_attrs,label,cursor,korks,opts,cljs.core.map.call(null,((function (vec__23215,attrs,vec__23216,label,cursor,korks,options,map__23217,map__23217__$1,opts,on_change,dom_id,selected_val,input_attrs){
+return (function (p1__23213_SHARP_){
+return (new cljs.core.PersistentVector(null,3,(5),cljs.core.PersistentVector.EMPTY_NODE,[new cljs.core.Keyword(null,"option","option",65132272),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"value","value",305978217),[cljs.core.str(cljs.core.first.call(null,p1__23213_SHARP_))].join(''),new cljs.core.Keyword(null,"key","key",-1516042587),reforms.core.react_keys.gen_key.call(null,cljs.core.first.call(null,p1__23213_SHARP_))], null),cljs.core.second.call(null,p1__23213_SHARP_)],null));
+});})(vec__23215,attrs,vec__23216,label,cursor,korks,options,map__23217,map__23217__$1,opts,on_change,dom_id,selected_val,input_attrs))
 ,options));
 });
 
 reforms.core.select.cljs$lang$maxFixedArity = (0);
 
-reforms.core.select.cljs$lang$applyTo = (function (seq174213){
-return reforms.core.select.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq174213));
+reforms.core.select.cljs$lang$applyTo = (function (seq23214){
+return reforms.core.select.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq23214));
 });
 /**
  * Datetime input. See http://getbootstrap.com/css/#inputs
@@ -871,23 +871,23 @@ return reforms.core.select.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.ca
  * For compatilibity and available attributes see http://www.w3schools.com/html/html_form_input_types.asp
  */
 reforms.core.datetime = (function reforms$core$datetime(var_args){
-var args__5774__auto__ = [];
-var len__5767__auto___174222 = arguments.length;
-var i__5768__auto___174223 = (0);
+var args__5658__auto__ = [];
+var len__5651__auto___23223 = arguments.length;
+var i__5652__auto___23224 = (0);
 while(true){
-if((i__5768__auto___174223 < len__5767__auto___174222)){
-args__5774__auto__.push((arguments[i__5768__auto___174223]));
+if((i__5652__auto___23224 < len__5651__auto___23223)){
+args__5658__auto__.push((arguments[i__5652__auto___23224]));
 
-var G__174224 = (i__5768__auto___174223 + (1));
-i__5768__auto___174223 = G__174224;
+var G__23225 = (i__5652__auto___23224 + (1));
+i__5652__auto___23224 = G__23225;
 continue;
 } else {
 }
 break;
 }
 
-var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
-return reforms.core.datetime.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
+var argseq__5659__auto__ = ((((0) < args__5658__auto__.length))?(new cljs.core.IndexedSeq(args__5658__auto__.slice((0)),(0))):null);
+return reforms.core.datetime.cljs$core$IFn$_invoke$arity$variadic(argseq__5659__auto__);
 });
 
 reforms.core.datetime.cljs$core$IFn$_invoke$arity$variadic = (function (args){
@@ -896,8 +896,8 @@ return cljs.core.apply.call(null,reforms.core.html5_input,new cljs.core.Keyword(
 
 reforms.core.datetime.cljs$lang$maxFixedArity = (0);
 
-reforms.core.datetime.cljs$lang$applyTo = (function (seq174221){
-return reforms.core.datetime.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq174221));
+reforms.core.datetime.cljs$lang$applyTo = (function (seq23222){
+return reforms.core.datetime.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq23222));
 });
 /**
  * Datetime-local input. See http://getbootstrap.com/css/#inputs
@@ -910,23 +910,23 @@ return reforms.core.datetime.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.
  * For compatilibity and available attributes see http://www.w3schools.com/html/html_form_input_types.asp
  */
 reforms.core.datetime_local = (function reforms$core$datetime_local(var_args){
-var args__5774__auto__ = [];
-var len__5767__auto___174226 = arguments.length;
-var i__5768__auto___174227 = (0);
+var args__5658__auto__ = [];
+var len__5651__auto___23227 = arguments.length;
+var i__5652__auto___23228 = (0);
 while(true){
-if((i__5768__auto___174227 < len__5767__auto___174226)){
-args__5774__auto__.push((arguments[i__5768__auto___174227]));
+if((i__5652__auto___23228 < len__5651__auto___23227)){
+args__5658__auto__.push((arguments[i__5652__auto___23228]));
 
-var G__174228 = (i__5768__auto___174227 + (1));
-i__5768__auto___174227 = G__174228;
+var G__23229 = (i__5652__auto___23228 + (1));
+i__5652__auto___23228 = G__23229;
 continue;
 } else {
 }
 break;
 }
 
-var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
-return reforms.core.datetime_local.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
+var argseq__5659__auto__ = ((((0) < args__5658__auto__.length))?(new cljs.core.IndexedSeq(args__5658__auto__.slice((0)),(0))):null);
+return reforms.core.datetime_local.cljs$core$IFn$_invoke$arity$variadic(argseq__5659__auto__);
 });
 
 reforms.core.datetime_local.cljs$core$IFn$_invoke$arity$variadic = (function (args){
@@ -935,8 +935,8 @@ return cljs.core.apply.call(null,reforms.core.html5_input,new cljs.core.Keyword(
 
 reforms.core.datetime_local.cljs$lang$maxFixedArity = (0);
 
-reforms.core.datetime_local.cljs$lang$applyTo = (function (seq174225){
-return reforms.core.datetime_local.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq174225));
+reforms.core.datetime_local.cljs$lang$applyTo = (function (seq23226){
+return reforms.core.datetime_local.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq23226));
 });
 /**
  * Date input. See http://getbootstrap.com/css/#inputs
@@ -949,23 +949,23 @@ return reforms.core.datetime_local.cljs$core$IFn$_invoke$arity$variadic(cljs.cor
  * For compatilibity and available attributes see http://www.w3schools.com/html/html_form_input_types.asp
  */
 reforms.core.date = (function reforms$core$date(var_args){
-var args__5774__auto__ = [];
-var len__5767__auto___174230 = arguments.length;
-var i__5768__auto___174231 = (0);
+var args__5658__auto__ = [];
+var len__5651__auto___23231 = arguments.length;
+var i__5652__auto___23232 = (0);
 while(true){
-if((i__5768__auto___174231 < len__5767__auto___174230)){
-args__5774__auto__.push((arguments[i__5768__auto___174231]));
+if((i__5652__auto___23232 < len__5651__auto___23231)){
+args__5658__auto__.push((arguments[i__5652__auto___23232]));
 
-var G__174232 = (i__5768__auto___174231 + (1));
-i__5768__auto___174231 = G__174232;
+var G__23233 = (i__5652__auto___23232 + (1));
+i__5652__auto___23232 = G__23233;
 continue;
 } else {
 }
 break;
 }
 
-var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
-return reforms.core.date.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
+var argseq__5659__auto__ = ((((0) < args__5658__auto__.length))?(new cljs.core.IndexedSeq(args__5658__auto__.slice((0)),(0))):null);
+return reforms.core.date.cljs$core$IFn$_invoke$arity$variadic(argseq__5659__auto__);
 });
 
 reforms.core.date.cljs$core$IFn$_invoke$arity$variadic = (function (args){
@@ -974,8 +974,8 @@ return cljs.core.apply.call(null,reforms.core.html5_input,new cljs.core.Keyword(
 
 reforms.core.date.cljs$lang$maxFixedArity = (0);
 
-reforms.core.date.cljs$lang$applyTo = (function (seq174229){
-return reforms.core.date.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq174229));
+reforms.core.date.cljs$lang$applyTo = (function (seq23230){
+return reforms.core.date.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq23230));
 });
 /**
  * Month input. See http://getbootstrap.com/css/#inputs
@@ -988,23 +988,23 @@ return reforms.core.date.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call
  * For compatilibity and available attributes see http://www.w3schools.com/html/html_form_input_types.asp
  */
 reforms.core.month = (function reforms$core$month(var_args){
-var args__5774__auto__ = [];
-var len__5767__auto___174234 = arguments.length;
-var i__5768__auto___174235 = (0);
+var args__5658__auto__ = [];
+var len__5651__auto___23235 = arguments.length;
+var i__5652__auto___23236 = (0);
 while(true){
-if((i__5768__auto___174235 < len__5767__auto___174234)){
-args__5774__auto__.push((arguments[i__5768__auto___174235]));
+if((i__5652__auto___23236 < len__5651__auto___23235)){
+args__5658__auto__.push((arguments[i__5652__auto___23236]));
 
-var G__174236 = (i__5768__auto___174235 + (1));
-i__5768__auto___174235 = G__174236;
+var G__23237 = (i__5652__auto___23236 + (1));
+i__5652__auto___23236 = G__23237;
 continue;
 } else {
 }
 break;
 }
 
-var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
-return reforms.core.month.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
+var argseq__5659__auto__ = ((((0) < args__5658__auto__.length))?(new cljs.core.IndexedSeq(args__5658__auto__.slice((0)),(0))):null);
+return reforms.core.month.cljs$core$IFn$_invoke$arity$variadic(argseq__5659__auto__);
 });
 
 reforms.core.month.cljs$core$IFn$_invoke$arity$variadic = (function (args){
@@ -1013,8 +1013,8 @@ return cljs.core.apply.call(null,reforms.core.html5_input,new cljs.core.Keyword(
 
 reforms.core.month.cljs$lang$maxFixedArity = (0);
 
-reforms.core.month.cljs$lang$applyTo = (function (seq174233){
-return reforms.core.month.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq174233));
+reforms.core.month.cljs$lang$applyTo = (function (seq23234){
+return reforms.core.month.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq23234));
 });
 /**
  * Time input. See http://getbootstrap.com/css/#inputs
@@ -1027,23 +1027,23 @@ return reforms.core.month.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.cal
  * For compatilibity and available attributes see http://www.w3schools.com/html/html_form_input_types.asp
  */
 reforms.core.time = (function reforms$core$time(var_args){
-var args__5774__auto__ = [];
-var len__5767__auto___174238 = arguments.length;
-var i__5768__auto___174239 = (0);
+var args__5658__auto__ = [];
+var len__5651__auto___23239 = arguments.length;
+var i__5652__auto___23240 = (0);
 while(true){
-if((i__5768__auto___174239 < len__5767__auto___174238)){
-args__5774__auto__.push((arguments[i__5768__auto___174239]));
+if((i__5652__auto___23240 < len__5651__auto___23239)){
+args__5658__auto__.push((arguments[i__5652__auto___23240]));
 
-var G__174240 = (i__5768__auto___174239 + (1));
-i__5768__auto___174239 = G__174240;
+var G__23241 = (i__5652__auto___23240 + (1));
+i__5652__auto___23240 = G__23241;
 continue;
 } else {
 }
 break;
 }
 
-var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
-return reforms.core.time.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
+var argseq__5659__auto__ = ((((0) < args__5658__auto__.length))?(new cljs.core.IndexedSeq(args__5658__auto__.slice((0)),(0))):null);
+return reforms.core.time.cljs$core$IFn$_invoke$arity$variadic(argseq__5659__auto__);
 });
 
 reforms.core.time.cljs$core$IFn$_invoke$arity$variadic = (function (args){
@@ -1052,8 +1052,8 @@ return cljs.core.apply.call(null,reforms.core.html5_input,new cljs.core.Keyword(
 
 reforms.core.time.cljs$lang$maxFixedArity = (0);
 
-reforms.core.time.cljs$lang$applyTo = (function (seq174237){
-return reforms.core.time.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq174237));
+reforms.core.time.cljs$lang$applyTo = (function (seq23238){
+return reforms.core.time.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq23238));
 });
 /**
  * Week input. See http://getbootstrap.com/css/#inputs
@@ -1066,23 +1066,23 @@ return reforms.core.time.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call
  * For compatilibity and available attributes see http://www.w3schools.com/html/html_form_input_types.asp
  */
 reforms.core.week = (function reforms$core$week(var_args){
-var args__5774__auto__ = [];
-var len__5767__auto___174242 = arguments.length;
-var i__5768__auto___174243 = (0);
+var args__5658__auto__ = [];
+var len__5651__auto___23243 = arguments.length;
+var i__5652__auto___23244 = (0);
 while(true){
-if((i__5768__auto___174243 < len__5767__auto___174242)){
-args__5774__auto__.push((arguments[i__5768__auto___174243]));
+if((i__5652__auto___23244 < len__5651__auto___23243)){
+args__5658__auto__.push((arguments[i__5652__auto___23244]));
 
-var G__174244 = (i__5768__auto___174243 + (1));
-i__5768__auto___174243 = G__174244;
+var G__23245 = (i__5652__auto___23244 + (1));
+i__5652__auto___23244 = G__23245;
 continue;
 } else {
 }
 break;
 }
 
-var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
-return reforms.core.week.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
+var argseq__5659__auto__ = ((((0) < args__5658__auto__.length))?(new cljs.core.IndexedSeq(args__5658__auto__.slice((0)),(0))):null);
+return reforms.core.week.cljs$core$IFn$_invoke$arity$variadic(argseq__5659__auto__);
 });
 
 reforms.core.week.cljs$core$IFn$_invoke$arity$variadic = (function (args){
@@ -1091,8 +1091,8 @@ return cljs.core.apply.call(null,reforms.core.html5_input,new cljs.core.Keyword(
 
 reforms.core.week.cljs$lang$maxFixedArity = (0);
 
-reforms.core.week.cljs$lang$applyTo = (function (seq174241){
-return reforms.core.week.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq174241));
+reforms.core.week.cljs$lang$applyTo = (function (seq23242){
+return reforms.core.week.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq23242));
 });
 /**
  * Number input. See http://getbootstrap.com/css/#inputs
@@ -1105,23 +1105,23 @@ return reforms.core.week.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call
  * For compatilibity and available attributes see http://www.w3schools.com/html/html_form_input_types.asp
  */
 reforms.core.number = (function reforms$core$number(var_args){
-var args__5774__auto__ = [];
-var len__5767__auto___174246 = arguments.length;
-var i__5768__auto___174247 = (0);
+var args__5658__auto__ = [];
+var len__5651__auto___23247 = arguments.length;
+var i__5652__auto___23248 = (0);
 while(true){
-if((i__5768__auto___174247 < len__5767__auto___174246)){
-args__5774__auto__.push((arguments[i__5768__auto___174247]));
+if((i__5652__auto___23248 < len__5651__auto___23247)){
+args__5658__auto__.push((arguments[i__5652__auto___23248]));
 
-var G__174248 = (i__5768__auto___174247 + (1));
-i__5768__auto___174247 = G__174248;
+var G__23249 = (i__5652__auto___23248 + (1));
+i__5652__auto___23248 = G__23249;
 continue;
 } else {
 }
 break;
 }
 
-var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
-return reforms.core.number.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
+var argseq__5659__auto__ = ((((0) < args__5658__auto__.length))?(new cljs.core.IndexedSeq(args__5658__auto__.slice((0)),(0))):null);
+return reforms.core.number.cljs$core$IFn$_invoke$arity$variadic(argseq__5659__auto__);
 });
 
 reforms.core.number.cljs$core$IFn$_invoke$arity$variadic = (function (args){
@@ -1130,8 +1130,8 @@ return cljs.core.apply.call(null,reforms.core.html5_input,new cljs.core.Keyword(
 
 reforms.core.number.cljs$lang$maxFixedArity = (0);
 
-reforms.core.number.cljs$lang$applyTo = (function (seq174245){
-return reforms.core.number.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq174245));
+reforms.core.number.cljs$lang$applyTo = (function (seq23246){
+return reforms.core.number.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq23246));
 });
 /**
  * Email input. See http://getbootstrap.com/css/#inputs
@@ -1144,23 +1144,23 @@ return reforms.core.number.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.ca
  * For compatilibity and available attributes see http://www.w3schools.com/html/html_form_input_types.asp
  */
 reforms.core.email = (function reforms$core$email(var_args){
-var args__5774__auto__ = [];
-var len__5767__auto___174250 = arguments.length;
-var i__5768__auto___174251 = (0);
+var args__5658__auto__ = [];
+var len__5651__auto___23251 = arguments.length;
+var i__5652__auto___23252 = (0);
 while(true){
-if((i__5768__auto___174251 < len__5767__auto___174250)){
-args__5774__auto__.push((arguments[i__5768__auto___174251]));
+if((i__5652__auto___23252 < len__5651__auto___23251)){
+args__5658__auto__.push((arguments[i__5652__auto___23252]));
 
-var G__174252 = (i__5768__auto___174251 + (1));
-i__5768__auto___174251 = G__174252;
+var G__23253 = (i__5652__auto___23252 + (1));
+i__5652__auto___23252 = G__23253;
 continue;
 } else {
 }
 break;
 }
 
-var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
-return reforms.core.email.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
+var argseq__5659__auto__ = ((((0) < args__5658__auto__.length))?(new cljs.core.IndexedSeq(args__5658__auto__.slice((0)),(0))):null);
+return reforms.core.email.cljs$core$IFn$_invoke$arity$variadic(argseq__5659__auto__);
 });
 
 reforms.core.email.cljs$core$IFn$_invoke$arity$variadic = (function (args){
@@ -1169,8 +1169,8 @@ return cljs.core.apply.call(null,reforms.core.html5_input,new cljs.core.Keyword(
 
 reforms.core.email.cljs$lang$maxFixedArity = (0);
 
-reforms.core.email.cljs$lang$applyTo = (function (seq174249){
-return reforms.core.email.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq174249));
+reforms.core.email.cljs$lang$applyTo = (function (seq23250){
+return reforms.core.email.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq23250));
 });
 /**
  * Url input. See http://getbootstrap.com/css/#inputs
@@ -1183,23 +1183,23 @@ return reforms.core.email.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.cal
  * For compatilibity and available attributes see http://www.w3schools.com/html/html_form_input_types.asp
  */
 reforms.core.url = (function reforms$core$url(var_args){
-var args__5774__auto__ = [];
-var len__5767__auto___174254 = arguments.length;
-var i__5768__auto___174255 = (0);
+var args__5658__auto__ = [];
+var len__5651__auto___23255 = arguments.length;
+var i__5652__auto___23256 = (0);
 while(true){
-if((i__5768__auto___174255 < len__5767__auto___174254)){
-args__5774__auto__.push((arguments[i__5768__auto___174255]));
+if((i__5652__auto___23256 < len__5651__auto___23255)){
+args__5658__auto__.push((arguments[i__5652__auto___23256]));
 
-var G__174256 = (i__5768__auto___174255 + (1));
-i__5768__auto___174255 = G__174256;
+var G__23257 = (i__5652__auto___23256 + (1));
+i__5652__auto___23256 = G__23257;
 continue;
 } else {
 }
 break;
 }
 
-var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
-return reforms.core.url.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
+var argseq__5659__auto__ = ((((0) < args__5658__auto__.length))?(new cljs.core.IndexedSeq(args__5658__auto__.slice((0)),(0))):null);
+return reforms.core.url.cljs$core$IFn$_invoke$arity$variadic(argseq__5659__auto__);
 });
 
 reforms.core.url.cljs$core$IFn$_invoke$arity$variadic = (function (args){
@@ -1208,8 +1208,8 @@ return cljs.core.apply.call(null,reforms.core.html5_input,new cljs.core.Keyword(
 
 reforms.core.url.cljs$lang$maxFixedArity = (0);
 
-reforms.core.url.cljs$lang$applyTo = (function (seq174253){
-return reforms.core.url.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq174253));
+reforms.core.url.cljs$lang$applyTo = (function (seq23254){
+return reforms.core.url.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq23254));
 });
 /**
  * Search input. See http://getbootstrap.com/css/#inputs
@@ -1222,23 +1222,23 @@ return reforms.core.url.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(
  * For compatilibity and available attributes see http://www.w3schools.com/html/html_form_input_types.asp
  */
 reforms.core.search = (function reforms$core$search(var_args){
-var args__5774__auto__ = [];
-var len__5767__auto___174258 = arguments.length;
-var i__5768__auto___174259 = (0);
+var args__5658__auto__ = [];
+var len__5651__auto___23259 = arguments.length;
+var i__5652__auto___23260 = (0);
 while(true){
-if((i__5768__auto___174259 < len__5767__auto___174258)){
-args__5774__auto__.push((arguments[i__5768__auto___174259]));
+if((i__5652__auto___23260 < len__5651__auto___23259)){
+args__5658__auto__.push((arguments[i__5652__auto___23260]));
 
-var G__174260 = (i__5768__auto___174259 + (1));
-i__5768__auto___174259 = G__174260;
+var G__23261 = (i__5652__auto___23260 + (1));
+i__5652__auto___23260 = G__23261;
 continue;
 } else {
 }
 break;
 }
 
-var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
-return reforms.core.search.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
+var argseq__5659__auto__ = ((((0) < args__5658__auto__.length))?(new cljs.core.IndexedSeq(args__5658__auto__.slice((0)),(0))):null);
+return reforms.core.search.cljs$core$IFn$_invoke$arity$variadic(argseq__5659__auto__);
 });
 
 reforms.core.search.cljs$core$IFn$_invoke$arity$variadic = (function (args){
@@ -1247,8 +1247,8 @@ return cljs.core.apply.call(null,reforms.core.html5_input,new cljs.core.Keyword(
 
 reforms.core.search.cljs$lang$maxFixedArity = (0);
 
-reforms.core.search.cljs$lang$applyTo = (function (seq174257){
-return reforms.core.search.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq174257));
+reforms.core.search.cljs$lang$applyTo = (function (seq23258){
+return reforms.core.search.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq23258));
 });
 /**
  * Tel input. See http://getbootstrap.com/css/#inputs
@@ -1261,23 +1261,23 @@ return reforms.core.search.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.ca
  * For compatilibity and available attributes see http://www.w3schools.com/html/html_form_input_types.asp
  */
 reforms.core.tel = (function reforms$core$tel(var_args){
-var args__5774__auto__ = [];
-var len__5767__auto___174262 = arguments.length;
-var i__5768__auto___174263 = (0);
+var args__5658__auto__ = [];
+var len__5651__auto___23263 = arguments.length;
+var i__5652__auto___23264 = (0);
 while(true){
-if((i__5768__auto___174263 < len__5767__auto___174262)){
-args__5774__auto__.push((arguments[i__5768__auto___174263]));
+if((i__5652__auto___23264 < len__5651__auto___23263)){
+args__5658__auto__.push((arguments[i__5652__auto___23264]));
 
-var G__174264 = (i__5768__auto___174263 + (1));
-i__5768__auto___174263 = G__174264;
+var G__23265 = (i__5652__auto___23264 + (1));
+i__5652__auto___23264 = G__23265;
 continue;
 } else {
 }
 break;
 }
 
-var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
-return reforms.core.tel.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
+var argseq__5659__auto__ = ((((0) < args__5658__auto__.length))?(new cljs.core.IndexedSeq(args__5658__auto__.slice((0)),(0))):null);
+return reforms.core.tel.cljs$core$IFn$_invoke$arity$variadic(argseq__5659__auto__);
 });
 
 reforms.core.tel.cljs$core$IFn$_invoke$arity$variadic = (function (args){
@@ -1286,8 +1286,8 @@ return cljs.core.apply.call(null,reforms.core.html5_input,new cljs.core.Keyword(
 
 reforms.core.tel.cljs$lang$maxFixedArity = (0);
 
-reforms.core.tel.cljs$lang$applyTo = (function (seq174261){
-return reforms.core.tel.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq174261));
+reforms.core.tel.cljs$lang$applyTo = (function (seq23262){
+return reforms.core.tel.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq23262));
 });
 /**
  * Color input. See http://getbootstrap.com/css/#inputs
@@ -1300,23 +1300,23 @@ return reforms.core.tel.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(
  * For compatilibity and available attributes see http://www.w3schools.com/html/html_form_input_types.asp
  */
 reforms.core.color = (function reforms$core$color(var_args){
-var args__5774__auto__ = [];
-var len__5767__auto___174266 = arguments.length;
-var i__5768__auto___174267 = (0);
+var args__5658__auto__ = [];
+var len__5651__auto___23267 = arguments.length;
+var i__5652__auto___23268 = (0);
 while(true){
-if((i__5768__auto___174267 < len__5767__auto___174266)){
-args__5774__auto__.push((arguments[i__5768__auto___174267]));
+if((i__5652__auto___23268 < len__5651__auto___23267)){
+args__5658__auto__.push((arguments[i__5652__auto___23268]));
 
-var G__174268 = (i__5768__auto___174267 + (1));
-i__5768__auto___174267 = G__174268;
+var G__23269 = (i__5652__auto___23268 + (1));
+i__5652__auto___23268 = G__23269;
 continue;
 } else {
 }
 break;
 }
 
-var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
-return reforms.core.color.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
+var argseq__5659__auto__ = ((((0) < args__5658__auto__.length))?(new cljs.core.IndexedSeq(args__5658__auto__.slice((0)),(0))):null);
+return reforms.core.color.cljs$core$IFn$_invoke$arity$variadic(argseq__5659__auto__);
 });
 
 reforms.core.color.cljs$core$IFn$_invoke$arity$variadic = (function (args){
@@ -1325,8 +1325,8 @@ return cljs.core.apply.call(null,reforms.core.html5_input,new cljs.core.Keyword(
 
 reforms.core.color.cljs$lang$maxFixedArity = (0);
 
-reforms.core.color.cljs$lang$applyTo = (function (seq174265){
-return reforms.core.color.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq174265));
+reforms.core.color.cljs$lang$applyTo = (function (seq23266){
+return reforms.core.color.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq23266));
 });
 /**
  * A spinner.
@@ -1338,23 +1338,23 @@ return reforms.core.color.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.cal
  * - attrs                 - (optional) attributes handed over to React (see https://github.com/r0man/sablono#html-attributes)
  */
 reforms.core.spinner = (function reforms$core$spinner(var_args){
-var args__5774__auto__ = [];
-var len__5767__auto___174270 = arguments.length;
-var i__5768__auto___174271 = (0);
+var args__5658__auto__ = [];
+var len__5651__auto___23271 = arguments.length;
+var i__5652__auto___23272 = (0);
 while(true){
-if((i__5768__auto___174271 < len__5767__auto___174270)){
-args__5774__auto__.push((arguments[i__5768__auto___174271]));
+if((i__5652__auto___23272 < len__5651__auto___23271)){
+args__5658__auto__.push((arguments[i__5652__auto___23272]));
 
-var G__174272 = (i__5768__auto___174271 + (1));
-i__5768__auto___174271 = G__174272;
+var G__23273 = (i__5652__auto___23272 + (1));
+i__5652__auto___23272 = G__23273;
 continue;
 } else {
 }
 break;
 }
 
-var argseq__5775__auto__ = ((((0) < args__5774__auto__.length))?(new cljs.core.IndexedSeq(args__5774__auto__.slice((0)),(0))):null);
-return reforms.core.spinner.cljs$core$IFn$_invoke$arity$variadic(argseq__5775__auto__);
+var argseq__5659__auto__ = ((((0) < args__5658__auto__.length))?(new cljs.core.IndexedSeq(args__5658__auto__.slice((0)),(0))):null);
+return reforms.core.spinner.cljs$core$IFn$_invoke$arity$variadic(argseq__5659__auto__);
 });
 
 reforms.core.spinner.cljs$core$IFn$_invoke$arity$variadic = (function (args){
@@ -1363,8 +1363,8 @@ return cljs.core.apply.call(null,reforms.core.impl.spinner,args);
 
 reforms.core.spinner.cljs$lang$maxFixedArity = (0);
 
-reforms.core.spinner.cljs$lang$applyTo = (function (seq174269){
-return reforms.core.spinner.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq174269));
+reforms.core.spinner.cljs$lang$applyTo = (function (seq23270){
+return reforms.core.spinner.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq23270));
 });
 
 //# sourceMappingURL=core.js.map

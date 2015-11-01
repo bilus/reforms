@@ -320,7 +320,7 @@
 
   Example:
 
-      (render-errors [:user :name] [:my-custom-error])"
+      (error-alert [:user :name] [:my-custom-error])"
   [& korks]
   (render-errors (keep (fn [kork]
                          (when-let [err (find-validation-error kork *validation-errors*)]

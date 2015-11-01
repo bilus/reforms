@@ -11,14 +11,14 @@ reforms.binding.protocol._valid_QMARK_ = (function reforms$binding$protocol$_val
 if((!((x == null))) && (!((x.reforms$binding$protocol$IBinding$_valid_QMARK_$arity$1 == null)))){
 return x.reforms$binding$protocol$IBinding$_valid_QMARK_$arity$1(x);
 } else {
-var x__5364__auto__ = (((x == null))?null:x);
-var m__5365__auto__ = (reforms.binding.protocol._valid_QMARK_[goog.typeOf(x__5364__auto__)]);
-if(!((m__5365__auto__ == null))){
-return m__5365__auto__.call(null,x);
+var x__5248__auto__ = (((x == null))?null:x);
+var m__5249__auto__ = (reforms.binding.protocol._valid_QMARK_[goog.typeOf(x__5248__auto__)]);
+if(!((m__5249__auto__ == null))){
+return m__5249__auto__.call(null,x);
 } else {
-var m__5365__auto____$1 = (reforms.binding.protocol._valid_QMARK_["_"]);
-if(!((m__5365__auto____$1 == null))){
-return m__5365__auto____$1.call(null,x);
+var m__5249__auto____$1 = (reforms.binding.protocol._valid_QMARK_["_"]);
+if(!((m__5249__auto____$1 == null))){
+return m__5249__auto____$1.call(null,x);
 } else {
 throw cljs.core.missing_protocol.call(null,"IBinding.-valid?",x);
 }
@@ -30,14 +30,14 @@ reforms.binding.protocol._deref = (function reforms$binding$protocol$_deref(x){
 if((!((x == null))) && (!((x.reforms$binding$protocol$IBinding$_deref$arity$1 == null)))){
 return x.reforms$binding$protocol$IBinding$_deref$arity$1(x);
 } else {
-var x__5364__auto__ = (((x == null))?null:x);
-var m__5365__auto__ = (reforms.binding.protocol._deref[goog.typeOf(x__5364__auto__)]);
-if(!((m__5365__auto__ == null))){
-return m__5365__auto__.call(null,x);
+var x__5248__auto__ = (((x == null))?null:x);
+var m__5249__auto__ = (reforms.binding.protocol._deref[goog.typeOf(x__5248__auto__)]);
+if(!((m__5249__auto__ == null))){
+return m__5249__auto__.call(null,x);
 } else {
-var m__5365__auto____$1 = (reforms.binding.protocol._deref["_"]);
-if(!((m__5365__auto____$1 == null))){
-return m__5365__auto____$1.call(null,x);
+var m__5249__auto____$1 = (reforms.binding.protocol._deref["_"]);
+if(!((m__5249__auto____$1 == null))){
+return m__5249__auto____$1.call(null,x);
 } else {
 throw cljs.core.missing_protocol.call(null,"IBinding.-deref",x);
 }
@@ -46,23 +46,23 @@ throw cljs.core.missing_protocol.call(null,"IBinding.-deref",x);
 });
 
 reforms.binding.protocol._reset_BANG_ = (function reforms$binding$protocol$_reset_BANG_(var_args){
-var args173951 = [];
-var len__5767__auto___173957 = arguments.length;
-var i__5768__auto___173958 = (0);
+var args26239 = [];
+var len__5651__auto___26245 = arguments.length;
+var i__5652__auto___26246 = (0);
 while(true){
-if((i__5768__auto___173958 < len__5767__auto___173957)){
-args173951.push((arguments[i__5768__auto___173958]));
+if((i__5652__auto___26246 < len__5651__auto___26245)){
+args26239.push((arguments[i__5652__auto___26246]));
 
-var G__173959 = (i__5768__auto___173958 + (1));
-i__5768__auto___173958 = G__173959;
+var G__26247 = (i__5652__auto___26246 + (1));
+i__5652__auto___26246 = G__26247;
 continue;
 } else {
 }
 break;
 }
 
-var G__173953 = args173951.length;
-switch (G__173953) {
+var G__26241 = args26239.length;
+switch (G__26241) {
 case 2:
 return reforms.binding.protocol._reset_BANG_.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
@@ -72,7 +72,7 @@ return reforms.binding.protocol._reset_BANG_.cljs$core$IFn$_invoke$arity$3((argu
 
 break;
 default:
-throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args173951.length)].join('')));
+throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args26239.length)].join('')));
 
 }
 });
@@ -81,14 +81,14 @@ reforms.binding.protocol._reset_BANG_.cljs$core$IFn$_invoke$arity$2 = (function 
 if((!((x == null))) && (!((x.reforms$binding$protocol$IBinding$_reset_BANG_$arity$2 == null)))){
 return x.reforms$binding$protocol$IBinding$_reset_BANG_$arity$2(x,v);
 } else {
-var x__5364__auto__ = (((x == null))?null:x);
-var m__5365__auto__ = (reforms.binding.protocol._reset_BANG_[goog.typeOf(x__5364__auto__)]);
-if(!((m__5365__auto__ == null))){
-return m__5365__auto__.call(null,x,v);
+var x__5248__auto__ = (((x == null))?null:x);
+var m__5249__auto__ = (reforms.binding.protocol._reset_BANG_[goog.typeOf(x__5248__auto__)]);
+if(!((m__5249__auto__ == null))){
+return m__5249__auto__.call(null,x,v);
 } else {
-var m__5365__auto____$1 = (reforms.binding.protocol._reset_BANG_["_"]);
-if(!((m__5365__auto____$1 == null))){
-return m__5365__auto____$1.call(null,x,v);
+var m__5249__auto____$1 = (reforms.binding.protocol._reset_BANG_["_"]);
+if(!((m__5249__auto____$1 == null))){
+return m__5249__auto____$1.call(null,x,v);
 } else {
 throw cljs.core.missing_protocol.call(null,"IBinding.-reset!",x);
 }
@@ -100,14 +100,14 @@ reforms.binding.protocol._reset_BANG_.cljs$core$IFn$_invoke$arity$3 = (function 
 if((!((x == null))) && (!((x.reforms$binding$protocol$IBinding$_reset_BANG_$arity$3 == null)))){
 return x.reforms$binding$protocol$IBinding$_reset_BANG_$arity$3(x,ks,v);
 } else {
-var x__5364__auto__ = (((x == null))?null:x);
-var m__5365__auto__ = (reforms.binding.protocol._reset_BANG_[goog.typeOf(x__5364__auto__)]);
-if(!((m__5365__auto__ == null))){
-return m__5365__auto__.call(null,x,ks,v);
+var x__5248__auto__ = (((x == null))?null:x);
+var m__5249__auto__ = (reforms.binding.protocol._reset_BANG_[goog.typeOf(x__5248__auto__)]);
+if(!((m__5249__auto__ == null))){
+return m__5249__auto__.call(null,x,ks,v);
 } else {
-var m__5365__auto____$1 = (reforms.binding.protocol._reset_BANG_["_"]);
-if(!((m__5365__auto____$1 == null))){
-return m__5365__auto____$1.call(null,x,ks,v);
+var m__5249__auto____$1 = (reforms.binding.protocol._reset_BANG_["_"]);
+if(!((m__5249__auto____$1 == null))){
+return m__5249__auto____$1.call(null,x,ks,v);
 } else {
 throw cljs.core.missing_protocol.call(null,"IBinding.-reset!",x);
 }
@@ -118,23 +118,23 @@ throw cljs.core.missing_protocol.call(null,"IBinding.-reset!",x);
 reforms.binding.protocol._reset_BANG_.cljs$lang$maxFixedArity = 3;
 
 reforms.binding.protocol._swap_BANG_ = (function reforms$binding$protocol$_swap_BANG_(var_args){
-var args173954 = [];
-var len__5767__auto___173961 = arguments.length;
-var i__5768__auto___173962 = (0);
+var args26242 = [];
+var len__5651__auto___26249 = arguments.length;
+var i__5652__auto___26250 = (0);
 while(true){
-if((i__5768__auto___173962 < len__5767__auto___173961)){
-args173954.push((arguments[i__5768__auto___173962]));
+if((i__5652__auto___26250 < len__5651__auto___26249)){
+args26242.push((arguments[i__5652__auto___26250]));
 
-var G__173963 = (i__5768__auto___173962 + (1));
-i__5768__auto___173962 = G__173963;
+var G__26251 = (i__5652__auto___26250 + (1));
+i__5652__auto___26250 = G__26251;
 continue;
 } else {
 }
 break;
 }
 
-var G__173956 = args173954.length;
-switch (G__173956) {
+var G__26244 = args26242.length;
+switch (G__26244) {
 case 2:
 return reforms.binding.protocol._swap_BANG_.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
@@ -144,7 +144,7 @@ return reforms.binding.protocol._swap_BANG_.cljs$core$IFn$_invoke$arity$3((argum
 
 break;
 default:
-throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args173954.length)].join('')));
+throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args26242.length)].join('')));
 
 }
 });
@@ -153,14 +153,14 @@ reforms.binding.protocol._swap_BANG_.cljs$core$IFn$_invoke$arity$2 = (function (
 if((!((x == null))) && (!((x.reforms$binding$protocol$IBinding$_swap_BANG_$arity$2 == null)))){
 return x.reforms$binding$protocol$IBinding$_swap_BANG_$arity$2(x,f);
 } else {
-var x__5364__auto__ = (((x == null))?null:x);
-var m__5365__auto__ = (reforms.binding.protocol._swap_BANG_[goog.typeOf(x__5364__auto__)]);
-if(!((m__5365__auto__ == null))){
-return m__5365__auto__.call(null,x,f);
+var x__5248__auto__ = (((x == null))?null:x);
+var m__5249__auto__ = (reforms.binding.protocol._swap_BANG_[goog.typeOf(x__5248__auto__)]);
+if(!((m__5249__auto__ == null))){
+return m__5249__auto__.call(null,x,f);
 } else {
-var m__5365__auto____$1 = (reforms.binding.protocol._swap_BANG_["_"]);
-if(!((m__5365__auto____$1 == null))){
-return m__5365__auto____$1.call(null,x,f);
+var m__5249__auto____$1 = (reforms.binding.protocol._swap_BANG_["_"]);
+if(!((m__5249__auto____$1 == null))){
+return m__5249__auto____$1.call(null,x,f);
 } else {
 throw cljs.core.missing_protocol.call(null,"IBinding.-swap!",x);
 }
@@ -172,14 +172,14 @@ reforms.binding.protocol._swap_BANG_.cljs$core$IFn$_invoke$arity$3 = (function (
 if((!((x == null))) && (!((x.reforms$binding$protocol$IBinding$_swap_BANG_$arity$3 == null)))){
 return x.reforms$binding$protocol$IBinding$_swap_BANG_$arity$3(x,ks,f);
 } else {
-var x__5364__auto__ = (((x == null))?null:x);
-var m__5365__auto__ = (reforms.binding.protocol._swap_BANG_[goog.typeOf(x__5364__auto__)]);
-if(!((m__5365__auto__ == null))){
-return m__5365__auto__.call(null,x,ks,f);
+var x__5248__auto__ = (((x == null))?null:x);
+var m__5249__auto__ = (reforms.binding.protocol._swap_BANG_[goog.typeOf(x__5248__auto__)]);
+if(!((m__5249__auto__ == null))){
+return m__5249__auto__.call(null,x,ks,f);
 } else {
-var m__5365__auto____$1 = (reforms.binding.protocol._swap_BANG_["_"]);
-if(!((m__5365__auto____$1 == null))){
-return m__5365__auto____$1.call(null,x,ks,f);
+var m__5249__auto____$1 = (reforms.binding.protocol._swap_BANG_["_"]);
+if(!((m__5249__auto____$1 == null))){
+return m__5249__auto____$1.call(null,x,ks,f);
 } else {
 throw cljs.core.missing_protocol.call(null,"IBinding.-swap!",x);
 }
@@ -193,14 +193,14 @@ reforms.binding.protocol._get_in = (function reforms$binding$protocol$_get_in(x,
 if((!((x == null))) && (!((x.reforms$binding$protocol$IBinding$_get_in$arity$2 == null)))){
 return x.reforms$binding$protocol$IBinding$_get_in$arity$2(x,ks);
 } else {
-var x__5364__auto__ = (((x == null))?null:x);
-var m__5365__auto__ = (reforms.binding.protocol._get_in[goog.typeOf(x__5364__auto__)]);
-if(!((m__5365__auto__ == null))){
-return m__5365__auto__.call(null,x,ks);
+var x__5248__auto__ = (((x == null))?null:x);
+var m__5249__auto__ = (reforms.binding.protocol._get_in[goog.typeOf(x__5248__auto__)]);
+if(!((m__5249__auto__ == null))){
+return m__5249__auto__.call(null,x,ks);
 } else {
-var m__5365__auto____$1 = (reforms.binding.protocol._get_in["_"]);
-if(!((m__5365__auto____$1 == null))){
-return m__5365__auto____$1.call(null,x,ks);
+var m__5249__auto____$1 = (reforms.binding.protocol._get_in["_"]);
+if(!((m__5249__auto____$1 == null))){
+return m__5249__auto____$1.call(null,x,ks);
 } else {
 throw cljs.core.missing_protocol.call(null,"IBinding.-get-in",x);
 }
@@ -212,14 +212,14 @@ reforms.binding.protocol._path = (function reforms$binding$protocol$_path(x){
 if((!((x == null))) && (!((x.reforms$binding$protocol$IBinding$_path$arity$1 == null)))){
 return x.reforms$binding$protocol$IBinding$_path$arity$1(x);
 } else {
-var x__5364__auto__ = (((x == null))?null:x);
-var m__5365__auto__ = (reforms.binding.protocol._path[goog.typeOf(x__5364__auto__)]);
-if(!((m__5365__auto__ == null))){
-return m__5365__auto__.call(null,x);
+var x__5248__auto__ = (((x == null))?null:x);
+var m__5249__auto__ = (reforms.binding.protocol._path[goog.typeOf(x__5248__auto__)]);
+if(!((m__5249__auto__ == null))){
+return m__5249__auto__.call(null,x);
 } else {
-var m__5365__auto____$1 = (reforms.binding.protocol._path["_"]);
-if(!((m__5365__auto____$1 == null))){
-return m__5365__auto____$1.call(null,x);
+var m__5249__auto____$1 = (reforms.binding.protocol._path["_"]);
+if(!((m__5249__auto____$1 == null))){
+return m__5249__auto____$1.call(null,x);
 } else {
 throw cljs.core.missing_protocol.call(null,"IBinding.-path",x);
 }

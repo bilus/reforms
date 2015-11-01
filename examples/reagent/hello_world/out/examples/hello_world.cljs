@@ -28,7 +28,7 @@
               (f/button-default "Cancel" #(js/alert "Cancel!")))
             (f/checkbox "Horizontal form" horizontal-orientation [])))))))
 
-(def app-state (atom "John" {:name "John"}))
+(def app-state (atom {:name "John"}))
 
 (defn main-view
   []

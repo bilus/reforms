@@ -6,9 +6,9 @@ goog.require('om.core');
 (reforms.binding.protocol.IBinding["_"] = true);
 
 (reforms.binding.protocol._valid_QMARK_["_"] = (function (this$){
-var or__4709__auto__ = om.core.cursor_QMARK_.call(null,this$);
-if(cljs.core.truth_(or__4709__auto__)){
-return or__4709__auto__;
+var or__4593__auto__ = om.core.cursor_QMARK_.call(null,this$);
+if(cljs.core.truth_(or__4593__auto__)){
+return or__4593__auto__;
 } else {
 return om.core.component_QMARK_.call(null,this$);
 }
@@ -23,64 +23,64 @@ return om.core.get_state.call(null,this$);
 }));
 
 (reforms.binding.protocol._reset_BANG_["_"] = (function() {
-var G__173947 = null;
-var G__173947__2 = (function (this$,v){
+var G__23116 = null;
+var G__23116__2 = (function (this$,v){
 if(cljs.core.truth_(om.core.cursor_QMARK_.call(null,this$))){
 return om.core.update_BANG_.call(null,this$,v);
 } else {
 return om.core.set_state_BANG_.call(null,this$,v);
 }
 });
-var G__173947__3 = (function (this$,ks,v){
+var G__23116__3 = (function (this$,ks,v){
 if(cljs.core.truth_(om.core.cursor_QMARK_.call(null,this$))){
 return om.core.update_BANG_.call(null,this$,ks,v);
 } else {
 return om.core.set_state_BANG_.call(null,this$,ks,v);
 }
 });
-G__173947 = function(this$,ks,v){
+G__23116 = function(this$,ks,v){
 switch(arguments.length){
 case 2:
-return G__173947__2.call(this,this$,ks);
+return G__23116__2.call(this,this$,ks);
 case 3:
-return G__173947__3.call(this,this$,ks,v);
+return G__23116__3.call(this,this$,ks,v);
 }
 throw(new Error('Invalid arity: ' + arguments.length));
 };
-G__173947.cljs$core$IFn$_invoke$arity$2 = G__173947__2;
-G__173947.cljs$core$IFn$_invoke$arity$3 = G__173947__3;
-return G__173947;
+G__23116.cljs$core$IFn$_invoke$arity$2 = G__23116__2;
+G__23116.cljs$core$IFn$_invoke$arity$3 = G__23116__3;
+return G__23116;
 })()
 );
 
 (reforms.binding.protocol._swap_BANG_["_"] = (function() {
-var G__173948 = null;
-var G__173948__2 = (function (this$,f){
+var G__23117 = null;
+var G__23117__2 = (function (this$,f){
 if(cljs.core.truth_(om.core.cursor_QMARK_.call(null,this$))){
 return om.core.transact_BANG_.call(null,this$,f);
 } else {
 return om.core.set_state_BANG_.call(null,this$,f.call(null,om.core.get_state.call(null,this$)));
 }
 });
-var G__173948__3 = (function (this$,ks,f){
+var G__23117__3 = (function (this$,ks,f){
 if(cljs.core.truth_(om.core.cursor_QMARK_.call(null,this$))){
 return om.core.transact_BANG_.call(null,this$,ks,f);
 } else {
 return om.core.set_state_BANG_.call(null,this$,ks,f.call(null,om.core.get_state.call(null,this$)));
 }
 });
-G__173948 = function(this$,ks,f){
+G__23117 = function(this$,ks,f){
 switch(arguments.length){
 case 2:
-return G__173948__2.call(this,this$,ks);
+return G__23117__2.call(this,this$,ks);
 case 3:
-return G__173948__3.call(this,this$,ks,f);
+return G__23117__3.call(this,this$,ks,f);
 }
 throw(new Error('Invalid arity: ' + arguments.length));
 };
-G__173948.cljs$core$IFn$_invoke$arity$2 = G__173948__2;
-G__173948.cljs$core$IFn$_invoke$arity$3 = G__173948__3;
-return G__173948;
+G__23117.cljs$core$IFn$_invoke$arity$2 = G__23117__2;
+G__23117.cljs$core$IFn$_invoke$arity$3 = G__23117__3;
+return G__23117;
 })()
 );
 

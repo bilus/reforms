@@ -14,48 +14,48 @@ return cljs.core.deref.call(null,this$);
 }));
 
 (reforms.binding.protocol._reset_BANG_["_"] = (function() {
-var G__173941 = null;
-var G__173941__2 = (function (this$,v){
+var G__23110 = null;
+var G__23110__2 = (function (this$,v){
 return om.core.update_BANG_.call(null,this$,v);
 });
-var G__173941__3 = (function (this$,ks,v){
+var G__23110__3 = (function (this$,ks,v){
 return om.core.update_BANG_.call(null,this$,ks,v);
 });
-G__173941 = function(this$,ks,v){
+G__23110 = function(this$,ks,v){
 switch(arguments.length){
 case 2:
-return G__173941__2.call(this,this$,ks);
+return G__23110__2.call(this,this$,ks);
 case 3:
-return G__173941__3.call(this,this$,ks,v);
+return G__23110__3.call(this,this$,ks,v);
 }
 throw(new Error('Invalid arity: ' + arguments.length));
 };
-G__173941.cljs$core$IFn$_invoke$arity$2 = G__173941__2;
-G__173941.cljs$core$IFn$_invoke$arity$3 = G__173941__3;
-return G__173941;
+G__23110.cljs$core$IFn$_invoke$arity$2 = G__23110__2;
+G__23110.cljs$core$IFn$_invoke$arity$3 = G__23110__3;
+return G__23110;
 })()
 );
 
 (reforms.binding.protocol._swap_BANG_["_"] = (function() {
-var G__173942 = null;
-var G__173942__2 = (function (this$,f){
+var G__23111 = null;
+var G__23111__2 = (function (this$,f){
 return om.core.transact_BANG_.call(null,this$,f);
 });
-var G__173942__3 = (function (this$,ks,f){
+var G__23111__3 = (function (this$,ks,f){
 return om.core.transact_BANG_.call(null,this$,ks,f);
 });
-G__173942 = function(this$,ks,f){
+G__23111 = function(this$,ks,f){
 switch(arguments.length){
 case 2:
-return G__173942__2.call(this,this$,ks);
+return G__23111__2.call(this,this$,ks);
 case 3:
-return G__173942__3.call(this,this$,ks,f);
+return G__23111__3.call(this,this$,ks,f);
 }
 throw(new Error('Invalid arity: ' + arguments.length));
 };
-G__173942.cljs$core$IFn$_invoke$arity$2 = G__173942__2;
-G__173942.cljs$core$IFn$_invoke$arity$3 = G__173942__3;
-return G__173942;
+G__23111.cljs$core$IFn$_invoke$arity$2 = G__23111__2;
+G__23111.cljs$core$IFn$_invoke$arity$3 = G__23111__3;
+return G__23111;
 })()
 );
 

@@ -1205,7 +1205,7 @@ return reforms.validation.color.cljs$core$IFn$_invoke$arity$variadic(cljs.core.s
  * 
  *   Example:
  * 
- *    (render-errors [:user :name] [:my-custom-error])
+ *    (error-alert [:user :name] [:my-custom-error])
  */
 reforms.validation.error_alert = (function reforms$validation$error_alert(var_args){
 var args__5658__auto__ = [];
