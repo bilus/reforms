@@ -71,7 +71,7 @@ A good place to see the available controls: [demo](http://bilus.github.io/reform
 
 Add `om-reforms` to `:dependencies` in project.clj:
 
-[![Clojars Project](http://clojars.org/om-reforms/latest-version.svg)](http://clojars.org/om-reforms)
+[![Clojars Project](http://clojars.org/om-reforms/latest-version.svg?2394892384)](http://clojars.org/om-reforms)
 
 Minimal requires (including sablono to render the forms):
 
@@ -108,7 +108,7 @@ Note that labels are optional, you can render controls without labels, for insta
 
 Add `reagent-reforms` to `:dependencies` in project.clj:
 
-[![Clojars Project](http://clojars.org/reagent-reforms/latest-version.svg)](http://clojars.org/reagent-reforms)
+[![Clojars Project](http://clojars.org/reagent-reforms/latest-version.svg?2938492384)](http://clojars.org/reagent-reforms)
 
 ```clojure
 (ns hello-world.core
@@ -139,7 +139,7 @@ Note that labels are optional, you can render controls without labels, for insta
 
 Add `rum-reforms` to `:dependencies` in project.clj:
 
-[![Clojars Project](http://clojars.org/rum-reforms/latest-version.svg)](http://clojars.org/rum-reforms)
+[![Clojars Project](http://clojars.org/rum-reforms/latest-version.svg?92849238)](http://clojars.org/rum-reforms)
 
 ```clojure
 (ns hello-world.core
