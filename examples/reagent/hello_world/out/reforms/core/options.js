@@ -35,23 +35,23 @@ goog.require('cljs.core');
  */
 reforms.core.options._STAR_options_STAR_ = new cljs.core.PersistentArrayMap(null, 8, [new cljs.core.Keyword(null,"form","form",-1624062471),new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"horizontal","horizontal",2062109475),false,new cljs.core.Keyword(null,"label-column-class","label-column-class",-1193482589),"col-sm-3",new cljs.core.Keyword(null,"input-column-class","input-column-class",717499433),"col-sm-7"], null),new cljs.core.Keyword(null,"panel","panel",-558637456),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"icon-close","icon-close",-1103973553),"fa fa-times"], null),new cljs.core.Keyword(null,"html5-input","html5-input",-1019311487),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"icon-warning","icon-warning",650510185),"fa fa-warning"], null),new cljs.core.Keyword(null,"group-title","group-title",392188964),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"tag","tag",-1290361223),new cljs.core.Keyword(null,"h2","h2",-372662728)], null),new cljs.core.Keyword(null,"button-group","button-group",-1532145548),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"align","align",1964212802),"text-left"], null),new cljs.core.Keyword(null,"spinner","spinner",-646071217),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"attrs","attrs",-2090668713),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"fa fa-clock-o fa-spin"], null)], null),new cljs.core.Keyword(null,"error-label","error-label",1393895243),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"attrs","attrs",-2090668713),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"error"], null)], null),new cljs.core.Keyword(null,"warning-label","warning-label",-252042644),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"attrs","attrs",-2090668713),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"warning"], null)], null)], null);
 reforms.core.options.merge_options = (function reforms$core$options$merge_options(var_args){
-var args12673 = [];
-var len__5651__auto___12676 = arguments.length;
-var i__5652__auto___12677 = (0);
+var args12787 = [];
+var len__5651__auto___12790 = arguments.length;
+var i__5652__auto___12791 = (0);
 while(true){
-if((i__5652__auto___12677 < len__5651__auto___12676)){
-args12673.push((arguments[i__5652__auto___12677]));
+if((i__5652__auto___12791 < len__5651__auto___12790)){
+args12787.push((arguments[i__5652__auto___12791]));
 
-var G__12678 = (i__5652__auto___12677 + (1));
-i__5652__auto___12677 = G__12678;
+var G__12792 = (i__5652__auto___12791 + (1));
+i__5652__auto___12791 = G__12792;
 continue;
 } else {
 }
 break;
 }
 
-var G__12675 = args12673.length;
-switch (G__12675) {
+var G__12789 = args12787.length;
+switch (G__12789) {
 case 1:
 return reforms.core.options.merge_options.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -61,7 +61,7 @@ return reforms.core.options.merge_options.cljs$core$IFn$_invoke$arity$2((argumen
 
 break;
 default:
-throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args12673.length)].join('')));
+throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args12787.length)].join('')));
 
 }
 });

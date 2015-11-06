@@ -1,2 +1,2 @@
 ;; Analyzed by ClojureScript 1.7.122
-{:name reagent.interop, :doc nil, :excludes #{}, :use-macros nil, :require-macros nil, :uses nil, :requires nil, :imports nil}
+{:name reagent.interop, :doc nil, :excludes #{}, :use-macros nil, :require-macros {reagent.interop reagent.interop}, :uses nil, :requires nil, :imports nil}

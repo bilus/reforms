@@ -77,48 +77,48 @@ return cljs.core.deref.call(null,this$);
 }));
 
 (reforms.binding.protocol._reset_BANG_["_"] = (function() {
-var G__9686 = null;
-var G__9686__2 = (function (this$,v){
+var G__9761 = null;
+var G__9761__2 = (function (this$,v){
 return cljs.core.reset_BANG_.call(null,this$,v);
 });
-var G__9686__3 = (function (this$,ks,v){
+var G__9761__3 = (function (this$,ks,v){
 return reforms.binding.reagent.do_reset_BANG_.call(null,this$,ks,v);
 });
-G__9686 = function(this$,ks,v){
+G__9761 = function(this$,ks,v){
 switch(arguments.length){
 case 2:
-return G__9686__2.call(this,this$,ks);
+return G__9761__2.call(this,this$,ks);
 case 3:
-return G__9686__3.call(this,this$,ks,v);
+return G__9761__3.call(this,this$,ks,v);
 }
 throw(new Error('Invalid arity: ' + arguments.length));
 };
-G__9686.cljs$core$IFn$_invoke$arity$2 = G__9686__2;
-G__9686.cljs$core$IFn$_invoke$arity$3 = G__9686__3;
-return G__9686;
+G__9761.cljs$core$IFn$_invoke$arity$2 = G__9761__2;
+G__9761.cljs$core$IFn$_invoke$arity$3 = G__9761__3;
+return G__9761;
 })()
 );
 
 (reforms.binding.protocol._swap_BANG_["_"] = (function() {
-var G__9687 = null;
-var G__9687__2 = (function (this$,f){
+var G__9762 = null;
+var G__9762__2 = (function (this$,f){
 return cljs.core.swap_BANG_.call(null,this$,f);
 });
-var G__9687__3 = (function (this$,ks,f){
+var G__9762__3 = (function (this$,ks,f){
 return reforms.binding.reagent.do_swap_BANG_.call(null,this$,ks,f);
 });
-G__9687 = function(this$,ks,f){
+G__9762 = function(this$,ks,f){
 switch(arguments.length){
 case 2:
-return G__9687__2.call(this,this$,ks);
+return G__9762__2.call(this,this$,ks);
 case 3:
-return G__9687__3.call(this,this$,ks,f);
+return G__9762__3.call(this,this$,ks,f);
 }
 throw(new Error('Invalid arity: ' + arguments.length));
 };
-G__9687.cljs$core$IFn$_invoke$arity$2 = G__9687__2;
-G__9687.cljs$core$IFn$_invoke$arity$3 = G__9687__3;
-return G__9687;
+G__9762.cljs$core$IFn$_invoke$arity$2 = G__9762__2;
+G__9762.cljs$core$IFn$_invoke$arity$3 = G__9762__3;
+return G__9762;
 })()
 );
 

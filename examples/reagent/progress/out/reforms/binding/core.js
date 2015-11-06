@@ -9,23 +9,23 @@ reforms.binding.core.deref = (function reforms$binding$core$deref(x){
 return reforms.binding.protocol._deref.call(null,x);
 });
 reforms.binding.core.reset_BANG_ = (function reforms$binding$core$reset_BANG_(var_args){
-var args21955 = [];
-var len__5651__auto___21958 = arguments.length;
-var i__5652__auto___21959 = (0);
+var args22147 = [];
+var len__5651__auto___22150 = arguments.length;
+var i__5652__auto___22151 = (0);
 while(true){
-if((i__5652__auto___21959 < len__5651__auto___21958)){
-args21955.push((arguments[i__5652__auto___21959]));
+if((i__5652__auto___22151 < len__5651__auto___22150)){
+args22147.push((arguments[i__5652__auto___22151]));
 
-var G__21960 = (i__5652__auto___21959 + (1));
-i__5652__auto___21959 = G__21960;
+var G__22152 = (i__5652__auto___22151 + (1));
+i__5652__auto___22151 = G__22152;
 continue;
 } else {
 }
 break;
 }
 
-var G__21957 = args21955.length;
-switch (G__21957) {
+var G__22149 = args22147.length;
+switch (G__22149) {
 case 2:
 return reforms.binding.core.reset_BANG_.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
@@ -35,7 +35,7 @@ return reforms.binding.core.reset_BANG_.cljs$core$IFn$_invoke$arity$3((arguments
 
 break;
 default:
-throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args21955.length)].join('')));
+throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args22147.length)].join('')));
 
 }
 });
@@ -54,23 +54,23 @@ return reforms.binding.protocol._reset_BANG_.call(null,x,v);
 
 reforms.binding.core.reset_BANG_.cljs$lang$maxFixedArity = 3;
 reforms.binding.core.swap_BANG_ = (function reforms$binding$core$swap_BANG_(var_args){
-var args21962 = [];
-var len__5651__auto___21965 = arguments.length;
-var i__5652__auto___21966 = (0);
+var args22154 = [];
+var len__5651__auto___22157 = arguments.length;
+var i__5652__auto___22158 = (0);
 while(true){
-if((i__5652__auto___21966 < len__5651__auto___21965)){
-args21962.push((arguments[i__5652__auto___21966]));
+if((i__5652__auto___22158 < len__5651__auto___22157)){
+args22154.push((arguments[i__5652__auto___22158]));
 
-var G__21967 = (i__5652__auto___21966 + (1));
-i__5652__auto___21966 = G__21967;
+var G__22159 = (i__5652__auto___22158 + (1));
+i__5652__auto___22158 = G__22159;
 continue;
 } else {
 }
 break;
 }
 
-var G__21964 = args21962.length;
-switch (G__21964) {
+var G__22156 = args22154.length;
+switch (G__22156) {
 case 2:
 return reforms.binding.core.swap_BANG_.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
@@ -80,7 +80,7 @@ return reforms.binding.core.swap_BANG_.cljs$core$IFn$_invoke$arity$3((arguments[
 
 break;
 default:
-throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args21962.length)].join('')));
+throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args22154.length)].join('')));
 
 }
 });

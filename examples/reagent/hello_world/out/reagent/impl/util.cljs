@@ -107,24 +107,23 @@
 (defn clear-container [node]
   ;; If render throws, React may get confused, and throw on
   ;; unmount as well, so try to force React to start over.
-  (try
-    (.' js/React unmountComponentAtNode node)
-    (catch js/Object e
-      (do (warn "Error unmounting:")
-          (log e)))))
+  (some-> node
+          (.! :innerHTML "")))
 
 (defn render-component [comp container callback]
-  (try
-    (binding [*always-update* true]
-      (.' js/React render (comp) container
-          (fn []
-            (binding [*always-update* false]
-              (swap! roots assoc container [comp container])
-              (if (some? callback)
-                (callback))))))
-    (catch js/Object e
-      (do (clear-container container)
-          (throw e)))))
+  (let [rendered (volatile! nil)]
+    (try
+      (binding [*always-update* true]
+        (->> (.' js/React render (comp) container
+                 (fn []
+                   (binding [*always-update* false]
+                     (swap! roots assoc container [comp container])
+                     (if (some? callback)
+                       (callback)))))
+             (vreset! rendered)))
+      (finally
+        (when-not @rendered
+          (clear-container container))))))
 
 (defn re-render-component [comp container]
   (render-component comp container nil))
@@ -137,3 +136,9 @@
   (doseq [v (vals @roots)]
     (apply re-render-component v))
   "Updated")
+
+(defn force-update [comp deep]
+  (if deep
+    (binding [*always-update* true]
+      (.' comp forceUpdate))
+    (.' comp forceUpdate)))

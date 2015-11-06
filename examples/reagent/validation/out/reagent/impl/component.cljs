@@ -3,7 +3,7 @@
             [reagent.impl.batching :as batch]
             [reagent.ratom :as ratom]
             [reagent.interop :refer-macros [.' .!]]
-            [reagent.debug :refer-macros [dbg prn dev?]]))
+            [reagent.debug :refer-macros [dbg prn dev? warn]]))
 
 (declare ^:dynamic *current-component*)
 
@@ -23,29 +23,52 @@
 
 ;;; Rendering
 
+(defn reagent-class? [c]
+  (and (fn? c)
+       (some? (.' c :cljsReactClass))))
+
+(defn do-render-sub [c]
+  (let [f (.' c :cljsRender)
+        _ (assert (ifn? f))
+        p (.' c :props)
+        res (if (nil? (.' c :reagentRender))
+              (f c)
+              (let [argv (.' p :argv)
+                    n (count argv)]
+                (case n
+                  1 (f)
+                  2 (f (nth argv 1))
+                  3 (f (nth argv 1) (nth argv 2))
+                  4 (f (nth argv 1) (nth argv 2) (nth argv 3))
+                  5 (f (nth argv 1) (nth argv 2) (nth argv 3) (nth argv 4))
+                  (apply f (subvec argv 1)))))]
+    (if (vector? res)
+      (as-element res)
+      (if (ifn? res)
+        (let [f (if (reagent-class? res)
+                  (fn [& args]
+                    (as-element (apply vector res args)))
+                  res)]
+          (.! c :cljsRender f)
+          (recur c))
+        res))))
+
+(declare comp-name)
+
 (defn do-render [c]
   (binding [*current-component* c]
-    (let [f (.' c :cljsRender)
-          _ (assert (ifn? f))
-          p (.' c :props)
-          res (if (nil? (.' c :reagentRender))
-                (f c)
-                (let [argv (.' p :argv)
-                      n (count argv)]
-                  (case n
-                    1 (f)
-                    2 (f (nth argv 1))
-                    3 (f (nth argv 1) (nth argv 2))
-                    4 (f (nth argv 1) (nth argv 2) (nth argv 3))
-                    5 (f (nth argv 1) (nth argv 2) (nth argv 3) (nth argv 4))
-                    (apply f (subvec argv 1)))))]
-      (if (vector? res)
-        (as-element res)
-        (if (ifn? res)
-          (do
-            (.! c :cljsRender res)
-            (do-render c))
-          res)))))
+    (if (dev?)
+      ;; Log errors, without using try/catch (and mess up call stack)
+      (let [ok (array false)]
+        (try
+          (let [res (do-render-sub c)]
+            (aset ok 0 true)
+            res)
+          (finally
+            (when-not (aget ok 0)
+              (js/console.error (str "Error rendering component "
+                                     (comp-name)))))))
+      (do-render-sub c))))
 
 
 ;;; Method wrapping
@@ -181,7 +204,8 @@
         name (str (or (:displayName fun-map)
                       (fun-name render-fun)))
         name' (if (empty? name)
-                (str (gensym "reagent")) name)
+                (str (gensym "reagent"))
+                (clojure.string/replace name #"\$" "."))
         fmap (-> fun-map
                  (assoc :displayName name')
                  (add-render render-fun name'))]
@@ -208,15 +232,34 @@
   (let [spec (cljsify body)
         res (.' js/React createClass spec)
         f (fn [& args]
+            (warn "Calling the result of create-class as a function is "
+                  "deprecated in " (.' res :displayName) ". Use a vector "
+                  "instead.")
             (as-element (apply vector res args)))]
     (util/cache-react-class f res)
     (util/cache-react-class res res)
     f))
 
+(defn component-path [c]
+  (let [elem (some-> (or (some-> c
+                                 (.' :_reactInternalInstance))
+                          c)
+                     (.' :_currentElement))
+        name (some-> elem
+                     (.' :type)
+                     (.' :displayName))
+        path (some-> elem
+                     (.' :_owner)
+                     component-path
+                     (str " > "))
+        res (str path name)]
+    (when-not (empty? res) res)))
+
 (defn comp-name []
   (if (dev?)
-    (let [n (some-> *current-component*
-                    (.' cljsName))]
+    (let [c *current-component*
+          n (or (component-path c)
+                (some-> c (.' cljsName)))]
       (if-not (empty? n)
         (str " (in " n ")")
         ""))

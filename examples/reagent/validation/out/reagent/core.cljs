@@ -47,6 +47,7 @@ which is equivalent to
   "Returns an adapter for a native React class, that may be used
 just like a Reagent component function or class in Hiccup forms."
   [c]
+  (assert c)
   (tmpl/adapt-react-class c))
 
 (defn reactify-component
@@ -54,6 +55,7 @@ just like a Reagent component function or class in Hiccup forms."
   React, for example in JSX. A single argument, props, is passed to
   the component, converted to a map."
   [c]
+  (assert c)
   (comp/reactify-component c))
 
 (defn render
@@ -159,6 +161,16 @@ Equivalent to (swap! (state-atom this) merge new-state)"
   (assert (util/reagent-component? this))
   (assert (or (nil? new-state) (map? new-state)))
   (swap! (state-atom this) merge new-state))
+
+(defn force-update
+  "Force a component to re-render immediately.
+
+  If the second argument is true, child components will also be
+  re-rendered, even is their arguments have not changed."
+  ([this]
+   (force-update this false))
+  ([this deep]
+   (util/force-update this deep)))
 
 
 (defn props
@@ -276,3 +288,9 @@ the result can be compared with ="
   [f & args]
   (util/partial-ifn. f args nil))
 
+(defn component-path
+  ;; Try to return the path of component c as a string.
+  ;; Maybe useful for debugging and error reporting, but may break
+  ;; with future versions of React (and return nil). 
+  [c]
+  (comp/component-path c))

@@ -103,26 +103,29 @@
                                                    (binding/swap! selection selection-path
                                                                   (fn [prev-selected]
                                                                     (if checked
-                                                                      (into prev-selected all-values)
+                                                                      (into (or prev-selected #{}) all-values)
                                                                       #{})))))]))))
           (for [col col-keys]
             [:th (or (labels col) col)])))])
       (into
        [:tbody]
        (for [row rows]
-         (into
-          [:tr]
-          (concat
-           (when checkboxes
-             (let [value (row-id-fn row)
-                   all-values (map row-id-fn rows)]
-               [[:td (simple-checkbox (or select-all (selected value))
+         (let [value (row-id-fn row)
+               row-selected (and checkboxes
+                                 (or select-all (selected (row-id-fn row))))]
+           (into
+            [:tr (when row-selected
+                   {:class "table-row-selected"})]
+            (concat
+             (when checkboxes
+               [[:td (simple-checkbox row-selected
                                       :on-click (fn [checked]
                                                   (binding/swap! selection selection-path
                                                                  (fn [prev-selected]
-                                                                   (cond
-                                                                     select-all (disj (into #{} all-values) value)
-                                                                     checked (conj (or prev-selected #{}) value)
-                                                                     :else (disj (or prev-selected #{}) value))))))]]))
-           (for [col col-keys]
-             [:td (xf col (row col))])))))])))
+                                                                   (let [all-values (map row-id-fn rows)]
+                                                                     (cond
+                                                                       select-all (disj (into #{} all-values) value)
+                                                                       checked (conj (or prev-selected #{}) value)
+                                                                       :else (disj (or prev-selected #{}) value)))))))]])
+             (for [col col-keys]
+               [:td (xf col (row col))]))))))])))

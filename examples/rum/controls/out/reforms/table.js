@@ -178,7 +178,13 @@ return (function (checked){
 return reforms.binding.core.swap_BANG_.call(null,selection,selection_path,((function (all_values,vec__11634,attrs,vec__11635,rows,map__11636,map__11636__$1,columns,checkboxes,xf,labels,col_keys,map__11637,map__11637__$1,selection,selection_path,row_id_fn,nil_selects_all_QMARK_,selected,select_all){
 return (function (prev_selected){
 if(cljs.core.truth_(checked)){
-return cljs.core.into.call(null,prev_selected,all_values);
+return cljs.core.into.call(null,(function (){var or__4593__auto__ = prev_selected;
+if(cljs.core.truth_(or__4593__auto__)){
+return or__4593__auto__;
+} else {
+return cljs.core.PersistentHashSet.EMPTY;
+}
+})(),all_values);
 } else {
 return cljs.core.PersistentHashSet.EMPTY;
 }
@@ -262,18 +268,24 @@ if((function (){var i__11646 = (0);
 while(true){
 if((i__11646 < size__5364__auto__)){
 var row = cljs.core._nth.call(null,c__5363__auto__,i__11646);
-cljs.core.chunk_append.call(null,b__11647,cljs.core.into.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"tr","tr",-1424774646)], null),cljs.core.concat.call(null,(cljs.core.truth_(checkboxes)?(function (){var value = row_id_fn.call(null,row);
-var all_values = cljs.core.map.call(null,row_id_fn,rows);
-return new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"td","td",1479933353),reforms.table.simple_checkbox.call(null,(function (){var or__4593__auto__ = select_all;
+cljs.core.chunk_append.call(null,b__11647,(function (){var value = row_id_fn.call(null,row);
+var row_selected = (function (){var and__4581__auto__ = checkboxes;
+if(cljs.core.truth_(and__4581__auto__)){
+var or__4593__auto__ = select_all;
 if(cljs.core.truth_(or__4593__auto__)){
 return or__4593__auto__;
 } else {
-return selected.call(null,value);
+return selected.call(null,row_id_fn.call(null,row));
 }
-})(),new cljs.core.Keyword(null,"on-click","on-click",1632826543),((function (i__11646,value,all_values,row,c__5363__auto__,size__5364__auto__,b__11647,s__11645__$2,temp__4425__auto__,vec__11634,attrs,vec__11635,rows,map__11636,map__11636__$1,columns,checkboxes,xf,labels,col_keys,map__11637,map__11637__$1,selection,selection_path,row_id_fn,nil_selects_all_QMARK_,selected,select_all){
+} else {
+return and__4581__auto__;
+}
+})();
+return cljs.core.into.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"tr","tr",-1424774646),(cljs.core.truth_(row_selected)?new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"table-row-selected"], null):null)], null),cljs.core.concat.call(null,(cljs.core.truth_(checkboxes)?new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"td","td",1479933353),reforms.table.simple_checkbox.call(null,row_selected,new cljs.core.Keyword(null,"on-click","on-click",1632826543),((function (i__11646,value,row_selected,row,c__5363__auto__,size__5364__auto__,b__11647,s__11645__$2,temp__4425__auto__,vec__11634,attrs,vec__11635,rows,map__11636,map__11636__$1,columns,checkboxes,xf,labels,col_keys,map__11637,map__11637__$1,selection,selection_path,row_id_fn,nil_selects_all_QMARK_,selected,select_all){
 return (function (checked){
-return reforms.binding.core.swap_BANG_.call(null,selection,selection_path,((function (i__11646,value,all_values,row,c__5363__auto__,size__5364__auto__,b__11647,s__11645__$2,temp__4425__auto__,vec__11634,attrs,vec__11635,rows,map__11636,map__11636__$1,columns,checkboxes,xf,labels,col_keys,map__11637,map__11637__$1,selection,selection_path,row_id_fn,nil_selects_all_QMARK_,selected,select_all){
+return reforms.binding.core.swap_BANG_.call(null,selection,selection_path,((function (i__11646,value,row_selected,row,c__5363__auto__,size__5364__auto__,b__11647,s__11645__$2,temp__4425__auto__,vec__11634,attrs,vec__11635,rows,map__11636,map__11636__$1,columns,checkboxes,xf,labels,col_keys,map__11637,map__11637__$1,selection,selection_path,row_id_fn,nil_selects_all_QMARK_,selected,select_all){
 return (function (prev_selected){
+var all_values = cljs.core.map.call(null,row_id_fn,rows);
 if(cljs.core.truth_(select_all)){
 return cljs.core.disj.call(null,cljs.core.into.call(null,cljs.core.PersistentHashSet.EMPTY,all_values),value);
 } else {
@@ -296,13 +308,12 @@ return cljs.core.PersistentHashSet.EMPTY;
 
 }
 }
-});})(i__11646,value,all_values,row,c__5363__auto__,size__5364__auto__,b__11647,s__11645__$2,temp__4425__auto__,vec__11634,attrs,vec__11635,rows,map__11636,map__11636__$1,columns,checkboxes,xf,labels,col_keys,map__11637,map__11637__$1,selection,selection_path,row_id_fn,nil_selects_all_QMARK_,selected,select_all))
+});})(i__11646,value,row_selected,row,c__5363__auto__,size__5364__auto__,b__11647,s__11645__$2,temp__4425__auto__,vec__11634,attrs,vec__11635,rows,map__11636,map__11636__$1,columns,checkboxes,xf,labels,col_keys,map__11637,map__11637__$1,selection,selection_path,row_id_fn,nil_selects_all_QMARK_,selected,select_all))
 );
-});})(i__11646,value,all_values,row,c__5363__auto__,size__5364__auto__,b__11647,s__11645__$2,temp__4425__auto__,vec__11634,attrs,vec__11635,rows,map__11636,map__11636__$1,columns,checkboxes,xf,labels,col_keys,map__11637,map__11637__$1,selection,selection_path,row_id_fn,nil_selects_all_QMARK_,selected,select_all))
-)], null)], null);
-})():null),(function (){var iter__5365__auto__ = ((function (i__11646,row,c__5363__auto__,size__5364__auto__,b__11647,s__11645__$2,temp__4425__auto__,vec__11634,attrs,vec__11635,rows,map__11636,map__11636__$1,columns,checkboxes,xf,labels,col_keys,map__11637,map__11637__$1,selection,selection_path,row_id_fn,nil_selects_all_QMARK_,selected,select_all){
+});})(i__11646,value,row_selected,row,c__5363__auto__,size__5364__auto__,b__11647,s__11645__$2,temp__4425__auto__,vec__11634,attrs,vec__11635,rows,map__11636,map__11636__$1,columns,checkboxes,xf,labels,col_keys,map__11637,map__11637__$1,selection,selection_path,row_id_fn,nil_selects_all_QMARK_,selected,select_all))
+)], null)], null):null),(function (){var iter__5365__auto__ = ((function (i__11646,value,row_selected,row,c__5363__auto__,size__5364__auto__,b__11647,s__11645__$2,temp__4425__auto__,vec__11634,attrs,vec__11635,rows,map__11636,map__11636__$1,columns,checkboxes,xf,labels,col_keys,map__11637,map__11637__$1,selection,selection_path,row_id_fn,nil_selects_all_QMARK_,selected,select_all){
 return (function reforms$table$iter__11644_$_iter__11656(s__11657){
-return (new cljs.core.LazySeq(null,((function (i__11646,row,c__5363__auto__,size__5364__auto__,b__11647,s__11645__$2,temp__4425__auto__,vec__11634,attrs,vec__11635,rows,map__11636,map__11636__$1,columns,checkboxes,xf,labels,col_keys,map__11637,map__11637__$1,selection,selection_path,row_id_fn,nil_selects_all_QMARK_,selected,select_all){
+return (new cljs.core.LazySeq(null,((function (i__11646,value,row_selected,row,c__5363__auto__,size__5364__auto__,b__11647,s__11645__$2,temp__4425__auto__,vec__11634,attrs,vec__11635,rows,map__11636,map__11636__$1,columns,checkboxes,xf,labels,col_keys,map__11637,map__11637__$1,selection,selection_path,row_id_fn,nil_selects_all_QMARK_,selected,select_all){
 return (function (){
 var s__11657__$1 = s__11657;
 while(true){
@@ -341,12 +352,13 @@ return null;
 }
 break;
 }
-});})(i__11646,row,c__5363__auto__,size__5364__auto__,b__11647,s__11645__$2,temp__4425__auto__,vec__11634,attrs,vec__11635,rows,map__11636,map__11636__$1,columns,checkboxes,xf,labels,col_keys,map__11637,map__11637__$1,selection,selection_path,row_id_fn,nil_selects_all_QMARK_,selected,select_all))
+});})(i__11646,value,row_selected,row,c__5363__auto__,size__5364__auto__,b__11647,s__11645__$2,temp__4425__auto__,vec__11634,attrs,vec__11635,rows,map__11636,map__11636__$1,columns,checkboxes,xf,labels,col_keys,map__11637,map__11637__$1,selection,selection_path,row_id_fn,nil_selects_all_QMARK_,selected,select_all))
 ,null,null));
-});})(i__11646,row,c__5363__auto__,size__5364__auto__,b__11647,s__11645__$2,temp__4425__auto__,vec__11634,attrs,vec__11635,rows,map__11636,map__11636__$1,columns,checkboxes,xf,labels,col_keys,map__11637,map__11637__$1,selection,selection_path,row_id_fn,nil_selects_all_QMARK_,selected,select_all))
+});})(i__11646,value,row_selected,row,c__5363__auto__,size__5364__auto__,b__11647,s__11645__$2,temp__4425__auto__,vec__11634,attrs,vec__11635,rows,map__11636,map__11636__$1,columns,checkboxes,xf,labels,col_keys,map__11637,map__11637__$1,selection,selection_path,row_id_fn,nil_selects_all_QMARK_,selected,select_all))
 ;
 return iter__5365__auto__.call(null,col_keys);
-})())));
+})()));
+})());
 
 var G__11669 = (i__11646 + (1));
 i__11646 = G__11669;
@@ -363,18 +375,24 @@ return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__11647),null);
 }
 } else {
 var row = cljs.core.first.call(null,s__11645__$2);
-return cljs.core.cons.call(null,cljs.core.into.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"tr","tr",-1424774646)], null),cljs.core.concat.call(null,(cljs.core.truth_(checkboxes)?(function (){var value = row_id_fn.call(null,row);
-var all_values = cljs.core.map.call(null,row_id_fn,rows);
-return new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"td","td",1479933353),reforms.table.simple_checkbox.call(null,(function (){var or__4593__auto__ = select_all;
+return cljs.core.cons.call(null,(function (){var value = row_id_fn.call(null,row);
+var row_selected = (function (){var and__4581__auto__ = checkboxes;
+if(cljs.core.truth_(and__4581__auto__)){
+var or__4593__auto__ = select_all;
 if(cljs.core.truth_(or__4593__auto__)){
 return or__4593__auto__;
 } else {
-return selected.call(null,value);
+return selected.call(null,row_id_fn.call(null,row));
 }
-})(),new cljs.core.Keyword(null,"on-click","on-click",1632826543),((function (value,all_values,row,s__11645__$2,temp__4425__auto__,vec__11634,attrs,vec__11635,rows,map__11636,map__11636__$1,columns,checkboxes,xf,labels,col_keys,map__11637,map__11637__$1,selection,selection_path,row_id_fn,nil_selects_all_QMARK_,selected,select_all){
+} else {
+return and__4581__auto__;
+}
+})();
+return cljs.core.into.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"tr","tr",-1424774646),(cljs.core.truth_(row_selected)?new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"table-row-selected"], null):null)], null),cljs.core.concat.call(null,(cljs.core.truth_(checkboxes)?new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"td","td",1479933353),reforms.table.simple_checkbox.call(null,row_selected,new cljs.core.Keyword(null,"on-click","on-click",1632826543),((function (value,row_selected,row,s__11645__$2,temp__4425__auto__,vec__11634,attrs,vec__11635,rows,map__11636,map__11636__$1,columns,checkboxes,xf,labels,col_keys,map__11637,map__11637__$1,selection,selection_path,row_id_fn,nil_selects_all_QMARK_,selected,select_all){
 return (function (checked){
-return reforms.binding.core.swap_BANG_.call(null,selection,selection_path,((function (value,all_values,row,s__11645__$2,temp__4425__auto__,vec__11634,attrs,vec__11635,rows,map__11636,map__11636__$1,columns,checkboxes,xf,labels,col_keys,map__11637,map__11637__$1,selection,selection_path,row_id_fn,nil_selects_all_QMARK_,selected,select_all){
+return reforms.binding.core.swap_BANG_.call(null,selection,selection_path,((function (value,row_selected,row,s__11645__$2,temp__4425__auto__,vec__11634,attrs,vec__11635,rows,map__11636,map__11636__$1,columns,checkboxes,xf,labels,col_keys,map__11637,map__11637__$1,selection,selection_path,row_id_fn,nil_selects_all_QMARK_,selected,select_all){
 return (function (prev_selected){
+var all_values = cljs.core.map.call(null,row_id_fn,rows);
 if(cljs.core.truth_(select_all)){
 return cljs.core.disj.call(null,cljs.core.into.call(null,cljs.core.PersistentHashSet.EMPTY,all_values),value);
 } else {
@@ -397,13 +415,12 @@ return cljs.core.PersistentHashSet.EMPTY;
 
 }
 }
-});})(value,all_values,row,s__11645__$2,temp__4425__auto__,vec__11634,attrs,vec__11635,rows,map__11636,map__11636__$1,columns,checkboxes,xf,labels,col_keys,map__11637,map__11637__$1,selection,selection_path,row_id_fn,nil_selects_all_QMARK_,selected,select_all))
+});})(value,row_selected,row,s__11645__$2,temp__4425__auto__,vec__11634,attrs,vec__11635,rows,map__11636,map__11636__$1,columns,checkboxes,xf,labels,col_keys,map__11637,map__11637__$1,selection,selection_path,row_id_fn,nil_selects_all_QMARK_,selected,select_all))
 );
-});})(value,all_values,row,s__11645__$2,temp__4425__auto__,vec__11634,attrs,vec__11635,rows,map__11636,map__11636__$1,columns,checkboxes,xf,labels,col_keys,map__11637,map__11637__$1,selection,selection_path,row_id_fn,nil_selects_all_QMARK_,selected,select_all))
-)], null)], null);
-})():null),(function (){var iter__5365__auto__ = ((function (row,s__11645__$2,temp__4425__auto__,vec__11634,attrs,vec__11635,rows,map__11636,map__11636__$1,columns,checkboxes,xf,labels,col_keys,map__11637,map__11637__$1,selection,selection_path,row_id_fn,nil_selects_all_QMARK_,selected,select_all){
+});})(value,row_selected,row,s__11645__$2,temp__4425__auto__,vec__11634,attrs,vec__11635,rows,map__11636,map__11636__$1,columns,checkboxes,xf,labels,col_keys,map__11637,map__11637__$1,selection,selection_path,row_id_fn,nil_selects_all_QMARK_,selected,select_all))
+)], null)], null):null),(function (){var iter__5365__auto__ = ((function (value,row_selected,row,s__11645__$2,temp__4425__auto__,vec__11634,attrs,vec__11635,rows,map__11636,map__11636__$1,columns,checkboxes,xf,labels,col_keys,map__11637,map__11637__$1,selection,selection_path,row_id_fn,nil_selects_all_QMARK_,selected,select_all){
 return (function reforms$table$iter__11644_$_iter__11660(s__11661){
-return (new cljs.core.LazySeq(null,((function (row,s__11645__$2,temp__4425__auto__,vec__11634,attrs,vec__11635,rows,map__11636,map__11636__$1,columns,checkboxes,xf,labels,col_keys,map__11637,map__11637__$1,selection,selection_path,row_id_fn,nil_selects_all_QMARK_,selected,select_all){
+return (new cljs.core.LazySeq(null,((function (value,row_selected,row,s__11645__$2,temp__4425__auto__,vec__11634,attrs,vec__11635,rows,map__11636,map__11636__$1,columns,checkboxes,xf,labels,col_keys,map__11637,map__11637__$1,selection,selection_path,row_id_fn,nil_selects_all_QMARK_,selected,select_all){
 return (function (){
 var s__11661__$1 = s__11661;
 while(true){
@@ -442,12 +459,13 @@ return null;
 }
 break;
 }
-});})(row,s__11645__$2,temp__4425__auto__,vec__11634,attrs,vec__11635,rows,map__11636,map__11636__$1,columns,checkboxes,xf,labels,col_keys,map__11637,map__11637__$1,selection,selection_path,row_id_fn,nil_selects_all_QMARK_,selected,select_all))
+});})(value,row_selected,row,s__11645__$2,temp__4425__auto__,vec__11634,attrs,vec__11635,rows,map__11636,map__11636__$1,columns,checkboxes,xf,labels,col_keys,map__11637,map__11637__$1,selection,selection_path,row_id_fn,nil_selects_all_QMARK_,selected,select_all))
 ,null,null));
-});})(row,s__11645__$2,temp__4425__auto__,vec__11634,attrs,vec__11635,rows,map__11636,map__11636__$1,columns,checkboxes,xf,labels,col_keys,map__11637,map__11637__$1,selection,selection_path,row_id_fn,nil_selects_all_QMARK_,selected,select_all))
+});})(value,row_selected,row,s__11645__$2,temp__4425__auto__,vec__11634,attrs,vec__11635,rows,map__11636,map__11636__$1,columns,checkboxes,xf,labels,col_keys,map__11637,map__11637__$1,selection,selection_path,row_id_fn,nil_selects_all_QMARK_,selected,select_all))
 ;
 return iter__5365__auto__.call(null,col_keys);
-})())),reforms$table$iter__11644.call(null,cljs.core.rest.call(null,s__11645__$2)));
+})()));
+})(),reforms$table$iter__11644.call(null,cljs.core.rest.call(null,s__11645__$2)));
 }
 } else {
 return null;

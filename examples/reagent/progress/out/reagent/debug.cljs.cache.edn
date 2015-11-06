@@ -1,2 +1,2 @@
 ;; Analyzed by ClojureScript 1.7.122
-{:name reagent.debug, :doc nil, :excludes #{}, :use-macros nil, :require-macros nil, :uses nil, :requires nil, :imports nil}
+{:name reagent.debug, :doc nil, :excludes #{}, :use-macros nil, :require-macros {reagent.debug reagent.debug}, :uses nil, :requires nil, :imports nil}

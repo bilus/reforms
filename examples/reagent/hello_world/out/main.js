@@ -5,7 +5,7 @@ goog.addDependency("../reagent/interop.js", ['reagent.interop'], ['cljs.core']);
 goog.addDependency("../reagent/debug.js", ['reagent.debug'], ['cljs.core']);
 goog.addDependency("../clojure/string.js", ['clojure.string'], ['goog.string', 'cljs.core', 'goog.string.StringBuffer']);
 goog.addDependency("../reagent/impl/util.js", ['reagent.impl.util'], ['reagent.interop', 'cljs.core', 'reagent.debug', 'clojure.string']);
-goog.addDependency("../reagent/ratom.js", ['reagent.ratom'], ['reagent.impl.util', 'cljs.core']);
+goog.addDependency("../reagent/ratom.js", ['reagent.ratom'], ['reagent.impl.util', 'cljs.core', 'reagent.debug']);
 goog.addDependency("../reforms/binding/reagent.js", ['reforms.binding.reagent'], ['reforms.binding.protocol', 'reagent.ratom', 'cljs.core']);
 goog.addDependency("../reforms/binding/core.js", ['reforms.binding.core'], ['reforms.binding.protocol', 'cljs.core']);
 goog.addDependency("../reforms/core/react_keys.js", ['reforms.core.react_keys'], ['cljs.core', 'reforms.binding.core', 'goog.ui.IdGenerator', 'clojure.string']);
