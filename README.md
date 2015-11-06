@@ -479,6 +479,8 @@ These row ids are provided through a user-defined function, here we use a separa
                       :row-id    :id})
 ```
 
+Each selected row gets class "table-row-selected" which you can use for styling.
+
 See the [API Reference](http://bilus.github.io/reforms/doc/reforms.table.html#var-table).
 
 ### Assorted topics

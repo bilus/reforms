@@ -1,10 +1,10 @@
-(defproject reforms "0.4.1"
+(defproject reforms "0.4.3"
             :description "Form helpers for React-based Clojurescript libraries."
             :url "http://bilus.github.io/reforms/"
             :license {:name "Eclipse Public License"
                       :url  "http://www.eclipse.org/legal/epl-v10.html"}
-            :dependencies [[org.clojure/clojure "1.7.0"]
-                           [org.clojure/clojurescript "1.7.122"]]
+            :dependencies [[org.clojure/clojure "1.7.0" :scope "provided"]
+                           [org.clojure/clojurescript "1.7.122" :scope "provided"]]
             :jar-exclusions [#"\.cljx|\.swp|\.swo|\.DS_Store"]
             :auto-clean false
             :source-paths ["src"]
