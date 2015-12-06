@@ -51,11 +51,9 @@
 
 (defn validating-fields-fn
   "Used by [reforms.validation/validating-fields] macro."
-  [validation-errors & fields]
+  [validation-errors fn]
   (binding [*validation-errors* validation-errors]
-    (doall
-      (for [field fields]
-        (field)))))
+    (fn)))
 
 (defn validation-error
   "Returns a validation error for a key sequence.

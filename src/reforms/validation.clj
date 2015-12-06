@@ -18,10 +18,8 @@
                  (text ...)
                  (text ...))))"
   [validation-errors & body]
-  (let [funs (map (fn validating-fields-fn [b]
-                    `(cljs.core/fn [] (~@b)))
-                  body)]
-    `(reforms.validation/validating-fields-fn ~validation-errors ~@funs)))
+  `(reforms.validation/validating-fields-fn ~validation-errors (fn []
+                                                                 (list ~@body))))
 
 (defn parse-args                                            ;; TODO: Duplicated in reforms.core; move to .cljc
   [args]
@@ -37,7 +35,7 @@
   (let [[attrs [& elems]] (parse-args args)]
     `(do
        (assert (reforms.binding.core/valid? ~cursor) "The first argument to reforms.validation/form before optional attributes must be a valid binding target.")
-       (reforms.core/form
+       (apply reforms.core/form
          ~attrs
          (reforms.validation/validating-fields
            (reforms.validation/validation-errors ~cursor)
