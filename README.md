@@ -77,7 +77,7 @@ Minimal requires (including sablono to render the forms):
 
 ```clojure
 (ns hello-world.core
-  (:require [reforms.om :include-macros true :as forms]
+  (:require [reforms.om :include-macros true :as f]
             [om.core :as om]
             [sablono.core :include-macros true :as sablono]))
 ```
@@ -112,7 +112,7 @@ Add `reagent-reforms` to `:dependencies` in project.clj:
 
 ```clojure
 (ns hello-world.core
-  (:require [reforms.reagent :include-macros true :as forms]
+  (:require [reforms.reagent :include-macros true :as f]
             [reagent.core :refer [atom render-component]))
 ```
 
@@ -143,7 +143,7 @@ Add `rum-reforms` to `:dependencies` in project.clj:
 
 ```clojure
 (ns hello-world.core
-  (:require [reforms.rum :include-macros true :as forms]
+  (:require [reforms.rum :include-macros true :as f]
             [rum.core :include-macros true :as rum])
 ```
 
@@ -607,7 +607,7 @@ Buttons and most form helpers accept an `:in-progress` option you can use like t
 In addition, in case of buttons it's usually a good idea to disable them:
 
 ```clojure
-(button "Start" #(...) :in-progress true :disable true)
+(button "Start" #(...) :in-progress true :disabled true)
 ```
 
 <img src="https://github.com/bilus/reforms/blob/master/doc/images/progress.png" width="85">
