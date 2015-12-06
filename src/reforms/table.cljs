@@ -35,7 +35,7 @@
 
        - :columns - map of keys used in `rows` to human-friendly column names
        - :checkboxes - use this to support row selection using checkboxes, the map contains:
-           :selection - atom/cursor to keep selected rows in
+           :selection - atom/cursor to keep selected rows in; either nil or a set
            :path - (optional) korks/path into the selection atom/cursor
            :row-id - function applied to row map to calculate a unique row id to put into the selection set
            :nil-selects-all? - (optional) selection set to nil (as opposed to #{}) selects all rows (default: false)
