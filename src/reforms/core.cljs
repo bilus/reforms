@@ -397,7 +397,9 @@
                                                 :id        dom-id})]
     (apply impl/input* :select input-attrs label cursor korks opts
            (map #(vector :option {:value (str (first %))
-                                  :key   (gen-key (first %))} (second %)) options))))
+                                 :key   (gen-key (first %))
+                                 :disabled (nth % 2 false)} (second %)) options))))
+
 
 (defn datetime
   "Datetime input. See http://getbootstrap.com/css/#inputs
